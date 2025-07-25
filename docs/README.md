@@ -2,7 +2,7 @@
 
 ## Hoş Geldiniz!
 
-Bu web sitesi, Sun (Oracle) tarafından geliştirilen ve Prof. Dr. Sadi Evren Şeker’in sıkça önerdiği [Java Tutorial](https://docs.oracle.com/javase/tutorial/) serisinin Türkçe çevirisidir. Java programlama dilini öğrenmek isteyenler için tasarlanan bu kaynak, Türkçe konuşan geliştiriciler ve öğrenciler için faydalı olmayı amaçlıyor.
+Bu web sitesi, Sun (Oracle) tarafından hazırlanan ve Prof. Dr. Sadi Evren Şeker’in sıkça önerdiği [Java Tutorial](https://docs.oracle.com/javase/tutorial/) serisinin Türkçe çevirisidir. Java programlama dilini öğrenmek isteyenler için tasarlanan bu kaynak, Türkçe konuşan geliştiriciler ve öğrenciler için faydalı olmayı amaçlıyor.
 
 ### Neden Bu Çeviri?
 - **Erişim Kolaylığı**: İngilizce bilmeyen veya ikinci dil olarak İngilizce kullananlar için ideal.
