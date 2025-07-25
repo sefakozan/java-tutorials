@@ -1,0 +1,1 @@
+# Yaygın Sorunlar (ve Çözümleri)

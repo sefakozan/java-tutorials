@@ -2,22 +2,77 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Document</title>
+  <title>Java™ Eğitimleri</title>
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <meta name="description" content="Description">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/lib/themes/buble.css" />
+  <script src="//cdn.jsdelivr.net/npm/docsify-edit-on-github"></script>
 </head>
 <body>
   <div id="app"></div>
   <script>
-    window.$docsify = {
-      name: '',
-      repo: '',
-      loadSidebar: true
-    }
+  window.$docsify = {
+      name: '<img src="/_media/java-icon.svg" alt="Java Logosu" style="height: 65px; vertical-align: middle; margin-right: 8px; margin-bottom: 24px;"> Java™ Eğitimleri',
+      repo: 'https://github.com/sefakozan/java-tutorials',
+      loadSidebar: '_sidebar.md',
+
+    alias: {
+      '/.*/_sidebar.md': '/_sidebar.md',
+    },
+    subMaxLevel: 0,
+    sidebarDisplayLevel: 1, // set sidebar display level
+
+    // search içeriğini değiştirir
+    search: {
+      placeholder: 'Ara...',
+      noData: {
+        '/': 'Sonuç bulunamadı...'
+      }
+    },
+
+    plugins: [
+      // https://github.com/sefakozan/java-tutorials/blob/main/docs/README.md
+      // https://github.com/sefakozan/java-tutorials/edit/main/docs/README.md
+      EditOnGithubPlugin.create("https://github.com/sefakozan/java-tutorials/blob/main/docs/", "", "Github'da Düzenle")
+    ]
+  }
   </script>
+
+<style>
+/* docs/custom.css */
+
+  /* Sidebar genişliğini burada ayarlayabilirsin */
+  .sidebar {
+    width: 310px !important; /* Varsayılan genellikle 250px'tir */
+  }
+
+  .content {
+    margin-left: 30px !important;
+  }
+   /* md dosyalarının içeriğinin font-size'ı */
+  .content {
+  font-size: 16.7px; /* Varsayılan genellikle 16px'tir */
+  }
+
+    /* Başlıklar */
+  .content h1 {
+    font-size: 38px;
+  }
+
+  .content h2 {
+    font-size: 28px;
+  }
+
+  .content h3 {
+    font-size: 24px;
+  }
+
+  </style>
+
   <!-- Docsify v4 -->
   <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify-sidebar-collapse/dist/docsify-sidebar-collapse.min.js"></script>
 </body>
 </html>
