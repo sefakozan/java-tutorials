@@ -1,10 +1,9 @@
-# Lesson: The Java Technology Phenomenon
-Talk about Java technology seems to be everywhere, but what exactly is it? The following sections explain how Java technology is both a programming language and a platform, and provide an overview of what this technology can do for you.
+# Ders: Java Teknolojisi Fenomeni  
+Java teknolojisi hakkında konuşmalar her yerde gibi görünüyor, ama bu tam olarak nedir? Aşağıdaki bölümler, Java teknolojisinin hem bir programlama dili hem de bir platform olduğunu açıklar ve bu teknolojinin sizin için neler yapabileceği hakkında genel bir bakış sunar.
 
-1. Java Teknolojisi Hakkında
-2. What Can Java Technology Do?
-3. How Will Java Technology Change My Life?
-
+1. **Java Teknolojisi Hakkında**  
+2. **Java Teknolojisi Neler Yapabilir?**  
+3. **Java Teknolojisi Hayatımı Nasıl Değiştirecek?**
 ---
 
 # 1. Java Teknolojisi Hakkında
@@ -65,29 +64,27 @@ Platformdan bağımsız bir ortam olarak, Java platformu yerel koda kıyasla bir
 
 ---
 
-# 2. What Can Java Technology Do?
-The general-purpose, high-level Java programming language is a powerful software platform. Every full implementation of the Java platform gives you the following features:
+# 2. Java Teknolojisi Neler Yapabilir? 
+Genel amaçlı, üst düzey Java programlama dili, güçlü bir yazılım platformudur. Java platformunun her tam uygulaması, aşağıdaki özellikleri sunar:
 
-**Development Tools:** The development tools provide everything you'll need for compiling, running, monitoring, debugging, and documenting your applications. As a new developer, the main tools you'll be using are the javac compiler, the java launcher, and the javadoc documentation tool.
+- **Geliştirme Araçları:** Geliştirme araçları, uygulamalarınızı derlemek, çalıştırmak, izlemek, hata ayıklamak ve belgelemek için ihtiyacınız olan her şeyi sağlar. Yeni bir geliştirici olarak kullanacağınız ana araçlar; javac derleyicisi, java başlatıcısı ve javadoc dökümantasyon aracıdır.
 
-**Application Programming Interface (API):** The API provides the core functionality of the Java programming language. It offers a wide array of useful classes ready for use in your own applications. It spans everything from basic objects, to networking and security, to XML generation and database access, and more. The core API is very large; to get an overview of what it contains, consult the Java Platform Standard Edition 8 Documentation.
+- **Uygulama Programlama Arayüzü (API):** API, Java programlama dilinin temel işlevselliğini sağlar. Kendi uygulamalarınızda kullanmaya hazır çok çeşitli faydalı sınıflar sunar. Temel nesnelerden ağ oluşturma ve güvenliğe, XML oluşturmadan veritabanı erişimine kadar birçok alanı kapsar. Çekirdek API oldukça geniştir; içeriği hakkında genel bir fikir edinmek için Java Platform Standard Edition 8 Dökümantasyonuna bakabilirsiniz.
 
-**Deployment Technologies:** The JDK software provides standard mechanisms such as the Java Web Start software and Java Plug-In software for deploying your applications to end users.
+- **Dağıtım Teknolojileri:** JDK yazılımı, uygulamalarınızı son kullanıcılara dağıtmak için Java Web Start yazılımı ve Java Eklenti yazılımı gibi standart mekanizmalar sağlar.
 
-**User Interface Toolkits:** The JavaFX, Swing, and Java 2D toolkits make it possible to create sophisticated Graphical User Interfaces (GUIs).
+- **Kullanıcı Arayüzü Araç Takımları:** JavaFX, Swing ve Java 2D araç takımları, gelişmiş Grafiksel Kullanıcı Arayüzleri (GUI'ler) oluşturmayı mümkün kılar.
 
-**Integration Libraries:** Integration libraries such as the Java IDL API, JDBC API, Java Naming and Directory Interface (JNDI) API, Java RMI, and Java Remote Method Invocation over Internet Inter-ORB Protocol Technology (Java RMI-IIOP Technology) enable database access and manipulation of remote objects.
-
+- **Entegrasyon Kütüphaneleri:** Java IDL API, JDBC API, Java Adlandırma ve Dizin Arayüzü (JNDI) API, Java RMI ve Java Uzak Metot Çağırma Internet Inter-ORB Protokol Teknolojisi (Java RMI-IIOP Teknolojisi) gibi entegrasyon kütüphaneleri, veritabanı erişimi ve uzak nesnelerin manipülasyonunu sağlar.
 ---
 
-# 3. How Will Java Technology Change My Life?
+# 3. Java Teknolojisi Hayatımı Nasıl Değiştirecek? 
+Java programlama dilini öğrenirseniz size şöhret, servet ya da iş garantisi vaat edemeyiz. Yine de, bu teknoloji programlarınızı daha iyi hale getirecek ve diğer dillere kıyasla daha az çaba gerektirecektir. Java teknolojisinin size şu konularda yardımcı olacağına inanıyoruz:
 
-We can't promise you fame, fortune, or even a job if you learn the Java programming language. Still, it is likely to make your programs better and requires less effort than other languages. We believe that Java technology will help you do the following:
-
-Get started quickly: Although the Java programming language is a powerful object-oriented language, it's easy to learn, especially for programmers already familiar with C or C++.
-Write less code: Comparisons of program metrics (class counts, method counts, and so on) suggest that a program written in the Java programming language can be four times smaller than the same program written in C++.
-Write better code: The Java programming language encourages good coding practices, and automatic garbage collection helps you avoid memory leaks. Its object orientation, its JavaBeans™ component architecture, and its wide-ranging, easily extendible API let you reuse existing, tested code and introduce fewer bugs.
-Develop programs more quickly: The Java programming language is simpler than C++, and as such, your development time could be up to twice as fast when writing in it. Your programs will also require fewer lines of code.
-Avoid platform dependencies: You can keep your program portable by avoiding the use of libraries written in other languages.
-Write once, run anywhere: Because applications written in the Java programming language are compiled into machine-independent bytecodes, they run consistently on any Java platform.
-Distribute software more easily: With Java Web Start software, users will be able to launch your applications with a single click of the mouse. An automatic version check at startup ensures that users are always up to date with the latest version of your software. If an update is available, the Java Web Start software will automatically update their installation.
+- **Hızlı Başlangıç:** Java programlama dili güçlü bir nesne yönelimli dil olmasına rağmen, özellikle C veya C++ bilen programcılar için öğrenmesi kolaydır.
+- **Daha Az Kod Yazma:** Program metriklerinin (sınıf sayısı, metot sayısı vb.) karşılaştırmaları, Java programlama dilinde yazılmış bir programın, C++ ile yazılmış aynı programdan dört kat daha küçük olabileceğini gösteriyor.
+- **Daha İyi Kod Yazma:** Java programlama dili, iyi kodlama uygulamalarını teşvik eder ve otomatik çöp toplama (garbage collection) özelliği, bellek sızıntılarını önlemenize yardımcı olur. Nesne yönelimli yapısı, JavaBeans™ bileşen mimarisi ve geniş, kolayca genişletilebilir API’si, mevcut ve test edilmiş kodları yeniden kullanmanızı sağlar ve daha az hata oluşmasına yol açar.
+- **Programları Daha Hızlı Geliştirme:** Java programlama dili, C++’tan daha basittir ve bu nedenle geliştirme süreniz iki kat daha hızlı olabilir. Ayrıca programlarınız daha az kod satırı gerektirir.
+- **Platform Bağımlılıklarından Kaçınma:** Diğer dillerde yazılmış kütüphaneleri kullanmaktan kaçınarak programınızı taşınabilir tutabilirsiniz.
+- **Bir Kez Yaz, Her Yerde Çalıştır:** Java programlama dilinde yazılan uygulamalar, makineden bağımsız bayt kodlarına derlendiği için herhangi bir Java platformunda tutarlı bir şekilde çalışır.
+- **Yazılımı Daha Kolay Dağıtma:** Java Web Start yazılımı ile kullanıcılar, uygulamalarınızı tek bir fare tıklamasıyla başlatabilir. Başlangıçtaki otomatik sürüm kontrolü, kullanıcıların her zaman yazılımınızın en güncel sürümüne sahip olmasını sağlar. Bir güncelleme mevcutsa, Java Web Start yazılımı kurulumu otomatik olarak günceller.

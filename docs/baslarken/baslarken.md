@@ -1,11 +1,13 @@
-# Trail: Getting Started
-This trail provides everything you'll need to know about getting started with the Java programming language.
+# Kılavuz: Başlarken
+Bu rehber, Java programlama diliyle başlamak için ihtiyacınız olan her şeyi içerir.
 
-- **Getting Started** — An introduction to Java technology and lessons on installing Java development software and using it to create a simple program.
-- **Learning the Java Language** — Lessons describing the essential concepts and features of the Java Programming Language.
-- **Essential Java Classes** — Lessons on exceptions, basic input/output, concurrency, regular expressions, and the platform environment.
-- **Collections** — Lessons on using and extending the Java Collections Framework.
-- **Date-Time APIs** — How to use the java.time pages to write date and time code.
-- **Deployment** — How to package applications and applets using JAR files, and deploy them using Java Web Start and Java Plug-in.
-- **Preparation for Java Programming Language Certification** — List of available training and tutorial resources.
+- **Java Teknolojisi Olgusu**
+Java teknolojisinin genel bir bakışını sunar. Hem Java programlama dilini hem de platformunu ele alarak, bu teknolojinin neler yapabileceği ve hayatınızı nasıl kolaylaştıracağı hakkında geniş bir perspektif sağlar.
 
+- **"Merhaba Dünya!" Uygulaması**
+Bu uygulamalı yaklaşım, basit bir "Merhaba Dünya!" uygulaması oluşturmak için neler indirmeniz, kurmanız ve yazmanız gerektiğini tarif eder. NetBeans™ entegre geliştirme ortamı (NetBeans IDE), Microsoft Windows, Solaris™ İşletim Sistemi (Solaris OS), Linux ve Mac kullanıcıları için ayrı talimatlar sunar.
+
+- **"Merhaba Dünya!" Uygulamasına Daha Yakından Bakış** "Merhaba Dünya!" uygulamasını ele alır ve kodun her bir bölümünü ayrıntılı olarak açıklar. Kaynak kod yorumlarını, HelloWorldApp sınıf tanımı bloğunu ve ana metodu kapsar.
+
+- **Yaygın Sorunlar (ve Çözümleri)**
+Bu kılavuzdaki programları derlerken veya çalıştırırken sorun yaşarsanız başvurmanız gereken yerdir.
