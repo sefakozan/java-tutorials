@@ -1,0 +1,7 @@
+# Ders: "Hello World!" Uygulaması
+
+Aşağıda listelenen bölümler, basit bir "Merhaba Dünya!" uygulamasının derlenmesi ve çalıştırılması için ayrıntılı talimatlar sunar. İlk bölüm, yazılım geliştirme sürecini büyük ölçüde basitleştiren entegre bir geliştirme ortamı olan NetBeans IDE'ye başlama hakkında bilgi verir. NetBeans IDE, aşağıda listelenen tüm platformlarda çalışır. Kalan bölümler, entegre geliştirme ortamı olmadan başlamak için platforma özgü talimatlar sunar. Sorun yaşarsanız, ortak sorunlar bölümüne mutlaka bakın; yeni kullanıcıların karşılaştığı birçok soruna çözüm sunar.
+
+- **[NetBeans IDE için "Hello World!"](baslarken/2-helloworld-uygulamasi/netbeans.md)**: Bu talimatlar NetBeans IDE kullanıcıları içindir. NetBeans IDE, Java platformunda çalışır, yani JDK 7 mevcut olan herhangi bir işletim sistemiyle kullanabilirsiniz. Bu işletim sistemleri arasında Microsoft Windows, Solaris OS, Linux ve Mac OS X bulunmaktadır. Mümkün olduğunda komut satırı yerine NetBeans IDE'sini kullanmanızı öneririz.
+- **[Microsoft Windows için "Hello World!"](baslarken/2-helloworld-uygulamasi/windows.md)**: Bu komut satırı talimatları Windows XP Professional, Windows XP Home, Windows Server 2003, Windows 2000 Professional ve Windows Vista kullanıcıları içindir.
+- **[Solaris OS, Linux ve Mac OS X için "Hello World!"](baslarken/2-helloworld-uygulamasi/unix-mac.md)**: Bu komut satırı talimatları Solaris OS, Linux ve Mac OS X kullanıcıları içindir. Yaygın Sorunlar (ve Çözümleri) Uygulamanızı derleme veya çalıştırma sorunu yaşarsanız bu sayfaya bakınız.

@@ -1,1 +1,0 @@
-# "Hello World!" Yakından Bir Bakış
