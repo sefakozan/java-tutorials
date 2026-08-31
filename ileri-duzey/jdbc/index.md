@@ -1,19 +1,16 @@
-# Kılavuz: JDBC ile Veritabanı Erişimi (JDBC Database Access)
+# Özel Kılavuz: JDBC ile Veritabanı Erişimi (JDBC Database Access)
 
-JDBC API'si, Java uygulamalarından ilişkisel veritabanlarına erişim sağlayan endüstri standardıdır.
+**JDBC (Java Database Connectivity)**, Java uygulamalarının ilişkisel veritabanlarına (PostgreSQL, MySQL, Oracle, SQL Server vb.) bağlanmasını ve SQL sorguları yürütmesini sağlayan standart bir Java API'sidir.
 
 ---
 
 ## Bu Kılavuzdaki Dersler
 
-### 1. [JDBC Temellerine Giriş](ileri-duzey/jdbc/index.md)
-JDBC sürücü türleri, `DriverManager` ve veritabanı bağlantı yönetimi.
+### 1. [Bağlantı ve SQL İşleme (JDBC Basics)](ileri-duzey/jdbc/basics.md)
+JDBC sürücüsü yükleme, `DriverManager` ile veritabanı bağlantısı açma, `Statement` ve `ResultSet` ile sorgu çalıştırma ve sonuçları okumayı ele alır.
 
-### 2. [Bağlantı Kurma ve SQL İşleme (Connecting & SQL Statements)](ileri-duzey/jdbc/basics.md)
-Veritabanı URL'leri (`jdbc:subprotocol:subname`) ve `Statement` nesneleri ile temel sorgular.
+### 2. [PreparedStatements ve Parametreli Sorgular](ileri-duzey/jdbc/preparedstatement.md)
+Önceden derlenmiş SQL ifadeleri (`PreparedStatement`), dinamik parametre bağlama ve SQL Enjeksiyonu (*SQL Injection*) güvenlik önlemlerini inceler.
 
-### 3. [Hazırlıklı İfadeler ve Sonuçlar (PreparedStatements & ResultSets)](ileri-duzey/jdbc/preparedstatement.md)
-Parametreli sorgular, SQL enjeksiyon koruması ve `ResultSet` imleç yönetimi.
-
-### 4. [İşlem Yönetimi (Transactions)](ileri-duzey/jdbc/transactions.md)
-Otomatik commit kapatma, `commit()`, `rollback()` ve `Savepoint` kullanımı.
+### 3. [İşlem Yönetimi (Transactions)](ileri-duzey/jdbc/transactions.md)
+Çoklu SQL ifadelerini atomik bir bütün olarak yürütmeyi (`commit`), hata durumunda geri almayı (`rollback`) ve kayıt noktalarını (*savepoints*) açıklar.

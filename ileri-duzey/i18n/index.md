@@ -1,19 +1,16 @@
-# Kılavuz: Uluslararasılaştırma ve Yerelleştirme (Internationalization - i18n)
+# Özel Kılavuz: Uluslararasılaştırma (Internationalization - i18n)
 
-Uluslararasılaştırma, bir programı farklı dillere ve bölgesel kurallara kodunu yeniden derlemeden uyarlayabilme sürecidir.
+**Uluslararasılaştırma (i18n)**, bir yazılımı kaynak kodunda herhangi bir değişiklik yapmadan farklı dillere ve bölgesel ayarlara uyarlanabilecek şekilde tasarlama sürecidir.
 
 ---
 
 ## Bu Kılavuzdaki Dersler
 
-### 1. [Uluslararasılaştırmaya Giriş](ileri-duzey/i18n/index.md)
-i18n ve l10n kavramları, Java yerelleştirme mimarisi.
+### 1. [Yerel Ayarları Belirleme (Locale)](ileri-duzey/i18n/locale.md)
+`java.util.Locale` sınıfını, dil ve ülke kodlarını (ISO standartları), özel yerel ayar oluşturmayı ve sistem varsayılan yerelini yönetmeyi açıklar.
 
-### 2. [Yerel Ayarları Belirleme (Setting the Locale)](ileri-duzey/i18n/locale.md)
-`java.util.Locale` nesnesi ile dil ve ülke kodları tanımlama.
+### 2. [ResourceBundle ile Yerelleştirme](ileri-duzey/i18n/resourcebundle.md)
+Yerel ayara özgü metinleri kaynak koddan izole etmek için `ResourceBundle` ve `.properties` kaynak dosyalarının kullanımını ele alır.
 
-### 3. [Yerel Verileri Kaynak Dosyalarında Ayrıştırma (ResourceBundle)](ileri-duzey/i18n/resourcebundle.md)
-`.properties` dosyaları ve `ResourceBundle` ile çok dilli metin yönetimi.
-
-### 4. [Sayı, Para Birimi, Tarih ve Mesaj Biçimlendirme (Formatting)](ileri-duzey/i18n/format.md)
-`NumberFormat`, `DateFormat`, `DateTimeFormatter` ve parametreli `MessageFormat`.
+### 3. [Sayı, Tarih ve Mesaj Biçimlendirme](ileri-duzey/i18n/format.md)
+Bölgesel ayarlara göre sayıları (`NumberFormat`), tarih ve saatleri (`DateFormat`), dinamik çoğul yapıları (`ChoiceFormat`) ve değişkenli mesajları (`MessageFormat`) biçimlendirmeyi inceler.

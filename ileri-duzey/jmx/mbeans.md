@@ -1,25 +1,41 @@
-# Ders: Standart MBean'ler ve MXBean'ler (MBeans)
+# Ders: Standart MBean ve MXBean (Managed Beans)
 
-**MBean (Managed Bean)**, JMX ajanına kaydedilen ve yönetimsel işlemleri dışarıya açan nesnedir.
+Bir **MBean (Managed Bean)**, JMX arayüzü üzerinden yönetilebilir bir kaynağı temsil eden Java nesnesidir. Bir MBean; öznitelikleri (*attributes*), metot işlemlerini (*operations*) ve bildirimleri dışa açar.
 
+1. [**Standart MBean Arayüzü Tanımlama**](#1-standart-mbean-arayüzü-tanımlama)
+2. [**MBean Sınıfını Uygulama**](#2-mbean-sınıfını-uygulama)
+3. [**`MBeanServer`'a Kayıt Etme**](#3-mbeanservera-kayıt-etme)
 ---
 
-## 1. Standart MBean Örneği
+# 1. Standart MBean Arayüzü Tanımlama
 
-### Arayüz: `HelloMBean.java`
+Bir standart MBean arayüzünün adı, onu uygulayan sınıfın adının sonuna `MBean` eki getirilerek oluşturulmalıdır:
+
 ```java
-public interface HelloMBean {
-    void setMessage(String message);
-    String getMessage();
-    void sayHello();
-    int add(int x, int y);
+package com.example;
+
+public interface AuthorMBean {
+    // Getter ve Setter (Öznitelikler / Attributes)
+    public void setMessage(String message);
+    public String getMessage();
+    public int getCacheSize();
+    public void setCacheSize(int size);
+
+    // İşlemler (Operations)
+    public void sayHello();
 }
 ```
 
-### Sınıf: `Hello.java`
+---
+
+# 2. MBean Sınıfını Uygulama
+
 ```java
-public class Hello implements HelloMBean {
-    private String message = "Varsayılan Mesaj";
+package com.example;
+
+public class Author implements AuthorMBean {
+    private String message = "Merhaba Dünya";
+    private int cacheSize = 200;
 
     public void setMessage(String message) {
         this.message = message;
@@ -29,33 +45,48 @@ public class Hello implements HelloMBean {
         return this.message;
     }
 
-    public void sayHello() {
-        System.out.println("Merhaba, dünya!");
+    public int getCacheSize() {
+        return this.cacheSize;
     }
 
-    public int add(int x, int y) {
-        return x + y;
+    public void setCacheSize(int size) {
+        this.cacheSize = size;
+        System.out.println("Önbellek boyutu güncellendi: " + size);
+    }
+
+    public void sayHello() {
+        System.out.println("Author MBean: " + message);
     }
 }
 ```
 
 ---
 
-## 2. MBean Kaydı
+# 3. `MBeanServer`'a Kayıt Etme
+
+Uygulamanız başlatıldığında MBean nesnesini platform `MBeanServer`'ına benzersiz bir `ObjectName` ile kaydeder:
 
 ```java
+package com.example;
+
 import java.lang.management.ManagementFactory;
-import javax.management.*;
+import javax.management.MBeanServer;
+import javax.management.ObjectName;
 
 public class Main {
     public static void main(String[] args) throws Exception {
+        // Platform MBeanServer'ı al
         MBeanServer mbs = ManagementFactory.getPlatformMBeanServer();
-        ObjectName name = new ObjectName("com.example:type=Hello");
-        Hello mbean = new Hello();
+
+        // Benzersiz nesne adı oluştur
+        ObjectName name = new ObjectName("com.example:type=Author");
+
+        // MBean örneğini oluştur ve kaydet
+        Author mbean = new Author();
         mbs.registerMBean(mbean, name);
 
-        System.out.println("Süreç çalışıyor. Çıkış için Enter'a basın...");
-        System.in.read();
+        System.out.println("JMX MBean kaydedildi. İzlemek için jconsole aracını başlatın.");
+        Thread.sleep(Long.MAX_VALUE);
     }
 }
 ```

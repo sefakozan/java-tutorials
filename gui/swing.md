@@ -1,37 +1,47 @@
-# Ders: Swing ile GUI Oluşturma (Creating a GUI with Swing)
+# Kılavuz: Swing ile Grafiksel Kullanıcı Arayüzü (GUI) Oluşturma
 
-**Swing**, Java platformu için zengin ve platformlar arası grafiksel kullanıcı arayüzleri (GUI) oluşturmayı sağlayan kapsamlı bir GUI araç takımıdır (`javax.swing` paketi).
+**Swing**, Java platformunda zengin masaüstü grafiksel kullanıcı arayüzleri (GUI) geliştirmek için tasarlanmış kapsamlı bir GUI araç takımıdır (*toolkit*). Tamamen Java ile yazılmış olup platformdan bağımsız, özelleştirilebilir bileşenler sunar.
 
-1. [**İlk Swing Uygulaması (HelloWorldSwing)**](#1.-i̇lk-swing-uygulaması-(helloworldswing))
-2. [**NetBeans GUI Oluşturucu (GUI Builder)**](#2.-netbeans-gui-oluşturucu-(gui-builder))
-3. [**Temel Swing Bileşenleri**](#3.-temel-swing-bileşenleri)
+<figure style="text-align: center;">
+  <img src="_media/figures/nb-swing-1.png" alt="NetBeans Swing GUI Builder" style="max-width: 100%; height: auto;">
+  <figcaption style="margin-top: 10px;">Swing GUI bileşenleri ve görsel tasarım.</figcaption>
+</figure>
+
+1. [**İlk Swing Uygulaması (HelloWorldSwing)**](#1-i̇lk-swing-uygulaması-helloworldswing)
+2. [**Üst Düzey Kapsayıcılar (Top-Level Containers)**](#2-üst-düzey-kapsayıcılar-top-level-containers)
+3. [**Temel GUI Bileşenleri (Components)**](#3-temel-gui-bileşenleri-components)
+4. [**Düzen Yöneticileri (Layout Managers)**](#4-düzen-yöneticileri-layout-managers)
+5. [**Olay Yönetimi (Event Handling) ve İş Parçacığı Güvenliği**](#5-olay-yönetimi-event-handling-ve-i̇ş-parçacığı-güvenliği)
 ---
 
 # 1. İlk Swing Uygulaması (HelloWorldSwing)
 
+Aşağıda standart bir pencere açan ve ekranda bir selamlama mesajı gösteren eksiksiz `HelloWorldSwing` uygulaması yer almaktadır:
+
 ```java
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.SwingUtilities;
+import javax.swing.*;        
 
 public class HelloWorldSwing {
     private static void createAndShowGUI() {
-        // Pencereyi oluşturma ve ayarlama
+        // Pencere süslemelerini ayarla
+        JFrame.setDefaultLookAndFeelDecorated(true);
+
+        // Pencereyi (JFrame) oluştur ve yapılandır
         JFrame frame = new JFrame("HelloWorldSwing");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        // "Hello World" etiketi ekleme
+        // "Hello World" etiketini ekle
         JLabel label = new JLabel("Hello World");
         frame.getContentPane().add(label);
 
-        // Pencereyi görüntüleme
+        // Pencereyi boyutlandır ve göster
         frame.pack();
         frame.setVisible(true);
     }
 
     public static void main(String[] args) {
-        // Olay gönderme iş parçacığı için işi zamanlama
-        SwingUtilities.invokeLater(new Runnable() {
+        // GUI kodunu Olay Dağıtım İş Parçacığı üzerinde planla
+        javax.swing.SwingUtilities.invokeLater(new Runnable() {
             public void run() {
                 createAndShowGUI();
             }
@@ -42,19 +52,53 @@ public class HelloWorldSwing {
 
 ---
 
-# 2. NetBeans GUI Oluşturucu (GUI Builder)
+# 2. Üst Düzey Kapsayıcılar (Top-Level Containers)
 
-NetBeans IDE içerisindeki GUI Builder (Matisse), bileşenleri görsel olarak sürükleyip bırakarak formlar tasarlamanızı sağlar:
+Her Swing GUI'sinin temelinde en az bir üst düzey kapsayıcı yer alır:
 
-<figure style="text-align: center;">
-  <img src="_media/figures/nb-swing-1.png" alt="NetBeans GUI Builder" style="max-width: 100%; height: auto;">
-  <figcaption style="margin-top: 10px;">NetBeans IDE GUI Builder tasarım alanı ve bileşen paleti.</figcaption>
-</figure>
+- **`JFrame`:** Başlık çubuğuna, simge durumuna küçültme/büyütme/kapatma butonlarına ve bir kenarlığa sahip standart bir ana uygulama penceresidir.
+- **`JDialog`:** Ana pencereden bağımsız veya ona bağlı açılan ikincil diyalog/açılır penceredir (örneğin dosya açma veya onay kutuları).
+- **`JPanel`:** Diğer bileşenleri gruplamak ve düzenlemek için kullanılan görünmez ara kapsayıcıdır.
 
 ---
 
-# 3. Temel Swing Bileşenleri
+# 3. Temel GUI Bileşenleri (Components)
 
-- **Pencereler (Top-Level Containers):** `JFrame`, `JDialog`.
-- **Temel Bileşenler (Atomic Components):** `JButton`, `JLabel`, `JTextField`, `JCheckBox`, `JComboBox`.
-- **Düzen Yöneticileri (Layout Managers):** `BorderLayout`, `FlowLayout`, `GridLayout`, `GridBagLayout`.
+Swing çok çeşitli etkileşimli bileşenler sağlar:
+
+- **Düğmeler (*Buttons*):** `JButton`, `JRadioButton`, `JCheckBox`, `JToggleButton`.
+- **Metin Giriş Bileşenleri:** `JTextField`, `JPasswordField`, `JTextArea`.
+- **Listeleme ve Seçim:** `JComboBox` (açılır liste), `JList`.
+- **Gelişmiş Veri Gösterimi:** `JTable` (tablolar), `JTree` (ağaç görünümleri).
+- **Menüler:** `JMenuBar`, `JMenu`, `JMenuItem`.
+
+---
+
+# 4. Düzen Yöneticileri (Layout Managers)
+
+Swing bileşenlerin kapsayıcı içindeki konumlarını ve boyutlarını piksellerle sabit belirlemek yerine **düzen yöneticileri (layout managers)** kullanır:
+
+- **`BorderLayout`:** Kapsayıcıyı 5 bölgeye ayırır: `NORTH`, `SOUTH`, `EAST`, `WEST`, `CENTER`. (`JFrame` varsayılanıdır).
+- **`FlowLayout`:** Bileşenleri satır boyunca soldan sağa akıtır; satır dolduğunda alt satıra geçer. (`JPanel` varsayılanıdır).
+- **`GridLayout`:** Bileşenleri eşit boyutlu satır ve sütunlardan oluşan bir ızgaraya yerleştirir.
+- **`BoxLayout`:** Bileşenleri tek bir satırda (yatay) veya tek bir sütunda (dikey) dizer.
+- **`GridBagLayout`:** En esnek ve karmaşık ızgara düzen yöneticisidir.
+
+---
+
+# 5. Olay Yönetimi (Event Handling) ve İş Parçacığı Güvenliği
+
+### Dinleyiciler (Listeners)
+Kullanıcı bir butona tıkladığında veya klavyeden bir tuşa bastığında Swing bir olay üretir:
+
+```java
+button.addActionListener(new ActionListener() {
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        label.setText("Butona tıklandı!");
+    }
+});
+```
+
+### Olay Dağıtım İş Parçacığı (Event Dispatch Thread - EDT)
+Swing bileşenleri **iş parçacığı güvenli değildir (*not thread-safe*)**. Tüm GUI oluşturma, güncelleme ve çizim işlemleri tek bir iş parçacığı olan **EDT** üzerinde yürütülmelidir. Bu nedenle Swing uygulamaları başlatılırken `SwingUtilities.invokeLater()` kullanılır.

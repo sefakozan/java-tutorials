@@ -1,73 +1,138 @@
-# Ders: Temel Giriş/Çıkış (Basic I/O)
+# Ders: Temel Giriş/Çıkış ve Dosya İşlemleri (Basic I/O & NIO.2)
 
-Bu ders, Java programlama dilinde veri okuma ve yazma işlemlerini kapsar: geleneksel G/Ç Akışları (I/O Streams) ve modern Dosya G/Ç (NIO.2).
+Java programlama dilinde Giriş/Çıkış (I/O) işlemleri iki ana mimari üzerinden gerçekleştirilir: geleneksel **I/O Akışları (Streams)** ve Java SE 7 ile tanıtılan modern **Dosya I/O (NIO.2 - `java.nio.file`)** API'si.
 
-1. [**G/Ç Akışları (I/O Streams)**](#1.-g/ç-akışları-(i/o-streams))
-2. [**Bayt ve Karakter Akışları**](#2.-bayt-ve-karakter-akışları)
-3. [**Tamponlu Akışlar (Buffered Streams)**](#3.-tamponlu-akışlar-(buffered-streams))
-4. [**Modern Dosya G/Ç (NIO.2 - Path ve Files)**](#4.-modern-dosya-g/ç-(nio.2---path-ve-files))
+1. [**I/O Akışları (I/O Streams)**](#1-io-akışları-io-streams)
+2. [**Karakter ve Tamponlu Akışlar (Character & Buffered Streams)**](#2-karakter-ve-tamponlu-akışlar-character--buffered-streams)
+3. [**Tarama ve Biçimlendirme (`Scanner` & `Formatting`)**](#3-tarama-ve-biçimlendirme-scanner--formatting)
+4. [**Nesne Akışları ve Serileştirme (Object Streams & Serialization)**](#4-nesne-akışları-ve-serileştirme-object-streams--serialization)
+5. [**Dosya I/O (NIO.2 - `java.nio.file`)**](#5-dosya-io-nio2---javaniofile)
 ---
 
-# 1. G/Ç Akışları (I/O Streams)
+# 1. I/O Akışları (I/O Streams)
 
-Bir G/Ç Akışı, bir girdi kaynağından veri okumayı veya bir çıktı hedefine veri yazmayı temsil eder:
+Bir **I/O Akışı (I/O Stream)**, bir veri kaynağını veya bir veri hedefini temsil eden sıralı bir veri dizisidir.
 
-<figure style="text-align: center;">
-  <img src="_media/figures/io-ins.gif" alt="Girdi Akışı Şeması" style="max-width: 100%; height: auto;">
-  <figcaption style="margin-top: 10px;">Girdi akışı: Program harici kaynaktan veri okur.</figcaption>
-</figure>
-
-<figure style="text-align: center;">
-  <img src="_media/figures/io-outs.gif" alt="Çıktı Akışı Şeması" style="max-width: 100%; height: auto;">
-  <figcaption style="margin-top: 10px;">Çıktı akışı: Program harici hedefe veri yazar.</figcaption>
-</figure>
-
----
-
-# 2. Bayt ve Karakter Akışları
+### Bayt Akışları (Byte Streams)
+Bayt akışları 8 bitlik ham baytlar üzerinde okuma ve yazma işlemleri gerçekleştirir. Tüm bayt akışı sınıfları `InputStream` ve `OutputStream` soyut sınıflarından türer.
 
 <figure style="text-align: center;">
   <img src="_media/figures/byteStream.gif" alt="Bayt Akışı Şeması" style="max-width: 100%; height: auto;">
-  <figcaption style="margin-top: 10px;">Bayt akışları veriyi 8-bitlik bayt dizileri halinde okur ve yazar.</figcaption>
-</figure>
-
-- **Bayt Akışları:** 8-bitlik ikili veriler için `InputStream` ve `OutputStream` kullanılır.
-- **Karakter Akışları:** 16-bitlik Unicode karakterler için `Reader` ve `Writer` kullanılır.
-
----
-
-# 3. Tamponlu Akışlar (Buffered Streams)
-
-Disk erişim yükünü azaltmak için tamponlu akışlar kullanılır:
-
-```java
-BufferedReader inputStream = new BufferedReader(new FileReader("input.txt"));
-BufferedWriter outputStream = new BufferedWriter(new FileWriter("output.txt"));
-```
-
----
-
-# 4. Modern Dosya G/Ç (NIO.2 - Path ve Files)
-
-Java SE 7 `java.nio.file` paketi dosya sistemleri için modern bir API sağlar:
-
-<figure style="text-align: center;">
-  <img src="_media/figures/io-dirStructure.gif" alt="Dizin Ağacı Yapısı" style="max-width: 100%; height: auto;">
-  <figcaption style="margin-top: 10px;">NIO.2 Path nesneleri dosya sistemi hiyerarşisini temsil eder.</figcaption>
+  <figcaption style="margin-top: 10px;">Giriş ve çıkış bayt akışları.</figcaption>
 </figure>
 
 ```java
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.Files;
-import java.util.List;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
-Path path = Paths.get("/home/user/logs/app.log");
-
-if (Files.exists(path)) {
-    List<String> lines = Files.readAllLines(path);
-    for (String line : lines) {
-        System.out.println(line);
+public class CopyBytes {
+    public static void main(String[] args) throws IOException {
+        try (FileInputStream in = new FileInputStream("xanadu.txt");
+             FileOutputStream out = new FileOutputStream("outagain.txt")) {
+            int c;
+            while ((c = in.read()) != -1) {
+                out.write(c);
+            }
+        }
     }
 }
 ```
+
+---
+
+# 2. Karakter ve Tamponlu Akışlar (Character & Buffered Streams)
+
+### Karakter Akışları (Character Streams)
+Karakter akışları verileri 16 bitlik Unicode karakterleri olarak işler ve yerel karakter setlerini otomatik olarak çevirir. Tüm karakter akışları `Reader` ve `Writer` sınıflarından türer (örneğin `FileReader` ve `FileWriter`).
+
+### Tamponlu Akışlar (Buffered Streams)
+Tamponlanmamış I/O işlemlerinde her okuma veya yazma isteği doğrudan işletim sistemi tarafından yürütülür; bu da ciddi bir performans kaybına yol açar. **Tamponlu akışlar (buffered streams)** verileri bellekteki bir tampon alandan (*buffer*) okuyarak yerel sistem çağrılarının sayısını büyük ölçüde azaltır:
+
+```java
+BufferedReader inputStream = new BufferedReader(new FileReader("xanadu.txt"));
+BufferedWriter outputStream = new BufferedWriter(new FileWriter("characteroutput.txt"));
+```
+
+---
+
+# 3. Tarama ve Biçimlendirme (`Scanner` & `Formatting`)
+
+`java.util.Scanner` sınıfı, metin girdilerini belirteçlere (*tokens*) böler ve bu belirteçleri ilkel veri türlerine veya dizelere dönüştürür:
+
+```java
+import java.io.*;
+import java.util.Scanner;
+
+public class ScanXan {
+    public static void main(String[] args) throws IOException {
+        try (Scanner s = new Scanner(new BufferedReader(new FileReader("xanadu.txt")))) {
+            while (s.hasNext()) {
+                System.out.println(s.next());
+            }
+        }
+    }
+}
+```
+
+---
+
+# 4. Nesne Akışları ve Serileştirme (Object Streams & Serialization)
+
+Nesne akışları (`ObjectInputStream` ve `ObjectOutputStream`), ilkel veri türlerinin yanı sıra tüm Java nesnelerinin diske yazılmasını veya ağ üzerinden iletilmesini sağlar. Bir nesnenin serileştirilebilmesi için sınıfının `java.io.Serializable` işaretçi arayüzünü uygulaması gerekir.
+
+```java
+// Nesneyi diske yazma
+try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("object.data"))) {
+    out.writeObject(new BigDecimal("1234.56"));
+}
+
+// Nesneyi diskten okuma
+try (ObjectInputStream in = new ObjectInputStream(new FileInputStream("object.data"))) {
+    BigDecimal bd = (BigDecimal) in.readObject();
+}
+```
+
+---
+
+# 5. Dosya I/O (NIO.2 - `java.nio.file`)
+
+Java SE 7 ile tanıtılan `java.nio.file` paketi, modern ve kapsamlı bir dosya yönetim API'si sunar:
+
+### `Path` Arayüzü
+Bir dosya veya dizinin dosya sistemindeki konumunu temsil eder:
+
+```java
+Path p1 = Paths.get("/home/logfile.txt");
+Path p2 = Paths.get("C:\\Users\\admin\\file.txt");
+```
+
+<figure style="text-align: center;">
+  <img src="_media/figures/io-dirStructure.gif" alt="Dizin Yapısı" style="max-width: 100%; height: auto;">
+  <figcaption style="margin-top: 10px;">Dosya sistemi dizin ağacı ve yollar.</figcaption>
+</figure>
+
+### `Files` Sınıfı ile Temel Dosya İşlemleri
+`java.nio.file.Files` sınıfı, dosya ve dizinleri yönetmek için statik metotlar sağlar:
+
+```java
+Path file = Paths.get("test.txt");
+
+// Varlık kontrolü
+boolean exists = Files.exists(file);
+
+// Kopyalama, taşıma ve silme
+Files.copy(sourcePath, targetPath, StandardCopyOption.REPLACE_EXISTING);
+Files.move(sourcePath, targetPath, StandardCopyOption.ATOMIC_MOVE);
+Files.delete(file);
+
+// Hızlı okuma ve yazma
+List<String> lines = Files.readAllLines(file, StandardCharsets.UTF_8);
+Files.write(file, lines, StandardCharsets.UTF_8);
+```
+
+### Sembolik Bağlantılar (Symbolic Links)
+<figure style="text-align: center;">
+  <img src="_media/figures/io-symlink.gif" alt="Sembolik Bağlantı Şeması" style="max-width: 100%; height: auto;">
+  <figcaption style="margin-top: 10px;">Sembolik bağlantı (symbolic link) ve hedef dosya.</figcaption>
+</figure>

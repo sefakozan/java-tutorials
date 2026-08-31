@@ -1,19 +1,16 @@
-# Kılavuz: JAXP ile XML İşleme (Java API for XML Processing)
+# Özel Kılavuz: JAXP ile XML İşleme (Java API for XML Processing)
 
-JAXP, XML belgelerini ayrıştırmak ve XSLT ile dönüştürmek için standart Java API'leri sunar.
+**JAXP (Java API for XML Processing)**, Java uygulamalarının XML belgelerini ayrıştırmasını (*parse*), oluşturmasını, doğrulamasını ve dönüştürmesini sağlayan standart Java XML işleme API'sidir.
 
 ---
 
 ## Bu Kılavuzdaki Dersler
 
-### 1. [JAXP Mimarisine Genel Bakış](ileri-duzey/jaxp/index.md)
-DOM, SAX ve StAX ayrıştırma modelleri.
+### 1. [DOM Ayrıştırıcı (Document Object Model)](ileri-duzey/jaxp/dom.md)
+Tüm XML belgesini bellekte hiyerarşik bir ağaç yapısı olarak oluşturan, belge üzerinde rastgele gezinme ve düzenleme imkanı sağlayan DOM API'sini inceler.
 
-### 2. [DOM Ayrıştırıcı (DOM Parser)](ileri-duzey/jaxp/dom.md)
-`DocumentBuilder` ile XML belgesini ağaç yapısında belleğe yükleme ve düğümlerde gezinme.
+### 2. [SAX Ayrıştırıcı (Simple API for XML)](ileri-duzey/jaxp/sax.md)
+Büyük XML belgelerini minimum bellek kullanarak akış halinde ve olay odaklı (*event-driven*) ayrıştıran hızlı SAX API'sini ele alır.
 
-### 3. [SAX Ayrıştırıcı (SAX Parser)](ileri-duzey/jaxp/sax.md)
-`SAXParser` ile olay tabanlı, düşük bellek tüketen hızlı XML okuma.
-
-### 4. [XSLT Dönüşümleri (XSLT Transformations)](ileri-duzey/jaxp/xslt.md)
-`Transformer` sınıfı ve XSL stilleri ile XML belgelerini HTML veya diğer biçimlere dönüştürme.
+### 3. [XSLT Dönüşümleri (XML Transformations)](ileri-duzey/jaxp/xslt.md)
+XSLT stil şablonları kullanarak XML verilerini HTML, metin veya başka bir XML formatına dönüştürmeyi açıklar.

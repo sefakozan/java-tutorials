@@ -1,44 +1,103 @@
-# Kılavuz: Tarih-Saat API'leri (Date-Time APIs)
+# Kılavuz: Tarih ve Saat API'si (Date-Time API - java.time)
 
-Java SE 8 ile birlikte `java.time` paketi altında kapsamlı, değişmez (immutable) ve iş parçacığı açısından güvenli (thread-safe) yeni bir Tarih-Saat API'si sunulmuştur (JSR-310).
+Java SE 8 ile tanıtılan `java.time` paketi (JSR 310 standardı), eski `java.util.Date` ve `java.util.Calendar` sınıflarının eksikliklerini ve iş parçacığı güvenliği (*thread-safety*) sorunlarını gideren modern, kapsamlı ve değiştirilemez (*immutable*) bir tarih-saat çerçevesi sunar.
+
+1. [**Tasarım İlkeleri ve Temel Sınıflar**](#1-tasarım-i̇lkeleri-ve-temel-sınıflar)
+2. [**Yerel Tarih ve Saat (`LocalDate`, `LocalTime`, `LocalDateTime`)**](#2-yerel-tarih-ve-saat-localdate-localtime-localdatetime)
+3. [**Zaman Dilimi ve Anlık Zaman (`ZonedDateTime`, `Instant`)**](#3-zaman-dilimi-ve-anlık-zaman-zoneddatetime-instant)
+4. [**Süre ve Aralıklar (`Period` ve `Duration`)**](#4-süre-ve-aralıklar-period-ve-duration)
+5. [**Biçimlendirme ve Ayrıştırma (`DateTimeFormatter`)**](#5-biçimlendirme-ve-ayrıştırma-datetimeformatter)
+---
+
+# 1. Tasarım İlkeleri ve Temel Sınıflar
+
+`java.time` API'si şu temel ilkeler üzerine kurulmuştur:
+- **Değişmezlik ve İş Parçacığı Güvenliği (*Immutability & Thread-Safety*):** Tüm temel sınıflar değişmezdir; çoklu iş parçacıklarında güvenle paylaşılabilir.
+- **Akıcı Arayüz (*Fluent API*):** Metotlar zincirleme çağrılara uygundur (`date.plusDays(5).minusMonths(1)`).
+- **Açıklık:** Sınıf adları ve metotlar temsil ettikleri kavramları açıkça ifade eder.
 
 ---
 
-## Temel Sınıflar
+# 2. Yerel Tarih ve Saat (`LocalDate`, `LocalTime`, `LocalDateTime`)
 
-- **`LocalDate`:** Saat veya saat dilimi bilgisi olmadan yalnızca yılı, ayı ve günü temsil eder (Örn: `2026-08-29`).
-- **`LocalTime`:** Tarih veya saat dilimi bilgisi olmadan yalnızca saati, dakikayı ve saniyeyi temsil eder (Örn: `10:45:00`).
-- **`LocalDateTime`:** Hem tarihi hem de saati bir arada tutar (Örn: `2026-08-29T10:45:00`).
-- **`ZonedDateTime`:** Saat dilimi (`ZoneId`) bilgisine sahip tarih ve saat (Örn: `2026-08-29T10:45:00+03:00[Europe/Istanbul]`).
-- **`Instant`:** Zaman çizgisindeki tek bir anı (Unix zaman damgası / epoch) nanosaniye hassasiyetinde temsil eder.
-- **`Period`:** Tarih tabanlı bir zaman aralığını (yıl, ay, gün) temsil eder.
-- **`Duration`:** Zaman tabanlı bir zaman aralığını (saniye, nanosaniye) temsil eder.
-
----
-
-## Kullanım Örnekleri
+Zaman dilimi bilgisi içermeyen tarih ve saat sınıflarıdır:
 
 ```java
-import java.time.LocalDate;
-import java.time.LocalTime;
-import java.time.LocalDateTime;
-import java.time.Month;
-import java.time.format.DateTimeFormatter;
+import java.time.*;
 
-// Geçerli tarih ve saat
+// Yalnızca Tarih (Yıl-Ay-Gün)
 LocalDate today = LocalDate.now();
+LocalDate birthday = LocalDate.of(1995, Month.MAY, 23);
+
+// Yalnızca Saat (Saat:Dakika:Saniye.Nanosaniye)
 LocalTime now = LocalTime.now();
+LocalTime meetingTime = LocalTime.of(14, 30);
+
+// Tarih ve Saat Birlikte
 LocalDateTime currentDateTime = LocalDateTime.now();
+LocalDateTime customDateTime = LocalDateTime.of(today, meetingTime);
 
-// Belirli bir tarih oluşturma
-LocalDate birthday = LocalDate.of(2000, Month.JANUARY, 15);
-
-// Tarih aritmetiği (Sınıflar immutable olduğu için yeni bir nesne döner)
+// Tarih Aritmetiği
 LocalDate nextWeek = today.plusWeeks(1);
-LocalDate lastYear = today.minusYears(1);
+LocalDate lastMonth = today.minusMonths(1);
+```
 
-// Biçimlendirme (Formatting)
-DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
-String formatted = currentDateTime.format(formatter);
-System.out.println("Biçimlendirilmiş Tarih: " + formatted);
+---
+
+# 3. Zaman Dilimi ve Anlık Zaman (`ZonedDateTime`, `Instant`)
+
+### `Instant`
+Zaman çizelgesi üzerindeki anlık bir noktayı temsil eder (1 Ocak 1970 UTC'den itibaren geçen nanosaniye). Makine zamanı ve zaman damgaları için kullanılır:
+
+```java
+Instant timestamp = Instant.now();
+```
+
+### `ZonedDateTime`
+Belirli bir zaman dilimine (`ZoneId`) sahip eksiksiz tarih-saat bilgisidir:
+
+```java
+ZoneId istanbulZone = ZoneId.of("Europe/Istanbul");
+ZonedDateTime istanbulTime = ZonedDateTime.now(istanbulZone);
+
+ZoneId tokyoZone = ZoneId.of("Asia/Tokyo");
+ZonedDateTime tokyoTime = istanbulTime.withZoneSameInstant(tokyoZone);
+```
+
+---
+
+# 4. Süre ve Aralıklar (`Period` ve `Duration`)
+
+- **`Period`:** Tarih tabanlı zaman miktarını (yıl, ay, gün) temsil eder:
+  ```java
+  LocalDate start = LocalDate.of(2020, 1, 1);
+  LocalDate end = LocalDate.now();
+  Period period = Period.between(start, end);
+  System.out.format("%d yıl, %d ay, %d gün%n",
+      period.getYears(), period.getMonths(), period.getDays());
+  ```
+- **`Duration`:** Zaman tabanlı süreyi (saniye, nanosaniye) temsil eder:
+  ```java
+  Instant t1 = Instant.now();
+  // ... bir işlem gerçekleştir ...
+  Instant t2 = Instant.now();
+  long millis = Duration.between(t1, t2).toMillis();
+  ```
+
+---
+
+# 5. Biçimlendirme ve Ayrıştırma (`DateTimeFormatter`)
+
+`DateTimeFormatter` sınıfı, tarih ve saat nesnelerini dizeye dönüştürmek veya metinleri nesneye ayrıştırmak (*parse*) için kullanılır:
+
+```java
+LocalDate date = LocalDate.now();
+DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
+// Nesneden Metne (Formatting)
+String formattedDate = date.format(formatter);
+System.out.println("Bugün: " + formattedDate);
+
+// Metinden Nesneye (Parsing)
+LocalDate parsedDate = LocalDate.parse("31/08/2026", formatter);
 ```

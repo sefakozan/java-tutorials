@@ -1,25 +1,25 @@
-# Ders: Nesne Yönelimli Programlama Kavramları
+# Ders: Nesne Yönelimli Programlama Kavramları (OOP Concepts)
 
-Daha önce nesne yönelimli bir programlama dili kullanmadıysanız, herhangi bir kod yazmaya başlamadan önce birkaç temel kavramı öğrenmeniz gerekecektir. Bu ders size nesneleri, sınıfları, kalıtımı, arayüzleri ve paketleri tanıtacaktır. Her bir konu, bu kavramların gerçek dünyayla nasıl ilişkili olduğuna odaklanırken aynı zamanda Java programlama dilinin sözdizimine bir giriş sağlar.
+Daha önce hiç nesne yönelimli bir programlama dili kullanmadıysanız, kod yazmaya başlamadan önce birkaç temel kavramı öğrenmeniz gerekecektir. Bu ders sizi nesneler, sınıflar, kalıtım, arayüzler ve paketler ile tanıştıracaktır. Her bir konu, bu kavramların gerçek dünyayla nasıl ilişkili olduğuna odaklanırken aynı zamanda Java programlama dilinin sözdizimine de bir giriş sağlar.
 
 ---
 
 ## Bu Dersteki Konular
 
-### 1. [Nesne Nedir?](java/1-oop-kavramlari/nesne-nedir.md)
-Nesne, birbiriyle ilişkili durum (state) ve davranışların (behavior) bir yazılım paketidir. Bu bölüm durum ve davranışın nesne içinde nasıl temsil edildiğini, veri kapsülleme (encapsulation) kavramını ve yazılımınızı bu şekilde tasarlamanın faydalarını açıklar.
+### 1. [Nesne Nedir? (What Is an Object?)](java/1-oop-kavramlari/nesne-nedir.md)
+Bir nesne, ilişkili durum ve davranışların yazılımsal bir paketidir. Yazılım nesneleri genellikle günlük yaşamda karşılaştığınız gerçek dünya nesnelerini modellemek için kullanılır. Bu bölüm, durum ve davranışın bir nesne içinde nasıl temsil edildiğini açıklar, veri kapsülleme (*data encapsulation*) kavramını tanıtır ve yazılımınızı bu şekilde tasarlamanın faydalarını açıklar.
 
-### 2. [Sınıf Nedir?](java/1-oop-kavramlari/sinif-nedir.md)
-Sınıf, nesnelerin oluşturulduğu bir taslak (blueprint) veya prototiptir. Bu bölüm, gerçek dünyadaki bir bisikletin durumunu ve davranışını modelleyen basit bir sınıf örneği tanımlar.
+### 2. [Sınıf Nedir? (What Is a Class?)](java/1-oop-kavramlari/sinif-nedir.md)
+Bir sınıf, nesnelerin kendisinden oluşturulduğu bir plan veya prototiptir. Bu bölüm, gerçek dünyadaki bir nesnenin durumunu ve davranışını modelleyen bir sınıf tanımlar. Kasıtlı olarak temellere odaklanarak basit bir sınıfın bile durumu ve davranışı ne kadar temiz bir şekilde modelleyebileceğini gösterir.
 
-### 3. [Kalıtım Nedir?](java/1-oop-kavramlari/kalitim-nedir.md)
-Kalıtım, yazılımınızı düzenlemek ve yapılandırmak için güçlü bir mekanizma sunar. Alt sınıfların (subclasses) üst sınıflardan (superclasses) durum ve davranışları nasıl miras aldığını açıklar.
+### 3. [Kalıtım Nedir? (What Is Inheritance?)](java/1-oop-kavramlari/kalitim-nedir.md)
+Kalıtım, yazılımınızı düzenlemek ve yapılandırmak için güçlü ve doğal bir mekanizma sunar. Bu bölüm, sınıfların durum ve davranışları üst sınıflarından (*superclass*) nasıl miras aldığını ve Java programlama dilinin sunduğu basit sözdizimi kullanılarak bir sınıfın diğerinden nasıl türetileceğini açıklar.
 
-### 4. [Arayüz Nedir?](java/1-oop-kavramlari/arayuz-nedir.md)
-Arayüz, bir sınıf ile dış dünya arasındaki bir sözleşmedir (contract). Bir sınıf bir arayüzü uyguladığında (implements), o arayüz tarafından yayınlanan davranışları sağlamayı taahhüt eder.
+### 4. [Arayüz Nedir? (What Is an Interface?)](java/1-oop-kavramlari/arayuz-nedir.md)
+Bir arayüz, bir sınıf ile dış dünya arasındaki bir sözleşmedir (*contract*). Bir sınıf bir arayüzü uyguladığında (*implements*), o arayüz tarafından yayınlanan davranışları sağlamayı taahhüt eder. Bu bölüm basit bir arayüz tanımlar ve onu uygulayan herhangi bir sınıf için gerekli değişiklikleri açıklar.
 
-### 5. [Paket Nedir?](java/1-oop-kavramlari/paket-nedir.md)
-Paket, birbiriyle ilişkili sınıf ve arayüzler kümesini düzenleyen bir ad alanıdır (namespace).
+### 5. [Paket Nedir? (What Is a Package?)](java/1-oop-kavramlari/paket-nedir.md)
+Bir paket, sınıfları ve arayüzleri mantıksal bir şekilde düzenlemeye yarayan bir ad alanıdır (*namespace*). Kodunuzu paketlere yerleştirmek, büyük yazılım projelerinin yönetimini kolaylaştırır. Bu bölüm bunun neden yararlı olduğunu açıklar ve sizi Java platformu tarafından sağlanan Uygulama Programlama Arayüzü (API) ile tanıştırır.
 
-### 6. [Sorular ve Alıştırmalar](java/1-oop-kavramlari/sorular-ve-alistirmalar.md)
-Nesne yönelimli kavramları pekiştirmek için sorular ve alıştırmalar.
+### 6. [Sorular ve Alıştırmalar: OOP Kavramları](java/1-oop-kavramlari/sorular-ve-alistirmalar.md)
+Nesneler, sınıflar, kalıtım, arayüzler ve paketler hakkındaki anlayışınızı test etmek için bu bölümdeki soruları ve alıştırmaları kullanın.

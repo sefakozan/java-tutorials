@@ -1,44 +1,24 @@
 # Ders: Arayüz Nedir? (What Is an Interface?)
 
-Nesneler dış dünya ile olan etkileşimlerini dışa sundukları metotlar aracılığıyla tanımlarlar. Metotlar, nesnenin dış dünyayla olan **arayüzünü (interface)** oluşturur.
+Daha önce öğrendiğiniz gibi, nesneler dış dünyayla olan etkileşimlerini dışa açtıkları metotlar aracılığıyla tanımlarlar. Metotlar, nesnenin dış dünyayla olan **arayüzünü (interface)** oluşturur; örneğin televizyonunuzun ön tarafındaki düğmeler, sizinle plastik kasanın diğer tarafındaki elektrik devreleri arasındaki arayüzdür. Televizyonu açıp kapatmak için "güç" düğmesine basarsınız.
 
-1. [**Arayüz Kavramı ve Sözleşmeler**](#1.-arayüz-kavramı-ve-sözleşmeler)
-2. [**Bicycle Arayüzü Tanımlama**](#2.-bicycle-arayüzü-tanımlama)
-3. [**implements ile Arayüzü Uygulama**](#3.-implements-ile-arayüzü-uygulama)
----
-
-# 1. Arayüz Kavramı ve Sözleşmeler
-
-Örneğin televizyonunuzun ön panelindeki düğmeler, sizinle cihazın iç devreleri arasındaki arayüzdür. Televizyonu açıp kapatmak için "güç" düğmesine basarsınız.
-
-En yaygın biçimiyle bir arayüz, boş gövdelere sahip bir grup ilgili metottur. Bir bisikletin davranışını bir arayüz olarak şu şekilde belirtebiliriz:
-
----
-
-# 2. Bicycle Arayüzü Tanımlama
+En yaygın biçimiyle bir arayüz (*interface*), gövdesi boş olan ilişkili metotlar grubudur. Bir bisikletin davranışı bir arayüz olarak belirtilirse şu şekilde görünebilir:
 
 ```java
 interface Bicycle {
 
-    // Kadans değiştirme
+    // Dakikadaki tekerlek devir sayısı (kadans)
     void changeCadence(int newValue);
 
-    // Vites değiştirme
     void changeGear(int newValue);
 
-    // Hızlanma
     void speedUp(int increment);
 
-    // Fren uygulama
     void applyBrakes(int decrement);
 }
 ```
 
----
-
-# 3. implements ile Arayüzü Uygulama
-
-Bu arayüzü uygulamak için sınıf bildiriminde `implements` anahtar sözcüğü kullanılır:
+Bu arayüzü uygulamak (*implement etmek*) için sınıfınızın adı değişir (örneğin belirli bir bisiklet markası olan `ACMEBicycle` gibi) ve sınıf bildiriminde `implements` anahtar sözcüğünü kullanırsınız:
 
 ```java
 class ACMEBicycle implements Bicycle {
@@ -47,27 +27,34 @@ class ACMEBicycle implements Bicycle {
     int speed = 0;
     int gear = 1;
 
-    // Compiler bu metotların uygulanmasını zorunlu kılar
-    public void changeCadence(int newValue) {
+   // Derleyici artık changeCadence, changeGear, speedUp ve applyBrakes
+   // metotlarının tümünün uygulanmasını zorunlu kılacaktır.
+   // Bu metotlar bu sınıfta eksikse derleme başarısız olur.
+
+    void changeCadence(int newValue) {
          cadence = newValue;
     }
 
-    public void changeGear(int newValue) {
+    void changeGear(int newValue) {
          gear = newValue;
     }
 
-    public void speedUp(int increment) {
+    void speedUp(int increment) {
          speed = speed + increment;   
     }
 
-    public void applyBrakes(int decrement) {
+    void applyBrakes(int decrement) {
          speed = speed - decrement;
     }
 
-    public void printStates() {
+    void printStates() {
          System.out.println("cadence:" +
              cadence + " speed:" + 
              speed + " gear:" + gear);
     }
 }
 ```
+
+Bir arayüzü uygulamak, bir sınıfın sağlamayı vaat ettiği davranış konusunda daha resmi hale gelmesine olanak tanır. Arayüzler sınıf ile dış dünya arasında bir sözleşme (*contract*) oluşturur ve bu sözleşme derleme zamanında derleyici tarafından zorunlu kılınır. Sınıfınız bir arayüzü uyguladığını iddia ediyorsa, sınıf başarıyla derlenmeden önce o arayüz tarafından tanımlanan tüm metotların kaynak kodunda bulunması gerekir.
+
+> **Not:** `ACMEBicycle` sınıfını gerçekte derlemek için, uygulanan arayüz metotlarının başına `public` anahtar sözcüğünü eklemeniz gerekir. Bunun nedenlerini ilerleyen [Sınıflar ve Nesneler](java/3-siniflar-ve-nesneler/index.md) ile [Arayüzler ve Kalıtım](java/4-arayuzler-ve-kalitim/index.md) derslerinde öğreneceksiniz.

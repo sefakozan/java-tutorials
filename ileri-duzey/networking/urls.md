@@ -1,92 +1,83 @@
 # Ders: URL'ler ile Çalışma (Working with URLs)
 
-URL, İnternet üzerindeki bir kaynağın adresidir. Java programlarınız `java.net` paketindeki `URL` ve `URLConnection` sınıflarını kullanarak ağ üzerindeki kaynakları belirleyebilir, ayrıştırabilir, bu kaynaklardan veri okuyabilir ve bu kaynaklara veri yazabilir.
+**URL (Uniform Resource Locator - Tekdüze Kaynak Bulucu)**, İnternet üzerindeki bir kaynağın (bir web sayfası, bir dosya veya bir API uç noktası) küresel adresidir.
 
+1. [**URL Yapısı ve Nesnesi Oluşturma**](#1-url-yapısı-ve-nesnesi-oluşturma)
+2. [**Bir URL'yi Ayrıştırma (Parsing a URL)**](#2-bir-urlyi-ayrıştırma-parsing-a-url)
+3. [**Doğrudan URL'den Veri Okuma**](#3-doğrudan-urlden-veri-okuma)
+4. [**`URLConnection` ile Bağlantı Kurma ve Yazma**](#4-urlconnection-ile-bağlantı-kurma-ve-yazma)
 ---
 
-## 1. URL Nedir? (What Is a URL?)
+# 1. URL Yapısı ve Nesnesi Oluşturma
 
-**URL (Uniform Resource Locator)**, World Wide Web üzerindeki bir kaynağın genel adresidir. Bir URL genel olarak iki ana bileşenden oluşur:
-
-- **Protokol Tanımlayıcı (Protocol Identifier):** Kaynağa erişmek için kullanılan protokolü belirtir (örneğin `http`, `https`, `ftp`, `file`).
-- **Kaynak Adı (Resource Name):** Sunucu adresi, port numarası, dizin yolu ve dosya adını içerir.
-
-```text
-http://example.com:80/docs/books/tutorial/index.html?name=networking#DOWNLOADING
-\__/   \_________/ \_/\____________________________/ \_____________/ \_________/
- |          |       |               |                       |              |
-Protokol   Host    Port            Yol                    Sorgu         Referans
-```
-
----
-
-## 2. URL Oluşturma (Creating a URL)
-
-Java'da `java.net.URL` sınıfı kullanılarak mutlak (absolute) veya göreceli (relative) URL nesneleri oluşturulabilir:
-
-### Mutlak URL Oluşturma
-```java
-URL myURL = new URL("http://example.com/");
-```
-
-### Bileşenleri Belirterek URL Oluşturma (Protokol, Host, Port, Dosya Yolu)
-```java
-URL myURL = new URL("http", "example.com", 80, "/pages/page1.html");
-```
-
-### Göreceli (Relative) URL Oluşturma
-Bir temel URL nesnesi ve göreceli bir yol kullanarak yeni bir URL türetilebilir:
-```java
-URL baseURL = new URL("http://example.com/pages/");
-URL page1URL = new URL(baseURL, "page1.html");
-URL page2URL = new URL(baseURL, "page2.html");
-```
-
----
-
-## 3. URL Ayrıştırma (Parsing a URL)
-
-Bir `URL` nesnesi oluşturulduktan sonra, adresin bileşenlerine erişmek için çeşitli erişimci (accessor) metotlar kullanılır:
+Tipik bir URL şu bileşenlerden oluşur:
+- **Protokol:** `http`, `https`, `ftp` vb.
+- **Ana Bilgisayar Adı (*Host*):** `docs.oracle.com`
+- **Bağlantı Noktası (*Port*):** `80`, `443` (belirtilmezse varsayılan kullanılır)
+- **Yol (*Path*):** `/javase/tutorial/index.html`
 
 ```java
-import java.net.URL;
+import java.net.*;
 
-public class ParseURL {
-    public static void main(String[] args) throws Exception {
-        URL aURL = new URL("http://example.com:80/docs/books/tutorial/index.html?name=networking#DOWNLOADING");
+public class CreateURL {
+    public static void main(String[] args) throws MalformedURLException {
+        // Mutlak URL
+        URL myURL = new URL("https://docs.oracle.com/javase/tutorial/index.html");
 
-        System.out.println("Protokol = " + aURL.getProtocol());
-        System.out.println("Yetkili (Authority) = " + aURL.getAuthority());
-        System.out.println("Host = " + aURL.getHost());
-        System.out.println("Port = " + aURL.getPort());
-        System.out.println("Yol (Path) = " + aURL.getPath());
-        System.out.println("Sorgu (Query) = " + aURL.getQuery());
-        System.out.println("Dosya Adı = " + aURL.getFile());
-        System.out.println("Referans (Ref/Anchor) = " + aURL.getRef());
+        // Protokol, sunucu ve dosya yolu ile URL
+        URL page = new URL("https", "docs.oracle.com", "/javase/tutorial/index.html");
+
+        // Göreli (Relative) URL
+        URL baseURL = new URL("https://docs.oracle.com/javase/tutorial/");
+        URL relativeURL = new URL(baseURL, "networking/index.html");
     }
 }
 ```
 
 ---
 
-## 4. Doğrudan Bir URL'den Okuma (Reading Directly from a URL)
+# 2. Bir URL'yi Ayrıştırma (Parsing a URL)
 
-Bir URL içeriğini okumanın en doğrudan yolu `openStream()` metodudur:
+`URL` sınıfı, bir URL'nin bileşenlerini incelemek için çeşitli erişim metotları sağlar:
 
 ```java
-import java.net.URL;
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
+import java.net.*;
+
+public class ParseURL {
+    public static void main(String[] args) throws Exception {
+        URL aURL = new URL("http://example.com:80/docs/books/tutorial"
+                           + "/index.html?name=networking#DOWNLOADING");
+
+        System.out.println("protocol = " + aURL.getProtocol());
+        System.out.println("authority = " + aURL.getAuthority());
+        System.out.println("host = " + aURL.getHost());
+        System.out.println("port = " + aURL.getPort());
+        System.out.println("path = " + aURL.getPath());
+        System.out.println("query = " + aURL.getQuery());
+        System.out.println("filename = " + aURL.getFile());
+        System.out.println("ref = " + aURL.getRef());
+    }
+}
+```
+
+---
+
+# 3. Doğrudan URL'den Veri Okuma
+
+Bir `URL` nesnesi oluşturduktan sonra, web içeriğini doğrudan okumak için `openStream()` metodunu çağırabilirsiniz:
+
+```java
+import java.net.*;
+import java.io.*;
 
 public class URLReader {
     public static void main(String[] args) throws Exception {
         URL oracle = new URL("https://docs.oracle.com/");
-        
-        try (BufferedReader in = new BufferedReader(new InputStreamReader(oracle.openStream()))) {
+        try (BufferedReader in = new BufferedReader(
+                new InputStreamReader(oracle.openStream()))) {
             String inputLine;
-            while ((inputLine = in.readLine()) != null) {
+            while ((inputLine = in.readLine()) != null)
                 System.out.println(inputLine);
-            }
         }
     }
 }
@@ -94,58 +85,31 @@ public class URLReader {
 
 ---
 
-## 5. Bir URL'e Bağlanma (Connecting to a URL)
+# 4. `URLConnection` ile Bağlantı Kurma ve Yazma
 
-`openConnection()` metodu, uygulama ile URL arasında bir iletişim bağlantısını temsil eden bir `URLConnection` nesnesi döndürür:
-
-```java
-import java.net.URL;
-import java.net.URLConnection;
-
-public class URLConnectionDemo {
-    public static void main(String[] args) throws Exception {
-        URL myURL = new URL("https://docs.oracle.com/");
-        URLConnection myURLConnection = myURL.openConnection();
-        
-        // Bağlantıyı başlat
-        myURLConnection.connect();
-        
-        System.out.println("İçerik Türü: " + myURLConnection.getContentType());
-        System.out.println("İçerik Uzunluğu: " + myURLConnection.getContentLength());
-        System.out.println("Son Değiştirilme Tarihi: " + myURLConnection.getLastModified());
-    }
-}
-```
-
----
-
-## 6. URLConnection'dan Okuma ve Yazma (Reading from and Writing to a URLConnection)
-
-`URLConnection` nesnesi üzerinden hem veri okumak (`getInputStream()`) hem de sunucuya POST isteği ile veri göndermek (`getOutputStream()`) mümkündür:
+Bir web kaynağıyla daha fazla etkileşime girmek (HTTP başlıklarını okumak, POST verisi göndermek vb.) için `URLConnection` sınıfı kullanılır:
 
 ```java
-import java.io.*;
 import java.net.*;
+import java.io.*;
 
-public class URLConnectionWriter {
+public class URLConnectionReader {
     public static void main(String[] args) throws Exception {
-        URL url = new URL("http://example.com/cgi-bin/test");
+        URL url = new URL("https://example.com/api/data");
         URLConnection connection = url.openConnection();
         
-        // Çıktı göndermeyi etkinleştir (POST için)
+        // POST isteği için çıktı akışını etkinleştir
         connection.setDoOutput(true);
-
-        // Sunucuya veri yazma
         try (OutputStreamWriter out = new OutputStreamWriter(connection.getOutputStream())) {
-            out.write("string=JavaTutorialsTest");
+            out.write("param1=value1&param2=value2");
         }
 
-        // Sunucudan gelen yanıtı okuma
-        try (BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()))) {
-            String decodedString;
-            while ((decodedString = in.readLine()) != null) {
-                System.out.println(decodedString);
-            }
+        // Yanıtı oku
+        try (BufferedReader in = new BufferedReader(
+                new InputStreamReader(connection.getInputStream()))) {
+            String inputLine;
+            while ((inputLine = in.readLine()) != null) 
+                System.out.println(inputLine);
         }
     }
 }

@@ -1,21 +1,8 @@
 # Ders: Sınıf Nedir? (What Is a Class?)
 
-Gerçek dünyada sıklıkla aynı türden birçok bireysel nesne bulursunuz. Dünyada aynı modelde binlerce bisiklet bulunabilir. Her bisiklet aynı taslaktan üretilmiştir.
+Gerçek dünyada genellikle aynı türden birçok bireysel nesne bulursunuz. Aynı marka ve modele sahip binlerce başka bisiklet var olabilir. Her bisiklet aynı tasarım şemasından (*blueprint*) üretilmiştir ve bu nedenle aynı bileşenleri içerir. Nesne yönelimli terminolojide, bisikletinizin **bisiklet olarak bilinen nesneler sınıfının bir örneği (instance)** olduğunu söyleriz. Bir sınıf (*class*), bireysel nesnelerin kendisinden oluşturulduğu bir plandır.
 
-1. [**Sınıf Kavramı ve Taslaklar**](#1.-sınıf-kavramı-ve-taslaklar)
-2. [**Bicycle Sınıf Örneği**](#2.-bicycle-sınıf-örneği)
-3. [**Nesneleri Örnekleme ve BicycleDemo**](#3.-nesneleri-örnekleme-ve-bicycledemo)
----
-
-# 1. Sınıf Kavramı ve Taslaklar
-
-Nesne yönelimli terminolojide, bisikletinizin *bisikletler* olarak bilinen nesneler sınıfının bir **örneği (instance)** olduğunu söyleriz. Bir **sınıf (class)**, bireysel nesnelerin oluşturulduğu taslaktır.
-
----
-
-# 2. Bicycle Sınıf Örneği
-
-Aşağıda bir bisikletin olası bir uygulamasını temsil eden bir `Bicycle` sınıfı gösterilmiştir:
+Aşağıdaki `Bicycle` sınıfı, bir bisikletin olası bir uygulamasıdır:
 
 ```java
 class Bicycle {
@@ -48,31 +35,40 @@ class Bicycle {
 }
 ```
 
----
+Java programlama dilinin sözdizimi size yeni gelebilir, ancak bu sınıfın tasarımı daha önce tartışılan bisiklet nesnelerine dayanmaktadır. `cadence`, `speed` ve `gear` alanları nesnenin durumunu temsil ederken; `changeCadence`, `changeGear`, `speedUp` vb. metotlar ise nesnenin dış dünyayla olan etkileşimini tanımlar.
 
-# 3. Nesneleri Örnekleme ve BicycleDemo
+Fark etmiş olabileceğiniz gibi, `Bicycle` sınıfı bir `main` metodu içermez. Bunun nedeni tam bir uygulama olmamasıdır; yalnızca uygulamalarda kullanılabilecek bisikletler için bir taslaktır (*blueprint*). Yeni `Bicycle` nesneleri oluşturma ve kullanma sorumluluğu uygulamanızdaki başka bir sınıfa aittir.
 
-Aşağıda iki ayrı `Bicycle` nesnesi oluşturan ve metotlarını çağıran bir `BicycleDemo` sınıfı verilmiştir:
+Aşağıda, iki ayrı `Bicycle` nesnesi oluşturan ve bunların metotlarını çağıran bir `BicycleDemo` sınıfı yer almaktadır:
 
 ```java
 class BicycleDemo {
     public static void main(String[] args) {
 
-        // İki farklı Bicycle nesnesi oluşturuluyor
+        // İki farklı Bicycle nesnesi oluştur
         Bicycle bike1 = new Bicycle();
         Bicycle bike2 = new Bicycle();
 
-        // bike1 metotları çağrılıyor
+        // Bu nesneler üzerindeki metotları çağır
         bike1.changeCadence(50);
         bike1.speedUp(10);
         bike1.changeGear(2);
         bike1.printStates();
 
-        // bike2 metotları çağrılıyor
+        bike2.changeCadence(50);
+        bike2.speedUp(10);
+        bike2.changeGear(2);
         bike2.changeCadence(40);
         bike2.speedUp(10);
         bike2.changeGear(3);
         bike2.printStates();
     }
 }
+```
+
+Bu testin çıktısı, iki bisikletin son durumları için tekerlek devir hızını (kadansını), hızını ve mevcut vitesini yazdırır:
+
+```text
+cadence:50 speed:10 gear:2
+cadence:40 speed:20 gear:3
 ```

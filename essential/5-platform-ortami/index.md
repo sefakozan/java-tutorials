@@ -1,57 +1,96 @@
-# Ders: Platform Ortamı (Platform Environment)
+# Ders: Platform Ortamı (The Platform Environment)
 
-Bir Java uygulaması, işletim sistemi ve Java Sanal Makinesi tarafından sağlanan bir ortam içinde çalışır. Bu ders sistem özellikleri, ortam değişkenleri ve yapılandırma araçları ile çalışma yöntemlerini ele alır.
+Bir Java uygulaması, yürütüldüğü platform ortamı (işletim sistemi, donanım, kullanıcı profili ve çalışma zamanı parametreleri) ile sürekli etkileşim halindedir. Bu ders, uygulamanızı ortam parametreleriyle nasıl yapılandıracağınızı ve sistem düzeyindeki yardımcı sınıfları nasıl kullanacağınızı açıklar.
 
+1. [**Yapılandırma Özellikleri (`java.util.Properties`)**](#1-yapılandırma-özellikleri-javautilproperties)
+2. [**Sistem Özellikleri (System Properties)**](#2-sistem-özellikleri-system-properties)
+3. [**Ortam Değişkenleri (Environment Variables)**](#3-ortam-değişkenleri-environment-variables)
+4. [**Sistem Yardımcı Programları (`System` Sınıfı)**](#4-sistem-yardımcı-programları-system-sınıfı)
 ---
 
-## 1. Sistem Özellikleri (System Properties)
+# 1. Yapılandırma Özellikleri (`java.util.Properties`)
 
-Java çalışma zamanı ortamı, geçerli çalışma ortamını tanımlayan bir dizi sistem özelliği tutar (`java.version`, `os.name`, `user.home`, `file.separator` vb.).
+`Properties` nesnesi, anahtar-değer (*key-value*) çiftlerinden oluşan ve doğrudan akışlara (`.properties` dosyalarına veya XML dosyalarına) kaydedilebilen ya da yüklenebilen bir yapılandırma deposudur.
 
 ```java
-// Tek bir sistem özelliğini okuma
-String javaVersion = System.getProperty("java.version");
-String osName = System.getProperty("os.name");
-String userHome = System.getProperty("user.home");
+import java.io.*;
+import java.util.Properties;
 
-System.out.println("Java Sürümü: " + javaVersion);
-System.out.println("İşletim Sistemi: " + osName);
-System.out.println("Kullanıcı Ev Dizini: " + userHome);
+public class PropertiesDemo {
+    public static void main(String[] args) throws IOException {
+        Properties appProps = new Properties();
+
+        // Özellikleri dosyadan yükle
+        try (FileInputStream in = new FileInputStream("appProperties")) {
+            appProps.load(in);
+        } catch (FileNotFoundException e) {
+            // Varsayılan değerler ata
+            appProps.setProperty("timeout", "30");
+            appProps.setProperty("theme", "dark");
+        }
+
+        // Değer okuma
+        String timeout = appProps.getProperty("timeout", "45");
+        System.out.println("Timeout: " + timeout);
+
+        // Yeni özellik ekleyip diske kaydetme
+        appProps.setProperty("language", "tr");
+        try (FileOutputStream out = new FileOutputStream("appProperties")) {
+            appProps.store(out, "--- Uygulama Yapılandırma Dosyası ---");
+        }
+    }
+}
 ```
 
 ---
 
-## 2. Ortam Değişkenleri (Environment Variables)
+# 2. Sistem Özellikleri (System Properties)
 
-Ortam değişkenleri, işletim sistemi düzeyinde tanımlanan anahtar-değer çiftleridir (`PATH`, `JAVA_HOME` vb.):
+Java Sanal Makinesi, geçerli çalışma ortamı hakkında bilgi sağlayan bir dizi sistem özelliğini başlatır. `System.getProperty(name)` ile bu özellikler sorgulanabilir:
+
+| Özellik Adı | Açıklama |
+| :--- | :--- |
+| `file.separator` | Dosya yolu ayırıcı karakteri (`/` veya `\`) |
+| `java.home` | Java kurulum dizini |
+| `java.version` | Java çalışma zamanı sürümü |
+| `os.name` | İşletim sisteminin adı |
+| `os.arch` | İşletim sistemi mimarisi |
+| `path.separator` | Sınıf yolu ayırıcı karakteri (`:` veya `;`) |
+| `user.dir` | Geçerli çalışma dizini |
+| `user.home` | Kullanıcı ana dizini |
+| `user.name` | Kullanıcı hesap adı |
+
+Komut satırından `-D` parametresi verilerek özel sistem özellikleri tanımlanabilir:
+
+```bash
+java -Dcustom.setting=enabled MyApp
+```
+
+---
+
+# 3. Ortam Değişkenleri (Environment Variables)
+
+Ortam değişkenleri işletim sistemi tarafından yönetilen anahtar-değer çiftleridir. Java programında `System.getenv()` ile okunabilirler:
 
 ```java
-// Belirli bir ortam değişkenini okuma
+// Tek bir ortam değişkenini okuma
 String path = System.getenv("PATH");
 
 // Tüm ortam değişkenlerini listeleme
 for (String envName : System.getenv().keySet()) {
-    System.out.format("%s = %s%n", envName, System.getenv(envName));
+    System.out.format("%s=%s%n", envName, System.getenv(envName));
 }
 ```
 
 ---
 
-## 3. Yapılandırma Özellikleri (`java.util.Properties`)
+# 4. Sistem Yardımcı Programları (`System` Sınıfı)
 
-`Properties` sınıfı, anahtar-değer çiftlerini `.properties` dosyalarında kalıcı olarak saklamak ve geri yüklemek için kullanılır:
+`java.lang.System` sınıfı sistem düzeyinde birçok kritik statik işlev sağlar:
 
-```java
-import java.util.Properties;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-
-Properties prop = new Properties();
-prop.setProperty("db.url", "localhost:5432");
-prop.setProperty("db.user", "admin");
-
-// Dosyaya kaydetme
-try (FileOutputStream out = new FileOutputStream("config.properties")) {
-    prop.store(out, "Uygulama Yapılandırması");
-}
-```
+- **Standart Akışlar:** `System.in` (standart girdi), `System.out` (standart çıktı), `System.err` (standart hata akışı). `System.setOut(PrintStream)` ile yönlendirilebilirler.
+- **Süre Ölçümü:**
+  - `System.currentTimeMillis()`: 1 Ocak 1970 UTC'den bu yana geçen milisaniye.
+  - `System.nanoTime()`: Kod bloklarının çalışma süresini yüksek hassasiyetle ölçmek için nanosaniye cinsinden süre.
+- **Uygulamayı Sonlandırma:** `System.exit(0)` programı belirtilen çıkış koduyla durdurur.
+- **Çöp Toplayıcıyı Tetikleme İsteği:** `System.gc()`.

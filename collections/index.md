@@ -1,21 +1,21 @@
 # Kılavuz: Koleksiyonlar (Collections Framework)
 
-Bir **koleksiyon (collection)** — bazen kap (container) olarak da adlandırılır — birden çok öğeyi tek bir birim olarak gruplayan bir nesnedir.
+**Java Koleksiyonlar Çerçevesi (Java Collections Framework)**, nesne gruplarını depolamak, işlemek ve yönetmek için tasarlanmış birleşik ve kapsamlı bir mimaridir. Bu kılavuz; temel koleksiyon arayüzlerini, genel amaçlı implementasyon sınıflarını ve algoritmaları ele almaktadır.
 
-**Java Koleksiyon Çerçevesi (Java Collections Framework - JCF)**, koleksiyonları temsil etmek ve işlemek için birleşik bir mimaridir:
-- **Arayüzler:** Koleksiyonları temsil eden soyut veri türleri (`List`, `Set`, `Map` vb.).
-- **İmplementasyonlar:** Koleksiyon arayüzlerinin somut veri yapıları (`ArrayList`, `HashSet`, `HashMap` vb.).
-- **Algoritmalar:** Koleksiyonlar üzerinde arama, sıralama gibi işlemleri gerçekleştiren metotlar.
+<figure style="text-align: center;">
+  <img src="_media/figures/colls-coreInterfaces.gif" alt="Çekirdek Koleksiyon Arayüzleri" style="max-width: 100%; height: auto;">
+  <figcaption style="margin-top: 10px;">Java Çekirdek Koleksiyon Arayüzleri Hiyerarşisi.</figcaption>
+</figure>
 
 ---
 
 ## Bu Kılavuzdaki Dersler
 
-### 1. [Koleksiyon Arayüzleri](collections/1-arayuzler/index.md)
-Koleksiyon hiyerarşisinin temel arayüzleri: `Collection`, `Set`, `List`, `Queue`, `Deque` ve `Map`.
+### 1. [Koleksiyon Arayüzleri (Interfaces)](collections/1-arayuzler/index.md)
+Çekirdek koleksiyon arayüzleri (`Collection`, `Set`, `List`, `Queue`, `Deque`, `Map`, `SortedSet`, `SortedMap`), bunların sözleşmeleri ve Java 8 akış (*stream*) işlemleri.
 
-### 2. [Genel Amaçlı İmplementasyonlar](collections/2-implementasyonlar/index.md)
-Yaygın kullanılan somut sınıflar: `ArrayList`, `LinkedList`, `HashSet`, `TreeSet`, `HashMap` ve `TreeMap`.
+### 2. [İmplementasyonlar (Implementations)](collections/2-implementasyonlar/index.md)
+Genel amaçlı sınıflar (`ArrayList`, `LinkedList`, `HashSet`, `TreeSet`, `HashMap`, `TreeMap`, `ArrayDeque`), sarmalayıcı (*wrapper*) ve değiştirilemez (*unmodifiable*) koleksiyonlar.
 
-### 3. [Algoritmalar](collections/3-algoritmalar/index.md)
-`Collections` sınıfı tarafından sağlanan polimorfik algoritmalar: Sıralama (`sort`), Karıştırma (`shuffle`), Arama (`binarySearch`), Ters çevirme (`reverse`).
+### 3. [Algoritmalar (Algorithms)](collections/3-algoritmalar/index.md)
+`java.util.Collections` sınıfı tarafından sağlanan sıralama (*sorting*), karıştırma (*shuffling*), ikili arama (*binary search*) ve aşırı değerleri bulma (*min/max*) algoritmaları.

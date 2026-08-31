@@ -1,16 +1,13 @@
-# Kılavuz: JAXB ile XML Bağlama (Java Architecture for XML Binding)
+# Özel Kılavuz: JAXB ile XML Bağlama (Java Architecture for XML Binding)
 
-JAXB, Java geliştiricilerinin XML belgeleriyle doğrudan tip güvenli Java nesneleri olarak etkileşime girmesini sağlar.
+**JAXB (Java Architecture for XML Binding)**, XML belgeleri ile Java nesneleri arasında iki yönlü otomatik dönüşüm sağlayan bir bağlama mimarisidir. JAXB sayesinde karmaşık SAX veya DOM ayrıştırıcı kodları yazmadan XML verileri doğrudan Java nesneleri olarak yönetilebilir.
 
 ---
 
 ## Bu Kılavuzdaki Dersler
 
-### 1. [JAXB Mimarisi ve Temeller](ileri-duzey/jaxb/index.md)
-Java nesneleri ve XML arasındaki çift yönlü veri bağlama köprüsü.
+### 1. [XML Şeması ve Java Bağlama (Schema Binding)](ileri-duzey/jaxb/binding.md)
+JAXB ek açıklamalarını (`@XmlRootElement`, `@XmlElement`, `@XmlAttribute`), `xjc` şema derleyicisini ve Java sınıflarını XML şemalarına bağlamayı inceler.
 
-### 2. [XML Şemalarını Java Sınıflarına Bağlama (Binding Schemas)](ileri-duzey/jaxb/binding.md)
-`xjc` şema derleyicisi ile XSD dosyalarından otomatik Java sınıfları üretme.
-
-### 3. [Serileştirme ve Ayrıştırma (Marshalling & Unmarshalling)](ileri-duzey/jaxb/marshal.md)
-Java nesnelerini XML dosyasına dönüştürme (Marshal) ve XML dosyasından Java nesnesi okuma (Unmarshal).
+### 2. [Marshal ve Unmarshal İşlemleri](ileri-duzey/jaxb/marshal.md)
+Java nesnelerini XML belgelerine dönüştürmeyi (*marshalling*) ve XML belgelerini Java nesnelerine geri ayrıştırmayı (*unmarshalling*) açıklar.

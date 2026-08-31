@@ -1,16 +1,13 @@
-# Kılavuz: JMX - Java Yönetim Uzantıları (Java Management Extensions)
+# Özel Kılavuz: JMX - Java Yönetim Uzantıları (Java Management Extensions)
 
-JMX, uygulamaları, sistem nesnelerini ve servisleri çalışma zamanında izlemek ve yönetmek için standart bir altyapı sağlar.
+**JMX (Java Management Extensions)**; uygulamaları, sistem nesnelerini, cihazları ve hizmet odaklı ağları izlemek ve yönetmek için standart araçlar sağlayan bir Java teknolojisidir.
 
 ---
 
 ## Bu Kılavuzdaki Dersler
 
-### 1. [JMX Mimarisine Giriş](ileri-duzey/jmx/index.md)
-Üç katmanlı JMX mimarisi: Alet (Instrumentation), Ajan (Agent) ve Dağıtık Yönetim.
+### 1. [Standart MBean ve MXBean](ileri-duzey/jmx/mbeans.md)
+Yönetilen kaynakları temsil eden MBean (*Managed Bean*) arayüzlerini tanımlamayı, uygulamayı ve `MBeanServer`'a kaydetmeyi açıklar.
 
-### 2. [Standart MBean'ler ve MXBean'ler (MBeans)](ileri-duzey/jmx/mbeans.md)
-Yönetim arayüzleri tanımlama, `MBeanServer` kaydı ve nitelik yönetimi.
-
-### 3. [Bildirimler ve İzleme (Notifications & JConsole)](ileri-duzey/jmx/notifications.md)
-`NotificationBroadcasterSupport` ile olay fırlatma ve JDK `jconsole` aracıyla canlı izleme.
+### 2. [Bildirimler ve JConsole ile İzleme](ileri-duzey/jmx/notifications.md)
+Sistem olaylarını ve durum değişikliklerini dinleyicilere duyuran JMX bildirimlerini (*notifications*) ve JDK ile gelen **JConsole** grafiksel yönetim aracını inceler.
