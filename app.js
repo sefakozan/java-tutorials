@@ -70,7 +70,7 @@
 
         var match = headingList.find(function (h) {
           return (strongNorm && (h.normText === strongNorm || h.normText.indexOf(strongNorm) !== -1 || strongNorm.indexOf(h.normText) !== -1)) ||
-                 (liTextNorm && (h.normText === liTextNorm || h.normText.indexOf(liTextNorm) !== -1 || liTextNorm.indexOf(h.normText) !== -1));
+            (liTextNorm && (h.normText === liTextNorm || h.normText.indexOf(liTextNorm) !== -1 || liTextNorm.indexOf(h.normText) !== -1));
         });
 
         if (match && match.element) {
@@ -90,7 +90,7 @@
 
           if (!strongEl.querySelector('a.toc-heading-link') && !strongEl.closest('a')) {
             var originalContent = strongEl.innerHTML;
-            strongEl.innerHTML = '<a class="toc-heading-link" href="' + href + '">' + originalContent + '</a>';
+            strongEl.innerHTML = '<a class="toc-heading-link" href="javascript:void(0)">' + originalContent + '</a>';
           }
 
           var anchor = strongEl.querySelector('a.toc-heading-link') || strongEl.closest('a');
@@ -98,7 +98,7 @@
             anchor.dataset.tocBound = 'true';
             anchor.addEventListener('click', function (e) {
               e.preventDefault();
-              window.location.hash = href;
+              e.stopPropagation();
               match.element.scrollIntoView({ behavior: 'smooth', block: 'start' });
             });
           }
@@ -180,35 +180,76 @@
     });
 
     saveState();
+    observeSidebarActive();
   }
 
-  // Sayfa geçişlerinde sadece aktif linki günceller (sidebar'ı yeniden çizmez)
+  var isUpdatingActive = false;
+
+  function getCleanHash(h) {
+    var raw = decodeURIComponent(h || location.hash || '#/').replace(/ /gi, '%20').trim();
+    if (!raw || raw === '#' || raw === '#/' || raw === '#/home' || raw === '#/home.md' || raw === '#/README' || raw === '#/README.md') {
+      return '#/';
+    }
+    var noQuery = raw.split('?')[0];
+    if (!noQuery.startsWith('#/')) {
+      noQuery = '#/' + noQuery.replace(/^#+/, '').replace(/^\/+/, '');
+    }
+    return noQuery;
+  }
+
+  // Sayfa geçişlerinde ve TOC tıklamalarında sadece aktif linki günceller (sidebar'ı yeniden çizmez)
   function updateActiveLink() {
     var sidebarNav = document.querySelector('.sidebar-nav');
     if (!sidebarNav) return;
 
-    var oldActives = sidebarNav.querySelectorAll('.active');
-    oldActives.forEach(function (el) {
-      el.classList.remove('active');
-    });
+    var cleanHash = getCleanHash(location.hash);
+    var links = [];
 
-    var hash = decodeURIComponent(location.hash).replace(/ /gi, '%20');
-    if (!hash || hash === '#/' || hash === '#/README' || hash === '#/home' || hash === '#/home.md') {
-      hash = '#/';
-    }
+    if (cleanHash === '#/') {
+      links = Array.from(sidebarNav.querySelectorAll('a[href="#/"], a[href="#/home"], a[href="#/README"], a[href="#/home.md"], a[href="#/README.md"]'));
+    } else {
+      var base = cleanHash;
+      var withoutMd = base.endsWith('.md') ? base.slice(0, -3) : base;
+      var withMd = base.endsWith('.md') ? base : (base + '.md');
+      var withSlash = withoutMd.endsWith('/') ? withoutMd : (withoutMd + '/');
+      var withoutSlash = withoutMd.endsWith('/') ? withoutMd.slice(0, -1) : withoutMd;
 
-    var links = Array.from(sidebarNav.querySelectorAll('a[href="' + hash + '"]'));
-    if (links.length === 0 && (hash === '#/' || hash === '#/home' || hash === '#/README')) {
-      links = Array.from(sidebarNav.querySelectorAll('a[href="#/"], a[href="#/home"], a[href="#/README"]'));
+      var selectors = [
+        'a[href="' + base + '"]',
+        'a[href="' + withoutMd + '"]',
+        'a[href="' + withMd + '"]',
+        'a[href="' + withSlash + '"]',
+        'a[href="' + withoutSlash + '"]',
+        'a[href="' + withSlash + 'index"]',
+        'a[href="' + withSlash + 'index.md"]'
+      ];
+
+      links = Array.from(sidebarNav.querySelectorAll(selectors.join(',')));
     }
 
     if (links.length > 0) {
-      var link = links[links.length - 1];
-      var li = link.closest('li');
-      if (li) {
-        li.classList.add('active');
+      var targetLink = links[links.length - 1];
+      var targetLi = targetLink.closest('li');
+      if (targetLi) {
+        isUpdatingActive = true;
 
-        var parent = li.parentElement;
+        var oldActives = sidebarNav.querySelectorAll('.active');
+        oldActives.forEach(function (el) {
+          if (el !== targetLi && el !== targetLink) {
+            el.classList.remove('active');
+          }
+        });
+
+        targetLi.classList.add('active');
+        targetLink.classList.add('active');
+
+        if (targetLi.classList.contains('folder')) {
+          targetLi.classList.add('open');
+          targetLi.classList.remove('collapse');
+          openedFolders.add(getFolderKey(targetLi));
+        }
+
+        var parent = targetLi.parentElement;
         while (parent && !parent.classList.contains('sidebar-nav')) {
           if (parent.tagName === 'LI' && parent.classList.contains('folder')) {
             parent.classList.add('open');
@@ -218,11 +259,45 @@
           parent = parent.parentElement;
         }
         saveState();
+
+        setTimeout(function () {
+          isUpdatingActive = false;
+        }, 60);
       }
     }
   }
 
-  // Sol taraftaki ok butonuna tıklandığında alt menüyü açıp kapatır
+  // Docsify'ın kaydırma/scroll sırasında sidebar aktifliğini silmesini engelleyen gözlemci
+  function observeSidebarActive() {
+    var sidebarNav = document.querySelector('.sidebar-nav');
+    if (!sidebarNav || sidebarNav.dataset.observed) return;
+    sidebarNav.dataset.observed = 'true';
+
+    var observer = new MutationObserver(function () {
+      if (isUpdatingActive) return;
+      var hasActive = sidebarNav.querySelector('.active') !== null;
+      if (!hasActive) {
+        updateActiveLink();
+      }
+    });
+
+    observer.observe(sidebarNav, {
+      childList: true,
+      subtree: true,
+      attributes: true,
+      attributeFilter: ['class']
+    });
+  }
+
+  // Hash değişikliklerini dinle ve aktif menüyü koru
+  window.addEventListener('hashchange', function () {
+    updateActiveLink();
+  });
+
+  // Sidebar menü etkileşimi:
+  // - Solundaki ok butonuna (.folder-toggle) tıklandığında menü açılır veya kapanır.
+  // - Kapalı olan başlığa / linke ilk kez tıklandığında alt başlıkları açılır.
+  // - Başlığa tekrar tıklandığında kapanmaz (açık kalır).
   document.addEventListener('click', function (e) {
     var sidebarNav = document.querySelector('.sidebar-nav');
     if (!sidebarNav || !sidebarNav.contains(e.target)) return;
@@ -249,11 +324,28 @@
       }
 
       saveState();
+      return;
+    }
+
+    var folderLi = e.target.closest('li.folder');
+    if (folderLi) {
+      var targetAnchor = e.target.closest('a');
+      var isDirectFolderHeader = !targetAnchor || targetAnchor.parentElement === folderLi;
+
+      if (isDirectFolderHeader) {
+        var isClosed = !folderLi.classList.contains('open') || folderLi.classList.contains('collapse');
+        if (isClosed) {
+          folderLi.classList.add('open');
+          folderLi.classList.remove('collapse');
+          openedFolders.add(getFolderKey(folderLi));
+          saveState();
+        }
+      }
     }
   });
 
   window.$docsify = {
-    name: '<img src="_media/java-icon.svg" alt="Java Logosu" style="height: 52px; vertical-align: middle; margin-right: 8px; margin-bottom: 8px;"><br><span style="font-family: \'Iowan Old Style\', \'Palatino Linotype\', \'Book Antiqua\', Georgia, serif; font-size: 1.25rem; font-weight: 700; color: #000000;">Java™ Eğitimleri</span>',
+    name: '<img src="_media/java-icon.svg" alt="Java Logosu" style="height: 52px; vertical-align: middle; margin-bottom: 8px;"><br><span style="font-family: \'Iowan Old Style\', \'Palatino Linotype\', \'Book Antiqua\', Georgia, serif; font-size: 1.25rem; font-weight: 700; color: #000000; display: block; line-height: 1.15;">The Java™ Tutorials</span><span style="font-family: \'Iowan Old Style\', \'Palatino Linotype\', \'Book Antiqua\', Georgia, serif; font-size: 0.84rem; font-weight: 600; color: #64748b; display: block; margin-top: 1px; line-height: 1.1; letter-spacing: 0.02em;">T<span style="display:inline-block; margin-left: 0.06em;">ü</span>rkçe</span>',
     nameLink: '#/',
     repo: 'https://github.com/sefakozan/java-tutorials',
     homepage: 'home.md',

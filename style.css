@@ -308,7 +308,11 @@ body.close .sidebar {
 }
 
 .sidebar-nav li.active>a,
-.sidebar-nav li.active>a:hover {
+.sidebar-nav li.active>a:hover,
+.sidebar-nav li>a.active,
+.sidebar-nav li>a.active:hover,
+.sidebar-nav a.active,
+.sidebar-nav a.active:hover {
   color: #000000 !important;
   font-weight: 650 !important;
   background-color: rgba(0, 0, 0, 0.08) !important;
@@ -325,7 +329,9 @@ body.close .sidebar {
   border-right: none !important;
 }
 
-.sidebar-nav li.active>a strong {
+.sidebar-nav li.active>a strong,
+.sidebar-nav li>a.active strong,
+.sidebar-nav a.active strong {
   color: #000000 !important;
 }
 

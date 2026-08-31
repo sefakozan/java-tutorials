@@ -9,13 +9,10 @@ Bu sayfadaki talimatlarla ilgili herhangi bir sorunla karşılaşırsanız, [Yay
    - [Kaynak Dosya Oluşturma](#kaynak-dosya-oluşturma)
    - [Kaynak Dosyayı bir .class Dosyasına Derleme](#kaynak-dosyayı-bir-class-dosyasına-derleme)
    - [Programı Çalıştırma](#programı-çalıştırma)
+
 ---
 
 # 1. Kontrol Listesi
-
-<figure style="text-align: center;">
-  <img src="_media/figures/check.gif" alt="Kontrol İşareti" style="max-width: 100%; height: auto;">
-</figure>
 
 İlk programınızı yazmak için şunlara ihtiyacınız olacak:
 
@@ -45,11 +42,6 @@ Kaynak dosya oluşturmak için iki seçeneğiniz vardır:
 - Ya da aşağıdaki (daha kapsamlı) talimatları takip edebilirsiniz.
 
 İlk olarak bir kabuk (shell) veya "terminal" penceresi açın.
-
-<figure style="text-align: center;">
-  <img src="_media/figures/prompt.gif" alt="Terminal Penceresi" style="max-width: 100%; height: auto;">
-  <figcaption style="margin-top: 10px;">Yeni bir terminal penceresi.</figcaption>
-</figure>
 
 Terminal istemini ilk açtığınızda **geçerli dizininiz (current directory)** genellikle **kullanıcı ana dizininiz (home directory)** olacaktır. Komut satırına `cd` yazıp **Enter (Return)** tuşuna basarak istediğiniz zaman ana dizininize dönebilirsiniz.
 
@@ -87,12 +79,6 @@ class HelloWorldApp {
     }
 }
 ```
-
-<figure style="text-align: center;">
-  <p><strong>Yazarken Dikkatli Olun</strong></p>
-  <img src="_media/figures/typeA.gif" alt="Büyük A harfi" style="vertical-align: middle;">
-  <img src="_media/figures/typea2.gif" alt="Küçük a harfi" style="vertical-align: middle;">
-</figure>
 
 > **Not:** Tüm kodları, komutları ve dosya adlarını tam olarak gösterildiği gibi yazın. Hem derleyici (`javac`) hem de başlatıcı (`java`) büyük/küçük harfe duyarlıdır (*case-sensitive*), bu nedenle büyük ve küçük harfleri tutarlı bir şekilde kullanmalısınız.  
 > `HelloWorldApp` ile `helloworldapp` aynı şey **değildir**.

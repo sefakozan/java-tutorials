@@ -78,7 +78,7 @@
 
         var match = headingList.find(function (h) {
           return (strongNorm && (h.normText === strongNorm || h.normText.indexOf(strongNorm) !== -1 || strongNorm.indexOf(h.normText) !== -1)) ||
-                 (liTextNorm && (h.normText === liTextNorm || h.normText.indexOf(liTextNorm) !== -1 || liTextNorm.indexOf(h.normText) !== -1));
+            (liTextNorm && (h.normText === liTextNorm || h.normText.indexOf(liTextNorm) !== -1 || liTextNorm.indexOf(h.normText) !== -1));
         });
 
         if (match && match.element) {
@@ -252,7 +252,7 @@
   });
 
   window.$docsify = {
-    name: '<img src="https://raw.githubusercontent.com/sefakozan/java-tutorials/main/docs/_media/java-icon.svg" alt="Java Logosu" style="height: 52px; vertical-align: middle; margin-right: 8px; margin-bottom: 8px;"><br><span style="font-family: \'Iowan Old Style\', \'Palatino Linotype\', \'Book Antiqua\', Georgia, serif; font-size: 1.25rem; font-weight: 700; color: #000000;">Java™ Eğitimleri</span>',
+    name: '<img src="https://raw.githubusercontent.com/sefakozan/java-tutorials/main/docs/_media/java-icon.svg" alt="Java Logosu" style="height: 52px; vertical-align: middle; margin-right: 8px; margin-bottom: 8px;"><br><span style="font-family: \'Iowan Old Style\', \'Palatino Linotype\', \'Book Antiqua\', Georgia, serif; font-size: 1.25rem; font-weight: 700; color: #000000;">The Java™ Tutorials</span>',
     repo: 'https://github.com/sefakozan/java-tutorials',
     loadSidebar: '_sidebar.md',
     alias: {

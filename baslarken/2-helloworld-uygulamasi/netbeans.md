@@ -3,11 +3,11 @@
 İlk uygulamanızı yazmanın zamanı geldi! Bu ayrıntılı talimatlar, NetBeans IDE kullanıcıları içindir. NetBeans IDE, Java platformunda çalışır; bu da, JDK’nın mevcut olduğu herhangi bir işletim sisteminde kullanabileceğiniz anlamına gelir. Bu işletim sistemleri arasında Microsoft Windows, Solaris OS, Linux ve Mac OS X yer alır.
 
 1. [**Kontrol Listesi**](#1.-kontrol-listesi)
-2. [**Adım 1: İlk Uygulamanızı Oluşturma**](#2.-adım-1:-ilk-uygulamanızı-oluşturma)
-3. [**Platform Listesine JDK Ekleme (Gerekirse)**](#3.-platform-listesine-jdk-ekleme-(gerekirse))
-4. [**Adım 2: Oluşturulan Kaynak Dosyaya Kod Ekleme**](#4.-adım-2:-oluşturulan-kaynak-dosyaya-kod-ekleme)
-5. [**Adım 3: Kaynak Dosyayı .class Dosyasına Derleme**](#5.-adım-3:-kaynak-dosyayı-.class-dosyasına-derleme)
-6. [**Adım 4: Programı Çalıştırma**](#6.-adım-4:-programı-çalıştırma)
+2. [**İlk Uygulamanızı Oluşturma**](#2.-adım-1:-ilk-uygulamanızı-oluşturma)
+3. [**JDK Ekleme (Gerekirse)**](#3.-platform-listesine-jdk-ekleme-(gerekirse))
+4. [**Oluşturulan Kaynak Dosyaya Kod Ekleme**](#4.-adım-2:-oluşturulan-kaynak-dosyaya-kod-ekleme)
+5. [**Kaynak Dosyayı .class Dosyasına Derleme**](#5.-adım-3:-kaynak-dosyayı-.class-dosyasına-derleme)
+6. [**Programı Çalıştırma**](#6.-adım-4:-programı-çalıştırma)
 7. [**NetBeans IDE ile Öğreticiye Devam Etme**](#7.-netbeans-ide-ile-öğreticiye-devam-etme)
 ---
 
