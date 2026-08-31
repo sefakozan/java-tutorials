@@ -8,7 +8,7 @@ Java programlama dilinde bir **arayüz (interface)**, bir sınıfın sağlamayı
 4. [**Varsayılan Metotlar (Default Methods - Java SE 8+)**](#4-varsayılan-metotlar-default-methods---java-se-8)
 ---
 
-# 1. Arayüz Tanımlama (Defining an Interface)
+# 1. Arayüz Tanımlama
 
 Bir arayüz bildirimi `interface` anahtar sözcüğü ile başlar:
 
@@ -37,7 +37,7 @@ public interface GroupedInterface extends Interface1, Interface2, Interface3 {
 
 ---
 
-# 2. Arayüzü Uygulama (Implementing an Interface)
+# 2. Arayüzü Uygulama
 
 Bir sınıf bir arayüzü uygulamak için sınıf bildiriminde `implements` anahtar sözcüğünü kullanır:
 

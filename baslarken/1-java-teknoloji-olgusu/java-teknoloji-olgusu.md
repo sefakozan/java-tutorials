@@ -1,4 +1,4 @@
-# Ders: Java Teknolojisi Olgusu (The Java Technology Phenomenon)
+# Ders: Java Teknolojisi Olgusu
 
 Java teknolojisi hakkında konuşmalar her yerde gibi görünüyor, ama bu tam olarak nedir? Aşağıdaki bölümler, Java teknolojisinin hem bir programlama dili hem de bir platform olduğunu açıklar ve bu teknolojinin sizin için neler yapabileceği hakkında genel bir bakış sunar.
 

@@ -1,4 +1,4 @@
-# Ders: Nesneleri Kullanma (Objects & Using Objects)
+# Ders: Nesneleri Kullanma
 
 Tipik bir Java programı birçok nesne oluşturur ve bu nesneler birbirleriyle metotlar aracılığıyla etkileşime girer. Bu etkileşimler sayesinde bir program GUI pencereleri oluşturma, animasyon yürütme veya ağ üzerinden bilgi gönderme ve alma gibi görevleri yerine getirir.
 
@@ -9,7 +9,7 @@ Tipik bir Java programı birçok nesne oluşturur ve bu nesneler birbirleriyle m
 5. [**Çöp Toplama (Garbage Collection)**](#5-çöp-toplama-garbage-collection)
 ---
 
-# 1. Nesne Oluşturma (Creating Objects)
+# 1. Nesne Oluşturma
 
 Bir sınıf, nesneler için bir taslak (*blueprint*) sağlar; bir nesneyi bir sınıftan oluşturursunuz. Aşağıdaki `CreateObjectDemo` programı üç nesne oluşturur: bir `Point` nesnesi ve iki `Rectangle` nesnesi:
 

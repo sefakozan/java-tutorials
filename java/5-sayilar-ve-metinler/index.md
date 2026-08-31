@@ -1,4 +1,4 @@
-# Ders: Sayılar ve Metinler (Numbers and Strings)
+# Ders: Sayılar ve Metinler
 
 Bu ders; sayısal sarmalayıcı sınıfları (wrapper classes), otomatik kutulama ve kutudan çıkarma (autoboxing/unboxing) işlemlerini, `Math` matematik sınıfını, sayısal çıktı biçimlendirmeyi, `Character` sınıfını, `String` sınıfını ve karakter dizilerini verimli işlemek için kullanılan `StringBuilder` sınıfını kapsamaktadır.
 

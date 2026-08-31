@@ -1,4 +1,4 @@
-# Ders: Sınıflar ve Nesneler (Classes and Objects)
+# Ders: Sınıflar ve Nesneler
 
 Nesne yönelimli programlama kavramlarını öğrendikten sonra, artık Java'da sınıfları nasıl tanımlayacağınızı ve nesneleri nasıl oluşturup kullanacağınızı derinlemesine inceleyebilirsiniz. Bu ders; sınıf bildirimlerini, alanları, metotları, yapıcıları (constructors), nesne yaşam döngüsünü, iç/yuvalanmış sınıfları ve enum türlerini kapsamaktadır.
 

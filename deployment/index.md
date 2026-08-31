@@ -1,4 +1,4 @@
-# Kılavuz: Dağıtım (Deployment & JAR Packaging)
+# Kılavuz: Uygulama Dağıtımı (Deployment)
 
 Java uygulamaları geliştirildikten sonra son kullanıcılara dağıtılmak üzere paketlenir. Bu kılavuz; Java arşivleme formatı olan **JAR (Java ARchive)** dosyalarını, manifest yapılandırmasını ve çalıştırılabilir JAR paketlemeyi kapsamaktadır.
 

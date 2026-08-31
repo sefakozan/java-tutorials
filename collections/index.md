@@ -1,4 +1,4 @@
-# Kılavuz: Koleksiyonlar (Collections Framework)
+# Kılavuz: Koleksiyonlar
 
 **Java Koleksiyonlar Çerçevesi (Java Collections Framework)**, nesne gruplarını depolamak, işlemek ve yönetmek için tasarlanmış birleşik ve kapsamlı bir mimaridir. Bu kılavuz; temel koleksiyon arayüzlerini, genel amaçlı implementasyon sınıflarını ve algoritmaları ele almaktadır.
 

@@ -1,4 +1,4 @@
-# Kılavuz: Başlarken (Getting Started)
+# Kılavuz: Başlarken
 
 Bu kılavuz, Java programlama diliyle çalışmaya başlamak için ihtiyacınız olan tüm temel bilgileri içerir.
 

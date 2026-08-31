@@ -1,4 +1,4 @@
-# Ders: Yaygın Sorunlar (ve Çözümleri)
+# Ders: Yaygın Sorunlar ve Çözümleri
 
 Bu kılavuzdaki programları derlerken veya çalıştırırken bir sorunla karşılaşırsanız aşağıdaki hata mesajları ve çözümlerine başvurabilirsiniz.
 
@@ -13,7 +13,7 @@ Bu kılavuzdaki programları derlerken veya çalıştırırken bir sorunla karş
    - [Applet veya Java Web Start Uygulamasının Engellenmesi](#applet-veya-java-web-start-uygulamasının-engellenmesi)
 ---
 
-# 1. Derleyici Sorunları (Compiler Problems)
+# 1. Derleyici Sorunları
 
 ## Microsoft Windows Sistemlerindeki Yaygın Hata Mesajları
 
@@ -92,7 +92,7 @@ Yine programınız başarıyla derlenmemiştir ve derleyici bir `.class` dosyas�
 
 ---
 
-# 2. Çalışma Zamanı Sorunları (Runtime Problems)
+# 2. Çalışma Zamanı Sorunları
 
 ## Microsoft Windows Sistemlerindeki Çalışma Zamanı Hataları
 

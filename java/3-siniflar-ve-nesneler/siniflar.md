@@ -1,4 +1,4 @@
-# Ders: Sınıfları Tanımlama (Declaring Classes)
+# Ders: Sınıfları Tanımlama
 
 Bu bölüm, sınıfların nasıl tanımlanacağını, alanların ve metotların nasıl bildirileceğini, kurucuların (constructors) nasıl oluşturulacağını ve metotlara argümanların nasıl iletileceğini açıklar.
 
@@ -9,7 +9,7 @@ Bu bölüm, sınıfların nasıl tanımlanacağını, alanların ve metotların 
 5. [**Metotlara ve Kuruculara Bilgi Aktarma (Parametreler ve Argümanlar)**](#5-metotlara-ve-kuruculara-bilgi-aktarma)
 ---
 
-# 1. Sınıf Bildirimi (Declaring Classes)
+# 1. Sınıf Bildirimi
 
 Bir sınıf bildirimi aşağıdaki bileşenleri sırasıyla içerir:
 
@@ -71,7 +71,7 @@ Java'da değişkenlerin erişim düzeyleri dört erişim değiştiricisi (*acces
 
 ---
 
-# 3. Metotları Tanımlama (Defining Methods)
+# 3. Metotları Tanımlama
 
 Bir metot bildirimi şu öğelerden oluşur:
 - **Erişim Değiştiricisi:** `public`, `protected`, `private` veya paket-özel.

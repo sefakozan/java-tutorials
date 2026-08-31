@@ -1,4 +1,4 @@
-# The Java™ Tutorials - T<span style="display:inline-block; margin-left: 0.01em;">ü</span>rkçe
+<h1 style="text-align: center !important; font-family: 'Iowan Old Style', 'Palatino Linotype', 'Book Antiqua', Georgia, serif !important; font-weight: 700; font-size: 2.25rem; letter-spacing: 0.025em; color: #000000 !important;">The Java™ Tutorials - T<span style="display:inline-block; margin-left: 0.02em;">ü</span>rkçe</h1>
 
 <div class="oracle-notice-box">
 <p><em>The Java Tutorials, JDK 8 için yazılmıştır. Bu sayfada açıklanan örnekler ve uygulamalar, sonraki sürümlerde sunulan iyileştirmelerden yararlanmamaktadır ve artık mevcut olmayan teknolojileri kullanıyor olabilir.<br>
@@ -13,7 +13,7 @@ Java Eğitimleri, Java programlama dilini kullanarak uygulama oluşturmak isteye
 
 ## Temel Konuları Kapsayan Kılavuzlar (Trails Covering the Basics)
 
-Bu kılavuzlar kitap formunda [***The Java Tutorial, Sixth Edition***](https://www.amazon.com/The-Java-Tutorial-Course-Edition/dp/0134034082) olarak mevcuttur.
+Bu kılavuzlar kitap formunda [<em style="font-weight: 580 !important;">The Java Tutorial, Sixth Edition</em>](https://www.amazon.com/The-Java-Tutorial-Course-Edition/dp/0134034082) olarak mevcuttur.
 
 - **[Başlarken](baslarken/index.md)** — Java teknolojisine giriş ve Java geliştirme yazılımını kurma ile basit bir program oluşturmak için kullanma dersleri.
 - **[Java Dilini Öğrenmek](java/index.md)** — Java Programlama Dili'nin temel kavramlarını ve özelliklerini tanımlayan dersler.
@@ -32,7 +32,7 @@ Bu kılavuzlar kitap formunda [***The Java Tutorial, Sixth Edition***](https://w
 
 ---
 
-## Özel Kılavuzlar ve Dersler (Specialized Trails and Lessons)
+## Özel Kılavuzlar ve Dersler
 
 Bu kılavuzlar ve dersler ileri düzey ve özel platform konularını kapsar:
 
@@ -59,7 +59,7 @@ Bu kılavuzlar ve dersler ileri düzey ve özel platform konularını kapsar:
 ## Destekleyici Video Kaynakları
 
 ### Nesne Yönelimli Programlama (Java ile) Giriş
-> Java ile nesne yönelimli programlama kavramlarını (sınıflar, nesneler, metotlar ve modelleme) uygulamalı olarak ele alan eğitim serisi.
+**_Java ile nesne yönelimli programlama kavramlarını (sınıflar, nesneler, metotlar ve modelleme) uygulamalı olarak ele alan eğitim serisi._**
 
 <div style="width: 100%; max-width: 860px; aspect-ratio: 16/9; margin: 2rem 0 3rem 0; border-radius: 18px; overflow: hidden; background-color: #000000; box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.12), 0 12px 24px rgba(0, 0, 0, 0.22), 0 30px 65px rgba(0, 0, 0, 0.35);">
   <iframe src="https://www.youtube.com/embed/videoseries?si=IKa8pXtN-6hSWZm0&controls=0&list=PLh9ECzBB8tJPFTpuHKhYayis0H9pS6_rI" title="YouTube video player" frameborder="0" style="display: block; width: 100%; height: 100%; border: 0;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
@@ -68,7 +68,7 @@ Bu kılavuzlar ve dersler ileri düzey ve özel platform konularını kapsar:
 ---
 
 ### Java'da Tek Başına Uzmanlaşma ve Kaynak Takibi
-> The Java™ Tutorials serisinin yazılım öğrenimindeki önemi ve bağımsız bir geliştirici olarak uzmanlaşma süreci.
+***The Java™ Tutorials serisinin yazılım öğrenimindeki önemi ve bağımsız bir geliştirici olarak uzmanlaşma süreci.***
 
 <div style="width: 100%; max-width: 860px; aspect-ratio: 16/9; margin: 2rem 0 3rem 0; border-radius: 18px; overflow: hidden; background-color: #000000; box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.12), 0 12px 24px rgba(0, 0, 0, 0.22), 0 30px 65px rgba(0, 0, 0, 0.35);">
     <iframe src="https://www.youtube.com/embed/Y-J1lFsLKIA?si=wkvA0Cq-JPCRvW7D&amp;controls=0" title="YouTube video player" frameborder="0" style="display: block; width: 100%; height: 100%; border: 0;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
@@ -76,6 +76,6 @@ Bu kılavuzlar ve dersler ileri düzey ve özel platform konularını kapsar:
 
 ---
 
-### İletişim ve Katkı
+## İletişim ve Katkı
 
 Bu proje açık kaynaklı bir topluluk girişimidir. Çevirilere katkıda bulunmak, teknik veya imla hatalarını bildirmek ya da öneride bulunmak için [GitHub reposunu](https://github.com/sefakozan/java-tutorials) ziyaret edebilir, yeni bir [sorun (issue) açabilirsiniz](https://github.com/sefakozan/java-tutorials/issues).

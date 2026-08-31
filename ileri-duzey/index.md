@@ -1,4 +1,4 @@
-# Özel Kılavuzlar ve Dersler (Specialized Trails and Lessons)
+# Özel Kılavuzlar ve Dersler
 
 Bu kılavuz, Java platformunun ileri düzey yeteneklerini, kurumsal entegrasyon kütüphanelerini, sistem yönetimi ve özelleştirilmiş API'lerini kapsamaktadır.
 

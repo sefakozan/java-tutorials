@@ -1,4 +1,4 @@
-# Ders: Algoritmalar (Algorithms)
+# Ders: Algoritmalar
 
 Java Koleksiyonlar Çerçevesi tarafından sağlanan **polimorfik algoritmalar**, koleksiyonlar üzerinde çalışan ve `java.util.Collections` sınıfında statik metotlar olarak tanımlanmış yeniden kullanılabilir algoritmalardır.
 
@@ -9,7 +9,7 @@ Java Koleksiyonlar Çerçevesi tarafından sağlanan **polimorfik algoritmalar**
 5. [**Aşırı Değerleri Bulma (Finding Extreme Values)**](#5-aşırı-değerleri-bulma-finding-extreme-values)
 ---
 
-# 1. Sıralama (Sorting)
+# 1. Sıralama
 
 Sıralama algoritması bir `List` nesnesinin elemanlarını yeniden sıralar. Kararlı (*stable*) ve $O(n \log n)$ performans sunan bir sıralama algoritması kullanır.
 
@@ -27,7 +27,7 @@ Sıralama algoritması bir `List` nesnesinin elemanlarını yeniden sıralar. Ka
 
 ---
 
-# 2. Karıştırma (Shuffling)
+# 2. Karıştırma
 
 `Collections.shuffle(list)` metodu bir listedeki elemanların sırasını rastgele karıştırır (örneğin bir deste kartı karıştırmak gibi):
 
@@ -62,7 +62,7 @@ if (index >= 0) {
 
 ---
 
-# 5. Aşırı Değerleri Bulma (Finding Extreme Values)
+# 5. Uç Değerleri Bulma (Min / Max)
 
 - **`Collections.min(coll)`:** Koleksiyondaki en küçük elemanı döndürür.
 - **`Collections.max(coll)`:** Koleksiyondaki en büyük elemanı döndürür.

@@ -16,7 +16,7 @@ Dizideki her bir öğeye **eleman (element)** denir ve her elemana sayısal **in
 5. [**java.util.Arrays ile Dizi İşlemleri**](#5-javautilarrays-ile-dizi-işlemleri)
 ---
 
-# 1. Dizi Bildirimi (Declaring an Array)
+# 1. Dizi Bildirimi
 
 Bir dizi değişkenini bildirmek için dizinin tutacağı verinin türünü ve ardından köşeli parantezleri (`[]`) yazarsınız:
 
@@ -114,7 +114,7 @@ class MultiDimArrayDemo {
 
 ---
 
-# 4. Dizileri Kopyalama (Copying Arrays)
+# 4. Dizileri Kopyalama
 
 `System` sınıfı, verileri bir diziden diğerine verimli bir şekilde kopyalamak için `arraycopy` metodunu sağlar:
 

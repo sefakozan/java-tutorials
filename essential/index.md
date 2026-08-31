@@ -1,4 +1,4 @@
-# Kılavuz: Temel Java Sınıfları (Essential Java Classes)
+# Kılavuz: Temel Java Sınıfları
 
 Bu kılavuz, her Java geliştiricisinin uzmanlaşması gereken temel platform bileşenlerini kapsamaktadır: istisnalar (exceptions) ile hata yönetimi, temel Giriş/Çıkış (I/O & NIO.2) işlemleri, eşzamanlılık (concurrency) ve çoklu iş parçacığı (multi-threading), düzenli ifadeler (regex) ve platform ortamı yapılandırması.
 

@@ -1,4 +1,4 @@
-# Ders: Dil Temelleri (Language Basics)
+# Ders: Dil Temelleri
 
 Nesne yönelimli kavramları öğrendikten sonra, artık Java programlama dilinin temel yapı taşlarını ve sözdizimini öğrenmeye hazırsınız. Bu ders; değişkenlerin nasıl tanımlanacağını, temel veri tiplerini, dizileri, operatörleri, ifadeleri, deyimleri, blokları ve program akışını yönlendiren kontrol yapılarını kapsamaktadır.
 

@@ -17,7 +17,7 @@ class HelloWorldApp {
 3. [**main Metodu**](#3-main-metodu)
 ---
 
-# 1. Kaynak Kod Yorumları (Source Code Comments)
+# 1. Kaynak Kod Yorumları
 
 Aşağıdaki kalın gösterilen metinler, "Hello World!" uygulamasının **yorumlarını (comments)** tanımlar:
 

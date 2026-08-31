@@ -8,7 +8,7 @@ Bir **paket (package)**, birbiriyle ilişkili türleri (sınıflar, arayüzler, 
 4. [**Dosya Sistemi Yapısı ve Sınıf Yolu (Classpath)**](#4-dosya-sistemi-yapısı-ve-sınıf-yolu-classpath)
 ---
 
-# 1. Paket Oluşturma (Creating a Package)
+# 1. Paket Oluşturma
 
 Bir paket oluşturmak için, pakete dahil edilecek her kaynak dosyanın en başına `package` ifadesini eklersiniz:
 

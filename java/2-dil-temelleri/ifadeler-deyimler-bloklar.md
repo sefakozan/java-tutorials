@@ -7,7 +7,7 @@ Değişkenleri ve operatörleri anladığınıza göre, artık ifadeleri (*expre
 3. [**Bloklar (Blocks)**](#3-bloklar-blocks)
 ---
 
-# 1. İfadeler (Expressions)
+# 1. İfadeler
 
 Bir **ifade (expression)**; değişkenler, operatörler ve metot çağrılarından oluşan, dilin sözdizimine uygun olarak yapılandırılmış ve tek bir değere dönüşen (*evaluate* edilen) bir yapıdır:
 
@@ -31,7 +31,7 @@ Java programlama dili, parantezlerin (`( )`) gerektirdiği durumlar dışında, 
 
 ---
 
-# 2. Deyimler (Statements)
+# 2. Deyimler
 
 Bir **deyim (statement)**, programın çalıştırılabilir eksiksiz bir birimini oluşturur. Bir deyim, ifadenin sonuna noktalı virgül (`;`) eklenerek sonlandırılır.
 
@@ -51,7 +51,7 @@ Aşağıdaki ifade türleri birer noktalı virgülle sonlandırılarak **ifade d
 
 ---
 
-# 3. Bloklar (Blocks)
+# 3. Bloklar
 
 Bir **blok (block)**, açılış ve kapanış süslü parantezleri (`{ }`) arasında yer alan sıfır veya daha fazla deyimden oluşan bir gruptur. Tek bir deyimin kullanılmasına izin verilen her yerde bir kod bloğu kullanılabilir.
 

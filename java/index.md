@@ -1,4 +1,4 @@
-# Kılavuz: Java Dilini Öğrenmek (Learning the Java Language)
+# Kılavuz: Java Dilini Öğrenmek
 
 Bu kılavuz, Java programlama dilinin temel kurallarını, nesne yönelimli programlama kavramlarını, temel veri türlerini, kontrol akışlarını, sınıfları, arayüzleri, kalıtımı, sayı ve metin işlemeyi, genel türleri (generics) ve paketleri kapsamaktadır.
 

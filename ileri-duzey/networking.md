@@ -1,4 +1,4 @@
-# Ders: Ağ Programlama (Custom Networking)
+# Ders: Ağ Programlama
 
 Java platformu, ağ üzerinden iletişim kuran uygulamalar geliştirmek için `java.net` paketinde zengin sınıflar sağlar.
 

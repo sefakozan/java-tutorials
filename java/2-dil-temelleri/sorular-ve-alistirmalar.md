@@ -1,6 +1,6 @@
 # Sorular ve Alıştırmalar: Dil Temelleri
 
-## 1. Değişkenler (Variables)
+## 1. Değişkenler
 
 ### Sorular
 1. "Örnek değişkeni" (*instance variable*) terimi, \_\_\_ için kullanılan başka bir isimdir.
@@ -22,7 +22,7 @@
 
 ---
 
-## 2. Operatörler (Operators)
+## 2. Operatörler
 
 ### Sorular
 1. Aşağıdaki kod parçasını inceleyin:
@@ -50,7 +50,7 @@
 
 ---
 
-## 3. İfadeler, Deyimler ve Bloklar (Expressions, Statements, and Blocks)
+## 3. İfadeler, Deyimler ve Bloklar
 
 ### Sorular
 1. Operatörler, değerleri hesaplayan \_\_\_ oluşturmak için kullanılır.
@@ -70,7 +70,7 @@
 
 ---
 
-## 4. Kontrol Akışı (Control Flow)
+## 4. Kontrol Akış İfadeleri
 
 ### Sorular
 1. Java tarafından desteklenen en temel kontrol akış ifadesi \_\_\_ ifadesidir.

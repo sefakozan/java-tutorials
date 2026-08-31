@@ -84,7 +84,7 @@ Proje, IDE'de oluşturuldu ve açıldı. Aşağıdaki bileşenleri görmelisiniz
 
 ---
 
-# 3. Platform Listesine JDK Ekleme (Gerekirse)
+# 3. Platform Listesine JDK Ekleme
 
 IDE’nin kullanılabilir platformlar listesine JDK 8’i eklemek gerekebilir. Bunu yapmak için, aşağıdaki şekilde gösterildiği gibi <b>Tools > Java Platforms</b> seçeneğini seçin:
 

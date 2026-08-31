@@ -1,4 +1,4 @@
-# Ders: Karakterler ve Metinler (Characters and Strings)
+# Ders: Karakterler ve Metinler
 
 Java programlama dilinde karakterler `char` ilkel türü ve `Character` sarmalayıcı sınıfı ile; karakter dizgileri (metinler) ise `String` ve `StringBuilder` sınıfları ile temsil edilir.
 

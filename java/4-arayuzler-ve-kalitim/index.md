@@ -1,4 +1,4 @@
-# Ders: Arayüzler ve Kalıtım (Interfaces and Inheritance)
+# Ders: Arayüzler ve Kalıtım
 
 Bu ders; arayüzlerin tanımlanmasını, sınıflar tarafından uygulanmasını, Java 8 ile gelen varsayılan ve statik metotları, sınıf kalıtımını, metot geçersiz kılmayı (overriding), polimorfizmi, `super` anahtar sözcüğünü, `Object` sınıfını ve soyut sınıfları (abstract classes) kapsamaktadır.
 

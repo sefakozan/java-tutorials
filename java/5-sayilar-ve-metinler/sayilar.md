@@ -1,4 +1,4 @@
-# Ders: Sayılar ve Math Sınıfı (The Numbers Classes & Math)
+# Ders: Sayılar ve Math Sınıfı
 
 Sayılarla çalışırken genellikle kodunuzda ilkel veri türlerini (`byte`, `int`, `double` vb.) kullanırsınız. Ancak bazen sayılar yerine nesneler kullanmanız gerekir; örneğin koleksiyonlar (`List`, `Map`) yalnızca nesneleri tutabilir. Bu amaçla Java, her ilkel tür için bir **sarmalayıcı sınıf (wrapper class)** sağlar: `Byte`, `Short`, `Integer`, `Long`, `Float`, `Double`.
 
