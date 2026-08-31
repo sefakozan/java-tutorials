@@ -1,15 +1,17 @@
 <h1 align="center" style="border-bottom: none !important;">The Java™ Tutorials — Türkçe</h1>
 
-<p align="center" style="border-bottom: 1px solid rgba(128, 128, 128, 0.2); padding-bottom: 16px; margin-bottom: 20px;">
-  <img src="_media/oracle-logo.svg" alt="Oracle Logo" height="24" style="vertical-align: middle;">
-  &nbsp;&nbsp;&nbsp;&nbsp;
-  <img src="_media/java-docs-logo.svg" alt="Java Documentation" height="28" style="vertical-align: middle;">
+<p align="center">
+<img src="_media/oracle-logo.svg" alt="Oracle Logo" height="24" style="vertical-align: middle;">
+&nbsp;&nbsp;&nbsp;&nbsp;
+<img src="_media/java-docs-logo.svg" alt="Java Documentation" height="28" style="vertical-align: middle;">
 </p>
 
+---
+
 Oracle (Sun Microsystems) tarafından hazırlanan ve Java dünyasının en köklü eğitim serisi olan **The Java™ Tutorials** içeriğinin kapsamlı Türkçe çevirisidir.
-    
+
 Canlı web sitesi: **[sefakozan.github.io/java-tutorials](https://sefakozan.github.io/java-tutorials/)**
-    
+
 ---
     
 ### Projenin Amacı
