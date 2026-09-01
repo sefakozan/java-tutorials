@@ -2,6 +2,39 @@
    The Java™ Tutorials - Stylesheet
    ========================================================================== */
 
+/* --- CMU Typewriter Text Font Fixes (font-style: normal ile gerçek font dosyaları) --- */
+@font-face {
+  font-family: 'CMU Typewriter Text';
+  font-style: normal;
+  font-weight: 400;
+  src: url("https://cdn.jsdelivr.net/npm/computer-modern@0.1.3/fonts/cmu-typewriter-text-500-roman.woff2") format("woff2"),
+    url("https://cdn.jsdelivr.net/npm/computer-modern@0.1.3/fonts/cmu-typewriter-text-500-roman.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: 'CMU Typewriter Text';
+  font-style: italic;
+  font-weight: 400;
+  src: url("https://cdn.jsdelivr.net/npm/computer-modern@0.1.3/fonts/cmu-typewriter-text-500-italic.woff2") format("woff2"),
+    url("https://cdn.jsdelivr.net/npm/computer-modern@0.1.3/fonts/cmu-typewriter-text-500-italic.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: 'CMU Typewriter Text';
+  font-style: normal;
+  font-weight: 700;
+  src: url("https://cdn.jsdelivr.net/npm/computer-modern@0.1.3/fonts/cmu-typewriter-text-700-roman.woff2") format("woff2"),
+    url("https://cdn.jsdelivr.net/npm/computer-modern@0.1.3/fonts/cmu-typewriter-text-700-roman.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: 'CMU Typewriter Text';
+  font-style: italic;
+  font-weight: 700;
+  src: url("https://cdn.jsdelivr.net/npm/computer-modern@0.1.3/fonts/cmu-typewriter-text-700-italic.woff2") format("woff2"),
+    url("https://cdn.jsdelivr.net/npm/computer-modern@0.1.3/fonts/cmu-typewriter-text-700-italic.ttf") format("truetype");
+}
+
 :root {
   --theme-color: #0284c7;
   --theme-color-hover: #0369a1;
@@ -508,6 +541,22 @@ body.close .content {
   margin: 1.5rem 0 0.5rem 0;
 }
 
+/* Başlık başındaki sıra numaraları stili (Siyah & sağında temiz boşluk) */
+.markdown-section h1 .heading-num,
+.markdown-section h2 .heading-num,
+.markdown-section h3 .heading-num,
+.markdown-section h4 .heading-num,
+.markdown-section h5 .heading-num,
+.markdown-section h6 .heading-num,
+.markdown-section .heading-num {
+  color: var(--text-headings, #1d1d1f) !important;
+  font-weight: 700 !important;
+  margin-right: 0.4em !important;
+  display: inline-block !important;
+  text-decoration: none !important;
+  cursor: text !important;
+}
+
 .markdown-section p,
 .markdown-section ul,
 .markdown-section ol {
@@ -589,15 +638,121 @@ body.close .content {
   color: #0369a1;
 }
 
-.markdown-section code {
-  font-family: 'CMU Typewriter Text', 'Courier Prime', monospace !important;
-  font-size: 0.9em !important;
-  background: #f8fafc !important;
-  color: #0000ff !important;
-  font-weight: 600 !important;
-  padding: 2px 6px !important;
+/* Inline Code (İki tek tırnak / backtick `...` arasındaki yazılar)*/
+.markdown-section :not(pre)>code {
+  display: inline-block !important;
+  /* Üst linklerin alt çizgisinin kod kutusu altına girmesini engeller */
+  font-family: 'CMU Typewriter Text', 'SF Mono', Menlo, Monaco, 'Courier Prime', monospace !important;
+  font-style: italic !important;
+  font-weight: 700 !important;
+  font-size: 1.05em !important;
+  color: #0066cc !important;
+  background: transparent !important;
+  border: none !important;
   border-radius: 4px !important;
-  border: 1px solid #cbd5e1;
+  padding: 0 2px !important;
+  margin: 0 0.5px !important;
+  vertical-align: 0.5px;
+  -webkit-font-smoothing: antialiased;
+  letter-spacing: -0.01em;
+  text-decoration: none !important;
+  cursor: text !important;
+}
+
+/* Başlıklar ve başlık anchor linklerinin imlecini ve alt çizgilerini sıfırla */
+.markdown-section h1,
+.markdown-section h2,
+.markdown-section h3,
+.markdown-section h4,
+.markdown-section h5,
+.markdown-section h6,
+.markdown-section h1 a,
+.markdown-section h2 a,
+.markdown-section h3 a,
+.markdown-section h4 a,
+.markdown-section h5 a,
+.markdown-section h6 a,
+.markdown-section .anchor,
+.markdown-section a.anchor {
+  cursor: text !important;
+  text-decoration: none !important;
+  border-bottom: none !important;
+}
+
+/* Başlık içindeki tek tırnak kodların boyutunu eski orantılı haline (0.88em) getir */
+.markdown-section h1 code,
+.markdown-section h2 code,
+.markdown-section h3 code,
+.markdown-section h4 code,
+.markdown-section h5 code,
+.markdown-section h6 code {
+  font-size: 0.88em !important;
+  cursor: text !important;
+  text-decoration: none !important;
+  border-bottom: none !important;
+}
+
+/* Başlık hover durumlarında alt çizgiyi kesin olarak kaldır */
+.markdown-section h1 a:hover,
+.markdown-section h2 a:hover,
+.markdown-section h3 a:hover,
+.markdown-section h4 a:hover,
+.markdown-section h5 a:hover,
+.markdown-section h6 a:hover,
+.markdown-section h1:hover a,
+.markdown-section h2:hover a,
+.markdown-section h3:hover a,
+.markdown-section h4:hover a,
+.markdown-section h5:hover a,
+.markdown-section h6:hover a,
+.markdown-section .anchor:hover,
+.markdown-section a.anchor:hover,
+.markdown-section a:hover:has(code) {
+  text-decoration: none !important;
+  border-bottom: none !important;
+  box-shadow: none !important;
+}
+
+/* Link içindeki inline kodların hover durumunda da şeffaflığı ve rengi sabit kalsın */
+.markdown-section :not(pre)>code,
+.markdown-section a :not(pre)>code,
+.markdown-section :not(pre)>code:hover {
+  border: none !important;
+  color: #0066cc !important;
+  background: transparent !important;
+}
+
+/* Gerçek metin içi linklerin (köşeli parantezli [metin `kod`](link)) hover durumunda hem metnin hem kodun altı çizilsin */
+.markdown-section a:not(.anchor):not(h1 a):not(h2 a):not(h3 a):not(h4 a):not(h5 a):not(h6 a) :not(pre)>code,
+.markdown-section a:not(.anchor):not(h1 a):not(h2 a):not(h3 a):not(h4 a):not(h5 a):not(h6 a) code {
+  cursor: pointer !important;
+}
+
+.markdown-section a:not(.anchor):not(h1 a):not(h2 a):not(h3 a):not(h4 a):not(h5 a):not(h6 a):hover :not(pre)>code,
+.markdown-section a:not(.anchor):not(h1 a):not(h2 a):not(h3 a):not(h4 a):not(h5 a):not(h6 a):hover code {
+  text-decoration: underline !important;
+  text-decoration-color: #0066cc !important;
+}
+
+.markdown-section a:not(.anchor):not(h1 a):not(h2 a):not(h3 a):not(h4 a):not(h5 a):not(h6 a):hover :not(pre)>code.error-code {
+  text-decoration: underline !important;
+  text-decoration-color: #d70015 !important;
+}
+
+/* Inline Code - Hata Mesajları Stili */
+.markdown-section :not(pre)>code.error-code,
+.markdown-section :not(pre)>code.error,
+.markdown-section :not(pre)>code.error-msg,
+.markdown-section .error-code,
+.markdown-section a :not(pre)>code.error-code,
+.markdown-section a:hover :not(pre)>code.error-code,
+.markdown-section :not(pre)>code.error-code:hover {
+  color: #d70015 !important;
+  background: #fdf2f2 !important;
+  border: 1px solid rgba(215, 0, 21, 0.22) !important;
+  border-radius: 5px !important;
+  padding: 1.5px 5.5px !important;
+  margin: 0 1px !important;
 }
 
 .markdown-section pre {
@@ -612,15 +767,23 @@ body.close .content {
   overflow-x: auto;
 }
 
-.markdown-section pre>code {
+.markdown-section pre>code,
+.markdown-section pre>code:hover,
+.markdown-section pre:hover>code {
+  display: block !important;
   font-family: 'CMU Typewriter Text', 'Courier Prime', monospace !important;
+  font-style: normal !important;
+  font-weight: normal !important;
   color: #000000 !important;
   background: transparent !important;
   font-size: 0.95rem !important;
   line-height: 1.65 !important;
   padding: 0 !important;
+  margin: 0 !important;
   border: none !important;
   letter-spacing: 0.01em;
+  vertical-align: baseline;
+  text-decoration: none !important;
 }
 
 /* Prism.js Syntax Highlighting */
@@ -663,6 +826,30 @@ body.close .content {
 .markdown-section pre .token.property {
   color: #000000 !important;
   font-weight: normal;
+}
+
+/* Kod Bloğu İçinde Kalın Yazı Stili */
+.markdown-section pre code strong,
+.markdown-section pre code b,
+.markdown-section pre code .code-bold,
+.markdown-section pre code strong *,
+.markdown-section pre code b *,
+.markdown-section pre code .code-bold * {
+  font-weight: 700 !important;
+  -webkit-text-stroke: 1.2px currentColor !important;
+  text-shadow: none !important;
+}
+
+/* Yorum satırlarında kalın metinlerin belirginleştirilmesi */
+.markdown-section pre .token.comment strong,
+.markdown-section pre .token.comment b,
+.markdown-section pre .token.comment .code-bold,
+.markdown-section pre strong .token.comment,
+.markdown-section pre b .token.comment {
+  font-weight: 800 !important;
+  color: #14532d !important;
+  -webkit-text-stroke: 0.85px currentColor !important;
+  text-shadow: 0.45px 0 0 currentColor, -0.45px 0 0 currentColor !important;
 }
 
 .docsify-copy-code-button {

@@ -31,7 +31,7 @@ Bu iki öğe, ilk uygulamanızı yazmak için ihtiyacınız olan her şeydir.
 İlk uygulamanız olan `HelloWorldApp`, ekranda yalnızca "Hello World!" mesajını gösterecektir. Bu programı oluşturmak için şu adımları izleyeceksiniz:
 
 - **Kaynak dosya oluşturma:** Bir kaynak dosya, Java programlama dilinde yazılmış, sizin ve diğer programcıların anlayabileceği kodları içerir. Kaynak dosyaları oluşturmak ve düzenlemek için herhangi bir metin düzenleyiciyi kullanabilirsiniz.
-- **Kaynak dosyayı bir .class dosyasına derleme:** Java programlama dili derleyicisi (`javac`), kaynak dosyanızı alır ve içindeki metni Java Sanal Makinesinin anlayabileceği komutlara dönüştürür. Bu dosyanın içinde yer alan komutlara **bayt kodları (bytecodes)** adı verilir.
+- **Kaynak dosyayı bir .class dosyasına derleme:** Java programlama dili derleyicisi (`javac`), kaynak dosyanızı alır ve içindeki metni Java Sanal Makinesinin anlayabileceği komutlara dönüştürür. Bu dosyanın içinde yer alan komutlara **byte kodları (bytecodes)** adı verilir.
 - **Programı çalıştırma:** Java uygulama başlatıcı aracı (`java`), uygulamanızı çalıştırmak için Java Sanal Makinesini kullanır.
 
 ## Kaynak Dosya Oluşturma
@@ -128,7 +128,7 @@ Artık derlemeye hazırsınız. Komut istemine aşağıdaki komutu yazın ve **E
 javac HelloWorldApp.java
 ```
 
-Derleyici `HelloWorldApp.class` adında bir bayt kodu dosyası oluşturmuştur. Oluşturulan yeni dosyayı görmek için komut istemine `dir` yazın:
+Derleyici `HelloWorldApp.class` adında bir byte kodu dosyası oluşturmuştur. Oluşturulan yeni dosyayı görmek için komut istemine `dir` yazın:
 
 ```cmd
 C:\myapplication>javac HelloWorldApp.java

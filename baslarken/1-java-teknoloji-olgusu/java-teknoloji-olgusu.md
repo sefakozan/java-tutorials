@@ -19,15 +19,15 @@ Java programlama dili, aşağıdaki moda kelimelerin tümüyle karakterize edile
 - **Dağıtık:** Java, RMI ve EJB gibi teknolojilerle ağ üzerinden farklı sistemler arasında veri ve uygulama paylaşımını kolaylaştırır.
 - **Çok iş parçacıklı:** Java, birden fazla iş parçacığının (thread) aynı anda çalışmasını destekleyerek paralel işlem yapmayı sağlar.
 - **Dinamik:** Java, çalışma zamanında sınıfları yükleme ve bağlama yeteneği ile dinamik olarak yeni işlevler eklenmesine olanak tanır.
-- **Mimari nötr:** Java, bayt koduna derlenen programların herhangi bir donanım veya işletim sisteminde çalışmasını sağlayan JVM (Java Sanal Makinesi) kullanır.
+- **Mimari nötr:** Java, byte koduna derlenen programların herhangi bir donanım veya işletim sisteminde çalışmasını sağlayan JVM (Java Sanal Makinesi) kullanır.
 - **Taşınabilir:** Java’nın “bir kere yaz, her yerde çalıştır” felsefesi, kodun farklı platformlarda değişiklik gerektirmeden çalışmasını sağlar.
-- **Yüksek performans:** Java, JIT (Just-In-Time) derleyicisi sayesinde bayt kodunu makine diline çevirerek yüksek çalışma hızı sunar.
+- **Yüksek performans:** Java, JIT (Just-In-Time) derleyicisi sayesinde byte kodunu makine diline çevirerek yüksek çalışma hızı sunar.
 - **Sağlam:** Java, otomatik bellek yönetimi (çöp toplayıcı) ve istisna işleme mekanizmalarıyla hata olasılığını azaltır ve güvenilir programlar geliştirilmesini sağlar.
 - **Güvenli:** Java, sandbox modeli ve güvenlik yöneticisi gibi özelliklerle zararlı kodların sistem kaynaklarına erişimini kısıtlayarak güvenliği artırır.
 
 Yukarıdaki moda kelimelerin her biri, James Gosling ve Henry McGilton tarafından yazılmış bir beyaz kağıt olan **Java Dil Ortamı’nda** açıklanmıştır.
 
-Java programlama dilinde, tüm kaynak kodu önce **.java** uzantılı düz metin dosyalarına yazılır. Bu kaynak dosyalar daha sonra **javac** derleyicisi tarafından **.class** dosyalarına derlenir. Bir **.class** dosyası, işlemcinize özgü kodu içermez; bunun yerine Java Sanal Makinesi (Java VM) makine dili olan **bayt kodlarını (bytecode)** içerir. Java başlatıcı aracı daha sonra uygulamanızı Java Sanal Makinesi’nin bir örneğiyle çalıştırır.
+Java programlama dilinde, tüm kaynak kodu önce **.java** uzantılı düz metin dosyalarına yazılır. Bu kaynak dosyalar daha sonra **javac** derleyicisi tarafından **.class** dosyalarına derlenir. Bir **.class** dosyası, işlemcinize özgü kodu içermez; bunun yerine Java Sanal Makinesi (Java VM) makine dili olan **byte kodlarını (bytecode)** içerir. Java başlatıcı aracı daha sonra uygulamanızı Java Sanal Makinesi’nin bir örneğiyle çalıştırır.
 
 <figure style="text-align: center;">
   <img src="_media/figures/getStarted-compiler.gif" alt="Yazılım Geliştirme Süreci" style="max-width: 100%; height: auto;">
@@ -77,5 +77,5 @@ Java programlama dilini öğrenirseniz size şöhret, servet veya hatta iş gara
 - **Daha İyi Kod Yazma:** Java programlama dili iyi kodlama uygulamalarını teşvik eder ve otomatik çöp toplama bellek sızıntılarını önlemenize yardımcı olur. Nesne yönelimi, JavaBeans™ bileşen mimarisi ve geniş kapsamlı, kolayca genişletilebilen API'si sayesinde mevcut test edilmiş kodu tekrar kullanmanızı ve daha az hata eklemenizi sağlar.
 - **Programları Daha Hızlı Geliştirin:** Java programlama dili C++'dan daha basittir ve bu nedenle geliştirme süreniz onunla yazarken iki katına kadar hızlı olabilir. Programlarınız ayrıca daha az kod satırı gerektirir.
 - **Platform Bağımlılıklarından Kaçının:** Programınızı başka dillerde yazılmış kütüphanelerden kaçınarak taşınabilir tutabilirsiniz.
-- **Bir Kez Yaz, Her Yerde Çalıştır:** Java programlama dilinde yazılmış uygulamalar makineden bağımsız bayt kodlarına derlendiği için, herhangi bir Java platformunda tutarlı şekilde çalışırlar.
+- **Bir Kez Yaz, Her Yerde Çalıştır:** Java programlama dilinde yazılmış uygulamalar makineden bağımsız byte kodlarına derlendiği için, herhangi bir Java platformunda tutarlı şekilde çalışırlar.
 - **Yazılımı Daha Kolay Dağıtın:** Java Web Start yazılımı ile kullanıcılar uygulamalarınızı tek bir tıklamayla başlatabilecekler. Otomatik sürüm kontrolü, kullanıcıların yazılımınızın en güncel sürümüyle her zaman güncel olmasını sağlar. Bir güncelleme varsa, Java Web Start yazılımı kurulumunu otomatik olarak günceller.

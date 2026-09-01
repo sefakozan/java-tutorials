@@ -20,6 +20,3 @@ Basit bir "Hello World!" uygulaması oluşturmak, derlemek ve çalıştırmak i�
 
 ### 4. [Yaygın Sorunlar (ve Çözümleri)](baslarken/4-yaygin-sorunlar/yaygin-sorunlar.md)
 Bu kılavuzdaki programları derlerken veya çalıştırırken karşılaşabileceğiniz derleyici ve çalışma zamanı hataları ile çözümleri.
-
-### 5. [Sorular ve Alıştırmalar](baslarken/5-sorular-ve-alistirmalar/sorular-ve-alistirmalar.md)
-Öğrendiklerinizi pekiştirmek için sorular ve alıştırmalar.

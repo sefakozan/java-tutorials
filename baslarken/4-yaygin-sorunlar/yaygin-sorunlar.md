@@ -17,11 +17,11 @@ Bu kılavuzdaki programları derlerken veya çalıştırırken bir sorunla karş
 
 ## Microsoft Windows Sistemlerindeki Yaygın Hata Mesajları
 
-### `'javac' is not recognized as an internal or external command, operable program or batch file`
+### ! `'javac' is not recognized as an internal or external command, operable program or batch file`
 
-Bu hatayı alıyorsanız, Windows derleyiciyi (`javac`) nerede bulacağını bilmiyordur.
+Bu hatayı alıyorsanız; Windows, derleyiciyi (`javac`) nerede bulacağını bilmiyordur.
 
-Windows'a `javac`'ın nerede olduğunu bildirmenin bir yolu şudur: JDK'yı `C:\jdk1.8.0` dizinine kurduğunuzu varsayalım. Komut satırında şu komutu yazıp Enter'a basabilirsiniz:
+Windows'a `javac`'ın nerede olduğunu bildirmenin bir yolu şudur: JDK'yı `C:\jdk1.8.0` dizinine kurduğunuzu varsayalım. Komut satırında şu komutu yazıp Enter'a basabilirsiniz: 
 
 ```cmd
 C:\jdk1.8.0\bin\javac HelloWorldApp.java
@@ -31,7 +31,7 @@ Bu seçeneği tercih ederseniz, bir programı her derlediğinizde veya çalışt
 
 ---
 
-### `Class names, 'HelloWorldApp', are only accepted if annotation processing is explicitly requested`
+### ! `Class names, 'HelloWorldApp', are only accepted if annotation processing is explicitly requested`
 
 Bu hatayı alıyorsanız, programı derlerken `.java` uzantısını eklemeyi unutmuşsunuzdur. Komutun `javac HelloWorldApp` değil, `javac HelloWorldApp.java` olduğunu unutmayın.
 
@@ -39,7 +39,7 @@ Bu hatayı alıyorsanız, programı derlerken `.java` uzantısını eklemeyi unu
 
 ## UNIX Sistemlerindeki Yaygın Hata Mesajları
 
-### `javac: Command not found`
+### ! `javac: Command not found`
 
 Bu hatayı alıyorsanız, UNIX derleyiciyi (`javac`) bulamıyordur.
 
@@ -53,7 +53,7 @@ UNIX'e `javac`'ın yerini göstermenin bir yolu şudur: JDK'yı `/usr/local/jdk1
 
 ---
 
-### `Class names, 'HelloWorldApp', are only accepted if annotation processing is explicitly requested`
+### ! `Class names, 'HelloWorldApp', are only accepted if annotation processing is explicitly requested`
 
 Bu hatayı alıyorsanız, programı derlerken `.java` uzantısını eklemeyi unuttunuz demektir. Komutun `javac HelloWorldApp` değil, `javac HelloWorldApp.java` olduğunu unutmayın.
 
@@ -76,7 +76,7 @@ Herhangi bir derleyici hatası görürseniz programınız başarıyla derlenmemi
 
 ## Anlamsal (Semantic) Hatalar
 
-Derleyici, programınızın sözdizimsel olarak doğru olduğunu doğrulamanın yanı sıra diğer temel doğruluk kurallarını da kontrol eder. Örneğin, başlatılmamış (initialize edilmemiş) bir değişkeni her kullandığınızda derleyici sizi uyarır:
+Derleyici, programınızın sözdizimsel olarak doğru olduğunu doğrulamanın yanı sıra diğer temel doğruluk kurallarını da kontrol eder. Örneğin, başlangıç değeri atanmamış (initialize edilmemiş) bir değişkeni her kullandığınızda derleyici sizi uyarır:
 
 ```cmd
 Testing.java:8: error: variable count might not have been initialized
@@ -96,11 +96,11 @@ Yine programınız başarıyla derlenmemiştir ve derleyici bir `.class` dosyas�
 
 ## Microsoft Windows Sistemlerindeki Çalışma Zamanı Hataları
 
-### `Exception in thread "main" java.lang.NoClassDefFoundError: HelloWorldApp`
+### ! `Exception in thread "main" java.lang.NoClassDefFoundError: HelloWorldApp`
 
-Bu hatayı alıyorsanız, `java` bayt kodu dosyanızı (`HelloWorldApp.class`) bulamıyordur.
+Bu hatayı alıyorsanız, Java Sanal Makinesi (JVM) `byte kodu` dosyanızı (`HelloWorldApp.class`) bulamıyordur.
 
-`java`'nın `.class` dosyanızı bulmaya çalıştığı yerlerden biri geçerli çalışma dizininizdir. Dolayısıyla `.class` dosyanız `C:\java` dizinindeyse geçerli dizininizi buna değiştirmelisiniz:
+Java'nın `.class` dosyanızı bulmaya çalıştığı yerlerden biri mevcut dizininizdir. Yani `.class` dosyanız `C:\java` içindeyse, mevcut dizininizi o dizine çevirmelisiniz. Dizininizi değiştirmek için `cd` komutunu yazın ve Enter tuşuna basın:
 
 ```cmd
 cd C:\java
@@ -114,35 +114,35 @@ Hala sorun yaşıyorsanız `CLASSPATH` değişkeninizi temizlemeniz gerekebilir.
 set CLASSPATH=
 ```
 
-Ardından tekrar `java HelloWorldApp` komutunu çalıştırın. Program bu şekilde çalışırsa `CLASSPATH` değişkeninizi güncellemeniz gerekecektir.
+Şimdi tekrar `java HelloWorldApp` komutunu çalıştırın. Program bu şekilde çalışıyorsa, `CLASSPATH` değişkeninizi değiştirmeniz gerekecek. Bu değişkeni ayarlamak için JDK 8 kurulum talimatlarındaki [PATH Değişkenini Güncelleme](https://docs.oracle.com/javase/8/docs/technotes/guides/install/windows_jdk_install.html) bölümüne bakabilirsiniz. `CLASSPATH` değişkeni de aynı şekilde ayarlanır.
 
 ---
 
-### `Could not find or load main class HelloWorldApp.class`
+### ! `Could not find or load main class HelloWorldApp.class`
 
-Yeni başlayan programcıların sık yaptığı bir hata, `java` başlatıcısını derleyici tarafından oluşturulan `.class` uzantılı dosya adı üzerinde çalıştırmaya çalışmaktır. Örneğin `java HelloWorldApp` yerine `java HelloWorldApp.class` yazarsanız bu hatayı alırsınız. Unutmayın, komut satırındaki argüman dosya adı değil, kullanmak istediğiniz **sınıfın adıdır**.
+Yeni başlayan programcıların sık yaptığı bir hata, `java` başlatıcısını derleyici tarafından oluşturulan `.class` uzantılı dosya adı üzerinde çalıştırmaya çalışmaktır. Örneğin `java HelloWorldApp` yerine `java HelloWorldApp.class` yazarsanız bu hatayı alırsınız. Unutmayın komut satırındaki argüman, dosya adı değil; kullanmak istediğiniz **sınıfın adıdır**.
 
 ---
 
-### `Exception in thread "main" java.lang.NoSuchMethodError: main`
+### ! `Exception in thread "main" java.lang.NoSuchMethodError: main`
 
-Java Sanal Makinesi, kendisiyle çalıştırdığınız sınıfın uygulamanın yürütülmesine başlayabileceği bir `main` metoduna sahip olmasını şart koşar. [HelloWorld Uygulamasına Yakından Bir Bakış](baslarken/3-helloworld-yakindan-bakis/hello-world-yakindan-bakis.md) konusu `main` metodunu ayrıntılı olarak ele almaktadır.
+Java Sanal Makinesi, kendisiyle çalıştırdığınız sınıfın uygulamanın yürütülmesine başlayabileceği bir `main` metoduna sahip olmasını şart koşar. ["HelloWorld!" Uygulamasına Yakından Bir Bakış](baslarken/3-helloworld-yakindan-bakis/hello-world-yakindan-bakis.md) konusu `main` metodunu ayrıntılı olarak ele almaktadır.
 
 ---
 
 ## UNIX Sistemlerindeki Çalışma Zamanı Hataları
 
-### `Exception in thread "main" java.lang.NoClassDefFoundError: HelloWorldApp`
+### ! `Exception in thread "main" java.lang.NoClassDefFoundError: HelloWorldApp`
 
-Bu hatayı alıyorsanız, `java` bayt kodu dosyanızı (`HelloWorldApp.class`) bulamıyordur.
+Bu hatayı alıyorsanız, Java Sanal Makinesi (JVM) `byte kodu` dosyanızı (`HelloWorldApp.class`) bulamıyordur.
 
-`java`'nın bayt kodu dosyanızı aradığı yerlerden biri geçerli dizininizdir. Örneğin bayt kodu dosyanız `/home/jdoe/java` dizinindeyse geçerli dizininizi buna değiştirmelisiniz:
+Java'nın bayt kod dosyanızı bulmaya çalıştığı yerlerden biri mevcut dizininizdir. Örneğin, bayt kodu dosyanız `/home/jdoe/java` içindeyse, mevcut dizininizi o dizine değiştirmelisiniz. Dizininizi değiştirmek için aşağıdaki komutu yazın ve Enter tuşuna basın:
 
 ```bash
 cd /home/jdoe/java
 ```
 
-`pwd` yazdığınızda `/home/jdoe/java` görmelisiniz. `ls` yazdığınızda `.java` ve `.class` dosyalarınızı görmelisiniz. Şimdi tekrar `java HelloWorldApp` komutunu girin.
+Eğer `pwd` komutunu yazarsanız `/home/jdoe/java` çıktısını görmelisiniz. Eğer `ls` komutunu yazarsanız `.java` ve `.class` dosyalarınızı görmelisiniz. Şimdi tekrar `java HelloWorldApp` komutunu yazın.
 
 Sorun devam ediyorsa `CLASSPATH` ortam değişkenini temizlemeyi deneyebilirsiniz:
 
@@ -150,19 +150,19 @@ Sorun devam ediyorsa `CLASSPATH` ortam değişkenini temizlemeyi deneyebilirsini
 unset CLASSPATH
 ```
 
-Ardından tekrar `java HelloWorldApp` çalıştırın.
+Şimdi tekrar `java HelloWorldApp` komutunu yazın. Program şimdi çalışıyorsa, yukarıdaki `PATH` değişkeniyle aynı şekilde `CLASSPATH` değişkeninizi değiştirmeniz gerekecek.
 
 ---
 
-### `Exception in thread "main" java.lang.NoClassDefFoundError: HelloWorldApp/class`
+### ! `Exception in thread "main" java.lang.NoClassDefFoundError: HelloWorldApp/class`
 
-Programcıların sık yaptığı bir hata, başlatıcıya `.class` uzantısını vermektir. Örneğin `java HelloWorldApp` yerine `java HelloWorldApp.class` çalıştırmayı denerseniz bu hatayı alırsınız. Unutmayın, argüman dosya adı değil, **sınıfın adıdır**.
+Yeni başlayan programcıların sık yaptığı bir hata, java başlatıcısını derleyici tarafından oluşturulan `.class` uzantılı dosya adı üzerinde çalıştırmaya çalışmaktır. Örneğin `java HelloWorldApp` yerine `java HelloWorldApp.class` yazarsanız bu hatayı alırsınız. Unutmayın komut satırındaki argüman, dosya adı değil; kullanmak istediğiniz **sınıfın adıdır**.
 
 ---
 
-### `Exception in thread "main" java.lang.NoSuchMethodError: main`
+### ! `Exception in thread "main" java.lang.NoSuchMethodError: main`
 
-Java Sanal Makinesi, çalıştırılacak sınıfta uygulamanın başlatılabilmesi için bir `main` metodunun bulunmasını zorunlu kılar.
+Java Sanal Makinesi, kendisiyle çalıştırdığınız sınıfın uygulamanın yürütülmesine başlayabileceği bir `main` metoduna sahip olmasını şart koşar. ["HelloWorld!" Uygulamasına Yakından Bir Bakış](baslarken/3-helloworld-yakindan-bakis/hello-world-yakindan-bakis.md) konusu `main` metodunu ayrıntılı olarak ele almaktadır.
 
 ---
 
@@ -170,6 +170,6 @@ Java Sanal Makinesi, çalıştırılacak sınıfta uygulamanın başlatılabilme
 
 Bir uygulamayı tarayıcı üzerinden çalıştırırken uygulamanın engellendiğini belirten güvenlik uyarıları alırsanız şu maddeleri kontrol edin:
 
-- JAR dosyası manifest dosyasındaki özniteliklerin uygulamanın çalıştığı ortam için doğru ayarlandığını doğrulayın (`Permissions` özniteliği zorunludur).
-- Uygulamanın geçerli bir sertifika ile imzalandığından ve sertifikanın İmzalayan CA anahtar deposunda yer aldığından emin olun.
-- Yerel bir applet çalıştırıyorsanız test amacıyla bir web sunucusu kurun veya uygulamanızı Java Denetim Masası'nın (Java Control Panel) Güvenlik sekmesinde yönetilen istisna site listesine (*exception site list*) ekleyin.
+- JAR dosya manifestosundaki niteliklerin uygulamanın çalıştığı ortam için doğru ayarlandığından emin olun. Permissions özniteliği gereklidir. Bir NetBeans projesinde, manifest dosyasını NetBeans IDE'nin Dosyalar sekmesinden proje klasörünü genişletip manifest.mf üzerine çift tıklayarak açabilirsiniz.
+- Uygulamanın geçerli bir sertifika ile imzalandığından ve sertifikanın Signer CA anahtar deposunda yer aldığından emin olun.
+- Yerel bir applet çalıştırıyorsanız, test için kullanmak üzere bir web sunucusu kurun. Ayrıca, uygulamanızı Java Kontrol Paneli’nin Güvenlik sekmesinde yönetilen istisna sitesi listesine (exception site list) ekleyebilirsiniz.

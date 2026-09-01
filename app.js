@@ -344,6 +344,94 @@
     }
   });
 
+  // Sayfa içi Markdown anchor bağlantılarına (#anchor veya ?id=...) tıklandığında rotayı bozmadan ilgili başlığa pürüzsüz kaydır
+  document.addEventListener('click', function (e) {
+    var anchor = e.target.closest('a');
+    if (!anchor) return;
+
+    var href = anchor.getAttribute('href') || '';
+    if (!href || href.startsWith('javascript:')) return;
+    if (href.startsWith('http://') || href.startsWith('https://') || href.startsWith('mailto:')) return;
+
+    var currentFullHash = window.location.hash || '#/';
+    var currentPath = currentFullHash.split('?')[0].replace(/\/$/, '');
+
+    var isCurrentPageLink = false;
+    var targetId = '';
+
+    if (href.startsWith('?id=')) {
+      isCurrentPageLink = true;
+      targetId = decodeURIComponent(href.replace('?id=', ''));
+    } else if (href.startsWith('#') && !href.startsWith('#/')) {
+      isCurrentPageLink = true;
+      targetId = decodeURIComponent(href.substring(1));
+    } else if (href.startsWith('#/')) {
+      var linkPath = href.split('?')[0].replace(/\/$/, '');
+      if (linkPath === currentPath && href.indexOf('?id=') !== -1) {
+        isCurrentPageLink = true;
+        targetId = decodeURIComponent(href.substring(href.indexOf('?id=') + 4));
+      } else {
+        var cleanHref = href.replace(/^#\/?/, '').split('?')[0];
+        var candidate = document.getElementById(cleanHref) ||
+          document.getElementById('_' + cleanHref) ||
+          document.querySelector('.markdown-section [data-id="' + CSS.escape(cleanHref) + '"]') ||
+          document.querySelector('.markdown-section [data-id="_' + CSS.escape(cleanHref) + '"]');
+
+        if (candidate) {
+          isCurrentPageLink = true;
+          targetId = cleanHref;
+        }
+      }
+    }
+
+    if (!isCurrentPageLink || !targetId) return;
+
+    targetId = targetId.split('&')[0];
+    var cleanId = targetId.replace(/^_+/, '');
+
+    var targetEl = document.getElementById(targetId) ||
+      document.getElementById('_' + targetId) ||
+      document.getElementById(cleanId) ||
+      document.getElementById('_' + cleanId) ||
+      document.querySelector('.markdown-section [data-id="' + CSS.escape(targetId) + '"]') ||
+      document.querySelector('.markdown-section [data-id="_' + CSS.escape(targetId) + '"]') ||
+      document.querySelector('.markdown-section [data-id="' + CSS.escape(cleanId) + '"]') ||
+      document.querySelector('.markdown-section [data-id="_' + CSS.escape(cleanId) + '"]') ||
+      document.querySelector('.markdown-section [id*="' + CSS.escape(cleanId) + '"]');
+
+    if (!targetEl) {
+      var headings = document.querySelectorAll('.markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6');
+      var anchorTextNorm = (anchor.textContent || '').trim().toLowerCase().replace(/[^a-z0-9çğıöşü]+/gi, ' ');
+      var targetIdNorm = cleanId.toLowerCase().replace(/[^a-z0-9çğıöşü]+/gi, ' ');
+
+      headings.forEach(function (h) {
+        if (targetEl) return;
+        var hTextNorm = h.textContent.trim().toLowerCase().replace(/[^a-z0-9çğıöşü]+/gi, ' ');
+        if (
+          (anchorTextNorm && hTextNorm.indexOf(anchorTextNorm) !== -1) ||
+          (targetIdNorm && hTextNorm.indexOf(targetIdNorm) !== -1) ||
+          (anchorTextNorm && anchorTextNorm.indexOf(hTextNorm) !== -1)
+        ) {
+          targetEl = h;
+        }
+      });
+    }
+
+    if (targetEl) {
+      e.preventDefault();
+      e.stopPropagation();
+      e.stopImmediatePropagation();
+
+      var rect = targetEl.getBoundingClientRect();
+      var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      var targetY = rect.top + scrollTop - 40;
+      window.scrollTo({ top: Math.max(0, targetY), behavior: 'smooth' });
+
+      var resolvedId = targetEl.getAttribute('id') || (targetEl.querySelector('.anchor') ? targetEl.querySelector('.anchor').getAttribute('data-id') : '') || cleanId;
+      history.pushState(null, '', currentPath + '?id=' + encodeURIComponent(resolvedId));
+    }
+  }, true);
+
   window.$docsify = {
     name: '<img src="_media/java-icon.svg" alt="Java Logosu" style="height: 52px; vertical-align: middle; margin-bottom: 8px;"><br><span style="font-family: \'Iowan Old Style\', \'Palatino Linotype\', \'Book Antiqua\', Georgia, serif; font-size: 1.25rem; font-weight: 700; color: #000000; display: block; line-height: 1.15;">The Java™ Tutorials</span><span style="font-family: \'Iowan Old Style\', \'Palatino Linotype\', \'Book Antiqua\', Georgia, serif; font-size: 0.84rem; font-weight: 600; color: #64748b; display: block; margin-top: 1px; line-height: 1.1; letter-spacing: 0.02em;">T<span style="display:inline-block; margin-left: 0.06em;">ü</span>rkçe</span>',
     nameLink: '#/',
@@ -403,7 +491,7 @@
           };
         });
 
-        // Sayfanın sağ üstüne GitHub düzenleme bağlantısı ekler
+        // Sayfanın sağ üstüne GitHub düzenleme bağlantısı ekler ve #! başlıklarını işler
         hook.beforeEach(function (html) {
           var file = vm.route.file || 'home.md';
           var editUrl = 'https://github.com/sefakozan/java-tutorials/edit/main/' + file;
@@ -417,7 +505,16 @@
             '</a>' +
             '</div>\n\n';
 
-          return editHeader + html;
+          // Başlık başındaki sıra numaralarını siyah tutup sağında ferah bir boşluk bırak
+          var transformedHtml = html
+            .replace(/^(#{1,6})\s*(?:&nbsp;)*\s*\[(\d+\.)\s*(.*?)\]\((.*?)\)/gm, '$1 <span class="heading-num">$2</span> [$3]($4)')
+            .replace(/^(#{1,6})\s*(?:&nbsp;)*\s*(\d+\.)\s*\[(.*?)\]\((.*?)\)/gm, '$1 <span class="heading-num">$2</span> [$3]($4)')
+            .replace(/^(#{1,6})\s*!\s*(.+)$/gm, function (match, hashes, rest) {
+              var processedRest = rest.replace(/`([^`]+)`/g, '<code class="error-code">$1</code>');
+              return hashes + ' ' + processedRest;
+            });
+
+          return editHeader + transformedHtml;
         });
 
         function formatPaginationTitles() {
@@ -446,27 +543,39 @@
         }
 
         function initGithubCorner() {
-          var corner = document.querySelector('.github-corner');
-          if (!corner) return;
-          if (!corner.dataset.modernized) {
-            corner.dataset.modernized = 'true';
-            corner.setAttribute('title', 'GitHub Reposunu Görüntüle ve Yıldızla');
-            corner.setAttribute('aria-label', 'GitHub Reposunu Görüntüle ve Yıldızla');
-            corner.setAttribute('target', '_blank');
-            corner.setAttribute('rel', 'noopener noreferrer');
-            corner.innerHTML =
-              '<svg class="github-corner-svg" width="28" height="28" viewBox="0 0 16 16" fill="currentColor">' +
-              '<path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>' +
-              '</svg>' +
-              '<div class="github-corner-text-wrap">' +
-              '<span class="github-corner-label">GitHub</span>' +
-              '<span class="github-corner-sub">' +
-              '<svg class="star-icon" width="12" height="12" viewBox="0 0 16 16" fill="currentColor">' +
-              '<path d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.75.75 0 0 1-1.088.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25z"></path>' +
-              '</svg>' +
-              '<span>Star</span>' +
-              '</span>' +
-              '</div>';
+          function applyModernCorner() {
+            var corner = document.querySelector('.github-corner');
+            if (!corner) return false;
+            if (corner.dataset.modernized !== 'true') {
+              corner.dataset.modernized = 'true';
+              corner.setAttribute('title', 'GitHub Reposunu Görüntüle ve Yıldızla');
+              corner.setAttribute('aria-label', 'GitHub Reposunu Görüntüle ve Yıldızla');
+              corner.setAttribute('target', '_blank');
+              corner.setAttribute('rel', 'noopener noreferrer');
+              corner.innerHTML =
+                '<svg class="github-corner-svg" width="28" height="28" viewBox="0 0 16 16" fill="currentColor">' +
+                '<path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>' +
+                '</svg>' +
+                '<div class="github-corner-text-wrap">' +
+                '<span class="github-corner-label">GitHub</span>' +
+                '<span class="github-corner-sub">' +
+                '<svg class="star-icon" width="12" height="12" viewBox="0 0 16 16" fill="currentColor">' +
+                '<path d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.75.75 0 0 1-1.088.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25z"></path>' +
+                '</svg>' +
+                '<span>Star</span>' +
+                '</span>' +
+                '</div>';
+            }
+            return true;
+          }
+
+          if (!applyModernCorner()) {
+            var checkInterval = setInterval(function () {
+              if (applyModernCorner()) {
+                clearInterval(checkInterval);
+              }
+            }, 50);
+            setTimeout(function () { clearInterval(checkInterval); }, 4000);
           }
         }
 
@@ -486,6 +595,49 @@
           initGithubCorner();
         });
       }
-    ]
+    ],
+
+    // --- Kod Bloklarında Kalın Yazı Desteği (<b> veya ** ile) ---
+    markdown: {
+      renderer: {
+        code: function (code, lang) {
+          lang = (lang || 'markup').match(/\S*/)[0];
+          var prismLang = (typeof Prism !== 'undefined' && Prism.languages && (Prism.languages[lang] || Prism.languages.markup)) || null;
+          var cleanCode = code.replace(/@DOCSIFY_QM@/g, '`');
+
+          var boldPlaceholders = [];
+          var processedCode = cleanCode
+            .replace(/<b>([\s\S]*?)<\/b>/gi, function (match, inner) {
+              var id = 'ZZBOLD' + boldPlaceholders.length + 'ZZ';
+              boldPlaceholders.push({ id: id, inner: inner });
+              return id;
+            })
+            .replace(/<strong>([\s\S]*?)<\/strong>/gi, function (match, inner) {
+              var id = 'ZZBOLD' + boldPlaceholders.length + 'ZZ';
+              boldPlaceholders.push({ id: id, inner: inner });
+              return id;
+            })
+            .replace(/\*\*([^\*\n]+?)\*\*/g, function (match, inner) {
+              var id = 'ZZBOLD' + boldPlaceholders.length + 'ZZ';
+              boldPlaceholders.push({ id: id, inner: inner });
+              return id;
+            });
+
+          var highlighted = prismLang ? Prism.highlight(processedCode, prismLang, lang) : processedCode;
+
+          if (boldPlaceholders.length > 0) {
+            boldPlaceholders.forEach(function (item) {
+              var innerHighlight = prismLang ? Prism.highlight(item.inner, prismLang, lang) : item.inner;
+              highlighted = highlighted.replace(
+                new RegExp(item.id, 'g'),
+                '<strong class="code-bold">' + innerHighlight + '</strong>'
+              );
+            });
+          }
+
+          return '<pre v-pre data-lang="' + lang + '"><code class="lang-' + lang + '">' + highlighted + '</code></pre>';
+        }
+      }
+    }
   };
 })();

@@ -33,7 +33,7 @@ Bir IDE projesi oluşturduğunuzda, uygulamalarınızı derleyip çalıştırabi
 Bir kaynak dosyası, sizin ve diğer programcıların anlayabileceği, Java programlama dilinde yazılmış kod içerir. Bir IDE projesi oluşturma sürecinin bir parçası olarak, bir kaynak dosyası şablonu otomatik olarak oluşturulacaktır. Ardından, “Hello World!” mesajını eklemek için bu kaynak dosyasını düzenleyeceksiniz.
 
 - <b>Kaynak dosyasını bir .class dosyasına derleyin</b>  
-IDE, Java programlama dili derleyicisini (javac) çalıştırır; bu derleyici, kaynak dosyanızı alır ve içindeki metni Java sanal makinesinin anlayabileceği komutlara dönüştürür. Bu dosyada yer alan komutlara bayt kodu denir.
+IDE, Java programlama dili derleyicisini (javac) çalıştırır; bu derleyici, kaynak dosyanızı alır ve içindeki metni Java sanal makinesinin anlayabileceği komutlara dönüştürür. Bu dosyada yer alan komutlara byte kodu denir.
 
 - <b>Programı çalıştırın</b>  
 IDE, uygulamanızı çalıştırmak için Java sanal makinesini kullanan Java uygulama başlatıcı aracını (java) çalıştırır.
@@ -185,7 +185,7 @@ IDE'nin alt kısmında **Output** (Çıktı) penceresi açılır:
 - Derleme çıktısı **BUILD SUCCESSFUL** ifadesiyle tamamlanıyorsa tebrikler! Programınızı başarıyla derlediniz.
 - Derleme çıktısı **BUILD FAILED** ifadesiyle tamamlanıyorsa kodunuzda bir sözdizimi hatası vardır. Hatalar Output penceresinde köprü (hyperlink) olarak raporlanır. Hatanın kaynağına gitmek için bu köprüye çift tıklayabilir, hatayı düzelttikten sonra tekrar **Run > Build Project** seçeneğini çalıştırabilirsiniz.
 
-Projeyi derlediğinizde `HelloWorldApp.class` bayt kod dosyası üretilir. Üretilen dosyayı **Files** penceresini açıp `HelloWorldApp/build/classes/helloworldapp` düğümünü genişleterek görebilirsiniz.
+Projeyi derlediğinizde `HelloWorldApp.class` byte kod dosyası üretilir. Üretilen dosyayı **Files** penceresini açıp `HelloWorldApp/build/classes/helloworldapp` düğümünü genişleterek görebilirsiniz.
 
 ---
 

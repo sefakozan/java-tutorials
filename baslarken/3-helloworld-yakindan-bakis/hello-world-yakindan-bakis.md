@@ -10,14 +10,9 @@ class HelloWorldApp {
 }
 ```
 
-"Hello World!" uygulaması üç temel bileşenden oluşur: [kaynak kod yorumları (comments)](#1-kaynak-kod-yorumları-source-code-comments), [`HelloWorldApp` sınıf tanımı](#2-helloworldapp-sınıf-tanımı) ve [`main` metodu](#3-main-metodu). Aşağıdaki açıklamalar koda dair temel bir anlayış kazanmanızı sağlayacaktır; ancak daha derin ayrıntılar öğreticinin geri kalanını okudukça netleşecektir.
+"Hello World!" uygulaması üç temel bileşenden oluşur: [kaynak kod yorumları](#1-kaynak-kod-yorumları), [`HelloWorldApp` sınıf tanımı](#2-helloworldapp-sınıf-tanımı) ve [`main` metodu](#3-main-metodu). Aşağıdaki açıklamalar koda dair temel bir anlayış kazanmanızı sağlayacaktır; ancak daha derin ayrıntılar öğreticinin geri kalanını okudukça netleşecektir.
 
-1. [**Kaynak Kod Yorumları (Source Code Comments)**](#1-kaynak-kod-yorumları-source-code-comments)
-2. [**HelloWorldApp Sınıf Tanımı**](#2-helloworldapp-sınıf-tanımı)
-3. [**main Metodu**](#3-main-metodu)
----
-
-# 1. Kaynak Kod Yorumları
+## 1. Kaynak Kod Yorumları
 
 Aşağıdaki kalın gösterilen metinler, "Hello World!" uygulamasının **yorumlarını (comments)** tanımlar:
 
@@ -44,7 +39,7 @@ Yorumlar derleyici tarafından tamamen göz ardı edilir, ancak diğer programc�
 
 ---
 
-# 2. HelloWorldApp Sınıf Tanımı
+## 2. HelloWorldApp Sınıf Tanımı
 
 Aşağıdaki kalın gösterilen satırlar "Hello World!" uygulaması için sınıf tanım bloğunu başlatır ve sonlandırır:
 
@@ -53,7 +48,7 @@ Aşağıdaki kalın gösterilen satırlar "Hello World!" uygulaması için sın�
  * HelloWorldApp sınıfı, standart çıktıya sadece 
  * "Hello World!" yazdıran bir uygulamayı hayata geçirir.
  */
-class HelloWorldApp {
+<b>class HelloWorldApp {</b>
     public static void main(String[] args) {
         System.out.println("Hello World!"); // Metni ekrana yazdırır.
     }
@@ -68,11 +63,11 @@ class isim {
 }
 ```
 
-`class` anahtar sözcüğü, `isim` adlı bir sınıf için sınıf tanımını başlatır ve her sınıfa ait kodlar yukarıda kalın olarak gösterilen açılış ve kapanış süslü parantezleri (`{ }`) arasında yer alır. Bölüm 2 genel olarak sınıflara genel bir bakış sunar ve Bölüm 4 sınıfları ayrıntılı olarak ele alır. Şimdilik her uygulamanın bir sınıf tanımıyla başladığını bilmeniz yeterlidir.
+`class` anahtar sözcüğü, `isim` adlı bir sınıf için sınıf tanımını başlatır ve her sınıfa ait kodlar yukarıda kalın olarak gösterilen süslü parantezleri (`{ }`, curly braces) arasında yer alır. Bölüm 2 genel olarak sınıflara genel bir bakış sunar ve Bölüm 4 sınıfları ayrıntılı olarak ele alır. Şimdilik her uygulamanın bir sınıf tanımıyla başladığını bilmeniz yeterlidir.
 
 ---
 
-# 3. main Metodu
+## 3. main Metodu
 
 Aşağıdaki kalın gösterilen satırlar `main` metodunun tanımını başlatır:
 
@@ -82,23 +77,23 @@ Aşağıdaki kalın gösterilen satırlar `main` metodunun tanımını başlatı
  * "Hello World!" yazdıran bir uygulamayı hayata geçirir.
  */
 class HelloWorldApp {
-    public static void main(String[] args) {
+    **public static void main(String[] args)** {
         System.out.println("Hello World!"); // Metni ekrana yazdırır.
     }
 }
 ```
 
-Java programlama dilinde her uygulama, imzası tam olarak aşağıdaki gibi olan bir `main` metodu içermek zorundadır:
+Java programlama dilinde her uygulama, imzası tam olarak aşağıdaki gibi olan bir ***main*** metodu içermek zorundadır:
 
 ```java
 public static void main(String[] args)
 ```
 
-`public` ve `static` değiştiricileri (modifiers) her iki sırada da yazılabilir (`public static` veya `static public`), ancak genel kabul görmüş kural yukarıda gösterildiği gibi `public static` kullanmaktır. Argümana istediğiniz adı verebilirsiniz, ancak çoğu programcı `args` veya `argv` adını tercih eder.
+***public*** ve ***static*** değiştiricileri (modifiers) her iki sırada da yazılabilir (***public static*** veya ***static public***), ancak genel kabul görmüş kural yukarıda gösterildiği gibi ***public static*** kullanmaktır. Argümana istediğiniz adı verebilirsiniz, ancak çoğu programcı ***args*** veya ***argv*** adını tercih eder.
 
-`main` metodu, C ve C++ dillerindeki `main` fonksiyonuna benzer; uygulamanızın **giriş noktasıdır (entry point)** ve sonrasında programınızın ihtiyaç duyduğu diğer tüm metotları çağırır.
+main metodu, C ve C++ dillerindeki main fonksiyonuna benzer; uygulamanızın **giriş noktasıdır (entry point)** ve sonrasında programınızın ihtiyaç duyduğu diğer tüm metotları çağırır.
 
-`main` metodu tek bir parametre kabul eder: `String` türündeki elemanlardan oluşan bir dizi (`array`).
+main metodu tek bir parametre kabul eder: **String** türündeki elemanlardan oluşan bir dizi (**array**).
 
 ```java
 public static void main(String[] args)
@@ -124,4 +119,4 @@ Son olarak:
 System.out.println("Hello World!");
 ```
 
-satırı, "Hello World!" mesajını standart çıktıya yazdırmak için çekirdek kütüphaneden `System` sınıfını kullanır. Bu kütüphanenin parçaları (aynı zamanda "Uygulama Programlama Arayüzü" veya "API" olarak da bilinir) öğreticinin geri kalanı boyunca ayrıntılı olarak tartışılacaktır.
+satırı, "Hello World!" mesajını standart çıktıya yazdırmak için çekirdek kütüphaneden **System** sınıfını kullanır. Bu kütüphanenin parçaları (aynı zamanda **"Uygulama Programlama Arayüzü, Application Programming Interface"** veya **API** olarak da bilinir) öğreticinin geri kalanı boyunca ayrıntılı olarak tartışılacaktır.
