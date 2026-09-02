@@ -6,8 +6,8 @@ Bu ders; sayısal sarmalayıcı sınıfları (wrapper classes), otomatik kutulam
 
 ## Bu Dersteki Konular
 
-### 1. [Sayılar ve Math Sınıfı (Numbers & Math)](java/5-sayilar-ve-metinler/sayilar.md)
+### 1. [Sayılar ve Math Sınıfı (Numbers & Math)](java/6-sayilar-ve-metinler/sayilar.md)
 Sayı sarmalayıcı sınıflarını (`Integer`, `Double` vb.), sayısal hiyerarşiyi, `Math` sınıfının temel ve trigonometrik fonksiyonlarını, rastgele sayı üretimini ve sayı biçimlendirmeyi ele alır.
 
-### 2. [Karakterler ve Metinler (Characters & Strings)](java/5-sayilar-ve-metinler/karakterler-ve-metinler.md)
+### 2. [Karakterler ve Metinler (Characters & Strings)](java/6-sayilar-ve-metinler/karakterler-ve-metinler.md)
 `Character` sınıfını, değişmez `String` nesnelerini, dize arama/kesme/birleştirme işlemlerini ve dinamik metin oluşturma aracı olan `StringBuilder` sınıfını inceler.
