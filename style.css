@@ -245,9 +245,11 @@ body.close .sidebar {
 }
 
 /* Arama kutusu */
-.sidebar .search {
+.sidebar .search,
+.search {
   margin-bottom: 18px;
   padding: 0 4px;
+  border-bottom: none !important;
 }
 
 .sidebar .search input {
@@ -659,19 +661,19 @@ body.close .content {
   cursor: text !important;
 }
 
-/* Başlıklar ve başlık anchor linklerinin imlecini ve alt çizgilerini sıfırla */
+/* Düz başlıklar ve Docsify dahili anchor linklerinin imlecini ve alt çizgilerini sıfırla */
 .markdown-section h1,
 .markdown-section h2,
 .markdown-section h3,
 .markdown-section h4,
 .markdown-section h5,
 .markdown-section h6,
-.markdown-section h1 a,
-.markdown-section h2 a,
-.markdown-section h3 a,
-.markdown-section h4 a,
-.markdown-section h5 a,
-.markdown-section h6 a,
+.markdown-section h1 a.anchor,
+.markdown-section h2 a.anchor,
+.markdown-section h3 a.anchor,
+.markdown-section h4 a.anchor,
+.markdown-section h5 a.anchor,
+.markdown-section h6 a.anchor,
 .markdown-section .anchor,
 .markdown-section a.anchor {
   cursor: text !important;
@@ -679,38 +681,68 @@ body.close .content {
   border-bottom: none !important;
 }
 
+/* Başlık içindeki gerçek bağlantılar (ders linkleri / TOC başlıkları) tıklanabilir el simgesi ve mavi renk alsın */
+.markdown-section h1 a:not(.anchor),
+.markdown-section h2 a:not(.anchor),
+.markdown-section h3 a:not(.anchor),
+.markdown-section h4 a:not(.anchor),
+.markdown-section h5 a:not(.anchor),
+.markdown-section h6 a:not(.anchor),
+.markdown-section h1 a:not(.anchor) *,
+.markdown-section h2 a:not(.anchor) *,
+.markdown-section h3 a:not(.anchor) *,
+.markdown-section h4 a:not(.anchor) *,
+.markdown-section h5 a:not(.anchor) *,
+.markdown-section h6 a:not(.anchor) *,
+.markdown-section a.toc-heading-link,
+.markdown-section a.toc-heading-link *,
+.markdown-section li.is-toc-item a,
+.markdown-section li.is-toc-item a * {
+  cursor: pointer !important;
+  color: #0066cc !important;
+}
+
+/* Başlık içindeki gerçek bağlantıların hover durumu */
+.markdown-section h1 a:not(.anchor):hover,
+.markdown-section h2 a:not(.anchor):hover,
+.markdown-section h3 a:not(.anchor):hover,
+.markdown-section h4 a:not(.anchor):hover,
+.markdown-section h5 a:not(.anchor):hover,
+.markdown-section h6 a:not(.anchor):hover,
+.markdown-section a.toc-heading-link:hover,
+.markdown-section li.is-toc-item a:hover {
+  cursor: pointer !important;
+  color: #0066cc !important;
+  text-decoration: underline !important;
+  text-decoration-color: #0066cc !important;
+}
+
 /* Başlık içindeki tek tırnak kodların boyutunu eski orantılı haline (0.88em) getir */
-.markdown-section h1 code,
-.markdown-section h2 code,
-.markdown-section h3 code,
-.markdown-section h4 code,
-.markdown-section h5 code,
-.markdown-section h6 code {
+.markdown-section h1 code:not(a *),
+.markdown-section h2 code:not(a *),
+.markdown-section h3 code:not(a *),
+.markdown-section h4 code:not(a *),
+.markdown-section h5 code:not(a *),
+.markdown-section h6 code:not(a *) {
   font-size: 0.88em !important;
   cursor: text !important;
   text-decoration: none !important;
   border-bottom: none !important;
 }
 
-/* Başlık hover durumlarında alt çizgiyi kesin olarak kaldır */
-.markdown-section h1 a:hover,
-.markdown-section h2 a:hover,
-.markdown-section h3 a:hover,
-.markdown-section h4 a:hover,
-.markdown-section h5 a:hover,
-.markdown-section h6 a:hover,
-.markdown-section h1:hover a,
-.markdown-section h2:hover a,
-.markdown-section h3:hover a,
-.markdown-section h4:hover a,
-.markdown-section h5:hover a,
-.markdown-section h6:hover a,
+/* Düz başlık hover durumlarında alt çizgiyi kesin olarak kaldır */
+.markdown-section h1 a.anchor:hover,
+.markdown-section h2 a.anchor:hover,
+.markdown-section h3 a.anchor:hover,
+.markdown-section h4 a.anchor:hover,
+.markdown-section h5 a.anchor:hover,
+.markdown-section h6 a.anchor:hover,
 .markdown-section .anchor:hover,
-.markdown-section a.anchor:hover,
-.markdown-section a:hover:has(code) {
+.markdown-section a.anchor:hover {
   text-decoration: none !important;
   border-bottom: none !important;
   box-shadow: none !important;
+  cursor: text !important;
 }
 
 /* Link içindeki inline kodların hover durumunda da şeffaflığı ve rengi sabit kalsın */
@@ -723,9 +755,15 @@ body.close .content {
 }
 
 /* Gerçek metin içi linklerin (köşeli parantezli [metin `kod`](link)) hover durumunda hem metnin hem kodun altı çizilsin */
-.markdown-section a:not(.anchor):not(h1 a):not(h2 a):not(h3 a):not(h4 a):not(h5 a):not(h6 a) :not(pre)>code,
-.markdown-section a:not(.anchor):not(h1 a):not(h2 a):not(h3 a):not(h4 a):not(h5 a):not(h6 a) code {
+.markdown-section a:not(.anchor):not(h1 a.anchor):not(h2 a.anchor):not(h3 a.anchor):not(h4 a.anchor):not(h5 a.anchor):not(h6 a.anchor) :not(pre)>code,
+.markdown-section a:not(.anchor):not(h1 a.anchor):not(h2 a.anchor):not(h3 a.anchor):not(h4 a.anchor):not(h5 a.anchor):not(h6 a.anchor) code {
   cursor: pointer !important;
+}
+
+.markdown-section a:not(.anchor):not(h1 a.anchor):not(h2 a.anchor):not(h3 a.anchor):not(h4 a.anchor):not(h5 a.anchor):not(h6 a.anchor):hover :not(pre)>code,
+.markdown-section a:not(.anchor):not(h1 a.anchor):not(h2 a.anchor):not(h3 a.anchor):not(h4 a.anchor):not(h5 a.anchor):not(h6 a.anchor):hover code {
+  text-decoration: underline !important;
+  text-decoration-color: #0066cc !important;
 }
 
 .markdown-section a:not(.anchor):not(h1 a):not(h2 a):not(h3 a):not(h4 a):not(h5 a):not(h6 a):hover :not(pre)>code,
@@ -747,12 +785,23 @@ body.close .content {
 .markdown-section a :not(pre)>code.error-code,
 .markdown-section a:hover :not(pre)>code.error-code,
 .markdown-section :not(pre)>code.error-code:hover {
+  font-size: 0.88em !important; /* Kırmızı hata yazıları için kompakt ve zarif boyut */
   color: #d70015 !important;
   background: #fdf2f2 !important;
   border: 1px solid rgba(215, 0, 21, 0.22) !important;
   border-radius: 5px !important;
   padding: 1.5px 5.5px !important;
   margin: 0 1px !important;
+}
+
+/* Başlık içindeki kırmızı hata mesajlarının boyutu */
+.markdown-section h1 code.error-code,
+.markdown-section h2 code.error-code,
+.markdown-section h3 code.error-code,
+.markdown-section h4 code.error-code,
+.markdown-section h5 code.error-code,
+.markdown-section h6 code.error-code {
+  font-size: 0.82em !important;
 }
 
 .markdown-section pre {
@@ -777,7 +826,7 @@ body.close .content {
   color: #000000 !important;
   background: transparent !important;
   font-size: 0.95rem !important;
-  line-height: 1.65 !important;
+  line-height: 1.1 !important; /* Satırlar arası boşluk 1.10 yapıldı */
   padding: 0 !important;
   margin: 0 !important;
   border: none !important;

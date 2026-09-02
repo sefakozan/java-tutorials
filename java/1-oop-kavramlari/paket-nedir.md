@@ -1,8 +1,8 @@
-# Ders: Paket Nedir? (What Is a Package?)
+# Ders: Paket (Package) Nedir?
 
 Bir **paket (package)**, bir dizi ilişkili sınıfı ve arayüzü mantıksal bir düzen içinde organize eden bir **ad alanıdır (namespace)**. Kavramsal olarak paketleri bilgisayarınızdaki farklı klasörlere benzetebilirsiniz. HTML sayfalarını bir klasörde, görselleri başka bir klasörde ve betikleri ya da uygulamaları bir diğerinde tutabilirsiniz. Java programlama dilinde yazılmış yazılımlar yüzlerce veya *binlerce* ayrı sınıftan oluşabildiğinden, ilişkili sınıf ve arayüzleri paketlere yerleştirerek her şeyi düzenli tutmak oldukça mantıklıdır.
 
-Java platformu, kendi uygulamalarınızda kullanabileceğiniz muazzam bir sınıf kütüphanesi (bir paketler kümesi) sunar. Bu kütüphane "Uygulama Programlama Arayüzü" veya kısaca **API** olarak bilinir. API paketleri, genel amaçlı programlama ile en sık ilişkilendirilen görevleri temsil eder. Örneğin:
+Java platformu, kendi uygulamalarınızda kullanabileceğiniz muazzam bir sınıf kütüphanesi (bir paketler kümesi) sunar. Bu kütüphane "Uygulama Programlama Arayüzü (Application Programming Interface)" veya kısaca **API** olarak bilinir. API paketleri, genel amaçlı programlama ile en sık ilişkilendirilen görevleri temsil eder. Örneğin:
 - Bir `String` nesnesi, karakter dizgileri için durum ve davranış içerir;
 - Bir `File` nesnesi, bir programcının dosya sistemindeki bir dosyayı kolayca oluşturmasına, silmesine, incelemesine, karşılaştırmasına veya değiştirmesine olanak tanır;
 - Bir `Socket` nesnesi, ağ soketlerinin oluşturulmasını ve kullanılmasını sağlar;

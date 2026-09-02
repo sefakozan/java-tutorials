@@ -30,7 +30,7 @@
 3. Bir yazılım nesnesinin davranışı **metotlar (methods)** aracılığıyla dışa açılır.
 4. Dahili verileri dış dünyadan gizlemek ve bunlara yalnızca genel metotlarla erişmek veri **kapsülleme (encapsulation)** olarak bilinir.
 5. Bir yazılım nesnesinin taslağına/şablonuna **sınıf (class)** denir.
-6. Ortak davranış bir **üst sınıfta (superclass)** tanımlanabilir ve **`extends`** anahtar sözcüğü kullanılarak bir **alt sınıfa (subclass)** miras alınabilir.
+6. Ortak davranış bir **üst sınıfta (superclass)** tanımlanabilir ve **extends** anahtar sözcüğü kullanılarak bir **alt sınıfa (subclass)** miras alınabilir.
 7. Gövdesi olmayan metotlar topluluğuna **arayüz (interface)** denir.
 8. Sınıfları ve arayüzleri işlevselliğe göre düzenleyen ad alanına **paket (package)** denir.
 9. API terimi **Application Programming Interface** (Uygulama Programlama Arayüzü) anlamına gelir.

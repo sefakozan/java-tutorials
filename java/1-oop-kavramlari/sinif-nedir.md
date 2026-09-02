@@ -1,6 +1,6 @@
-# Ders: Sınıf Nedir? (What Is a Class?)
+# Ders: Sınıf (Class) Nedir?
 
-Gerçek dünyada genellikle aynı türden birçok bireysel nesne bulursunuz. Aynı marka ve modele sahip binlerce başka bisiklet var olabilir. Her bisiklet aynı tasarım şemasından (*blueprint*) üretilmiştir ve bu nedenle aynı bileşenleri içerir. Nesne yönelimli terminolojide, bisikletinizin **bisiklet olarak bilinen nesneler sınıfının bir örneği (instance)** olduğunu söyleriz. Bir sınıf (*class*), bireysel nesnelerin kendisinden oluşturulduğu bir plandır.
+Gerçek dünyada genellikle aynı türden birçok bireysel nesne bulursunuz. Aynı marka ve modele sahip binlerce başka bisiklet var olabilir. Her bisiklet aynı tasarım şemasından (*blueprint*) üretilmiştir ve bu nedenle aynı bileşenleri içerir. Nesne yönelimli terimlerle, bisikletinizin **bisiklet olarak bilinen nesneler sınıfının bir örneği (instance)** olduğunu söyleriz. Bir sınıf (*class*), bireysel nesnelerin kendisinden oluşturulduğu bir plandır.
 
 Aşağıdaki `Bicycle` sınıfı, bir bisikletin olası bir uygulamasıdır:
 
@@ -35,9 +35,9 @@ class Bicycle {
 }
 ```
 
-Java programlama dilinin sözdizimi size yeni gelebilir, ancak bu sınıfın tasarımı daha önce tartışılan bisiklet nesnelerine dayanmaktadır. `cadence`, `speed` ve `gear` alanları nesnenin durumunu temsil ederken; `changeCadence`, `changeGear`, `speedUp` vb. metotlar ise nesnenin dış dünyayla olan etkileşimini tanımlar.
+Java programlama dilinin sözdizimi size yeni gelebilir, ancak bu sınıfın tasarımı daha önce tartışılan bisiklet nesnelerine dayanmaktadır. `cadence`, `speed` ve `gear` **alanları** ***nesnenin durumunu temsil ederken***; `changeCadence`, `changeGear`, `speedUp` vb. **metotlar** ise ***nesnenin dış dünyayla olan etkileşimini*** tanımlar.
 
-Fark etmiş olabileceğiniz gibi, `Bicycle` sınıfı bir `main` metodu içermez. Bunun nedeni tam bir uygulama olmamasıdır; yalnızca uygulamalarda kullanılabilecek bisikletler için bir taslaktır (*blueprint*). Yeni `Bicycle` nesneleri oluşturma ve kullanma sorumluluğu uygulamanızdaki başka bir sınıfa aittir.
+Fark etmiş olabileceğiniz gibi, `Bicycle` sınıfı bir `main` metodu içermez. Bunun nedeni tam bir uygulama olmamasıdır; yalnızca uygulamalarda kullanılabilecek bisikletler için bir taslaktır (***blueprint***). Yeni `Bicycle` nesneleri oluşturma ve kullanma sorumluluğu uygulamanızdaki başka bir sınıfa aittir.
 
 Aşağıda, iki ayrı `Bicycle` nesnesi oluşturan ve bunların metotlarını çağıran bir `BicycleDemo` sınıfı yer almaktadır:
 
