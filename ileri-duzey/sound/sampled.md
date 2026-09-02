@@ -1,6 +1,6 @@
 # Ders: Örneklenmiş Ses İşleme (Sampled Audio)
 
-Örneklenmiş ses, mikrofon veya dosyadan gelen analog ses dalgalarının dijital sayısallaştırılmış bayt verileridir.
+Örneklenmiş ses, mikrofon veya dosyadan gelen analog ses dalgalarının dijital sayısallaştırılmış byte verileridir.
 
 ---
 

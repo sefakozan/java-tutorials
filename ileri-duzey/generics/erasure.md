@@ -1,6 +1,6 @@
 # Ders: Tür Silme (Type Erasure)
 
-Generics, Java diline derleme zamanında daha sıkı tür denetimleri sağlamak ve genel programlamayı desteklemek için eklenmiştir. Java Sanal Makinesinde çalışma zamanı yükü oluşturmamak ve eski Java sürümleriyle geriye dönük bayt kodu uyumluluğu sağlamak için Java derleyicisi **tür silme (type erasure)** uygular.
+Generics, Java diline derleme zamanında daha sıkı tür denetimleri sağlamak ve genel programlamayı desteklemek için eklenmiştir. Java Sanal Makinesinde çalışma zamanı yükü oluşturmamak ve eski Java sürümleriyle geriye dönük byte kodu uyumluluğu sağlamak için Java derleyicisi **tür silme (type erasure)** uygular.
 
 1. [**Tür Silme Nasıl Çalışır?**](#1-tür-silme-nasıl-çalışır)
 2. [**Genel Türlerin Silinmesi**](#2-genel-türlerin-silinmesi)
@@ -10,7 +10,7 @@ Generics, Java diline derleme zamanında daha sıkı tür denetimleri sağlamak 
 # 1. Tür Silme Nasıl Çalışır?
 
 Derleyici derleme işlemi sırasında:
-1. Genel türlerdeki tüm tür parametrelerini sınırlarıyla (*bounds*) veya sınırlandırılmamışsa **`Object`** ile değiştirir. Bu nedenle üretilen `.class` bayt kodunda yalnızca sıradan sınıflar, arayüzler ve metotlar bulunur.
+1. Genel türlerdeki tüm tür parametrelerini sınırlarıyla (*bounds*) veya sınırlandırılmamışsa **`Object`** ile değiştirir. Bu nedenle üretilen `.class` byte kodunda yalnızca sıradan sınıflar, arayüzler ve metotlar bulunur.
 2. Tür güvenliğini korumak için gerektiğinde açık tür dönüşümlerini (*type casts*) otomatik olarak ekler.
 3. Genişletilmiş genel türlerde polimorfizmi korumak için **köprü metotları (bridge methods)** üretir.
 

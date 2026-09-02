@@ -8,7 +8,7 @@
 
 # 1. SAX Mimarisi ve DOM ile Karşılaştırması
 
-- **Hafif ve Hızlı:** SAX tüm XML belgesini belleğe yüklemez; satır satır okur. Bu nedenle gigabaytlarca büyüklükteki devasa XML dosyalarını minimum bellek ile ayrıştırabilir.
+- **Hafif ve Hızlı:** SAX tüm XML belgesini belleğe yüklemez; satır satır okur. Bu nedenle gigabytelarca büyüklükteki devasa XML dosyalarını minimum bellek ile ayrıştırabilir.
 - **Salt Okunur:** Yalnızca ileriye doğru okuma yapar; belgede geriye dönülemez veya düğümler dinamik olarak değiştirilemez.
 
 ---

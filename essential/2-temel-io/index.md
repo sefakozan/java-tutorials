@@ -13,12 +13,12 @@ Java programlama dilinde Giriş/Çıkış (I/O) işlemleri iki ana mimari üzeri
 
 Bir **I/O Akışı (I/O Stream)**, bir veri kaynağını veya bir veri hedefini temsil eden sıralı bir veri dizisidir.
 
-### Bayt Akışları (Byte Streams)
-Bayt akışları 8 bitlik ham baytlar üzerinde okuma ve yazma işlemleri gerçekleştirir. Tüm bayt akışı sınıfları `InputStream` ve `OutputStream` soyut sınıflarından türer.
+### byte Akışları (Byte Streams)
+byte akışları 8 bitlik ham bytelar üzerinde okuma ve yazma işlemleri gerçekleştirir. Tüm byte akışı sınıfları `InputStream` ve `OutputStream` soyut sınıflarından türer.
 
 <figure style="text-align: center;">
-  <img src="_media/figures/byteStream.gif" alt="Bayt Akışı Şeması" style="max-width: 100%; height: auto;">
-  <figcaption style="margin-top: 10px;">Giriş ve çıkış bayt akışları.</figcaption>
+  <img src="_media/figures/byteStream.gif" alt="byte Akışı Şeması" style="max-width: 100%; height: auto;">
+  <figcaption style="margin-top: 10px;">Giriş ve çıkış byte akışları.</figcaption>
 </figure>
 
 ```java

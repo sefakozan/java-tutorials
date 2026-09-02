@@ -16,7 +16,7 @@
 
 Java'da UDP iletişimi iki ana sınıf üzerinden yürütülür:
 
-- **`DatagramPacket`:** Taşınacak bayt dizisini, verinin uzunluğunu, hedef IP adresini (`InetAddress`) ve hedef port numarasını barındıran pakettir.
+- **`DatagramPacket`:** Taşınacak byte dizisini, verinin uzunluğunu, hedef IP adresini (`InetAddress`) ve hedef port numarasını barındıran pakettir.
 - **`DatagramSocket`:** Datagram paketlerini ağ üzerinden göndermek (`send`) ve almak (`receive`) için kullanılan sokettir.
 
 ---

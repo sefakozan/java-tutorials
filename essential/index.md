@@ -10,7 +10,7 @@ Bu kılavuz, her Java geliştiricisinin uzmanlaşması gereken temel platform bi
 Hata yakalama ve yönetme (`try-catch-finally`, `try-with-resources`), denetlenen ve denetlenmeyen istisnalar (*checked vs unchecked*), özel istisnalar oluşturma ve istisna zincirleme (*chained exceptions*).
 
 ### 2. [Temel Giriş/Çıkış (Basic I/O & NIO.2)](essential/2-temel-io/index.md)
-Giriş/Çıkış akışları (bayt, karakter ve tamponlu akışlar), `Scanner` ile tarama, nesne serileştirme ve modern `java.nio.file` (NIO.2) dosya/dizin işlemleri.
+Giriş/Çıkış akışları (byte, karakter ve tamponlu akışlar), `Scanner` ile tarama, nesne serileştirme ve modern `java.nio.file` (NIO.2) dosya/dizin işlemleri.
 
 ### 3. [Eşzamanlılık (Concurrency)](essential/3-eszamanlilik/index.md)
 İş parçacıkları (*threads*), `Runnable` arayüzü, senkronizasyon, atomik erişim, kilitlenmeler (*deadlocks*), `Executor` çerçevesi ve eşzamanlı veri koleksiyonları.

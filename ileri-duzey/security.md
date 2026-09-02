@@ -7,7 +7,7 @@ Java platformu, güvenliğe odaklanarak tasarlanmıştır. `java.security` paket
 ## Temel Güvenlik Mimarisi
 
 - **Tip Güvenliği ve Bellek Güvenliği:** Java'da işaretçi (pointer) aritmetiği yoktur ve dizi sınırları otomatik denetlenir.
-- **Bayt Kodu Doğrulayıcı (Bytecode Verifier):** Kodun JVM üzerinde çalıştırılmadan önce bellek kurallarına ve tip güvenliğine uygunluğunu kontrol eder.
+- **byte Kodu Doğrulayıcı (Bytecode Verifier):** Kodun JVM üzerinde çalıştırılmadan önce bellek kurallarına ve tip güvenliğine uygunluğunu kontrol eder.
 - **Kriptografi Mimarisi (JCA / JCE):** Şifreleme algoritmaları (AES, RSA), özet fonksiyonları (SHA-256) ve güvenli rastgele sayı üretimi (`SecureRandom`).
 
 ---
