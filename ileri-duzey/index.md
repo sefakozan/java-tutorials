@@ -1,3 +1,27 @@
+## Özel Kılavuzlar ve Dersler
+
+Bu kılavuzlar ve dersler ileri düzey ve özel platform konularını kapsar:
+
+- **[Özel Ağ Programlama (Custom Networking)](ileri-duzey/networking/index.md)** — Java platformunun güçlü ağ iletişimi özelliklerine giriş.
+- **[Eklenti Mekanizması (The Extension Mechanism)](ileri-duzey/ext/index.md)** — Özel API'lerin Java platformunda çalışan tüm uygulamalar için nasıl erişilebilir hale getirileceği.
+- **[Tam Ekran Özel Mod API'si (Full-Screen Exclusive Mode API)](ileri-duzey/fullscreen/index.md)** — Kullanıcının grafik donanımından daha kapsamlı yararlanan uygulamaların nasıl yazılacağı.
+- **[Genel Türler - İleri Düzey (Generics)](ileri-duzey/generics/index.md)** — Derleme zamanı tür güvenliği sağlarken çeşitli türlerdeki nesneler üzerinde işlemleri destekleyen tür sistemi geliştirmesi. *(Not: Bu ders ileri düzey kullanıcılar içindir. Java Dili kılavuzu yeni başlayanlar için uygun bir Generics dersi içerir).*
+- **[Uluslararasılaştırma (Internationalization - i18n)](ileri-duzey/i18n/index.md)** — Yazılımların çeşitli dillere ve bölgelere kolayca uyarlanabilmesi (yerelleştirilebilmesi) için tasarlanmasına giriş.
+- **[JavaBeans](ileri-duzey/javabeans/index.md)** — Java platformunun bileşen teknolojisi.
+- **[JAXB](ileri-duzey/jaxb/index.md)** — XML Bağlama için Java Mimarisi (JAXB) teknolojisini tanıtır.
+- **[JAXP](ileri-duzey/jaxp/index.md)** — XML İşleme için Java API'si (JAXP) teknolojisini tanıtır.
+- **[JDBC Veritabanı Erişimi (JDBC Database Access)](ileri-duzey/jdbc/index.md)** — Java uygulamaları ile çok çeşitli veritabanları ve veri kaynakları arasında bağlantı sağlayan API'yi tanıtır.
+- **[JMX - Java Yönetim Uzantıları (Java Management Extensions)](ileri-duzey/jmx/index.md)** — Uygulamalar, cihazlar ve servisler gibi kaynakları yönetmek için standart bir yol sağlar.
+- **[JNDI - Java İsim ve Dizin Arayüzü (Java Naming and Directory Interface)](ileri-duzey/jndi/index.md)** — DNS ve LDAP gibi İsimlendirme ve Dizin Servislerine erişim sağlar.
+- **[Reflection - Yansıma API'si](ileri-duzey/reflection/index.md)** — Geçerli Java Sanal Makinesindeki sınıfları, arayüzleri ve nesneleri temsil eden ("yansıtan") bir API.
+- **[RMI - Uzaktan Metot Çağırma (Remote Method Invocation)](ileri-duzey/rmi/index.md)** — Bir nesnenin başka bir Java Sanal Makinesinde çalışan bir nesnenin metotlarını çağırmasını sağlayan API.
+- **[Güvenlik (Security)](ileri-duzey/security/index.md)** — Uygulamaları kötü amaçlı yazılımlardan korumaya yardımcı olan Java platform özellikleri.
+- **[Sockets Direct Protokolü (Sockets Direct Protocol - SDP)](ileri-duzey/sdp/index.md)** — InfiniBand donanımından yararlanmak için Sockets Direct Protokolünün nasıl etkinleştirileceği.
+- **[Ses API'si (Sound)](ileri-duzey/sound/index.md)** — Uygulamalardan ses verilerini çalmak için bir API.
+- **[2B Grafikler (2D Graphics - Java 2D)](ileri-duzey/2d/index.md)** — Uygulamalarda 2B grafiklerin nasıl görüntüleneceği ve yazdırılacağı.
+
+---
+
 # Özel Kılavuzlar ve Dersler
 
 Bu kılavuz, Java platformunun ileri düzey yeteneklerini, kurumsal entegrasyon kütüphanelerini, sistem yönetimi ve özelleştirilmiş API'lerini kapsamaktadır.
