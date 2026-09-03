@@ -10,11 +10,15 @@ Oracle (Sun Microsystems) tarafından hazırlanan ve Java dünyasının en kökl
 
 Canlı web sitesi: **[sefakozan.github.io/java-tutorials](https://sefakozan.github.io/java-tutorials/)**
 
+---
+
 ### Projenin Amacı
     
 Java öğrenirken başvurulabilecek en güvenilir ve standart kaynaklardan biri Oracle'ın resmi eğitim serisidir. Prof. Dr. Sadi Evren Şeker başta olmak üzere birçok akademisyenin ve kıdemli geliştiricinin tavsiye ettiği bu kaynak, Java'nın temel mekaniklerinden kurumsal düzeydeki API'lerine kadar çok geniş bir müfredat sunar.
     
 Bu projenin amacı; Java'yı resmi ve güvenilir bir müfredat üzerinden kendi dilinde öğrenmek veya bilgilerini pekiştirmek isteyen herkes için eksiksiz bir Türkçe başvuru kaynağı sunmaktır.
+
+---
 
 ### Neler İçeriyor ?
     
