@@ -1,3 +1,8 @@
+## Grafiksel Kullanıcı Arayüzleri Oluşturma (Creating Graphical User Interfaces)
+
+- **[Swing ile GUI Oluşturma (Creating a GUI with Swing)](gui/swing.md)** — Java platformunda GUI oluşturmaya kapsamlı bir giriş.
+- **[JavaFX ile GUI Oluşturma (Creating a JavaFX GUI)](gui/javafx.md)** — JavaFX öğreticileri koleksiyonu.
+
 # Kılavuz: Swing ile Grafiksel Kullanıcı Arayüzü (GUI) Oluşturma
 
 **Swing**, Java platformunda zengin masaüstü grafiksel kullanıcı arayüzleri (GUI) geliştirmek için tasarlanmış kapsamlı bir GUI araç takımıdır (*toolkit*). Tamamen Java ile yazılmış olup platformdan bağımsız, özelleştirilebilir bileşenler sunar.
