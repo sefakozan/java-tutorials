@@ -627,13 +627,41 @@
 
           if (boldPlaceholders.length > 0) {
             boldPlaceholders.forEach(function (item) {
-              var innerHighlight = prismLang ? Prism.highlight(item.inner, prismLang, lang) : item.inner;
+              var isInsideComment = false;
+              var pos = highlighted.indexOf(item.id);
+              if (pos !== -1) {
+                var before = highlighted.substring(0, pos);
+                var lastCommentOpen = Math.max(
+                  before.lastIndexOf('<span class="token comment'),
+                  before.lastIndexOf('<span class="token block-comment'),
+                  before.lastIndexOf('<span class="token doc-comment')
+                );
+                if (lastCommentOpen !== -1) {
+                  var lastSpanClose = before.lastIndexOf('</span>');
+                  if (lastSpanClose < lastCommentOpen) {
+                    isInsideComment = true;
+                  }
+                }
+              }
+
+              var innerHighlight;
+              if (isInsideComment) {
+                // Yorum içindeyse Java kodu olarak renklendirilmemeli ('to', 'at', 'in' gibi kelimelerin keyword olmasını engeller)
+                innerHighlight = item.inner
+                  .replace(/&/g, '&amp;')
+                  .replace(/</g, '&lt;')
+                  .replace(/>/g, '&gt;');
+              } else {
+                innerHighlight = prismLang ? Prism.highlight(item.inner, prismLang, lang) : item.inner;
+              }
+
               highlighted = highlighted.replace(
                 new RegExp(item.id, 'g'),
                 '<strong class="code-bold">' + innerHighlight + '</strong>'
               );
             });
           }
+
 
           return '<pre v-pre data-lang="' + lang + '"><code class="lang-' + lang + '">' + highlighted + '</code></pre>';
         }

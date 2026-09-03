@@ -848,6 +848,14 @@ body.close .content {
   color: #3f7f5f !important;
 }
 
+.markdown-section pre .token.comment *,
+.markdown-section pre .token.block-comment *,
+.markdown-section pre .token.doc-comment * {
+  color: inherit !important;
+  font-family: 'CMU Typewriter Text', 'Courier Prime', monospace !important;
+  font-style: italic !important;
+}
+
 .markdown-section pre .token.keyword,
 .markdown-section pre .token.boolean,
 .markdown-section pre .token.builtin {
@@ -893,12 +901,19 @@ body.close .content {
 .markdown-section pre .token.comment strong,
 .markdown-section pre .token.comment b,
 .markdown-section pre .token.comment .code-bold,
+.markdown-section pre .token.comment strong *,
+.markdown-section pre .token.comment b *,
+.markdown-section pre .token.comment .code-bold *,
 .markdown-section pre strong .token.comment,
-.markdown-section pre b .token.comment {
-  font-weight: 800 !important;
-  color: #14532d !important;
-  -webkit-text-stroke: 0.85px currentColor !important;
-  text-shadow: 0.45px 0 0 currentColor, -0.45px 0 0 currentColor !important;
+.markdown-section pre b .token.comment,
+.markdown-section pre strong .token.comment *,
+.markdown-section pre b .token.comment * {
+  font-family: 'CMU Typewriter Text', 'Courier Prime', monospace !important;
+  font-style: italic !important;
+  font-weight: 700 !important;
+  color: #3f7f5f !important;
+  -webkit-text-stroke: 0.65px currentColor !important;
+  text-shadow: 0.25px 0 0 currentColor !important;
 }
 
 .docsify-copy-code-button {
