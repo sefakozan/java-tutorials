@@ -198,7 +198,8 @@ public static void arraycopy(Object src, int srcPos,
                              Object dest, int destPos, int length)
 ```
 
-İki `Object` bağımsız değişkeni (*arguments*), *nereden* kopyalanacağını (`src`) ve *nereye* kopyalanacağını (`dest`) belirtir. Üç `int` bağımsız değişkeni ise kaynak dizideki başlangıç konumunu (`srcPos`), hedef dizideki başlangıç konumunu (`destPos`) ve kopyalanacak dizi elemanı sayısını (`length`) belirtir.
+İki `Object` argümanı (bağımsız değişkeni), *nereden* kopyalanacağını (`src`) ve *nereye* kopyalanacağını (`dest`) belirtir. Üç `int` argümanı ise kaynak dizideki başlangıç indeksi (`srcPos` - *source position*), hedef dizideki başlangıç indeksi (`destPos` - *destination position*) ve kopyalanacak dizi elemanı sayısını (`length`) belirtir.
+
 
 Aşağıdaki `ArrayCopyDemo` programı, bir `String` elemanları dizisi bildirir. Dizi bileşenlerinin bir alt dizisini ikinci bir diziye kopyalamak için `System.arraycopy` metodunu kullanır:
 
@@ -231,7 +232,7 @@ Cappuccino Corretto Cortado Doppio Espresso Frappucino Freddo
 
 Diziler, programlamada kullanılan güçlü ve yararlı bir kavramdır. Java SE, dizilerle ilgili en yaygın manipülasyonlardan bazılarını gerçekleştirmek için metotlar sağlar. Örneğin `ArrayCopyDemo` örneği, kaynak dizinin (*source array*) elemanları üzerinde manuel olarak yineleme yapıp her birini hedef diziye (*destination array*) yerleştirmek yerine `System` sınıfının `arraycopy` metodunu kullanır. Bu işlem arka planda gerçekleştirilerek geliştiricinin metodu çağırmak için yalnızca tek bir kod satırı kullanmasını sağlar.
 
-Kullanım kolaylığı sağlamak adına Java SE, [`java.util.Arrays`](https://docs.oracle.com/javase/8/docs/api/java/util/Arrays.html) sınıfında dizi manipülasyonlarını (dizileri kopyalama, sıralama ve arama gibi yaygın görevler) gerçekleştirmek için çeşitli metotlar sunar. Örneğin, `ArrayCopyOfDemo` örneğinde görebileceğiniz gibi, önceki örnek `java.util.Arrays` sınıfının `copyOfRange` metodunu kullanacak şekilde değiştirilebilir. Aradaki fark, `copyOfRange` metodunu kullanmanın metodu çağırmadan önce hedef diziyi oluşturmanızı gerektirmemesidir; çünkü hedef dizi metodun kendisi tarafından döndürülür:
+Kullanım kolaylığı sağlamak adına Java SE, [java.util.Arrays](https://docs.oracle.com/javase/8/docs/api/java/util/Arrays.html) sınıfında dizi manipülasyonlarını (dizileri kopyalama, sıralama ve arama gibi yaygın görevler) gerçekleştirmek için çeşitli metotlar sunar. Örneğin, `ArrayCopyOfDemo` örneğinde görebileceğiniz gibi, önceki örnek `java.util.Arrays` sınıfının `copyOfRange` metodunu kullanacak şekilde değiştirilebilir. `copyOfRange` metodunun farkı, metodu çağırmadan önce hedef diziyi oluşturmanızı gerektirmemesidir; çünkü hedef dizi metodun kendisi tarafından return edilir (döndürülür):
 
 ```java
 class ArrayCopyOfDemo {
@@ -253,16 +254,16 @@ Görüldüğü gibi, daha az kod satırı gerektirmesine rağmen bu programın �
 
 `java.util.Arrays` sınıfındaki metotlar tarafından sağlanan diğer bazı yararlı işlemler şunlardır:
 
-* **Belirli bir değeri arama (`binarySearch` metodu):** Bulunduğu indeksi elde etmek için bir dizide belirli bir değeri arar (the `binarySearch` method).
-* **İki diziyi karşılaştırma (`equals` metodu):** Eşit olup olmadıklarını belirlemek için iki diziyi karşılaştırır (the `equals` method).
-* **Bir diziyi doldurma (`fill` metodu):** Her bir indekse belirli bir değer yerleştirmek için bir diziyi doldurur (the `fill` method).
-* **Bir diziyi artan sırada sıralama (`sort` ve `parallelSort` metotları):** Bir diziyi artan düzende sıralar (*sorting into ascending order*). Bu işlem `sort` metodu kullanılarak sıralı (*sequentially*) olarak ya da Java SE 8 ile sunulan `parallelSort` metodu kullanılarak eşzamanlı/paralel (*concurrently*) olarak yapılabilir. Çok işlemcili sistemlerde büyük dizilerin paralel olarak sıralanması, sıralı dizi sıralamasından daha hızlıdır.
-* **Kaynağı dizi olan bir akış oluşturma (`stream` metodu):** Kaynak olarak bir diziyi kullanan bir akış (*stream*) oluşturur (the `stream` method). Örneğin, aşağıdaki ifade `copyTo` dizisinin içeriğini önceki örnekle aynı şekilde yazdırır:
+* **Belirli bir değeri arama (`binarySearch` metodu):** Bulunduğu indeksi elde etmek için bir dizide belirli bir değeri arar.
+* **İki diziyi karşılaştırma (`equals` metodu):** Eşit olup olmadıklarını belirlemek için iki diziyi karşılaştırır.
+* **Bir diziyi doldurma (`fill` metodu):** Her bir indekse belirli bir değer yerleştirmek için bir diziyi doldurur.
+* **Bir diziyi artan sırada sıralama (`sort` ve `parallelSort` metotları):** Bir diziyi artan düzende sıralar. Bu işlem `sort` metodu kullanılarak sıralı (*sequentially*) olarak ya da Java SE 8 ile sunulan `parallelSort` metodu kullanılarak eşzamanlı/paralel (*concurrently*) olarak yapılabilir. Çok işlemcili sistemlerde büyük dizilerin paralel olarak sıralanması, sıralı dizi sıralamasından daha hızlıdır.
+* **Kaynağı dizi olan bir akış oluşturma (`stream` metodu):** Kaynak olarak bir diziyi kullanan bir akış (*stream*) oluşturur. Örneğin, aşağıdaki ifade `copyTo` dizisinin içeriğini önceki örnekle aynı şekilde yazdırır:
   ```java
   java.util.Arrays.stream(copyTo).map(coffee -> coffee + " ").forEach(System.out::print);  
   ```
-  Akışlar hakkında daha fazla bilgi için [Toplu İşlemler (Aggregate Operations)](https://docs.oracle.com/javase/tutorial/collections/streams/index.html) bölümüne bakın.
-* **Bir diziyi dizeye/metne dönüştürme (`toString` metodu):** Bir diziyi metne (*string*) dönüştürür. `toString` metodu dizinin her bir elemanını bir dizeye dönüştürür, bunları virgüllerle ayırır ve ardından köşeli parantezlerle çevreler. Örneğin, aşağıdaki ifade `copyTo` dizisini bir dizeye dönüştürür ve yazdırır:
+  Akışlar hakkında daha fazla bilgi için [Toplu İşlemler (Aggregate Operations)](java/collections/aggregate-operations.md) bölümüne bakın.
+* **Bir diziyi string'e dönüştürme (`toString` metodu):** Bir diziyi metne (*string*) dönüştürür. `toString` metodu dizinin her bir elemanını bir dizeye dönüştürür, bunları virgüllerle ayırır ve ardından köşeli parantezlerle çevreler. Örneğin, aşağıdaki ifade `copyTo` dizisini bir dizeye dönüştürür ve yazdırır:
   ```java
   System.out.println(java.util.Arrays.toString(copyTo)); 
   ```

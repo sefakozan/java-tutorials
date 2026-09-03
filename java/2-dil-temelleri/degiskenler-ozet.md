@@ -1,20 +1,5 @@
 # Değişkenlerin Özeti (Summary of Variables)
 
-Java programlama dili hem "alan" (*field*) hem de "değişken" (*variable*) terimlerini kullanır:
+Java programlama dili, terminolojisinin bir parçası olarak hem "alanlar (fields)" hem de "değişkenler (variables)" terimlerini kullanır. Örnek değişkenler (non-static / statik olmayan alanlar) bir sınıfın her örneğine özgüdür. Sınıf değişkenleri (statik alanlar), static değiştiricisiyle bildirilen alanlardır; sınıf kaç kez örneklendirilmiş olursa olsun, bir sınıf değişkeninin tam olarak bir kopyası vardır. Yerel değişkenler (local variables), bir metodun içinde geçici durumu depolar. Parametreler, bir metoda ek bilgiler sağlayan değişkenlerdir; hem local değişkenler hem de parametreler her zaman "değişkenler" ("alanlar (fields)" değil) olarak sınıflandırılır. Alanlarınızı veya değişkenlerinizi adlandırırken, uymanız gereken (veya uymak zorunda olduğunuz) kurallar ve gelenekler vardır.
 
-- **Örnek Değişkenleri (Statik Olmayan Alanlar - Instance Variables / Non-Static Fields):** Bir sınıfın her bir nesne örneğine özgüdür.
-- **Sınıf Değişkenleri (Statik Alanlar - Class Variables / Static Fields):** `static` anahtar sözcüğü ile bildirilir; kaç nesne oluşturulursa oluşturulsun tek bir kopyası vardır.
-- **Yerel Değişkenler (Local Variables):** Bir metot içinde geçici durumu saklar; metodun dışından erişilemez ve varsayılan bir değer almaz.
-- **Parametreler (Parameters):** Metot, kurucu veya istisna işleyicilerine bilgi aktaran değişkenlerdir.
-
----
-
-## Özet Tablosu
-
-| Konu | Temel Kural / Tanım |
-| :--- | :--- |
-| **İsimlendirme** | Harf ile başlar, büyük/küçük harfe duyarlıdır (*case-sensitive*), `lowerCamelCase` kullanılır. Sabitler `CONSTANT_CASE` ile yazılır. |
-| **İlkel Tipler (*Primitive Types*)** | 8 ilkel veri türü: `byte`, `short`, `int`, `long`, `float`, `double`, `boolean`, `char`. |
-| **Diziler (*Arrays*)** | Tek bir türden sabit sayıda değer tutan kapsayıcı nesnelerdir. Uzunlukları oluşturulduktan sonra sabittir. |
-| **Varsayılan Değerler** | Alanlar otomatik varsayılan değer alır (`0`, `false`, `null`). Yerel değişkenler almaz; kullanılmadan önce başlatılmalıdır. |
-| **Değişmez Değerler (*Literals*)** | Kaynak kodda doğrudan yazılan sabit değerlerdir. Sayısal literallerde alt çizgi (`_`) kullanılabilir. |
+Sekiz ilkel veri türü şunlardır: byte, short, int, long, float, double, boolean ve char. [java.lang.String](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html) sınıfı karakter dizilerini temsil eder. Derleyici, yukarıdaki türlerdeki alanlara makul bir varsayılan değer atar; local değişkenlere ise hiçbir zaman varsayılan bir değer atanmaz. Bir sabit, sabit bir değerin kaynak kodundaki gösterimidir. Bir dizi, tek bir türden sabit sayıda değer tutan bir kapsayıcı nesnedir. Bir dizinin uzunluğu, dizi oluşturulduğunda belirlenir. Oluşturulduktan sonra uzunluğu sabittir.
