@@ -1,25 +1,13 @@
-# Ders: Dil Temelleri
+# Ders: Dil Temelleri (Language Basics)
 
-Nesne yönelimli kavramları öğrendikten sonra, artık Java programlama dilinin temel yapı taşlarını ve sözdizimini öğrenmeye hazırsınız. Bu ders; değişkenlerin nasıl tanımlanacağını, temel veri tiplerini, dizileri, operatörleri, ifadeleri, deyimleri, blokları ve program akışını yönlendiren kontrol yapılarını kapsamaktadır.
+### [Değişkenler (Variables)](java/2-dil-temelleri/degiskenler.md)
+Nesnelerin durumlarını *alanlarda (fields)* sakladığını zaten öğrendiniz. Ancak Java programlama dili "değişken" (*variable*) terimini de kullanır. Bu bölüm bu ilişkiyi; ayrıca değişken isimlendirme kuralları ve teamüllerini, temel veri tiplerini (ilkel tipler - *primitive types*, karakter dizileri - *character strings*, diziler - *arrays*), varsayılan değerleri (*default values*) ve değişmez değerleri (*literals*) ele almaktadır.
 
----
+### [Operatörler (Operators)](java/2-dil-temelleri/operatorler.md)
+Bu bölüm Java programlama dilinin operatörlerini açıklamaktadır. En sık kullanılan operatörleri ilk sırada, daha az kullanılanları ise son sırada sunar. Her tartışma, derleyip çalıştırabileceğiniz kod örneklerini içerir.
 
-## Bu Dersteki Konular
+### [İfadeler, Deyimler ve Bloklar (Expressions, Statements, and Blocks)](java/2-dil-temelleri/ifadeler-deyimler-bloklar.md)
+Operatörler, değerleri hesaplayan ifadeler (*expressions*) oluşturmak için kullanılabilir; ifadeler, deyimlerin (*statements*) temel bileşenleridir; deyimler ise kod blokları halinde gruplanabilir. Bu bölüm, daha önce gördüğünüz örnek kodları kullanarak ifadeleri, deyimleri ve blokları tartışmaktadır.
 
-### 1. [Değişkenler ve Veri Tipleri](java/2-dil-temelleri/degiskenler.md)
-Değişken türlerini (örnek değişkenleri, sınıf değişkenleri, yerel değişkenler, parametreler), Java'nın 8 ilkel veri türünü (*primitive data types*), varsayılan değerleri ve değişmez değerleri (*literals*) açıklar.
-
-### 2. [Diziler (Arrays)](java/2-dil-temelleri/diziler.md)
-Sabit sayıda aynı türden değeri tutan bir kapsayıcı nesne olan dizilerin nasıl bildirileceğini, oluşturulacağını, başlatılacağını ve kopyalanacağını ele alır.
-
-### 3. [Operatörler](java/2-dil-temelleri/operatorler.md)
-Atama, aritmetik, birli (*unary*), eşitlik, ilişkisel, koşullu ve bit düzeyinde operatörler ile operatör önceliklerini inceler.
-
-### 4. [İfadeler, Deyimler ve Bloklar](java/2-dil-temelleri/ifadeler-deyimler-bloklar.md)
-İfadelerin (*expressions*), deyimlerin (*statements*) ve kod bloklarının (*blocks*) ne olduğunu ve Java programlarının temel mantığını nasıl oluşturduğunu açıklar.
-
-### 5. [Kontrol Akış İfadeleri](java/2-dil-temelleri/kontrol-akisi.md)
-Karar verme yapıları (`if-then`, `if-then-else`, `switch`), döngü ifadeleri (`for`, `while`, `do-while`) ve dallanma deyimlerini (`break`, `continue`, `return`) ele alır.
-
-### 6. [Sorular ve Alıştırmalar: Dil Temelleri](java/2-dil-temelleri/sorular-ve-alistirmalar.md)
-Dil temelleri bölümünde öğrendiklerinizi pekiştirmek için sorular ve alıştırmalar.
+### [Kontrol Akış İfadeleri (Control Flow Statements)](java/2-dil-temelleri/kontrol-akisi.md)
+Bu bölüm, Java programlama dili tarafından desteklenen kontrol akış ifadelerini açıklamaktadır. Programlarınızın belirli kod bloklarını koşullu olarak yürütmesini sağlayan karar verme (*decision-making*), döngü (*looping*) ve dallanma (*branching*) ifadelerini kapsar.

@@ -1,6 +1,6 @@
-# Ders: Değişkenler ve İlkel Veri Tipleri (Variables & Primitive Data Types)
+# Değişkenler (Variables)
 
-Önceki derste öğrendiğiniz gibi, bir nesne durumunu **alanlarda (fields)** saklar:
+Önceki derste öğrendiğiniz gibi, bir nesne durumunu **alanlarda (fields)** saklar.
 
 ```java
 int cadence = 0;
@@ -8,110 +8,34 @@ int speed = 0;
 int gear = 1;
 ```
 
-Java programlama dilinde "alan" (*field*) ve "değişken" (*variable*) terimlerinin her ikisi de kullanılır. Java programlama dili aşağıdaki değişken türlerini tanımlar:
+[Nesne Nedir?](../1-oop-kavramlari/nesne-nedir.md) tartışması sizi alanlarla tanıştırdı, ancak muhtemelen hala birkaç sorunuz var, örneğin: Bir alanı adlandırmanın kuralları ve kurallara uygun kullanımları nelerdir? int dışında başka hangi veri türleri vardır? Alanlar bildirildiklerinde başlatılmak zorunda mıdır? Açıkça başlatılmamışlarsa alanlara varsayılan bir değer atanır mı? Bu derste bu tür soruların yanıtlarını inceleyeceğiz, ancak bunu yapmadan önce, öncelikle farkında olmanız gereken birkaç teknik ayrım var. Java programlama dilinde "alan (field)" ve "değişken (variable)" terimlerinin her ikisi de kullanılır; bu, yeni geliştiriciler arasında yaygın bir kafa karışıklığı kaynağıdır, çünkü her ikisi de çoğu zaman aynı şeyi ifade ediyor gibi görünür.
 
-1. [**Değişken Türleri**](#1-değişken-türleri)
-2. [**İsimlendirme Kuralları ve Teamülleri**](#2-isimlendirme-kuralları-ve-teamülleri)
-3. [**İlkel Veri Tipleri (Primitive Data Types)**](#3-ilkel-veri-tipleri-primitive-data-types)
-4. [**Varsayılan Değerler (Default Values)**](#4-varsayılan-değerler-default-values)
-5. [**Değişmez Değerler (Literals)**](#5-değişmez-değerler-literals)
----
+Java programlama dili aşağıdaki değişken türlerini tanımlar:
 
-# 1. Değişken Türleri
+### 1. Örnek Değişkenleri (Statik Olmayan Alanlar - Instance Variables / Non-Static Fields)
+Teknik olarak konuşursak, **nesneler kendi durumlarını "statik olmayan alanlarda / non-static fields", yani `static` anahtar sözcüğü olmadan tanımlanan alanlarda saklar**. Statik olmayan alanlar, değerleri bir sınıfın her örneğine (başka bir deyişle, her nesneye) özgü olduğu için örnek değişkenleri olarak da bilinir; bir bisikletin *currentSpeed* değeri başka bir bisikletin *currentSpeed* değerinden bağımsızdır.
 
-Java'da dört tür değişken bulunur:
+### 2. Sınıf Değişkenleri (Statik Alanlar - Class Variables / Static Fields)
+Bir **sınıf değişkeni (class variable)**, `static` niteleyicisiyle (*modifier*) bildirilen herhangi bir alandır; bu, sınıfın kaç kez örneklendirildiğinden (nesne oluşturulduğundan) bağımsız olarak bu değişkenin bellekte tam olarak bir kopyasının bulunduğunu derleyiciye bildirir. Belirli bir bisiklet türünün vites sayısını tanımlayan bir alan, kavramsal olarak aynı vites sayısı tüm örnekler (nesneler) için geçerli olacağından `static` olarak işaretlenebilir. *static int numGears = 6;* kodu böyle bir static alan oluşturur. Ayrıca, vites sayısının asla değişmeyeceğini belirtmek için `final` anahtar sözcüğü eklenebilir (*static final int NUM_GEARS = 6;*). 
 
-- **Örnek Değişkenleri (Statik Olmayan Alanlar - Instance Variables / Non-Static Fields):** Nesneler bireysel durumlarını `static` anahtar sözcüğü olmadan bildirilen alanlarda saklarlar. Bunlara *örnek değişkenleri* denir çünkü değerleri bir sınıfın her bir örneğine (*instance*, yani nesnesine) özgüdür; bir bisikletin `currentSpeed` değeri diğer bisikletinkinden bağımsızdır.
-- **Sınıf Değişkenleri (Statik Alanlar - Class Variables / Static Fields):** `static` değiştiricisi ile bildirilen herhangi bir alandır; bu, derleyiciye kaç tane nesne örneği oluşturulursa oluşturulsun bu değişkenin tam olarak tek bir kopyasının var olduğunu söyler. Örneğin `static int numBicycles = 0;` alanı tüm bisiklet nesneleri tarafından paylaşılan ortak bir sayaçtır. İsteğe bağlı olarak `final` anahtar sözcüğü eklenerek değerinin asla değiştirilemeyeceği belirtilebilir (`static final double PI = 3.141592653589793;`).
-- **Yerel Değişkenler (Local Variables):** Bir metot, durumunu geçici olarak depolamak için yerel değişkenler tanımlar. Yerel bir değişkeni tanımlama sözdizimi bir alanı bildirmeye benzer (örneğin `int count = 0;`). Değişken yalnızca bildirildiği metot gövdesi (`{}`) içinde geçerlidir; metodun dışından erişilemez.
-- **Parametreler (Parameters):** Metot ve kurucuların (*constructors*) imzasında yer alan parametrelerdir (örneğin `public static void main(String[] args)` içindeki `args` bir parametredir). Parametreler her zaman "değişken" olarak sınıflandırılır, "alan" olarak değil.
+### 3. Yerel Değişkenler (Local Variables)
+Bir nesnenin durumunu alanlarda saklamasına benzer şekilde, bir metot da geçici durumunu genellikle **yerel değişkenlerde saklar (local variables)**. Bir yerel değişken tanımlamanın sözdizimi, bir alan tanımlamaya benzer (örneğin, *int count = 0;*). Bir değişkeni yerel olarak belirten özel bir anahtar sözcük yoktur; bu belirleme tamamen değişkenin tanımlandığı konumdan kaynaklanır — yani bir metodun açılış ve kapanış süslü parantezleri arasından. Bu nedenle, yerel değişkenler yalnızca tanımlandıkları metotlar tarafından görülebilir; sınıfın geri kalanından erişilemezler.
 
----
+### 4. Parametreler (Parameters)
+Hem Bicycle sınıfında hem de "Hello World!" uygulamasının main metodunda parametre örneklerini zaten gördünüz. main metodunun imzasının *public static void main(String[] args)* olduğunu hatırlayın. Burada args değişkeni bu metodun parametresidir. Hatırlanması gereken önemli nokta, **parametrelerin her zaman "değişkenler" olarak sınıflandırılması, "alanlar" olarak sınıflandırılmamasıdır**. Bu, öğreticinin ilerleyen bölümlerinde öğreneceğiniz, parametre kabul eden diğer yapılar (yapıcılar ve istisna işleyicileri gibi) için de geçerlidir.
 
-# 2. İsimlendirme Kuralları ve Teamülleri
-
-Tüm programlama dillerinde olduğu gibi Java'da da değişken adları için kurallar ve teamüller vardır:
-
-- Değişken adları büyük/küçük harfe duyarlıdır (*case-sensitive*). Bir değişken adı herhangi bir Unicode harf, rakam, alt çizgi (`_`) veya dolar işareti (`$`) dizisinden oluşabilir.
-- Değişken adları her zaman bir harf ile başlamalıdır. Dolar işareti (`$`) ve alt çizgi (`_`) teknik olarak geçerli olsa da teamül gereği kullanılmamalıdır.
-- Java anahtar sözcükleri (*keywords*) veya ayrılmış sözcükler (*reserved words*) değişken adı olarak kullanılamaz.
-- **Teamül (CamelCase):** Değişken adı tek bir kelimeden oluşuyorsa tamamı küçük harfle yazılır (örneğin `speed`). Birden fazla kelimeden oluşuyorsa ilk kelimeden sonraki her kelimenin ilk harfi büyük yazılır (örneğin `gearRatio`, `currentSpeed`).
-- Değişken bir sabiti temsil ediyorsa (`static final`), tüm harfler büyük yazılır ve kelimeler alt çizgi ile ayrılır (örneğin `NUM_GEARS`).
+Bununla birlikte, bu eğitimin geri kalanında alanlar ve değişkenlerden bahsederken aşağıdaki genel yönergeler kullanılacaktır. "Genel olarak alanlardan" (yerel değişkenler ve parametreler hariç) bahsediyorsak, basitçe "alanlar" diyebiliriz. Tartışma "yukarıdakilerin tümü" için geçerliyse, basitçe "değişkenler" diyebiliriz. Bağlam bir ayrım gerektiriyorsa, uygun şekilde belirli terimleri (statik alan, yerel değişkenler vb.) kullanacağız. Ayrıca zaman zaman "member (üye)" teriminin de kullanıldığını görebilirsiniz. Bir türün alanları, metotları ve iç içe türleri topluca üyeleri olarak adlandırılır.
 
 ---
 
-# 3. İlkel Veri Tipleri (Primitive Data Types)
+<span id="isimlendirme-naming"></span>
 
-Java programlama dili statik tür denetimli (*statically-typed*) bir dildir, yani tüm değişkenler kullanılmadan önce bildirilmelidir:
+## İsimlendirme (Naming)
 
-```java
-int gear = 1;
-```
+Her programlama dilinin, kullanmanıza izin verilen ad türleri için kendine özgü bir dizi kuralı ve geleneği vardır ve Java programlama dili de bundan farklı değildir. Değişkenlerinizi adlandırmaya ilişkin kural ve gelenekler şu şekilde özetlenebilir:
 
-Java programlama dili sekiz **ilkel veri tipini (primitive data types)** destekler:
+* Değişken adları büyük/küçük harfe duyarlıdır. Bir değişkenin adı, herhangi bir geçerli tanımlayıcı olabilir — bir harfle, dolar işareti “$” ile veya alt çizgi karakteri “\_” ile başlayan, uzunluğu sınırsız bir Unicode harf ve rakam dizisi olabilir. Ancak kural olarak, değişken adlarını her zaman "$" veya "\_" yerine bir harfle başlatmak gerekir. Ayrıca, kural gereği dolar işareti karakteri hiçbir zaman kullanılmaz. Otomatik olarak oluşturulan adların dolar işareti içerebildiği bazı durumlarla karşılaşabilirsiniz, ancak değişken adlarınızda bunu kullanmaktan her zaman kaçınmalısınız. Alt çizgi karakteri için de benzer bir kural vardır; değişkeninizin adını "\_" ile başlatmak teknik olarak geçerli olsa da, bu uygulama önerilmez. Boşluk kullanımına izin verilmez.
 
-| Veri Tipi | Boyut | Min Değer | Max Değer | Açıklama |
-| :--- | :--- | :--- | :--- | :--- |
-| **`byte`** | 8-bit | -128 | 127 | Bellek tasarrufu için büyük dizilerde tercih edilir. |
-| **`short`** | 16-bit | -32,768 | 32,767 | Bellek tasarrufu gereken durumlarda kullanılır. |
-| **`int`** | 32-bit | $-2^{31}$ | $2^{31}-1$ | Tamsayılar için standart seçimdir. |
-| **`long`** | 64-bit | $-2^{63}$ | $2^{63}-1$ | `int` sınırlarını aşan değerler için kullanılır. Sonuna `L` veya `l` eklenir. |
-| **`float`** | 32-bit | IEEE 754 | IEEE 754 | Tek duyarlıklı kayan noktalı sayı. Sonuna `F` veya `f` eklenir. |
-| **`double`** | 64-bit | IEEE 754 | IEEE 754 | Çift duyarlıklı kayan noktalı sayı. Ondalıklı sayılar için standart tercihtir. |
-| **`boolean`** | 1-bit (mantıksal) | - | - | Yalnızca iki olası değere sahiptir: `true` ve `false`. |
-| **`char`** | 16-bit | `'\u0000'` (0) | `'\uffff'` (65,535) | Tek bir 16-bit Unicode karakterini temsil eder. |
+*  Sonraki karakterler harfler, rakamlar, dolar işaretleri veya alt çizgi karakterleri olabilir. Kurallar (ve sağduyu) bu kural için de geçerlidir. Değişkenleriniz için bir ad seçerken, anlaşılması güç kısaltmalar yerine tam sözcükler kullanın. Bunu yapmak kodunuzun okunmasını ve anlaşılmasını kolaylaştıracaktır. Çoğu durumda kodunuzu kendi kendini açıklayan hale de getirecektir; örneğin cadence, speed ve gear adlarına sahip alanlar, s, c ve g gibi kısaltılmış sürümlerden çok daha sezgiseldir. Ayrıca seçtiğiniz adın bir **[anahtar sözcük veya ayrılmış sözcük](https://docs.oracle.com/javase/tutorial/java/nutsandbolts/_keywords.html)** olmaması gerektiğini unutmayın.
 
-Bu sekiz ilkel tipe ek olarak Java, nesneler için `java.lang.String` sınıfı üzerinden zengin bir karakter dizisi desteği de sağlar.
-
----
-
-# 4. Varsayılan Değerler (Default Values)
-
-Bir alan (*field*) bildirildiğinde ona açıkça bir başlangıç değeri atanmazsa derleyici makul bir varsayılan değer atar:
-
-| Veri Tipi | Varsayılan Değer (Alanlar İçin) |
-| :--- | :--- |
-| `byte` | `0` |
-| `short` | `0` |
-| `int` | `0` |
-| `long` | `0L` |
-| `float` | `0.0f` |
-| `double` | `0.0d` |
-| `char` | `'\u0000'` |
-| `String` (veya herhangi bir nesne referansı) | `null` |
-| `boolean` | `false` |
-
-> **Önemli Not:** Yerel değişkenler (*local variables*) hiçbir zaman varsayılan bir değer almaz! Başlatılmamış yerel bir değişkeni okumaya çalışmak derleme zamanı hatasına (*compiler error*) yol açar.
-
----
-
-# 5. Değişmez Değerler (Literals)
-
-Kaynak kodda doğrudan yazılan sabit değerlere **değişmez değer (literal)** denir.
-
-### Tamsayı Literalleri (Integer Literals)
-- **Onluk (Decimal):** `int decVal = 26;`
-- **Onaltılık (Hexadecimal):** `0x` veya `0X` ile başlar: `int hexVal = 0x1a;`
-- **Sekizlik (Octal):** `0` ile başlar: `int octVal = 032;`
-- **İkilik (Binary):** `0b` veya `0B` ile başlar (Java SE 7+): `int binVal = 0b11010;`
-
-### Sayısal Literallerde Alt Çizgi Kullanımı
-Java SE 7 ve sonrasında, okunabilirliği artırmak için sayısal literallerin basamakları arasında alt çizgi (`_`) kullanılabilir:
-
-```java
-long creditCardNumber = 1234_5678_9012_3456L;
-long socialSecurityNumber = 999_99_9999L;
-float pi = 3.14_15F;
-long hexBytes = 0xFF_EC_DE_5E;
-```
-
-### Karakter ve Dize Kaçış Dizileri (Escape Sequences)
-Java karakter ve dize literallerinde özel kaçış dizilerini destekler:
-- `\b` (Backspace)
-- `\t` (Tab)
-- `\n` (Yeni Satır / Line Feed)
-- `\f` (Form Feed)
-- `\r` (Satır Başı / Carriage Return)
-- `\"` (Çift Tırnak)
-- `\'` (Tek Tırnak)
-- `\\` (Ters Eğik Çizgi / Backslash)
+* Seçtiğiniz ad yalnızca bir kelimeden oluşuyorsa, o kelimeyi tamamen küçük harflerle yazın. Birden fazla kelimeden oluşuyorsa, sonraki her kelimenin ilk harfini büyük yazın. *gearRatio* ve *currentGear* adları bu kuralın başlıca örnekleridir. Değişkeniniz *static final int NUM_GEARS = 6* gibi sabit bir değer saklıyorsa, kural biraz değişir; her harf büyük yazılır ve sonraki kelimeler alt çizgi karakteriyle ayrılır. Kural gereği, alt çizgi karakteri başka hiçbir yerde kullanılmaz.

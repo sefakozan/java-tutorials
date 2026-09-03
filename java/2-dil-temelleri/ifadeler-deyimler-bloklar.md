@@ -1,71 +1,52 @@
 # Ders: İfadeler, Deyimler ve Bloklar (Expressions, Statements, and Blocks)
 
-Değişkenleri ve operatörleri anladığınıza göre, artık ifadeleri (*expressions*), deyimleri (*statements*) ve kod bloklarını (*blocks*) inceleme zamanı geldi.
+Operatörleri anladıktan sonra artık onları ifadeler (*expressions*) oluşturmak için kullanabilirsiniz. İfadeler deyimlerin (*statements*) temel yapı taşlarıdır; deyimler ise kod blokları (*blocks*) halinde gruplanabilir.
 
-1. [**İfadeler (Expressions)**](#1-ifadeler-expressions)
-2. [**Deyimler (Statements)**](#2-deyimler-statements)
-3. [**Bloklar (Blocks)**](#3-bloklar-blocks)
 ---
 
-# 1. İfadeler
+## 1. İfadeler (Expressions)
 
-Bir **ifade (expression)**; değişkenler, operatörler ve metot çağrılarından oluşan, dilin sözdizimine uygun olarak yapılandırılmış ve tek bir değere dönüşen (*evaluate* edilen) bir yapıdır:
+Bir **ifade (expression)**; değişkenler, operatörler ve metot çağrılarından oluşan ve tek bir değere indirgenen bir sözdizimi yapısıdır:
 
 ```java
 int cadence = 0;
 anArray[0] = 100;
 System.out.println("Element 1 at index 0: " + anArray[0]);
 
-int result = 1 + 2; // result şimdi 3
-if (value1 == value2)
+int result = 1 + 2; // result 3 değerini alır
+if (value1 == value2) 
     System.out.println("value1 == value2");
 ```
 
-Bir ifade tarafından döndürülen değerin veri türü, ifadede kullanılan öğelere bağlıdır. `cadence = 0` ifadesi bir `int` döndürür çünkü atama operatörü sol işleneniyle aynı veri türünde bir değer üretir. `1 + 2` ifadesi de bir `int` üretir.
+---
 
-Java programlama dili, parantezlerin (`( )`) gerektirdiği durumlar dışında, bir ifadenin çeşitli bölümlerini operatör önceliğine göre değerlendirir:
+## 2. Deyimler (Statements)
 
-```java
-(x + y) / 100 // Önce toplama, sonra bölme yapılır
-```
+Bir **deyim (statement)**, eksiksiz bir yürütme birimi oluşturan programlama cümlesidir. Doğal dillerdeki cümlelerin noktayla bitmesi gibi, Java deyimleri de noktalı virgül (`;`) ile sonlandırılır.
+
+### Deyim Türleri:
+1. **Atama İfadeleri:** `aValue = 8933.234;`
+2. **Artırma/Azaltma:** `aValue++;`
+3. **Metot Çağrıları:** `System.out.println("Hello World!");`
+4. **Nesne Oluşturma:** `Bicycle myBike = new Bicycle();`
+5. **Bildirim Deyimleri (*Declaration Statements*):** `double aValue = 8933.234;`
+6. **Kontrol Akış Deyimleri (*Control Flow Statements*):** `if`, `while`, `for` vb.
 
 ---
 
-# 2. Deyimler
+## 3. Bloklar (Blocks)
 
-Bir **deyim (statement)**, programın çalıştırılabilir eksiksiz bir birimini oluşturur. Bir deyim, ifadenin sonuna noktalı virgül (`;`) eklenerek sonlandırılır.
-
-Aşağıdaki ifade türleri birer noktalı virgülle sonlandırılarak **ifade deyimine (expression statement)** dönüştürülebilir:
-
-- **Atama ifadeleri:** `aValue = 8933.234;`
-- **Artırma ve azaltma ifadeleri:** `aValue++;` veya `++aValue;`
-- **Metot çağrıları:** `System.out.println("Hello World!");`
-- **Nesne oluşturma ifadeleri:** `Bicycle myBike = new Bicycle();`
-
-İfade deyimlerine ek olarak iki tür deyim daha vardır:
-1. **Bildirim Deyimleri (Declaration Statements):** Bir değişkeni bildiren deyimlerdir:
-   ```java
-   double aValue = 8933.234;
-   ```
-2. **Kontrol Akış Deyimleri (Control Flow Statements):** Programın yürütülme sırasını düzenler (`if-then`, `switch`, `for`, `while` vb.).
-
----
-
-# 3. Bloklar
-
-Bir **blok (block)**, açılış ve kapanış süslü parantezleri (`{ }`) arasında yer alan sıfır veya daha fazla deyimden oluşan bir gruptur. Tek bir deyimin kullanılmasına izin verilen her yerde bir kod bloğu kullanılabilir.
-
-Aşağıdaki `BlockDemo` örneği blok kullanımını gösterir:
+Bir **blok (block)**, açılış ve kapanış süslü parantezleri (`{ }`) arasında yer alan sıfır veya daha fazla deyimden oluşan bir gruptur. Tek bir deyimin kullanılabileceği her yerde bir blok kullanılabilir:
 
 ```java
 class BlockDemo {
     public static void main(String[] args) {
         boolean condition = true;
         if (condition) { // 1. bloğun başlangıcı
-            System.out.println("Condition is true.");
+            System.out.println("Koşul true!");
         } // 1. bloğun sonu
         else { // 2. bloğun başlangıcı
-            System.out.println("Condition is false.");
+            System.out.println("Koşul false!");
         } // 2. bloğun sonu
     }
 }
