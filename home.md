@@ -2,9 +2,9 @@
 
 <div class="oracle-notice-box">
 <p><em>The Java Tutorials, JDK 8 için yazılmıştır. Bu sayfada açıklanan örnekler ve uygulamalar, sonraki sürümlerde sunulan iyileştirmelerden yararlanmamaktadır ve artık mevcut olmayan teknolojileri kullanıyor olabilir.<br>
-En son sürümlerden yararlanan güncel eğitimler için <a href="https://dev.java" target="_blank" rel="noopener noreferrer">Dev.java</a> sayfasına bakınız.<br>
-Java SE 9 ve sonraki sürümlerdeki güncellenmiş dil özelliklerinin bir özeti için <a href="https://docs.oracle.com/en/java/javase/index.html" target="_blank" rel="noopener noreferrer">Java Dil Değişiklikleri</a> sayfasına bakınız.<br>
-Tüm JDK sürümleri için yeni özellikler, geliştirmeler ve kaldırılan veya kullanımdan kaldırılan seçenekler hakkında bilgi için <a href="https://www.oracle.com/java/technologies/javase/jdk-relnotes-index.html" target="_blank" rel="noopener noreferrer">JDK Sürüm Notları</a> sayfasına bakınız.</em></p>
+• En son sürümlerden yararlanan güncel eğitimler için <a href="https://dev.java" target="_blank" rel="noopener noreferrer">Dev.java</a> sayfasına bakınız.<br>
+• Java SE 9 ve sonraki sürümlerdeki güncellenmiş dil özelliklerinin bir özeti için <a href="https://docs.oracle.com/en/java/javase/index.html" target="_blank" rel="noopener noreferrer">Java Dil Değişiklikleri</a> sayfasına bakınız.<br>
+• Tüm JDK sürümleri için yeni özellikler, geliştirmeler ve kaldırılan veya kullanımdan kaldırılan seçenekler hakkında bilgi için <a href="https://www.oracle.com/java/technologies/javase/jdk-relnotes-index.html" target="_blank" rel="noopener noreferrer">JDK Sürüm Notları</a> sayfasına bakınız.</em></p>
 </div>
 
 Java Eğitimleri, Java programlama dilini kullanarak uygulama oluşturmak isteyen programcılar için pratik rehberlerdir. Bunlar, yüzlerce tam, çalışan örnek ve onlarca ders içerir. İlgili ders grupları **"yürüyüş yolları" (trails)** halinde düzenlenir.
