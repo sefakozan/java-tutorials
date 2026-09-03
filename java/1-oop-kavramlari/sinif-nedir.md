@@ -1,4 +1,4 @@
-# Ders: Sınıf (Class) Nedir?
+# Sınıf (Class) Nedir?
 
 Gerçek dünyada genellikle aynı türden birçok bireysel nesne bulursunuz. Aynı marka ve modele sahip binlerce başka bisiklet var olabilir. Her bisiklet aynı tasarım şemasından (*blueprint*) üretilmiştir ve bu nedenle aynı bileşenleri içerir. Nesne yönelimli terimlerle, bisikletinizin **bisiklet olarak bilinen nesneler sınıfının bir örneği (instance)** olduğunu söyleriz. Bir sınıf (*class*), bireysel nesnelerin kendisinden oluşturulduğu bir plandır.
 

@@ -1,4 +1,4 @@
-# Ders: Nesne (Object) Nedir?
+# Nesne (Object) Nedir?
 
 Nesneler, **nesne yönelimli (object-oriented)** teknolojiyi anlamanın anahtarıdır. Şu anda etrafınıza bakın; gerçek dünyadan birçok nesne örneği bulacaksınız: köpeğiniz, masanız, televizyonunuz, bisikletiniz.
 

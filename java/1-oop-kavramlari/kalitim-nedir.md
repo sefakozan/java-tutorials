@@ -1,4 +1,4 @@
-# Ders: Kalıtım (Inheritance) Nedir?
+# Kalıtım (Inheritance) Nedir?
 
 Farklı türdeki nesneler genellikle birbiriyle belirli miktarda ortak özelliğe sahiptir. Örneğin dağ bisikletleri (*mountain bikes*), yarış/yol bisikletleri (*road bikes*) ve tandem bisikletler (*tandem bikes*), bisikletlerin ortak özelliklerini (mevcut hız, mevcut pedal kadansı, mevcut vites) paylaşırlar. Ancak her biri onları farklı kılan ek özellikleri de tanımlar: tandem bisikletlerin iki selesi ve iki gidonu vardır; yol bisikletleri aşağı kıvrık yarış gidonlarına sahiptir; bazı dağ bisikletleri ise daha düşük vites oranı sağlayan ek bir aynakola sahiptir.
 

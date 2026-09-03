@@ -1,4 +1,4 @@
-# Ders: Arayüz (Interface) Nedir?
+# Arayüz (Interface) Nedir?
 
 Daha önce öğrendiğiniz gibi, nesneler dış dünyayla olan etkileşimlerini dışa açtıkları metotlar aracılığıyla tanımlarlar. Metotlar, nesnenin dış dünyayla olan **arayüzünü (interface)** oluşturur; örneğin televizyonunuzun ön tarafındaki düğmeler, sizinle plastik kasanın diğer tarafındaki elektrik devreleri arasındaki arayüzdür. Televizyonu açıp kapatmak için "güç" düğmesine basarsınız.
 
