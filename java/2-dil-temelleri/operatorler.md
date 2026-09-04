@@ -8,7 +8,7 @@ Java programlama dilinin operatörlerini incelerken, hangi operatörlerin en yü
 
 | Operatörler (*Operators*) | Öncelik (*Precedence*) |
 | :--- | :--- |
-| sonek (*postfix*) | **++expr &nbsp; &nbsp; --expr** |
+| sonek (*postfix*) | **expr++ &nbsp; &nbsp; expr++** |
 | birli (*unary*) | **++expr &nbsp; --expr &nbsp; +expr &nbsp; -expr &nbsp; ~ &nbsp; !** |
 | çarpımsal (*multiplicative*) | **\* &nbsp; / &nbsp; %** |
 | toplamsal (*additive*) | **+ &nbsp; -** |
