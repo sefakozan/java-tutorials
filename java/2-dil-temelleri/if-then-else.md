@@ -6,9 +6,9 @@
 
 ```java
 void applyBrakes() {
-    // "if" yan tümcesi: bisiklet hareket ediyor olmalı
+    // "if" koşulu: bisiklet hareket ediyor olmalı
     if (isMoving) {
-        // "then" yan tümcesi: mevcut hızı azaltın
+        // "then": mevcut hızı azalt
         currentSpeed--;
     }
 }
@@ -20,7 +20,7 @@ Ek olarak, "then" yan tümcesi yalnızca bir ifade içeriyorsa, açılış ve ka
 
 ```java
 void applyBrakes() {
-    // same as above, but without braces 
+    // yukarıdakiyle aynı, ancak süslü parantezler olmadan
     if (isMoving)
         currentSpeed--;
 }
