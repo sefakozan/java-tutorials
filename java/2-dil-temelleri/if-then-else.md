@@ -8,7 +8,7 @@
 void applyBrakes() {
     // "if" koşulu: bisiklet hareket ediyor olmalı
     if (isMoving) {
-        // "then": mevcut hızı azalt
+        // "then": mevcut hızı azaltır
         currentSpeed--;
     }
 }
