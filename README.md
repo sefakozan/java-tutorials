@@ -1,6 +1,6 @@
 <h1 align="center">
   The Java™ Tutorials<br>
-  <small>Türkçe</small><br>
+  <small><small>Türkçe</small></small><br>
   <img src="_media/oracle-logo.svg" alt="Oracle Logo" height="24" valign="middle">
   &nbsp;&nbsp;&nbsp;&nbsp;
   <img src="_media/java-docs-logo.svg" alt="Java Documentation" height="28" valign="middle">
