@@ -1,12 +1,10 @@
-<p align="center">
-  <font size="6"><b>The Java™ Tutorials</b></font>
-  <br>
-  <font size="4">Türkçe</font>
-  <br><br>
-  <img src="_media/oracle-logo.svg" alt="Oracle Logo" height="24">
+<h1 align="center">
+  The Java™ Tutorials<br>
+  <small>Türkçe</small><br>
+  <img src="_media/oracle-logo.svg" alt="Oracle Logo" height="24" valign="middle">
   &nbsp;&nbsp;&nbsp;&nbsp;
-  <img src="_media/java-docs-logo.svg" alt="Java Documentation" height="28">
-</p>
+  <img src="_media/java-docs-logo.svg" alt="Java Documentation" height="28" valign="middle">
+</h1>
 
 Oracle (Sun Microsystems) tarafından hazırlanan ve Java dünyasının en köklü eğitim serisi olan **The Java™ Tutorials** içeriğinin kapsamlı Türkçe çevirisidir.
 
