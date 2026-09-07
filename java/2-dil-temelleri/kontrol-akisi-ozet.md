@@ -1,14 +1,3 @@
 # Kontrol Akış İfadelerinin Özeti (Summary of Control Flow Statements)
 
-| İfade Türü | Açıklama |
-| :--- | :--- |
-| **`if-then`** | Bir koşul `true` ise ilgili bloğu çalıştırır. |
-| **`if-then-else`** | Koşul `false` ise ikincil bir alternatif yol sunar. |
-| **`switch`** | Tamsayı, enum, String veya sarmalayıcı değerlere göre çoklu dallanma sağlar. |
-| **`while`** | Koşul `true` olduğu sürece döngüyü yürütür (başta kontrol). |
-| **`do-while`** | Döngüyü en az bir kez çalıştırır ve koşulu sonda test eder. |
-| **`for`** | Belirli bir aralıkta sayaç ile yineleme yapar. |
-| **Gelişmiş `for` (*for-each*)** | Dizi ve koleksiyon elemanları üzerinde kolayca gezinir. |
-| **`break`** | Döngüyü veya switch bloğunu erken sonlandırır (etiketli veya etiketsiz). |
-| **`continue`** | Döngünün mevcut adımını atlar ve sonraki adıma geçer. |
-| **`return`** | Geçerli metottan çıkar ve isteğe bağlı bir değer döndürür. |
+`if-then` ifadesi, tüm kontrol akışı ifadelerinin en temelidir. Programınıza, yalnızca belirli bir test doğru olarak değerlendirildiğinde belirli bir kod bölümünü çalıştırmasını söyler. `if-then-else` ifadesi, bir "if" koşulu yanlış olarak değerlendirildiğinde ikincil bir yürütme yolu sağlar. `if-then` ve `if-then-else` ifadelerinin aksine, `switch` ifadesi herhangi bir sayıda olası yürütme yoluna izin verir. `while` ve `do-while` ifadeleri, belirli bir koşul doğru olduğu sürece bir ifade bloğunu sürekli olarak çalıştırır. `do-while` ile `while` arasındaki fark, `do-while` ifadesinin ifadesini döngünün başında değil, sonunda değerlendirmesidir. Bu nedenle, `do` bloğunun içindeki ifadeler her zaman en az bir kez çalıştırılır. `for` ifadesi, bir değer aralığı üzerinde yineleme yapmak için kısa ve öz bir yol sağlar. Biri koleksiyonlar ve diziler üzerinde döngü oluşturmak için tasarlanmış olan iki biçimi vardır.

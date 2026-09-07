@@ -1,4 +1,4 @@
-# Sorular ve Alıştırmalar: Değişkenler (Questions and Exercises: Variables)
+# Sorular ve Alıştırmalar: Değişkenler
 
 ## Sorular
 

@@ -1,4 +1,4 @@
-# Sorular ve Alıştırmalar: Operatörler (Questions and Exercises: Operators)
+# Sorular ve Alıştırmalar: Operatörler
 
 ## Sorular
 

@@ -1,4 +1,4 @@
-# Sorular ve Alıştırmalar: İfadeler, Deyimler ve Bloklar (Questions and Exercises)
+# Sorular ve Alıştırmalar: İfadeler, Deyimler ve Bloklar
 
 ## Sorular
 

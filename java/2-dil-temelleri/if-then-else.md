@@ -30,6 +30,7 @@ Süslü parantezlerin ne zaman atlanacağına karar vermek kişisel bir zevk mes
 
 ## `if-then-else` İfadesi
 `if-then-else` ifadesi, bir "if" koşulu *false* olarak değerlendirildiğinde ikincil bir yürütme yolu sağlar. Bisiklet hareket halinde değilken frenlere basılması durumunda bir işlem gerçekleştirmek için `applyBrakes` metodunda bir `if-then-else` ifadesi kullanabilirsiniz. Bu durumda yapılacak işlem, bisikletin zaten durmuş olduğunu belirten bir hata mesajını yazdırmaktır.
+sefako
 
 ```java
 void applyBrakes() {
