@@ -7,7 +7,7 @@
 • Tüm JDK sürümleri için yeni özellikler, geliştirmeler ve kaldırılan veya kullanımdan kaldırılan seçenekler hakkında bilgi için <a href="https://www.oracle.com/java/technologies/javase/jdk-relnotes-index.html" target="_blank" rel="noopener noreferrer">JDK Sürüm Notları</a> sayfasına bakınız.</em></p>
 </div>
 
-Java Eğitimleri, Java programlama dilini kullanarak uygulama oluşturmak isteyen programcılar için pratik rehberlerdir. Bunlar, yüzlerce tam, çalışan örnek ve onlarca ders içerir. İlgili ders grupları **"yürüyüş yolları" (trails)** halinde düzenlenir.
+Java Eğitimleri, Java programlama dilini kullanarak uygulama oluşturmak isteyen programcılar için pratik rehberlerdir. Bunlar, yüzlerce tam, çalışan örnek ve onlarca ders içerir. İlgili ders grupları **"kılavuzlar" (trails)** halinde gösterilir.
 
 ---
 
