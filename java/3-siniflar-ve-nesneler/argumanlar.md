@@ -75,11 +75,11 @@ veya henüz daha farklı sayıda bağımsız değişkenle.
 
 ## Parametre İsimleri (Parameter Names)
 
-Bir metoda veya yapıcıya bir parametre bildirdiğinizde, o parametre için bir ad belirlersiniz. Bu ad, iletilen argümana başvurmak için metot gövdesi içinde kullanılır.
+Bir metoda veya constructor'a bir parametre bildirdiğinizde, o parametre için bir ad belirlersiniz. Bu ad, iletilen argümana başvurmak için metot gövdesi içinde kullanılır.
 
-Bir parametrenin adı kendi etki alanında (scope) benzersiz olmalıdır. Aynı metot veya yapıcı için başka bir parametrenin adıyla aynı olamaz ve metot veya yapıcı içindeki bir yerel değişkenin adı olamaz.
+Bir parametrenin adı kendi etki alanında (scope) benzersiz olmalıdır. Aynı metot veya constructor için başka bir parametrenin adıyla aynı olamaz ve metot veya constructor içindeki bir yerel değişkenin adı olamaz.
 
-Bir parametre, sınıfın alanlarından biriyle aynı ada sahip olabilir. Bu durum söz konusu olduğunda, parametrenin alanı *gölgelediği (shadows)* söylenir. Alanları gölgelemek kodunuzun okunmasını zorlaştırabilir ve geleneksel olarak yalnızca belirli bir alanı ayarlayan yapıcılar ve metotlar içinde kullanılır. Örneğin, aşağıdaki `Circle` sınıfını ve onun `setOrigin` metodunu ele alalım:
+Bir parametre, sınıfın alanlarından biriyle aynı ada sahip olabilir. Bu durum söz konusu olduğunda, parametrenin alanı *gölgelediği (shadows)* söylenir. Alanları gölgelemek kodunuzun okunmasını zorlaştırabilir ve geleneksel olarak yalnızca belirli bir alanı ayarlayan constructor'lar ve metotlar içinde kullanılır. Örneğin, aşağıdaki `Circle` sınıfını ve onun `setOrigin` metodunu ele alalım:
 
 ```java
 public class Circle {
@@ -92,9 +92,9 @@ public class Circle {
 
 `Circle` sınıfının üç alanı vardır: `x`, `y` ve `radius`. `setOrigin` metodunun iki parametresi vardır ve bunların her biri alanlardan biriyle aynı ada sahiptir. Her bir metot parametresi, adını paylaştığı alanı gölgeler. Dolayısıyla metot gövdesi içinde `x` veya `y` basit adlarını kullanmak parametreye atıfta bulunur, alana *değil*. Alana erişmek için nitelikli bir ad (qualified name) kullanmanız gerekir. Bu konu daha sonra bu derste "`this` Anahtar Kelimesini Kullanma" başlıklı bölümde ele alınacaktır.
 
-## İlkel Veri Türü Bağımsız Değişkenlerini Aktarma (Passing Primitive Data Type Arguments)
+## İlkel Veri Türü Argümanlarını Aktarma (Passing Primitive Data Type Arguments)
 
-`int` veya `double` gibi ilkel bağımsız değişkenler metotlara *değere göre (by value)* aktarılır. Bu, parametrelerin değerlerindeki herhangi bir değişikliğin yalnızca metodun etki alanı (scope) içinde geçerli olduğu anlamına gelir. Metot döndüğünde, parametreler kaybolur ve bunlarda yapılan tüm değişiklikler yok olur. İşte bir örnek:
+`int` veya `double` gibi ilkel veri türü argümanları metotlara **değere göre (*by value*)** aktarılır. Bu, parametrelerin değerlerindeki herhangi bir değişikliğin yalnızca **metodun etki alanı (scope)** içinde geçerli olduğu anlamına gelir. Metot döndüğünde, parametreler kaybolur ve bunlarda yapılan tüm değişiklikler yok olur. İşte bir örnek:
 
 ```java
 public class PassPrimitiveByValue {
@@ -125,9 +125,9 @@ Bu programı çalıştırdığınızda çıktı şudur:
 After invoking passMethod, x = 3
 ```
 
-## Referans Veri Türü Bağımsız Değişkenlerini Aktarma (Passing Reference Data Type Arguments)
+## Referans Veri Türü Argümanlarını Aktarma (Passing Reference Data Type Arguments)
 
-Nesneler gibi referans veri türü parametreleri de metotlara *değere göre (by value)* aktarılır. Bu, metot döndüğünde, iletilen referansın hala daha öncekiyle aynı nesneye başvurduğu anlamına gelir. *Ancak*, uygun erişim düzeyine sahiplerse, nesnenin alanlarının değerleri metot içinde *değiştirilebilir*.
+Nesneler gibi referans veri türü parametreleri de metotlara **değere göre (*by value*)** aktarılır. Bu, metot döndüğünde, iletilen referansın hala daha öncekiyle aynı nesneye başvurduğu anlamına gelir. *Ancak*, uygun erişim düzeyine sahiplerse, nesnenin alanlarının değerleri metot içinde **değiştirilebilir**.
 
 Örneğin rastgele bir sınıfta `Circle` nesnelerini hareket ettiren bir metodu ele alalım:
 
@@ -142,10 +142,10 @@ public void moveCircle(Circle circle, int deltaX, int deltaY) {
 }
 ```
 
-Metodun şu bağımsız değişkenlerle çağrıldığını varsayalım:
+Metodun şu argümanlarla çağrıldığını varsayalım:
 
 ```java
 moveCircle(myCircle, 23, 56)
 ```
 
-Metodun içinde `circle` başlangıçta `myCircle` nesnesine başvurur. Metot, `circle`'ın başvurduğu nesnenin (yani `myCircle`) x ve y koordinatlarını sırasıyla 23 ve 56 oranında değiştirir. Bu değişiklikler metot döndüğünde kalıcı olacaktır. Ardından `circle` parametresine `x = y = 0` olan yeni bir `Circle` nesnesine bir referans atanır. Ancak bu yeniden atamanın hiçbir kalıcılığı yoktur, çünkü referans değere göre aktarılmıştır ve değiştirilemez. Metot içinde `circle` tarafından işaret edilen nesne değişmiştir, ancak metot döndüğünde `myCircle` hala metot çağrılmadan önce başvurduğu aynı `Circle` nesnesine başvurur.
+Metot gövdesinde `circle` parametresi, başlangıçta `myCircle` nesnesini referans alır. Metot, `circle`'ın işaret ettiği nesnenin (yani `myCircle`'ın) x ve y koordinatlarını sırasıyla 23 ve 56 artırarak değiştirir. Yapılan bu değişiklikler metot tamamlandığında da **kalıcı olacaktır**. Ardından `circle` parametresine `x = y = 0` olan yeni bir `Circle` nesnesinin referansı atanır. Ancak bu yeni atamanın metot dışında hiçbir **kalıcılığı yoktur**; çünkü referans metoda **değere göre (*by value*)** aktarılmıştır ve orijinal referansın kendisi değiştirilemez. Metot içerisinde `circle` değişkeninin işaret ettiği nesne değişmiş olsa da, metot sona erdiğinde `myCircle` hala metot çağrılmadan önce işaret ettiği aynı `Circle` nesnesini referans almaya devam eder.

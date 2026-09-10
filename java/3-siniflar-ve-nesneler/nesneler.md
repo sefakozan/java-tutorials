@@ -7,7 +7,6 @@ Tipik bir Java programı, bildiğiniz gibi metotları çağırarak etkileşime g
 ```java
 public class CreateObjectDemo {
     public static void main(String[] args) {
-		
         // Bir point nesnesi ve iki rectangle nesnesi bildirin ve oluşturun.
         Point originOne = new Point(23, 94);
         Rectangle rectOne = new Rectangle(originOne, 100, 200);
