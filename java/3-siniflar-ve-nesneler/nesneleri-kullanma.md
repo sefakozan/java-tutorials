@@ -81,7 +81,7 @@ Unutmayın, belirli bir nesne üzerinde bir metot çağırmak, o nesneye bir mes
 
 ## Çöp Toplayıcı (The Garbage Collector)
 
-Bazı nesne yönelimli diller, oluşturduğunuz tüm nesneleri takip etmenizi ve artık ihtiyaç duyulmadığında bunları açıkça yok etmenizi (destroy) gerektirir. Belleği açıkça yönetmek yorucu ve hataya açıktır. Java platformu istediğiniz kadar nesne oluşturmanıza izin verir (elbette sisteminizin kaldırabileceği ölçüde sınırlıdır) ve bunları yok etme konusunda endişelenmenize gerek kalmaz. Java çalışma zamanı ortamı (runtime environment), artık kullanılmadıklarını belirlediğinde nesneleri siler. Bu işleme **çöp toplama (garbage collection)** adı verilir.
+Bazı nesne yönelimli diller, oluşturduğunuz tüm nesneleri takip etmenizi ve artık ihtiyaç duyulmadığında bunları açıkça yok etmenizi gerektirir. Belleği açıkça yönetmek yorucu ve hataya açıktır. Java platformu istediğiniz kadar nesne oluşturmanıza izin verir (elbette sisteminizin kaldırabileceği ölçüde sınırlıdır) ve bunları yok etme konusunda endişelenmenize gerek kalmaz. Java çalışma zamanı ortamı (runtime environment), artık kullanılmadıklarını belirlediğinde nesneleri siler. Bu işleme **çöp toplama (garbage collection)** adı verilir.
 
 Bir nesne, artık o nesneye başvuran hiçbir referans kalmadığında çöp toplama için uygun hale gelir. Bir değişkende tutulan referanslar, değişken kapsam dışına çıktığında (goes out of scope) genellikle düşer. Ya da değişkene özel `null` değerini atayarak bir nesne referansını açıkça bırakabilirsiniz. Bir programın aynı nesneye birden fazla referansı olabileceğini unutmayın; bir nesne çöp toplama için uygun hale gelmeden önce o nesneye olan tüm referansların bırakılmış olması gerekir.
 
