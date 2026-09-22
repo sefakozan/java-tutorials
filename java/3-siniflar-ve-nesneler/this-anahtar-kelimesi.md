@@ -1,10 +1,10 @@
 # this Anahtar Kelimesini Kullanma (Using the this Keyword)
 
-Bir örnek metodu (instance method) veya yapıcı (constructor) içinde `this`, *mevcut nesneye (current object)* — metodu veya yapıcısı çağrılan nesneye — bir referanstır. Bir örnek metodu veya yapıcısı içinden geçerli nesnenin herhangi bir üyesine `this` kullanarak başvurabilirsiniz.
+Bir örnek metodu (instance method) veya constructor içinde `this`, *mevcut nesneye* — metodu veya constructor'ı çağrılan nesneye — bir referanstır. Bir örnek metodu veya constructor'ı içinden geçerli nesnenin herhangi bir üyesine `this` kullanarak başvurabilirsiniz.
 
 ## Bir Alanla `this` Kullanma (Using `this` with a Field)
 
-`this` anahtar sözcüğünü kullanmanın en yaygın nedeni, bir alanın bir metot veya yapıcı parametresi tarafından gölgelenmesidir (shadowed).
+`this` anahtar sözcüğünü kullanmanın en yaygın nedeni, bir alanın bir metot veya constructor parametresi tarafından gölgelenmesidir (shadowed).
 
 Örneğin `Point` sınıfı şu şekilde yazılmıştı:
 
@@ -40,7 +40,7 @@ Yapıcıya verilen her argüman, nesnenin alanlarından birini gölgeler — yap
 
 ## Bir Yapıcı ile `this` Kullanma (Using `this` with a Constructor)
 
-Bir yapıcının içinden, aynı sınıftaki başka bir yapıcıyı çağırmak için de `this` anahtar kelimesini kullanabilirsiniz. Bunu yapmaya *açık yapıcı çağrısı (explicit constructor invocation)* denir. İşte Nesneler bölümündekinden farklı bir implementasyona sahip başka bir `Rectangle` sınıfı:
+Bir constructor'ın içinden, aynı sınıftaki başka bir constructor'ı çağırmak için de `this` anahtar kelimesini kullanabilirsiniz. Bunu yapmaya *açık yapıcı çağrısı (explicit constructor invocation)* denir. İşte Nesneler bölümündekinden farklı bir implementasyona sahip başka bir `Rectangle` sınıfı:
 
 ```java
 public class Rectangle {
@@ -63,6 +63,6 @@ public class Rectangle {
 }
 ```
 
-Bu sınıf bir dizi yapıcı içerir. Her yapıcı, dikdörtgenin üye değişkenlerinin bir kısmını veya tamamını başlatır. Yapıcılar, başlangıç değeri bir argüman tarafından sağlanmayan herhangi bir üye değişkeni için varsayılan bir değer sağlar. Örneğin, bağımsız değişkensiz yapıcı 0,0 koordinatlarında 1x1'lik bir `Rectangle` oluşturur. İki bağımsız değişkenli yapıcı, genişlik ve yüksekliği ileterek ancak her zaman 0,0 koordinatlarını kullanarak dört bağımsız değişkenli yapıcıyı çağırır. Daha önce olduğu gibi derleyici, bağımsız değişkenlerin sayısına ve türüne göre hangi yapıcının çağrılacağını belirler.
+Bu sınıf bir dizi constructor içerir. Her constructor, dikdörtgenin üye değişkenlerinin bir kısmını veya tamamını başlatır. Constructor'lar, başlangıç değeri bir argüman tarafından sağlanmayan herhangi bir üye değişkeni için varsayılan bir değer sağlar. Örneğin, bağımsız değişkensiz constructor 0,0 koordinatlarında 1x1'lik bir `Rectangle` oluşturur. İki bağımsız değişkenli constructor, genişlik ve yüksekliği ileterek ancak her zaman 0,0 koordinatlarını kullanarak dört bağımsız değişkenli constructor'ı çağırır. Daha önce olduğu gibi derleyici, bağımsız değişkenlerin sayısına ve türüne göre hangi constructor'ın çağrılacağını belirler.
 
-Varsa, başka bir yapıcının çağrılması yapıcının ilk satırı olmalıdır.
+Varsa, başka bir constructor çağrılması constructor'ın ilk satırı olmalıdır.

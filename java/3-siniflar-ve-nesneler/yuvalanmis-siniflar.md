@@ -1,6 +1,6 @@
 # Yuvalanmış Sınıflar (Nested Classes)
 
-Java programlama dili, bir sınıfı başka bir sınıfın içinde tanımlamanıza olanak tanır. Böyle bir sınıfa *yuvalanmış sınıf (nested class)* denir ve burada gösterilmiştir:
+Java programlama dili, bir sınıfı başka bir sınıfın içinde tanımlamanıza olanak tanır. Böyle bir sınıfa **nested class (yuvalanmış sınıf)** denir ve burada gösterilmiştir:
 
 ```java
 class OuterClass {
@@ -25,7 +25,7 @@ class OuterClass {
 }
 ```
 
-Bir yuvalanmış sınıf, kendisini çevreleyen sınıfın (enclosing class) bir üyesidir. Statik olmayan yuvalanmış sınıflar (iç sınıflar), `private` olarak bildirilmiş olsalar bile, kendilerini çevreleyen sınıfın diğer üyelerine erişebilirler. Statik yuvalanmış sınıflar ise kendilerini çevreleyen sınıfın diğer üyelerine doğrudan erişemezler. `OuterClass`'ın bir üyesi olarak bir yuvalanmış sınıf; `private`, `public`, `protected` veya *paket-özel (package private)* olarak bildirilebilir. (Dış sınıfların yalnızca `public` veya *package private* olarak bildirilebileceğini hatırlayın.)
+Bir yuvalanmış sınıf, kendisini çevreleyen sınıfın (enclosing class) bir üyesidir. Statik olmayan yuvalanmış sınıflar (iç sınıflar), `private` olarak bildirilmiş olsalar bile, kendilerini çevreleyen sınıfın diğer üyelerine erişebilirler. Statik yuvalanmış sınıflar ise kendilerini çevreleyen sınıfın diğer üyelerine doğrudan erişemezler. `OuterClass`'ın bir üyesi olarak bir yuvalanmış sınıf; `private`, `public`, `protected` veya ***paket-özel (package private)*** olarak bildirilebilir. (Dış sınıfların yalnızca `public` veya ***paket-özel (package private)*** olarak bildirilebileceğini hatırlayın.)
 
 ## Neden Yuvalanmış Sınıflar Kullanılır? (Why Use Nested Classes?)
 
@@ -109,14 +109,12 @@ public class OuterClass {
         OuterClass.InnerClass innerObject = outerObject.new InnerClass();
         innerObject.accessMembers();
 
-        System.out.println("
-Static nested class:");
+        System.out.println("\nStatic nested class:");
         System.out.println("--------------------");
         StaticNestedClass staticNestedObject = new StaticNestedClass();        
         staticNestedObject.accessMembers(outerObject);
         
-        System.out.println("
-Top-level class:");
+        System.out.println("\nTop-level class:");
         System.out.println("--------------------");
         TopLevelClass topLevelObject = new TopLevelClass();        
         topLevelObject.accessMembers(outerObject);                
@@ -180,7 +178,7 @@ Benzer şekilde `TopLevelClass` üst düzey sınıfı da `outerField`'a doğruda
 
 ## Gölgeleme (Shadowing)
 
-Belirli bir kapsamdaki (örneğin bir iç sınıf veya bir metot tanımı) bir tür bildirimi (üye değişkeni veya parametre adı gibi), çevreleyen kapsamdaki başka bir bildirimle aynı ada sahipse, bu bildirim çevreleyen kapsamın bildirimini *gölgeler (shadows)*. Yalnızca adıyla gölgelenmiş bir bildirime başvuramazsınız. Aşağıdaki `ShadowTest` örneği bunu göstermektedir:
+Belirli bir kapsamdaki (örneğin bir iç sınıf veya bir metot tanımı) bir tür bildirimi (üye değişkeni veya parametre adı gibi), çevreleyen kapsamdaki başka bir bildirimle aynı ada sahipse, bu bildirim çevreleyen kapsamın bildirimini ***gölgeler (shadows)***. Yalnızca adıyla gölgelenmiş bir bildirime başvuramazsınız. Aşağıdaki `ShadowTest` örneği bunu göstermektedir:
 
 ```java
 public class ShadowTest {
@@ -228,4 +226,4 @@ System.out.println("ShadowTest.this.x = " + ShadowTest.this.x);
 
 ## Serileştirme (Serialization)
 
-[Yerel](java/3-siniflar-ve-nesneler/yerel-siniflar.md) ve [anonim](java/3-siniflar-ve-nesneler/anonim-siniflar.md) sınıflar da dahil olmak üzere iç sınıfların serileştirilmesi (serialization) kesinlikle önerilmez. Java derleyicisi iç sınıflar gibi belirli yapıları derlediğinde *sentetik yapılar (synthetic constructs)* oluşturur; bunlar kaynak kodda karşılık gelen bir yapısı olmayan sınıflar, yöntemler, alanlar ve diğer yapılardır. Sentetik yapılar, Java derleyicilerinin JVM'de değişiklik yapmadan yeni Java dili özelliklerini uygulamasına olanak tanır. Ancak sentetik yapılar farklı Java derleyici uygulamaları arasında farklılık gösterebilir; bu da `.class` dosyalarının farklı uygulamalar arasında da farklılık gösterebileceği anlamına gelir. Sonuç olarak bir iç sınıfı serileştirir ve ardından farklı bir JRE uygulamasıyla seri durumdan çıkarırsanız (deserialize) uyumluluk sorunları yaşayabilirsiniz.
+[Yerel](java/3-siniflar-ve-nesneler/yerel-siniflar.md) ve [anonim](java/3-siniflar-ve-nesneler/anonim-siniflar.md) sınıflar da dahil olmak üzere iç sınıfların serileştirilmesi (serialization) kesinlikle önerilmez. Java derleyicisi, iç sınıflar gibi belirli yapıları derlediğinde sentetik yapılar oluşturur; bunlar, kaynak kodunda karşılığı bulunmayan sınıflar, metotlar, alanlar ve diğer yapılardır. Sentetik yapılar, Java derleyicilerinin JVM'de değişiklik yapmadan yeni Java dili özelliklerini uygulamasını sağlar. Ancak sentetik yapılar farklı Java derleyicisi uygulamaları arasında değişiklik gösterebilir; bu da .class dosyalarının farklı uygulamalar arasında farklılık gösterebileceği anlamına gelir. Sonuç olarak, bir iç sınıfı serileştirir ve ardından farklı bir JRE uygulamasıyla serileştirmeden çıkarırsanız uyumluluk sorunları yaşayabilirsiniz. Bir iç sınıf derlendiğinde oluşturulan [sentetik yapılar](https://docs.oracle.com/javase/8/docs/technotes/guides/language/comp-names.html) hakkında daha fazla bilgi için [Metot Parametrelerinin Adlarını Alma](java/meta-data/metot-parametrelerinin-adlarini-alma.md#örtük-ve-sentetik-parametreler) bölümündeki Örtük ve Sentetik Parametreler bölümüne bakın.

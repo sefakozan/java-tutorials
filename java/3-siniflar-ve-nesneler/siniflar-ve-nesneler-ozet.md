@@ -26,4 +26,4 @@ veya:
 objectReference.methodName()
 ```
 
-Çöp toplayıcı (garbage collector), kullanılmayan nesneleri otomatik olarak temizler. Program artık bir nesneye başvuran hiçbir referans tutmuyorsa o nesne kullanılmıyor demektir. Referansı tutan değişkeni `null` olarak ayarlayarak bir referansı açıkça bırakabilirsiniz.
+Garbage collector (çöp toplayıcı), kullanılmayan nesneleri otomatik olarak temizler. Program artık bir nesneye başvuran hiçbir referans tutmuyorsa o nesne kullanılmıyor demektir. Referansı tutan değişkeni `null` olarak ayarlayarak bir referansı açıkça bırakabilirsiniz.

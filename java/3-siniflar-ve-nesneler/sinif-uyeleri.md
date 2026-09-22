@@ -4,9 +4,9 @@ Bu bölümde, sınıfın bir örneğine (instance) ait olmak yerine sınıfa ait
 
 ## Sınıf Değişkenleri (Class Variables)
 
-Aynı sınıf taslağından birden fazla nesne oluşturulduğunda, her birinin *örnek değişkenlerinin (instance variables)* kendi ayrı kopyaları vardır. `Bicycle` sınıfı örneğinde örnek değişkenler `cadence`, `gear` ve `speed`'dir. Her `Bicycle` nesnesi, farklı bellek konumlarında saklanan bu değişkenler için kendi değerlerine sahiptir.
+Aynı sınıf taslağından birden fazla nesne oluşturulduğunda, her birinin **örnek değişkenlerinin (instance variables)** kendi ayrı kopyaları vardır. `Bicycle` sınıfı örneğinde örnek değişkenler `cadence`, `gear` ve `speed`'dir. Her `Bicycle` nesnesi, farklı bellek konumlarında saklanan bu değişkenler için kendi değerlerine sahiptir.
 
-Bazen tüm nesneler için ortak olan değişkenlere sahip olmak istersiniz. Bu, `static` niteleyicisi ile gerçekleştirilir. Bildirimlerinde `static` niteleyicisine sahip olan alanlara *statik alanlar (static fields)* veya *sınıf değişkenleri (class variables)* denir. Bunlar herhangi bir nesneyle değil, sınıfla ilişkilidir. Sınıfın her örneği, bellekte sabit bir konumda bulunan bir sınıf değişkenini paylaşır. Herhangi bir nesne bir sınıf değişkeninin değerini değiştirebilir, ancak sınıf değişkenleri sınıfın bir örneği oluşturulmadan da işlenebilir.
+Bazen tüm nesneler için ortak olan değişkenlere sahip olmak istersiniz. Bu, `static` niteleyicisi ile gerçekleştirilir. Bildirimlerinde `static` niteleyicisine sahip olan alanlara **statik alanlar (static fields)** veya **sınıf değişkenleri (class variables)** denir. Bunlar herhangi bir nesneyle değil, sınıfla ilişkilidir. Sınıfın her örneği, bellekte sabit bir konumda bulunan bir sınıf değişkenini paylaşır. Herhangi bir nesne bir sınıf değişkeninin değerini değiştirebilir, ancak sınıf değişkenleri sınıfın bir örneği oluşturulmadan da işlenebilir.
 
 Örneğin bir dizi `Bicycle` nesnesi oluşturmak ve ilk nesne için 1'den başlayarak her birine bir seri numarası atamak istediğinizi varsayalım. Bu kimlik numarası her nesneye özgüdür ve bu nedenle bir örnek değişkenidir. Aynı zamanda, bir sonrakine hangi kimliği atayacağınızı bilmek için kaç tane `Bicycle` nesnesi oluşturulduğunu takip edecek bir alana ihtiyacınız vardır. Böyle bir alan herhangi bir tekil nesneyle değil, bir bütün olarak sınıfla ilişkilidir. Bunun için aşağıdaki gibi bir sınıf değişkenine, `numberOfBicycles`'a ihtiyacınız vardır:
 
@@ -129,9 +129,7 @@ public class Bicycle {
     private static int numberOfBicycles = 0;
 
         
-    public Bicycle(int startCadence,
-                   int startSpeed,
-                   int startGear) {
+    public Bicycle(int startCadence, int startSpeed, int startGear) {
         gear = startGear;
         cadence = startCadence;
         speed = startSpeed;

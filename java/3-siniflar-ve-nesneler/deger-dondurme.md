@@ -37,11 +37,10 @@ Nesneler hakkındaki bölümlerde tartışılan `Rectangle` sınıfındaki `getA
 
 Bu metot, `width*height` ifadesinin değerlendirildiği tamsayıyı döndürür.
 
-`getArea` metodu ilkel bir tür (primitive type) döndürür. Bir metot aynı zamanda bir referans türü (reference type) de döndürebilir. Örneğin `Bicycle` nesnelerini işleyen bir programda şöyle bir metodumuz olabilir:
+`getArea` metodu ilkel primitive tip döndürür. Bir metot aynı zamanda bir referans türü de döndürebilir. Örneğin `Bicycle` nesnelerini işleyen bir programda şöyle bir metodumuz olabilir:
 
 ```java
-public Bicycle seeWhosFastest(Bicycle myBike, Bicycle yourBike,
-                              Environment env) {
+public Bicycle seeWhosFastest(Bicycle myBike, Bicycle yourBike, Environment env) {
     Bicycle fastest;
     // her bisikletin vitesi ve kadansı ile 
     // çevre koşulları (arazi ve rüzgar) dikkate 
@@ -55,7 +54,7 @@ public Bicycle seeWhosFastest(Bicycle myBike, Bicycle yourBike,
 
 Bu bölüm kafanızı karıştırırsa, atlayın ve arayüzler ve kalıtım dersini bitirdikten sonra tekrar dönün.
 
-Bir metot `whosFastest` metodunun yaptığı gibi bir sınıf adını dönüş türü olarak kullandığında, döndürülen nesnenin türünün sınıfı, dönüş türünün ya bir alt sınıfı (subclass) ya da tam olarak kendisi olmalıdır. Aşağıdaki şekilde gösterildiği gibi, `ImaginaryNumber`'ın `java.lang.Number`'ın bir alt sınıfı olduğu ve onun da `Object`'in bir alt sınıfı olduğu bir sınıf hiyerarşisine sahip olduğunuzu varsayalım.
+Bir metot `whosFastest` metodunun yaptığı gibi bir sınıf adını dönüş türü olarak kullandığında, döndürülen nesnenin türünün sınıfı, dönüş türünün ya subclass (bir alt sınıfı) ya da tam olarak kendisi olmalıdır. Aşağıdaki şekilde gösterildiği gibi, `ImaginaryNumber`'ın `java.lang.Number`'ın bir alt sınıfı olduğu ve onun da `Object`'in bir alt sınıfı olduğu bir sınıf hiyerarşisine sahip olduğunuzu varsayalım.
 
 <figure style="text-align: center;">
   <img src="_media/figures/classes-hierarchy.gif" alt="ImaginaryNumber için sınıf hiyerarşisi" style="max-width: 100%; height: auto;">
@@ -72,7 +71,7 @@ public Number returnANumber() {
 
 `returnANumber` metodu bir `ImaginaryNumber` döndürebilir, ancak bir `Object` döndüremez. `ImaginaryNumber` bir `Number`'dır çünkü `Number`'ın bir alt sınıfıdır. Ancak bir `Object` mutlaka bir `Number` değildir — bir `String` veya başka bir tür olabilir.
 
-Bir metodu geçersiz kılabilir (override edebilir) ve onu orijinal metodun bir alt sınıfını döndürecek şekilde tanımlayabilirsiniz, örneğin:
+Bir metodu geçersiz kılabilir (override edebilir) ve onu orijinal metodun bir alt sınıfını (subclass) döndürecek şekilde tanımlayabilirsiniz, örneğin:
 
 ```java
 public ImaginaryNumber returnANumber() {

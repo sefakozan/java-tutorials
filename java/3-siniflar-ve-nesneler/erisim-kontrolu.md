@@ -7,7 +7,7 @@ Erişim düzeyi niteleyicileri (access level modifiers), diğer sınıfların be
 
 Bir sınıf `public` niteleyicisiyle bildirilebilir; bu durumda o sınıf her yerdeki tüm sınıflar tarafından görülebilir. Bir sınıfın hiçbir niteleyicisi yoksa (varsayılan, aynı zamanda *package-private* olarak da bilinir), yalnızca kendi paketi içinde görünürdür (paketler ilişkili sınıfların adlandırılmış gruplarıdır — bunları daha sonraki bir derste öğreneceksiniz).
 
-Üye düzeyinde de üst düzey sınıflarda olduğu gibi ve aynı anlamda `public` niteleyicisini veya niteleyicisiz biçimi (*package-private*) kullanabilirsiniz. Üyeler için iki ek erişim niteleyicisi daha vardır: `private` ve `protected`. `private` niteleyicisi, üyeye yalnızca kendi sınıfı içinde erişilebileceğini belirtir. `protected` niteleyicisi, üyeye yalnızca kendi paketi içinde (*package-private* gibi) ve ek olarak başka bir paketteki sınıfının bir alt sınıfı (subclass) tarafından erişilebileceğini belirtir.
+Member level de top level sınıflarda olduğu gibi ve aynı anlamda `public` niteleyicisini veya niteleyicisiz biçimi (*package-private*) kullanabilirsiniz. Üyeler için iki ek erişim niteleyicisi daha vardır: `private` ve `protected`. `private` niteleyicisi, üyeye yalnızca kendi sınıfı içinde erişilebileceğini belirtir. `protected` niteleyicisi, üyeye yalnızca kendi paketi içinde (*package-private* gibi) ve ek olarak başka bir paketteki sınıfının bir alt sınıfı (subclass) tarafından erişilebileceğini belirtir.
 
 Aşağıdaki tablo, her bir niteleyici tarafından izin verilen üye erişimlerini göstermektedir:
 

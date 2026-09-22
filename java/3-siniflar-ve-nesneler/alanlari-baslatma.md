@@ -13,13 +13,13 @@ public class BedAndBreakfast {
 }
 ```
 
-Bu, başlatma değeri mevcut olduğunda ve başlatma tek bir satıra sığabildiğinde iyi çalışır. Ancak basitliği nedeniyle bu başlatma biçiminin sınırlamaları vardır. Başlatma mantık gerektiriyorsa (örneğin hata işleme veya karmaşık bir diziyi doldurmak için bir `for` döngüsü), basit atama yetersiz kalır. Örnek değişkenleri, hata işlemenin veya diğer mantıkların kullanılabileceği yapıcılarda başlatılabilir. Sınıf değişkenleri için aynı yeteneği sağlamak amacıyla Java programlama dili *statik başlatma bloklarını (static initialization blocks)* içerir.
+Bu, başlatma değeri mevcut olduğunda ve başlatma tek bir satıra sığabildiğinde iyi çalışır. Ancak basitliği nedeniyle bu başlatma biçiminin sınırlamaları vardır. Başlatma mantık gerektiriyorsa (örneğin hata işleme veya karmaşık bir diziyi doldurmak için bir `for` döngüsü), basit atama yetersiz kalır. Örnek değişkenleri, hata işlemenin veya diğer mantıkların kullanılabileceği yapıcılarda başlatılabilir. Sınıf değişkenleri için aynı yeteneği sağlamak amacıyla Java programlama dili **statik başlatma bloklarını (static initialization blocks)** içerir.
 
 > **Not:** En yaygın uygulama bu olsa da, alanları sınıf tanımının başında bildirmek zorunlu değildir. Yalnızca kullanılmadan önce bildirilmiş ve başlatılmış olmaları gerekir.
 
 ## Statik Başlatma Blokları (Static Initialization Blocks)
 
-Bir *statik başlatma bloğu*, süslü parantez içine alınmış `{}` ve başında `static` anahtar sözcüğü bulunan normal bir kod bloğudur. İşte bir örnek:
+Bir **statik başlatma bloğu**, süslü parantez içine alınmış `{}` ve başında `static` anahtar sözcüğü bulunan normal bir kod bloğudur. İşte bir örnek:
 
 ```java
 static {
@@ -46,7 +46,7 @@ class Whatever {
 
 ## Örnek Üyelerini Başlatma (Initializing Instance Members)
 
-Normalde bir örnek değişkenini başlatmak için gereken kodu bir yapıcıya koyarsınız. Örnek değişkenlerini başlatmak için bir yapıcı kullanmanın iki alternatifi vardır: başlatıcı bloklar (initializer blocks) ve final metotlar.
+Normalde bir örnek değişkenini başlatmak için gereken kodu bir constructor'a koyarsınız. Örnek değişkenlerini başlatmak için bir constructor kullanmanın iki alternatifi vardır: başlatıcı bloklar (initializer blocks) ve final metotlar.
 
 Örnek değişkenleri için başlatıcı bloklar tıpkı statik başlatıcı bloklara benzer, ancak `static` anahtar kelimesi yoktur:
 
@@ -56,9 +56,9 @@ Normalde bir örnek değişkenini başlatmak için gereken kodu bir yapıcıya k
 }
 ```
 
-Java derleyicisi, başlatıcı blokları her yapıcının içine kopyalar. Bu nedenle bu yaklaşım, birden fazla yapıcı arasında bir kod bloğunu paylaşmak için kullanılabilir.
+Java derleyicisi, başlatıcı blokları her constructor'ın içine kopyalar. Bu nedenle bu yaklaşım, birden fazla constructor arasında bir kod bloğunu paylaşmak için kullanılabilir.
 
-Bir *final metot* bir alt sınıfta geçersiz kılınamaz (override edilemez). Bu konu arayüzler ve kalıtım dersinde ele alınmaktadır. İşte bir örnek değişkenini başlatmak için final bir metot kullanma örneği:
+Bir **final metot**, bir alt sınıfta geçersiz kılınamaz (override edilemez). Bu konu arayüzler ve kalıtım dersinde ele alınmaktadır. İşte bir örnek değişkenini başlatmak için final bir metot kullanma örneği:
 
 ```java
 class Whatever {
