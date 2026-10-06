@@ -1,13 +1,13 @@
 # Anonim Sınıflar (Anonymous Classes)
 
-Anonim sınıflar, kodunuzu daha özlü hale getirmenizi sağlar. Bir sınıfı aynı anda hem bildirmenize hem de örneklendirmenize olanak tanırlar. Bir ada sahip olmamaları dışında yerel sınıflara benzerler. Yerel bir sınıfı yalnızca bir kez kullanmanız gerekiyorsa bunları kullanın.
+Anonim sınıflar (anonymous classes), kodunuzu daha özlü hale getirmenizi sağlar. Bir sınıfı aynı anda hem bildirmenize hem de örneklendirmenize olanak tanırlar. Bir ada sahip olmamaları dışında yerel sınıflara (local classes) benzerler. Yerel bir sınıfı yalnızca bir kez kullanmanız gerekiyorsa bunları kullanın.
 
 Bu bölüm şu konuları kapsar:
 
-* Anonim Sınıfları Bildirme (Declaring Anonymous Classes)
-* Anonim Sınıfların Sözdizimi (Syntax of Anonymous Classes)
-* Çevreleyen Kapsamın Yerel Değişkenlerine Erişme ve Anonim Sınıfın Üyelerini Bildirme ve Erişme (Accessing Local Variables of the Enclosing Scope, and Declaring and Accessing Members of the Anonymous Class)
-* Anonim Sınıf Örnekleri (Examples of Anonymous Classes)
+* [Anonim Sınıfları Bildirme (Declaring Anonymous Classes)](#anonim-sınıfları-bildirme-declaring-anonymous-classes)
+* [Anonim Sınıfların Sözdizimi (Syntax of Anonymous Classes)](#anonim-sınıfların-sözdizimi-syntax-of-anonymous-classes)
+* [Çevreleyen Kapsamın Yerel Değişkenlerine Erişme ve Anonim Sınıfın Üyelerini Bildirme ve Erişme (Accessing Local Variables of the Enclosing Scope, and Declaring and Accessing Members of the Anonymous Class)](#çevreleyen-kapsamın-yerel-değişkenlerine-erişme-ve-anonim-sınıfın-üyelerini-bildirme-ve-erişme-accessing-local-variables-of-the-enclosing-scope-and-declaring-and-accessing-members-of-the-anonymous-class)
+* [Anonim Sınıf Örnekleri (Examples of Anonymous Classes)](#anonim-sınıf-örnekleri-examples-of-anonymous-classes)
 
 ## Anonim Sınıfları Bildirme (Declaring Anonymous Classes)
 
@@ -25,9 +25,11 @@ public class HelloWorldAnonymousClasses {
         
         class EnglishGreeting implements HelloWorld {
             String name = "world";
+
             public void greet() {
                 greetSomeone("world");
             }
+
             public void greetSomeone(String someone) {
                 name = someone;
                 System.out.println("Hello " + name);
@@ -38,9 +40,11 @@ public class HelloWorldAnonymousClasses {
         
         HelloWorld frenchGreeting = new HelloWorld() {
             String name = "tout le monde";
+
             public void greet() {
                 greetSomeone("tout le monde");
             }
+
             public void greetSomeone(String someone) {
                 name = someone;
                 System.out.println("Salut " + name);
@@ -49,22 +53,24 @@ public class HelloWorldAnonymousClasses {
         
         HelloWorld spanishGreeting = new HelloWorld() {
             String name = "mundo";
+
             public void greet() {
                 greetSomeone("mundo");
             }
+
             public void greetSomeone(String someone) {
                 name = someone;
                 System.out.println("Hola, " + name);
             }
         };
+
         englishGreeting.greet();
         frenchGreeting.greetSomeone("Fred");
         spanishGreeting.greet();
     }
 
     public static void main(String... args) {
-        HelloWorldAnonymousClasses myApp =
-            new HelloWorldAnonymousClasses();
+        HelloWorldAnonymousClasses myApp = new HelloWorldAnonymousClasses();
         myApp.sayHello();
     }            
 }
@@ -72,59 +78,61 @@ public class HelloWorldAnonymousClasses {
 
 ## Anonim Sınıfların Sözdizimi (Syntax of Anonymous Classes)
 
-Daha önce belirtildiği gibi bir anonim sınıf bir ifadedir. Bir anonim sınıf ifadesinin sözdizimi, bir kod bloğu içeren bir sınıf tanımının olması dışında bir yapıcının çağrılmasına benzer.
+Daha önce belirtildiği gibi, bir anonim sınıf bir ifadedir. Bir anonim sınıf ifadesinin sözdizimi, bir kod bloğu içinde yer alan bir sınıf tanımının bulunması dışında, bir constructor çağrısına benzer.
 
-`frenchGreeting` nesnesinin örneklendirilmesini düşünün:
+`frenchGreeting` nesnesinin örneklendirilmesini göz önünde bulundurun:
 
 ```java
-HelloWorld frenchGreeting = new HelloWorld() {
-    String name = "tout le monde";
-    public void greet() {
-        greetSomeone("tout le monde");
-    }
-    public void greetSomeone(String someone) {
-        name = someone;
-        System.out.println("Salut " + name);
-    }
-};
+        HelloWorld frenchGreeting = new HelloWorld() {
+            String name = "tout le monde";
+
+            public void greet() {
+                greetSomeone("tout le monde");
+            }
+
+            public void greetSomeone(String someone) {
+                name = someone;
+                System.out.println("Salut " + name);
+            }
+        };
 ```
 
 Anonim sınıf ifadesi şunlardan oluşur:
 
-* `new` işleci (operatörü).
-* Uygulanacak bir arayüzün veya genişletilecek bir sınıfın adı. Bu örnekte anonim sınıf `HelloWorld` arayüzünü uygulamaktadır.
-* Normal bir sınıf örneği oluşturma ifadesinde olduğu gibi, bir yapıcının bağımsız değişkenlerini içeren parantezler. **Not**: Bir arayüzü uyguladığınızda bir yapıcı yoktur, bu nedenle bu örnekte olduğu gibi boş bir parantez çifti kullanırsınız.
-* Bir gövde; bu bir sınıf bildirimi gövdesidir. Daha spesifik olarak gövdede metot bildirimlerine izin verilir ancak ifadelere (statements) izin verilmez.
+* `new` operatörü
+* Uygulanacak (implement edilecek) bir arayüzün (interface) veya genişletilecek (extend edilecek) bir sınıfın adı. Bu örnekte anonim sınıf, `HelloWorld` arayüzünü uygulamaktadır.
+* Normal bir sınıf örneği oluşturma ifadesinde olduğu gibi, bir constructor'a iletilecek argümanları (arguments) içeren parantezler. **Not**: Bir arayüzü uyguladığınızda hiçbir constructor bulunmaz, bu nedenle bu örnekte olduğu gibi boş bir parantez çifti kullanırsınız.
+* Bir gövde (body); bu bir sınıf bildirimi gövdesidir. Daha belirgin olarak, gövdede metot bildirimlerine izin verilir ancak ifadelere (statements) izin verilmez.
 
-Bir anonim sınıf tanımı bir ifade olduğundan, bir ifadenin (statement) parçası olmalıdır. Bu örnekte anonim sınıf ifadesi, `frenchGreeting` nesnesini somutlaştıran cümlenin parçasıdır. (Bu, kapanış süslü parantezinden sonra neden noktalı virgül olduğunu açıklar.)
+Bir anonim sınıf tanımı bir ifade (expression) olduğundan, bir deyimin (statement) parçası olmalıdır. Bu örnekte anonim sınıf ifadesi, `frenchGreeting` nesnesini örneklendiren deyimin bir parçasıdır. (Bu, kapanış süslü parantezinden sonra neden noktalı virgül olduğunu açıklar.)
 
-## Çevreleyen Kapsamın Yerel Değişkenlerine Erişme ve Anonim Sınıfın Üyelerini Bildirme ve Erişme
+## Çevreleyen Kapsamın Yerel Değişkenlerine Erişme ve Anonim Sınıfın Üyelerini Bildirme ve Erişme (Accessing Local Variables of the Enclosing Scope, and Declaring and Accessing Members of the Anonymous Class)
 
-Yerel sınıflar gibi, anonim sınıflar da değişkenleri yakalayabilir; çevreleyen kapsamın yerel değişkenlerine aynı erişime sahiptirler:
+Yerel sınıflar gibi, anonim sınıflar da [değişkenleri yakalayabilir (capture variables)](java/3-siniflar-ve-nesneler/yerel-siniflar.md#çevreleyen-bir-sınıfın-üyelerine-erişme-accessing-members-of-an-enclosing-class); çevreleyen kapsamın (enclosing scope) yerel değişkenlerine aynı erişime sahiptirler:
 
-* Anonim bir sınıf, kendisini çevreleyen sınıfın üyelerine erişebilir.
-* Anonim bir sınıf, çevreleyen kapsamındaki `final` veya etkin olarak son (effectively final) olarak bildirilmemiş yerel değişkenlere erişemez.
-* Yuvalanmış bir sınıf gibi, anonim bir sınıftaki bir türün (örneğin bir değişkenin) bildirimi, çevreleyen kapsamdaki aynı ada sahip diğer bildirimleri gölgeler.
+* Bir anonim sınıf, kendisini çevreleyen sınıfın üyelerine erişebilir.
+* Bir anonim sınıf, çevreleyen kapsamındaki `final` veya etkin olarak sabit (effectively final) olarak bildirilmemiş yerel değişkenlere erişemez.
+* Bir yuvalanmış sınıf gibi, bir anonim sınıf içindeki bir türün (örneğin bir değişkenin) bildirimi, çevreleyen kapsamdaki aynı ada sahip diğer tüm bildirimleri gölgeler (shadows). Daha fazla bilgi için [Gölgeleme (Shadowing)](java/3-siniflar-ve-nesneler/yuvalanmis-siniflar.md#gölgeleme-shadowing) bölümüne bakın.
 
-Anonim sınıflar, üyeleri açısından yerel sınıflarla aynı kısıtlamalara sahiptir:
+Anonim sınıflar, üyeleri açısından da yerel sınıflarla aynı kısıtlamalara sahiptir:
 
-* Anonim bir sınıfta statik başlatıcılar veya üye arayüzleri bildiremezsiniz.
-* Sabit değişkenler olmaları koşuluyla anonim bir sınıf statik üyelere sahip olabilir.
+* Bir anonim sınıf içinde statik başlatıcılar (static initializers) veya üye arayüzler bildiremezsiniz.
+* Bir anonim sınıf, sabit değişken (constant variable) olmaları koşuluyla statik üyelere sahip olabilir.
 
 Anonim sınıflarda aşağıdakileri bildirebileceğinizi unutmayın:
 
 * Alanlar (Fields)
-* Ek metotlar (üst türün herhangi bir metodunu uygulamasalar bile)
+* Ekstra metotlar (üst türün herhangi bir metodunu uygulamasalar bile)
 * Örnek başlatıcılar (Instance initializers)
 * Yerel sınıflar (Local classes)
 
-Ancak anonim bir sınıfta yapıcılar (constructors) bildiremezsiniz.
+Ancak, bir anonim sınıf içinde constructor bildiremezsiniz.
 
 ## Anonim Sınıf Örnekleri (Examples of Anonymous Classes)
 
-Anonim sınıflar genellikle grafik kullanıcı arayüzü (GUI) uygulamalarında kullanılır.
+**Anonim sınıflar sıklıkla grafik kullanıcı arayüzü (GUI) uygulamalarında kullanılır.**
 
-Aşağıdaki JavaFX örneğini düşünün (`HelloWorld.java`). Bu örnek, bir **Say 'Hello World'** düğmesi içeren bir çerçeve oluşturur. Anonim sınıf ifadesi vurgulanmıştır:
+`HelloWorld.java` JavaFX örneğini ele alalım. Bu örnek, bir **Say 'Hello World'** butonu içeren bir pencere (frame) oluşturur. Anonim sınıf ifadesi vurgulanmıştır:
 
 ```java
 import javafx.event.ActionEvent;
@@ -142,8 +150,10 @@ public class HelloWorld extends Application {
     @Override
     public void start(Stage primaryStage) {
         primaryStage.setTitle("Hello World!");
+        
         Button btn = new Button();
         btn.setText("Say 'Hello World'");
+        
         btn.setOnAction(new EventHandler<ActionEvent>() {
  
             @Override
@@ -160,11 +170,11 @@ public class HelloWorld extends Application {
 }
 ```
 
-Bu örnekte `btn.setOnAction` metot çağrısı, **Say 'Hello World'** düğmesini seçtiğinizde ne olacağını belirtir. Bu metot `EventHandler<ActionEvent>` türünde bir nesne gerektirir. `EventHandler<ActionEvent>` arayüzü yalnızca tek bir metot içerir: `handle`. Bu metodu yeni bir sınıfla uygulamak yerine örnek bir anonim sınıf ifadesi kullanır. Bu ifadenin `btn.setOnAction` metoduna iletilen argüman olduğuna dikkat edin.
+Bu örnekte `btn.setOnAction` metot çağrısı, **Say 'Hello World'** butonunu seçtiğinizde ne olacağını belirtir. Bu metot `EventHandler<ActionEvent>` türünde bir nesne gerektirir. `EventHandler<ActionEvent>` arayüzü yalnızca tek bir metot içerir: `handle`. Bu metodu yeni bir sınıf ile uygulamak yerine, örnek bir anonim sınıf ifadesi kullanır. Bu ifadenin `btn.setOnAction` metoduna iletilen argüman olduğuna dikkat edin.
 
-`EventHandler<ActionEvent>` arayüzü yalnızca tek bir metot içerdiğinden, anonim bir sınıf ifadesi yerine bir lambda ifadesi kullanabilirsiniz. Daha fazla bilgi için [Lambda İfadeleri](java/3-siniflar-ve-nesneler/lambda-ifadeleri.md) bölümüne bakın.
+`EventHandler<ActionEvent>` arayüzü yalnızca tek bir metot içerdiğinden, bir anonim sınıf ifadesi yerine bir lambda ifadesi (lambda expression) kullanabilirsiniz. Daha fazla bilgi için [Lambda İfadeleri (Lambda Expressions)](java/3-siniflar-ve-nesneler/lambda-ifadeleri.md) bölümüne bakın.
 
-Anonim sınıflar, iki veya daha fazla metot içeren bir arayüzü uygulamak için idealdir. Aşağıdaki JavaFX örneği yalnızca sayısal değerleri kabul eden bir metin alanı oluşturur. `TextInputControl` sınıfından miras alınan `replaceText` ve `replaceSelection` yöntemlerini geçersiz kılarak (override ederek) `TextField` sınıfının varsayılan uygulamasını anonim bir sınıfla yeniden tanımlar:
+Anonim sınıflar, iki veya daha fazla metot içeren bir arayüzü uygulamak için idealdir. Aşağıdaki JavaFX örneği yalnızca sayısal değerleri kabul eden bir metin alanı (text field) oluşturur. `TextInputControl` sınıfından miras alınan `replaceText` ve `replaceSelection` metotlarını geçersiz kılarak (override ederek) `TextField` sınıfının varsayılan uygulamasını bir anonim sınıf ile yeniden tanımlar:
 
 ```java
 import javafx.application.Application;

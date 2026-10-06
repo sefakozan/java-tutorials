@@ -1,6 +1,6 @@
 # Enum Türleri (Enum Types)
 
-Bir *enum türü (enum type)*, bir değişkenin önceden tanımlanmış bir sabitler kümesi olmasını sağlayan özel bir veri türüdür. Değişken, kendisi için önceden tanımlanmış değerlerden birine eşit olmalıdır. Yaygın örnekler arasında pusula yönleri (NORTH, SOUTH, EAST ve WEST değerleri) ve haftanın günleri yer alır.
+Bir ***enum türü (enum type)***, bir değişkenin önceden tanımlanmış bir sabitler kümesi olmasını sağlayan özel bir veri türüdür. Değişken, kendisi için önceden tanımlanmış değerlerden birine eşit olmalıdır. Yaygın örnekler arasında pusula yönleri (NORTH, SOUTH, EAST ve WEST değerleri) ve haftanın günleri yer alır.
 
 Sabit oldukları için, bir enum türünün alanlarının adları büyük harflerle yazılır.
 
@@ -48,12 +48,16 @@ public class EnumTest {
     public static void main(String[] args) {
         EnumTest firstDay = new EnumTest(Day.MONDAY);
         firstDay.tellItLikeItIs();
+
         EnumTest thirdDay = new EnumTest(Day.WEDNESDAY);
         thirdDay.tellItLikeItIs();
+
         EnumTest fifthDay = new EnumTest(Day.FRIDAY);
         fifthDay.tellItLikeItIs();
+
         EnumTest sixthDay = new EnumTest(Day.SATURDAY);
         sixthDay.tellItLikeItIs();
+
         EnumTest seventhDay = new EnumTest(Day.SUNDAY);
         seventhDay.tellItLikeItIs();
     }
@@ -70,16 +74,15 @@ Weekends are best.
 Weekends are best.
 ```
 
-Java programlama dili enum türleri, diğer dillerdeki benzerlerinden çok daha güçlüdür. `enum` bildirimi bir *sınıf* (buna bir *enum türü* denir) tanımlar. Enum sınıfı gövdesi metotlar ve diğer alanları içerebilir. Derleyici, bir enum oluşturduğunda otomatik olarak bazı özel metotlar ekler. Örneğin enum'ın tüm değerlerini bildirildikleri sırada içeren bir dizi döndüren statik bir `values` metoduna sahiptirler. Bu metot, bir enum türünün değerleri üzerinde yineleme yapmak için genellikle `for-each` yapısıyla birlikte kullanılır. Örneğin aşağıdaki `Planet` sınıfı örneğinden alınan bu kod, güneş sistemindeki tüm gezegenler üzerinde yineler:
+Java programlama dili enum türleri, diğer dillerdeki benzerlerinden çok daha güçlüdür. `enum` bildirimi bir ***sınıf*** (buna bir ***enum türü*** denir) tanımlar. Enum sınıfı gövdesi metotlar ve diğer alanları içerebilir. Derleyici, bir enum oluşturduğunda otomatik olarak bazı özel metotlar ekler. Örneğin enum'ın tüm değerlerini bildirildikleri sırada içeren bir dizi döndüren statik bir `values` metoduna sahiptirler. Bu metot, bir enum türünün değerleri üzerinde yineleme yapmak için genellikle `for-each` yapısıyla birlikte kullanılır. Örneğin aşağıdaki `Planet` sınıfı örneğinden alınan bu kod, güneş sistemindeki tüm gezegenler üzerinde yineler:
 
 ```java
 for (Planet p : Planet.values()) {
-    System.out.printf("Your weight on %s is %f%n",
-                      p, p.surfaceWeight(mass));
+    System.out.printf("Your weight on %s is %f%n", p, p.surfaceWeight(mass));
 }
 ```
 
-> **Not:** *Tüm* enum'lar örtük olarak `java.lang.Enum` sınıfını genişletir (`extends`). Bir sınıf yalnızca bir ebeveyni genişletebileceğinden (bkz. [Sınıfları Bildirme](java/3-siniflar-ve-nesneler/sinif-bildirimi.md)), Java dili durumun çoklu kalıtımını desteklemez ve bu nedenle bir enum başka hiçbir şeyi genişletemez.
+> **Not:** Tüm enum'lar örtük olarak `java.lang.Enum` sınıfını genişletir (`extends`). Bir sınıf yalnızca bir ebeveyni genişletebileceğinden (bkz. [Sınıfları Bildirme](java/3-siniflar-ve-nesneler/sinif-bildirimi.md)), Java dili durumun çoklu kalıtımını desteklemez ve bu nedenle bir enum başka hiçbir şeyi genişletemez.
 
 Aşağıdaki örnekte `Planet`, güneş sistemindeki gezegenleri temsil eden bir enum türüdür. Sabit kütle ve yarıçap özellikleriyle tanımlanırlar:
 
@@ -102,10 +105,12 @@ public enum Planet {
 
     private final double mass;   // kilogram cinsinden
     private final double radius; // metre cinsinden
+
     Planet(double mass, double radius) {
         this.mass = mass;
         this.radius = radius;
     }
+
     private double mass() { return mass; }
     private double radius() { return radius; }
 
@@ -115,19 +120,22 @@ public enum Planet {
     double surfaceGravity() {
         return G * mass / (radius * radius);
     }
+
     double surfaceWeight(double otherMass) {
         return otherMass * surfaceGravity();
     }
+
     public static void main(String[] args) {
         if (args.length != 1) {
             System.err.println("Usage: java Planet <earth_weight>");
             System.exit(-1);
         }
+
         double earthWeight = Double.parseDouble(args[0]);
         double mass = earthWeight/EARTH.surfaceGravity();
+
         for (Planet p : Planet.values())
-           System.out.printf("Your weight on %s is %f%n",
-                             p, p.surfaceWeight(mass));
+           System.out.printf("Your weight on %s is %f%n", p, p.surfaceWeight(mass));
     }
 }
 ```

@@ -1,4 +1,4 @@
-# Sorular ve Alıştırmalar: Yuvalanmış Sınıflar (Nested Classes)
+# Sorular ve Alıştırmalar: Yuvalanmış Sınıflar (Questions and Exercises: Nested Classes)
 
 ## Sorular
 
@@ -17,17 +17,17 @@ public class Problem {
 
 2. Aşağıdaki soruları yanıtlamanıza yardımcı olması için `javax.swing` paketindeki `Box` sınıfının Java API belgelerini kullanın:
 
-a. `Box` hangi statik yuvalanmış sınıfı tanımlar?  
-b. `Box` hangi iç sınıfı tanımlar?  
-c. `Box`'ın iç sınıfının üst sınıfı nedir?  
-d. `Box`'ın hangi yuvalanmış sınıfını herhangi bir sınıftan kullanabilirsiniz?  
-e. `Box`'ın `Filler` sınıfının bir örneğini nasıl oluşturursunuz?
+   a. `Box` hangi statik yuvalanmış sınıfı (static nested class) tanımlar?  
+   b. `Box` hangi iç sınıfı (inner class) tanımlar?  
+   c. `Box`'ın iç sınıfının üst sınıfı (superclass) nedir?  
+   d. `Box`'ın hangi yuvalanmış sınıfını herhangi bir sınıftan kullanabilirsiniz?  
+   e. `Box`'ın `Filler` sınıfının bir örneğini (instance) nasıl oluşturursunuz?
 
 ---
 
 ## Alıştırmalar
 
-1. `Class1.java` dosyasını derleyin ve çalıştırın. Çıktı nedir?
+1. `Class1.java` dosyasını alın. `Class1` sınıfını derleyin ve çalıştırın. Çıktı nedir?
 
 ```java
 public class Class1 {
@@ -59,22 +59,22 @@ public class Class1 {
 }
 ```
 
-2. Aşağıdaki alıştırmalar, [İç Sınıf Örneği](java/3-siniflar-ve-nesneler/ic-siniflar.md) bölümünde tartışılan `DataStructure.java` sınıfının değiştirilmesini içerir:
+2. Aşağıdaki alıştırmalar, [İç Sınıf Örneği](java/3-siniflar-ve-nesneler/ic-siniflar.md) bölümünün ele aldığı `DataStructure.java` sınıfının değiştirilmesini içerir:
 
-a. `print(DataStructureIterator iterator)` adında bir metot tanımlayın. `printEven` metoduyla aynı işlevi gerçekleştirmesi için bu metodu `EvenIterator` sınıfının bir örneğiyle çağırın.
+   a. `print(DataStructureIterator iterator)` adında bir metot tanımlayın. `printEven` metodu ile aynı işlevi görmesi için bu metodu `EvenIterator` sınıfının bir örneği ile çağırın.
 
-b. `print(DataStructureIterator iterator)` metodunu tek indeks değerine sahip öğeleri yazdıracak şekilde çağırın. Metodun argümanı olarak `DataStructureIterator` arayüzünün bir örneği yerine bir anonim sınıf kullanın.
+   b. `print(DataStructureIterator iterator)` metodunu tek indeks değerine sahip öğeleri yazdıracak şekilde çağırın. `DataStructureIterator` arayüzünün bir örneği yerine metot argümanı olarak bir anonim sınıf (anonymous class) kullanın.
 
-c. `print(DataStructureIterator iterator)` ile aynı işlevi gören `print(java.util.function.Function<Integer, Boolean> iterator)` adında bir metot tanımlayın. Çift indeks değerine sahip öğeleri yazdırmak için bu metodu bir lambda ifadesi ile çağırın. Tek indeks değerine sahip öğeleri yazdırmak için bu metodu bir kez daha lambda ifadesi ile çağırın.
+   c. `print(DataStructureIterator iterator)` ile aynı işlevi gören `print(java.util.function.Function<Integer, Boolean> iterator)` adında bir metot tanımlayın. Çift indeks değerine sahip öğeleri yazdırmak için bu metodu bir lambda ifadesi ile çağırın. Tek indeks değerine sahip öğeleri yazdırmak için bu metodu bir kez daha lambda ifadesi ile çağırın.
 
-d. Aşağıdaki iki ifadenin çift indeks değerine sahip öğeleri ve ardından tek indeks değerine sahip öğeleri yazdırmasını sağlayacak iki metot tanımlayın:
+   d. Aşağıdaki iki ifadenin çift indeks değerine sahip öğeleri ve ardından tek indeks değerine sahip öğeleri yazdırmasını sağlayacak iki metot tanımlayın:
 
-```java
-DataStructure ds = new DataStructure();
-// ...
-ds.print(DataStructure::isEvenIndex);
-ds.print(DataStructure::isOddIndex);
-```
+   ```java
+   DataStructure ds = new DataStructure();
+   // ...
+   ds.print(DataStructure::isEvenIndex);
+   ds.print(DataStructure::isOddIndex);
+   ```
 
 ---
 
@@ -83,49 +83,66 @@ ds.print(DataStructure::isOddIndex);
 ### Soruların Yanıtları
 
 1. **Soru**: `Problem.java` programı derlenmiyor. Derlenmesini sağlamak için ne yapmanız gerekir? Neden?  
-**Cevap**: `Inner` sınıfının bildiriminin önündeki `static` anahtar sözcüğünü silin. Statik bir iç sınıf, dış sınıfın örnek alanlarına (`s`) erişemez.
+   **Cevap**: `Inner` sınıfının bildiriminin önündeki `static` anahtar kelimesini silin. Statik bir iç sınıf, dış sınıfın örnek alanlarına (`s`) erişemez. `ProblemSolved.java` dosyasına bakın.
 
-Düzeltilmiş kod (`ProblemSolved.java`):
+   Düzeltilmiş kod (`ProblemSolved.java`):
 
-```java
-public class ProblemSolved {
-    String s;
-    class Inner {
-        void testMethod() {
-            s = "Set from Inner";
-        }
-    }
-}
-```
+   ```java
+   public class ProblemSolved {
+       String s;
+       class Inner {
+           void testMethod() {
+               s = "Set from Inner";
+           }
+       }
+   }
+   ```
 
 2.
-a. **Soru**: `Box` hangi statik yuvalanmış sınıfı tanımlar?  
-**Cevap**: `Box.Filler`
+   a. **Soru**: `Box` hangi statik yuvalanmış sınıfı tanımlar?  
+   **Cevap**: `Box.Filler`
 
-b. **Soru**: `Box` hangi iç sınıfı tanımlar?  
-**Cevap**: `Box.AccessibleBox`
+   b. **Soru**: `Box` hangi iç sınıfı tanımlar?  
+   **Cevap**: `Box.AccessibleBox`
 
-c. **Soru**: `Box`'ın iç sınıfının üst sınıfı nedir?  
-**Cevap**: `java.awt.Container.AccessibleAWTContainer`
+   c. **Soru**: `Box`'ın iç sınıfının üst sınıfı nedir?  
+   **Cevap**: `[java.awt.]Container.AccessibleAWTContainer`
 
-d. **Soru**: `Box`'ın hangi yuvalanmış sınıfını herhangi bir sınıftan kullanabilirsiniz?  
-**Cevap**: `Box.Filler`
+   d. **Soru**: `Box`'ın hangi yuvalanmış sınıfını herhangi bir sınıftan kullanabilirsiniz?  
+   **Cevap**: `Box.Filler`
 
-e. **Soru**: `Box`'ın `Filler` sınıfının bir örneğini nasıl oluşturursunuz?  
-**Cevap**: `new Box.Filler(minDimension, prefDimension, maxDimension)`
+   e. **Soru**: `Box`'ın `Filler` sınıfının bir örneğini nasıl oluşturursunuz?  
+   **Cevap**: `new Box.Filler(minDimension, prefDimension, maxDimension)`
 
 ---
 
 ### Alıştırmaların Yanıtları
 
-1. **Soru**: `Class1` derlenip çalıştırıldığında çıktı nedir?  
-**Cevap**:
-```text
-InnerClass1: getString invoked.
-InnerClass1: getAnotherString invoked.
-```
+1. **Alıştırma**: `Class1.java` dosyasını alın. `Class1` sınıfını derleyin ve çalıştırın. Çıktı nedir?  
+   **Cevap**:
+   ```text
+   InnerClass1: getString invoked.
+   InnerClass1: getAnotherString invoked.
+   ```
 
-2. **`DataStructure.java` Alıştırma Çözümleri**:
+2. **Alıştırma**: `DataStructure.java` sınıfının değiştirilmesi:
+
+   * **Alıştırma 2(a) İpucu**: Bu ifadeleri `main` metodunda belirtirseniz derlenmezler:
+     ```java
+     DataStructure ds = new DataStructure();
+     ds.print(new EvenIterator());
+     ```
+     Derleyici, `new EvenIterator()` ifadesiyle karşılaştığında "non-static variable this cannot be referenced from a static context" hata mesajını üretir. `EvenIterator` sınıfı statik olmayan bir iç sınıftır. Bu, `EvenIterator`'ın bir örneğini yalnızca dış sınıf olan `DataStructure`'ın bir örneği içinde oluşturabileceğiniz anlamına gelir. `DataStructure` içinde yeni bir `EvenIterator` örneği oluşturan ve döndüren bir metot tanımlayabilirsiniz.
+
+   * **Alıştırma 2(b) İpucu**: `DataStructure` sınıfının dışındaki `SIZE` ve `arrayOfInts` private üyelerine erişemezsiniz; bu da `DataStructure` dışında tanımlanan bir anonim sınıftan bu private üyelere erişemeyeceğiniz anlamına gelir. `SIZE` ve `arrayOfInts` private üyelerine erişen metotlar tanımlayabilir ve ardından bunları anonim sınıfınızda kullanabilirsiniz.
+
+   * **Alıştırma 2(c) İpucu**: Bu `print` metodunda, `arrayOfInts` dizisinde bulunan öğeler arasında bir `for` ifadesi ile adım adım ilerleyebilirsiniz. Her indeks değeri için `function.apply` metodunu çağırın. Bu metot belirli bir indeks değeri için true değeri döndürürse, o indeks değerinde bulunan öğeyi yazdırın.
+   
+     Çift indeks değerine sahip öğeleri yazdırmak üzere bu `print` metodunu çağırmak için, `Boolean Function.apply(Integer t)` metodunu uygulayan bir lambda ifadesi belirtebilirsiniz. Bu lambda ifadesi bir `Integer` argümanı (indeks) alır ve bir `Boolean` değeri döndürür (indeks değeri çift ise `Boolean.TRUE`, aksi takdirde `Boolean.FALSE`).
+
+   * **Alıştırma 2(d) İpucu**: `DataStructure` sınıfında, `Boolean Function<Integer, Boolean>.apply(Integer t)` soyut metoduyla aynı parametre listesine ve dönüş türüne sahip `isEvenIndex` ve `isOddIndex` adında iki metot oluşturun. Bu, metotların bir `Integer` argümanı (indeks) aldığı ve bir `Boolean` değeri döndürdüğü anlamına gelir.
+
+   **Cevap**: Çözümün tamamı için aşağıdaki `DataStructure.java` dosyasına bakın:
 
 ```java
 public class DataStructure {
@@ -141,9 +158,11 @@ public class DataStructure {
     
     public void printEven() {
         DataStructureIterator iterator = this.new EvenIterator();
+
         while (iterator.hasNext()) {
             System.out.print(iterator.next() + " ");
         }
+
         System.out.println();
     }
     
@@ -152,6 +171,7 @@ public class DataStructure {
         while (iterator.hasNext()) {
             System.out.print(iterator.next() + " ");
         }
+        
         System.out.println();
     }
     
@@ -162,6 +182,7 @@ public class DataStructure {
                 System.out.print(arrayOfInts[i] + " ");
             }
         }
+
         System.out.println();
     }
     
@@ -202,9 +223,11 @@ public class DataStructure {
         System.out.println("print(DataStructureIterator) ile anonim sınıf (tek indeksler):");
         ds.print(new DataStructureIterator() {
             private int nextIndex = 1;
+
             public boolean hasNext() {
                 return (nextIndex <= SIZE - 1);
             }
+            
             public Integer next() {
                 Integer retValue = Integer.valueOf(ds.arrayOfInts[nextIndex]);
                 nextIndex += 2;

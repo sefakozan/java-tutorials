@@ -1,21 +1,22 @@
 # İç Sınıf Örneği (Inner Class Example)
 
-Bir iç sınıfın kullanımını görmek için önce bir diziyi düşünün. Aşağıdaki örnekte bir dizi oluşturur, onu tamsayı değerlerle doldurur ve ardından yalnızca dizinin çift indeksli değerlerini artan sırada çıktılarsınız.
+Bir inner class (iç sınıf) kullanımını görmek için önce bir array düşünün. Aşağıdaki örnekte bir dizi oluşturur, onu tamsayı değerlerle doldurur ve ardından yalnızca dizinin çift indeksli değerlerini artan sırada çıktılarsınız.
 
 Aşağıdaki `DataStructure.java` örneği şunlardan oluşur:
 
-* Sıralı tamsayı değerleriyle (0, 1, 2, 3 vb.) doldurulmuş bir dizi içeren bir `DataStructure` örneği oluşturan bir yapıcı ve dizinin çift indeks değerine sahip öğelerini yazdıran bir yöntem içeren `DataStructure` dış sınıfı.
-* `Iterator<Integer>` arayüzünü genişleten `DataStructureIterator` arayüzünü uygulayan `EvenIterator` iç sınıfı. Yineleyiciler (iterators) bir veri yapısı boyunca adım adım ilerlemek için kullanılır ve genellikle son öğeyi test etme, geçerli öğeyi alma ve bir sonraki öğeye geçme metotlarına sahiptir.
-* Bir `DataStructure` nesnesi (`ds`) başlatan, ardından `arrayOfInts` dizisinin çift indeks değerine sahip öğelerini yazdırmak için `printEven` metodunu çağıran bir `main` metodu.
+* Sıralı tamsayı değerleriyle (0, 1, 2, 3 vb.) doldurulmuş bir dizi içeren bir `DataStructure` instance'ı (örneği) oluşturan bir constructor ve dizinin çift indeks değerine sahip öğelerini yazdıran bir method içeren `DataStructure` outer class'ı (dış sınıfı).
+* `Iterator<Integer>` interface'ini extend eden `DataStructureIterator` interface'ini implement eden `EvenIterator` inner class'ı (iç sınıfı). Iterator'lar bir veri yapısı boyunca adım adım ilerlemek için kullanılır ve genellikle son öğeyi test etme, geçerli öğeyi alma ve bir sonraki öğeye geçme method'larına sahiptir.
+* Bir `DataStructure` nesnesini (`ds`) instantiate eden (örneklendiren), ardından `arrayOfInts` dizisinin çift indeks değerine sahip öğelerini yazdırmak için `printEven` method'unu çağıran bir `main` method'u.
 
 ```java
 public class DataStructure {
+    
     // Bir dizi oluştur
     private final static int SIZE = 15;
     private int[] arrayOfInts = new int[SIZE];
     
     public DataStructure() {
-        // diziyi artan tamsayı değerleriyle doldur
+        // Diziyi artan tamsayı değerleriyle doldur
         for (int i = 0; i < SIZE; i++) {
             arrayOfInts[i] = i;
         }
@@ -33,8 +34,8 @@ public class DataStructure {
     
     interface DataStructureIterator extends java.util.Iterator<Integer> { } 
 
-    // İç sınıf, Iterator<Integer> arayüzünü genişleten 
-    // DataStructureIterator arayüzünü uygular
+    // Inner class, Iterator<Integer> interface'ini extend eden 
+    // DataStructureIterator interface'ini implement eder
     
     private class EvenIterator implements DataStructureIterator {
         
@@ -74,14 +75,14 @@ public class DataStructure {
 0 2 4 6 8 10 12 14 
 ```
 
-`EvenIterator` sınıfının doğrudan `DataStructure` nesnesinin `arrayOfInts` örnek değişkenine başvurduğuna dikkat edin.
+`EvenIterator` sınıfının doğrudan `DataStructure` nesnesinin `arrayOfInts` instance variable'ına (örnek değişkenine) başvurduğuna dikkat edin.
 
-Bu örnekte gösterilenler gibi yardımcı sınıfları uygulamak için iç sınıfları kullanabilirsiniz. Kullanıcı arayüzü olaylarını (UI events) işlemek için iç sınıfların nasıl kullanılacağını bilmelisiniz, çünkü olay işleme mekanizması bunlardan kapsamlı şekilde yararlanır.
+Bu örnekte gösterilene benzer helper class'ları (yardımcı sınıfları) implement etmek için inner class'ları kullanabilirsiniz. Kullanıcı arayüzü event'lerini (UI events / olayları) handle etmek (işlemek) için inner class'ların nasıl kullanılacağını bilmelisiniz; çünkü event-handling mekanizması inner class'lardan kapsamlı şekilde yararlanır.
 
 ## Yerel ve Anonim Sınıflar (Local and Anonymous Classes)
 
-İki ek iç sınıf türü daha vardır. Bir metodun gövdesi içinde bir iç sınıf bildirebilirsiniz. Bu sınıflar [yerel sınıflar (local classes)](java/3-siniflar-ve-nesneler/yerel-siniflar.md) olarak bilinir. Ayrıca bir metodun gövdesi içinde sınıfa bir ad vermeden de bir iç sınıf bildirebilirsiniz. Bu sınıflar [anonim sınıflar (anonymous classes)](java/3-siniflar-ve-nesneler/anonim-siniflar.md) olarak bilinir.
+İki ek inner class türü daha vardır. Bir method'un gövdesi içinde bir inner class declare edebilirsiniz (bildirebilirsiniz). Bu sınıflar [local classes (yerel sınıflar)](java/3-siniflar-ve-nesneler/yerel-siniflar.md) olarak bilinir. Ayrıca bir method'un gövdesi içinde sınıfa bir ad vermeden de bir inner class declare edebilirsiniz. Bu sınıflar [anonymous classes (anonim sınıflar)](java/3-siniflar-ve-nesneler/anonim-siniflar.md) olarak bilinir.
 
 ## Niteleyiciler (Modifiers)
 
-Dış sınıfın diğer üyeleri için kullandığınız niteleyicileri iç sınıflar için de kullanabilirsiniz. Örneğin diğer sınıf üyelerine erişimi kısıtlamak için kullandığınız gibi, iç sınıflara erişimi kısıtlamak için `private`, `public` ve `protected` erişim belirteçlerini kullanabilirsiniz.
+Outer class'ın diğer üyeleri için kullandığınız modifier'ları (niteleyicileri) inner class'lar için de kullanabilirsiniz. Örneğin diğer sınıf üyelerine erişimi kısıtlamak için kullandığınız gibi, inner class'lara erişimi kısıtlamak için de `private`, `public` ve `protected` access specifier'larını (erişim belirteçlerini) kullanabilirsiniz.

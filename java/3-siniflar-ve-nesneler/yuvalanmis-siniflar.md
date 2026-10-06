@@ -1,6 +1,6 @@
 # Yuvalanmış Sınıflar (Nested Classes)
 
-Java programlama dili, bir sınıfı başka bir sınıfın içinde tanımlamanıza olanak tanır. Böyle bir sınıfa **nested class (yuvalanmış sınıf)** denir ve burada gösterilmiştir:
+Java programlama dili, bir sınıfı başka bir sınıfın içinde tanımlamanıza olanak tanır. Böyle bir sınıfa **yuvalanmış sınıf (nested class)** denir ve burada gösterilmiştir:
 
 ```java
 class OuterClass {
@@ -25,21 +25,21 @@ class OuterClass {
 }
 ```
 
-Bir yuvalanmış sınıf, kendisini çevreleyen sınıfın (enclosing class) bir üyesidir. Statik olmayan yuvalanmış sınıflar (iç sınıflar), `private` olarak bildirilmiş olsalar bile, kendilerini çevreleyen sınıfın diğer üyelerine erişebilirler. Statik yuvalanmış sınıflar ise kendilerini çevreleyen sınıfın diğer üyelerine doğrudan erişemezler. `OuterClass`'ın bir üyesi olarak bir yuvalanmış sınıf; `private`, `public`, `protected` veya ***paket-özel (package private)*** olarak bildirilebilir. (Dış sınıfların yalnızca `public` veya ***paket-özel (package private)*** olarak bildirilebileceğini hatırlayın.)
+Bir yuvalanmış sınıf, kendisini çevreleyen sınıfın (enclosing class) bir üyesidir. Statik olmayan yuvalanmış sınıflar (iç sınıflar), `private` olarak bildirilmiş olsalar bile kendilerini çevreleyen sınıfın diğer üyelerine erişebilirler. Statik yuvalanmış sınıflar ise kendilerini çevreleyen sınıfın diğer üyelerine doğrudan erişemezler. `OuterClass`'ın bir üyesi olarak bir yuvalanmış sınıf; `private`, `public`, `protected` veya ***paket-özel (package-private)*** olarak bildirilebilir. (Dış sınıfların [outer classes] yalnızca `public` veya ***paket-özel (package-private)*** olarak bildirilebileceğini hatırlayın.)
 
 ## Neden Yuvalanmış Sınıflar Kullanılır? (Why Use Nested Classes?)
 
 Yuvalanmış sınıfları kullanmanın ikna edici nedenleri şunlardır:
 
 * **Yalnızca tek bir yerde kullanılan sınıfları mantıksal olarak gruplandırmanın bir yoludur**: Bir sınıf yalnızca başka bir sınıf için yararlıysa, onu mantıksal olarak o sınıfa yerleştirmek ve ikisini bir arada tutmak mantıklıdır. Bu tür "yardımcı sınıfları" (helper classes) yuvalamak, paketlerini daha düzenli hale getirir.
-* **Kapsüllemeyi (encapsulation) artırır**: B sınıfının A sınıfının `private` olarak tanımlanan üyelerine erişmesi gerektiğini varsayalım. B sınıfını A sınıfının içine gizleyerek, A'nın üyeleri `private` olarak kalabilir ve B bunlara erişebilir. Ayrıca B'nin kendisi de dış dünyadan gizlenebilir.
-* **Daha okunabilir ve bakımı kolay kod sağlar**: Küçük sınıfları üst düzey sınıfların içine yerleştirmek, kodu kullanıldığı yere daha yakın kılar.
+* **Kapsüllemeyi (encapsulation) artırır**: B sınıfının, aksi takdirde `private` olarak bildirilecek olan A sınıfının üyelerine erişmesi gereken A ve B gibi iki üst düzey sınıf (top-level class) düşünün. B sınıfını A sınıfının içine gizleyerek, A'nın üyeleri `private` olarak bildirilebilir ve B bunlara erişebilir. Ayrıca B'nin kendisi de dış dünyadan gizlenebilir.
+* **Daha okunabilir ve bakımı kolay koda yol açabilir**: Küçük sınıfları üst düzey sınıfların içine yerleştirmek, kodu kullanıldığı yere daha yakın kılar.
 
 ## İç Sınıflar (Inner Classes)
 
-Örnek alanlarında (instance fields) ve metotlarında olduğu gibi, bir iç sınıf (inner class) kendisini kapsayan sınıfın bir örneğiyle ilişkilendirilir ve o nesnenin alanlarına ve metotlarına doğrudan erişebilir. Ayrıca bir iç sınıf bir örnekle ilişkili olduğundan, kendisi herhangi bir statik üye tanımlayamaz.
+Örnek metotlarında ve değişkenlerinde (instance methods and variables) olduğu gibi, bir iç sınıf da kendisini çevreleyen sınıfın bir örneğiyle ilişkilendirilir ve o nesnenin metotlarına ve alanlarına doğrudan erişebilir. Ayrıca bir iç sınıf bir örnekle ilişkili olduğundan, kendisi herhangi bir statik üye tanımlayamaz.
 
-Bir `InnerClass` örneği olan nesneler, bir `OuterClass` örneği içinde var olur. Aşağıdaki sınıfları göz önünde bulundurun:
+Bir iç sınıfın örneği olan nesneler, dış sınıfın bir örneği *içinde* var olur. Aşağıdaki sınıfları göz önünde bulundurun:
 
 ```java
 class OuterClass {
@@ -50,7 +50,7 @@ class OuterClass {
 }
 ```
 
-Bir `InnerClass` örneği yalnızca bir `OuterClass` örneği içinde var olabilir ve kapsayıcı örneğinin yöntemlerine ve alanlarına doğrudan erişime sahiptir.
+Bir `InnerClass` örneği yalnızca bir `OuterClass` örneği içinde var olabilir ve çevreleyen örneğinin metotlarına ve alanlarına doğrudan erişime sahiptir.
 
 Bir iç sınıfı örneklendirmek için önce dış sınıfı örneklendirmeniz gerekir. Ardından, dış nesne içinde şu sözdizimi ile iç nesneyi oluşturursunuz:
 
@@ -59,15 +59,15 @@ OuterClass outerObject = new OuterClass();
 OuterClass.InnerClass innerObject = outerObject.new InnerClass();
 ```
 
-İki özel tür iç sınıf vardır: [yerel sınıflar (local classes)](java/3-siniflar-ve-nesneler/yerel-siniflar.md) ve [anonim sınıflar (anonymous classes)](java/3-siniflar-ve-nesneler/anonim-siniflar.md).
+İki özel iç sınıf türü vardır: [yerel sınıflar (local classes)](java/3-siniflar-ve-nesneler/yerel-siniflar.md) ve [anonim sınıflar (anonymous classes)](java/3-siniflar-ve-nesneler/anonim-siniflar.md).
 
 ## Statik Yuvalanmış Sınıflar (Static Nested Classes)
 
-Sınıf metotlarında ve alanlarında olduğu gibi, statik bir yuvalanmış sınıf kendisini çevreleyen sınıfla ilişkilidir. Ve statik sınıf yöntemleri gibi statik bir yuvalanmış sınıf da, kendisini çevreleyen sınıfta tanımlanan örnek değişkenlerine veya metotlarına doğrudan başvuramaz: bunları yalnızca bir nesne referansı aracılığıyla kullanabilir.
+Sınıf metotlarında ve değişkenlerinde olduğu gibi, bir statik yuvalanmış sınıf da dış sınıfıyla ilişkilidir. Ve statik sınıf metotları gibi, statik bir yuvalanmış sınıf da kendisini çevreleyen sınıfta tanımlanan örnek değişkenlerine veya metotlarına doğrudan başvuramaz: bunları yalnızca bir nesne referansı (object reference) aracılığıyla kullanabilir. [İç Sınıf ve Statik Yuvalanmış Sınıf Örneği](#i̇ç-sınıf-ve-statik-yuvalanmış-sınıf-örneği-inner-class-and-nested-static-class-example) bunu göstermektedir.
 
-> **Not:** Statik bir yuvalanmış sınıf, diğer herhangi bir üst düzey sınıf gibi, dış sınıfının (ve diğer sınıfların) örnek üyeleriyle etkileşime girer. Aslında statik bir yuvalanmış sınıf, paketleme kolaylığı açısından başka bir üst düzey sınıfa yerleştirilmiş bir üst düzey sınıftır.
+> **Not:** Bir statik yuvalanmış sınıf, diğer herhangi bir üst düzey sınıf gibi, dış sınıfının (ve diğer sınıfların) örnek üyeleriyle etkileşime girer. Aslında bir statik yuvalanmış sınıf, paketleme kolaylığı açısından başka bir üst düzey sınıfa yerleştirilmiş davranışsal olarak bir üst düzey sınıftır. [İç Sınıf ve Statik Yuvalanmış Sınıf Örneği](#i̇ç-sınıf-ve-statik-yuvalanmış-sınıf-örneği-inner-class-and-nested-static-class-example) bunu da göstermektedir.
 
-Statik yuvalanmış sınıflar, diğer üst düzey sınıflar gibi örneklendirilir:
+Bir statik yuvalanmış sınıfı, bir üst düzey sınıf ile aynı şekilde örneklendirirsiniz:
 
 ```java
 StaticNestedClass staticNestedObject = new StaticNestedClass();
@@ -75,7 +75,7 @@ StaticNestedClass staticNestedObject = new StaticNestedClass();
 
 ## İç Sınıf ve Statik Yuvalanmış Sınıf Örneği (Inner Class and Nested Static Class Example)
 
-Aşağıdaki örnek, bir iç sınıfın (`InnerClass`), statik bir yuvalanmış sınıfın (`StaticNestedClass`) ve bir üst düzey sınıfın (`TopLevelClass`), `OuterClass`'ın hangi sınıf üyelerine erişebildiğini göstermektedir:
+Aşağıdaki `OuterClass` örneği, `TopLevelClass` ile birlikte; bir iç sınıfın (`InnerClass`), bir statik yuvalanmış sınıfın (`StaticNestedClass`) ve bir üst düzey sınıfın (`TopLevelClass`), `OuterClass`'ın hangi sınıf üyelerine erişebildiğini gösterir:
 
 ### OuterClass.java
 
@@ -137,7 +137,7 @@ public class TopLevelClass {
 }
 ```
 
-Bu örnek şu çıktıyı yazdırır:
+Bu örnek aşağıdaki çıktıyı yazdırır:
 
 ```text
 Inner class:
@@ -156,7 +156,7 @@ Outer field
 Static outer field
 ```
 
-Statik bir yuvalanmış sınıfın, tıpkı diğer herhangi bir üst düzey sınıf gibi, dış sınıfının örnek üyeleriyle etkileşime girdiğine dikkat edin. `StaticNestedClass` statik yuvalanmış sınıfı, `outerField` alanına doğrudan erişemez çünkü bu, çevreleyen sınıf olan `OuterClass`'ın bir örnek değişkenidir. Vurgulanan ifadede Java derleyicisi bir hata üretir:
+Bir statik yuvalanmış sınıfın, tıpkı diğer herhangi bir üst düzey sınıf gibi, dış sınıfının örnek üyeleriyle etkileşime girdiğine dikkat edin. `StaticNestedClass` statik yuvalanmış sınıfı, `outerField` alanına doğrudan erişemez çünkü bu, çevreleyen sınıf olan `OuterClass`'ın bir örnek değişkenidir. Java derleyicisi vurgulanan ifadede bir hata üretir:
 
 ```java
 static class StaticNestedClass {
@@ -168,17 +168,17 @@ static class StaticNestedClass {
 }
 ```
 
-Bu hatayı düzeltmek için bir nesne referansı aracılığıyla `outerField`'a erişin:
+Bu hatayı düzeltmek için, `outerField` alanına bir nesne referansı aracılığıyla erişin:
 
 ```java
 System.out.println(outer.outerField);
 ```
 
-Benzer şekilde `TopLevelClass` üst düzey sınıfı da `outerField`'a doğrudan erişemez.
+Benzer şekilde, `TopLevelClass` üst düzey sınıfı da `outerField` alanına doğrudan erişemez.
 
 ## Gölgeleme (Shadowing)
 
-Belirli bir kapsamdaki (örneğin bir iç sınıf veya bir metot tanımı) bir tür bildirimi (üye değişkeni veya parametre adı gibi), çevreleyen kapsamdaki başka bir bildirimle aynı ada sahipse, bu bildirim çevreleyen kapsamın bildirimini ***gölgeler (shadows)***. Yalnızca adıyla gölgelenmiş bir bildirime başvuramazsınız. Aşağıdaki `ShadowTest` örneği bunu göstermektedir:
+Belirli bir kapsamdaki (örneğin bir iç sınıf veya bir metot tanımı) bir tür bildirimi (bir üye değişkeni veya bir parametre adı gibi), çevreleyen kapsamdaki başka bir bildirimle aynı ada sahipse, bu bildirim çevreleyen kapsamın bildirimini **gölgeler (shadows)**. Yalnızca adıyla gölgelenmiş bir bildirime başvuramazsınız. Aşağıdaki `ShadowTest` örneği bunu göstermektedir:
 
 ```java
 public class ShadowTest {
@@ -212,13 +212,13 @@ this.x = 1
 ShadowTest.this.x = 0
 ```
 
-Bu örnek `x` adlı üç değişken tanımlar: `ShadowTest` sınıfının üye değişkeni, `FirstLevel` iç sınıfının üye değişkeni ve `methodInFirstLevel` metodundaki parametre. `methodInFirstLevel` metodunun bir parametresi olarak tanımlanan `x` değişkeni, `FirstLevel` iç sınıfının değişkenini gölgeler. Sonuç olarak, `methodInFirstLevel` metodunda `x` değişkenini kullandığınızda, metot parametresine başvurur. `FirstLevel` iç sınıfının üye değişkenine başvurmak için, kapsayıcı kapsamı temsil etmek üzere `this` anahtar sözcüğünü kullanın:
+Bu örnek `x` adlı üç değişken tanımlar: `ShadowTest` sınıfının üye değişkeni, `FirstLevel` iç sınıfının üye değişkeni ve `methodInFirstLevel` metodundaki parametre. `methodInFirstLevel` metodunun bir parametresi olarak tanımlanan `x` değişkeni, `FirstLevel` iç sınıfının değişkenini gölgeler. Sonuç olarak, `methodInFirstLevel` metodunda `x` değişkenini kullandığınızda, metot parametresine başvurur. `FirstLevel` iç sınıfının üye değişkenine başvurmak için, çevreleyen kapsamı temsil etmek üzere `this` anahtar kelimesini kullanın:
 
 ```java
 System.out.println("this.x = " + this.x);
 ```
 
-Daha büyük kapsamları çevreleyen üye değişkenlerine ait oldukları sınıf adıyla başvurun. Örneğin aşağıdaki ifade, `methodInFirstLevel` metodundan `ShadowTest` sınıfının üye değişkenine erişir:
+Daha geniş kapsamları çevreleyen üye değişkenlerine ait oldukları sınıf adıyla başvurun. Örneğin aşağıdaki ifade, `methodInFirstLevel` metodundan `ShadowTest` sınıfının üye değişkenine erişir:
 
 ```java
 System.out.println("ShadowTest.this.x = " + ShadowTest.this.x);
@@ -226,4 +226,4 @@ System.out.println("ShadowTest.this.x = " + ShadowTest.this.x);
 
 ## Serileştirme (Serialization)
 
-[Yerel](java/3-siniflar-ve-nesneler/yerel-siniflar.md) ve [anonim](java/3-siniflar-ve-nesneler/anonim-siniflar.md) sınıflar da dahil olmak üzere iç sınıfların serileştirilmesi (serialization) kesinlikle önerilmez. Java derleyicisi, iç sınıflar gibi belirli yapıları derlediğinde sentetik yapılar oluşturur; bunlar, kaynak kodunda karşılığı bulunmayan sınıflar, metotlar, alanlar ve diğer yapılardır. Sentetik yapılar, Java derleyicilerinin JVM'de değişiklik yapmadan yeni Java dili özelliklerini uygulamasını sağlar. Ancak sentetik yapılar farklı Java derleyicisi uygulamaları arasında değişiklik gösterebilir; bu da .class dosyalarının farklı uygulamalar arasında farklılık gösterebileceği anlamına gelir. Sonuç olarak, bir iç sınıfı serileştirir ve ardından farklı bir JRE uygulamasıyla serileştirmeden çıkarırsanız uyumluluk sorunları yaşayabilirsiniz. Bir iç sınıf derlendiğinde oluşturulan [sentetik yapılar](https://docs.oracle.com/javase/8/docs/technotes/guides/language/comp-names.html) hakkında daha fazla bilgi için [Metot Parametrelerinin Adlarını Alma](java/meta-data/metot-parametrelerinin-adlarini-alma.md#örtük-ve-sentetik-parametreler) bölümündeki Örtük ve Sentetik Parametreler bölümüne bakın.
+[Yerel](java/3-siniflar-ve-nesneler/yerel-siniflar.md) ve [anonim](java/3-siniflar-ve-nesneler/anonim-siniflar.md) sınıflar da dahil olmak üzere iç sınıfların [serileştirilmesi (serialization)](https://docs.oracle.com/javase/tutorial/jndi/objects/serial.html) kesinlikle önerilmez. Java derleyicisi, iç sınıflar gibi belirli yapıları derlediğinde **sentetik yapılar (synthetic constructs)** oluşturur; bunlar kaynak kodda karşılık gelen bir yapısı olmayan sınıflar, metotlar, alanlar ve diğer yapılardır. Sentetik yapılar, Java derleyicilerinin JVM'de değişiklik yapmadan yeni Java dili özelliklerini uygulamasını sağlar. Ancak sentetik yapılar farklı Java derleyici uygulamaları arasında değişiklik gösterebilir; bu da `.class` dosyalarının farklı uygulamalar arasında da farklılık gösterebileceği anlamına gelir. Sonuç olarak, bir iç sınıfı serileştirip ardından farklı bir JRE uygulamasıyla serileştirmeden çıkarırsanız uyumluluk sorunları yaşayabilirsiniz. Bir iç sınıf derlendiğinde oluşturulan [sentetik yapılar](https://docs.oracle.com/javase/8/docs/technotes/guides/language/comp-names.html) hakkında daha fazla bilgi için [Metot Parametrelerinin Adlarını Alma](https://docs.oracle.com/javase/tutorial/reflect/member/methodparameterreflection.html) bölümündeki [Örtük ve Sentetik Parametreler (Implicit and Synthetic Parameters)](https://docs.oracle.com/javase/tutorial/reflect/member/methodparameterreflection.html#implcit_and_synthetic) kısmına bakın.

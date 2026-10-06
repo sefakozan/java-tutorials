@@ -1,31 +1,31 @@
 # Lambda İfadeleri (Lambda Expressions)
 
-Anonim sınıflarla ilgili bir sorun, anonim sınıfınızın uygulamasının yalnızca tek bir metot içeren bir arayüz gibi çok basit olması durumunda, anonim sınıfların sözdiziminin hantal ve belirsiz görünebilmesidir. Bu durumlarda genellikle bir düğmeye tıklandığında hangi eylemin gerçekleştirilmesi gerektiği gibi, işlevselliği başka bir metoda bir bağımsız değişken (argüman) olarak aktarmaya çalışırsınız. Lambda ifadeleri bunu yapmanıza, işlevselliği bir metot argümanı veya kodu veri olarak ele almanıza olanak tanır.
+Anonim sınıflarla (anonymous classes) ilgili bir sorun, uygulamasının yalnızca tek bir metot içeren bir arayüz (interface) gibi çok basit olması durumunda, anonim sınıfların sözdiziminin hantal ve belirsiz görünebilmesidir. Bu durumlarda genellikle bir butona tıklandığında hangi eylemin gerçekleştirilmesi gerektiği gibi, işlevselliği başka bir metoda bir argüman olarak geçirmeye çalışırsınız. **Lambda ifadeleri (lambda expressions)** bunu yapmanıza, işlevselliği bir metot argümanı veya kodu veri olarak ele almanıza olanak tanır.
 
-Önceki bölüm olan [Anonim Sınıflar](java/3-siniflar-ve-nesneler/anonim-siniflar.md), bir temel sınıfı ona bir ad vermeden nasıl uygulayacağınızı gösterir. Bu genellikle adlandırılmış bir sınıftan daha özlü olsa da, yalnızca tek bir metoda sahip sınıflar için anonim bir sınıf bile biraz aşırı ve hantal görünür. Lambda ifadeleri, tek metotlu sınıfların örneklerini daha derli toplu ifade etmenizi sağlar.
+Önceki bölüm olan [Anonim Sınıflar](java/3-siniflar-ve-nesneler/anonim-siniflar.md), bir temel sınıfı ona bir ad vermeden nasıl uygulayacağınızı gösterir. Bu genellikle adlandırılmış bir sınıftan daha özlü olsa da, yalnızca tek bir metoda sahip sınıflar için anonim bir sınıf bile biraz aşırı ve hantal görünür. Lambda ifadeleri, tek metotlu sınıfların örneklerini (instances) daha derli toplu ifade etmenizi sağlar.
 
 Bu bölüm şu konuları kapsar:
 
-* Lambda İfadeleri İçin İdeal Kullanım Durumu (Ideal Use Case for Lambda Expressions)
-  * Yaklaşım 1: Tek Bir Özellikle Eşleşen Üyeleri Arayan Metotlar Oluşturma
-  * Yaklaşım 2: Daha Genelleştirilmiş Arama Metotları Oluşturma
-  * Yaklaşım 3: Arama Ölçütü Kodunu Bir Yerel Sınıfta Belirtme
-  * Yaklaşım 4: Arama Ölçütü Kodunu Bir Anonim Sınıfta Belirtme
-  * Yaklaşım 5: Arama Ölçütü Kodunu Bir Lambda İfadesi ile Belirtme
-  * Yaklaşım 6: Lambda İfadeleriyle Standart Fonksiyonel Arayüzleri Kullanma
-  * Yaklaşım 7: Uygulamanız Genelinde Lambda İfadelerini Kullanma
-  * Yaklaşım 8: Generics (Genel Türler) Yapısını Daha Kapsamlı Kullanma
-  * Yaklaşım 9: Lambda İfadelerini Parametre Olarak Kabul Eden Toplu İşlemleri Kullanma
-* GUI Uygulamalarında Lambda İfadeleri (Lambda Expressions in GUI Applications)
-* Lambda İfadelerinin Sözdizimi (Syntax of Lambda Expressions)
-* Çevreleyen Kapsamın Yerel Değişkenlerine Erişme (Accessing Local Variables of the Enclosing Scope)
-* Hedef Türleme (Target Typing)
-  * Hedef Türler ve Metot Argümanları (Target Types and Method Arguments)
-* Serileştirme (Serialization)
+* [Lambda İfadeleri İçin İdeal Kullanım Durumu (Ideal Use Case for Lambda Expressions)](#lambda-i̇fadeleri-i̇çin-i̇deal-kullanım-durumu-ideal-use-case-for-lambda-expressions)
+  * [Yaklaşım 1: Tek Bir Özellikle Eşleşen Üyeleri Arayan Metotlar Oluşturma](#yaklaşım-1-tek-bir-özellikle-eşleşen-üyeleri-arayan-metotlar-oluşturma)
+  * [Yaklaşım 2: Daha Genelleştirilmiş Arama Metotları Oluşturma](#yaklaşım-2-daha-genelleştirilmiş-arama-metotları-oluşturma)
+  * [Yaklaşım 3: Arama Kriteri Kodunu Bir Yerel Sınıfta Belirtme](#yaklaşım-3-arama-kriteri-kodunu-bir-yerel-sınıfta-belirtme)
+  * [Yaklaşım 4: Arama Kriteri Kodunu Bir Anonim Sınıfta Belirtme](#yaklaşım-4-arama-kriteri-kodunu-bir-anonim-sınıfta-belirtme)
+  * [Yaklaşım 5: Arama Kriteri Kodunu Bir Lambda İfadesi ile Belirtme](#yaklaşım-5-arama-kriteri-kodunu-bir-lambda-ifadesi-ile-belirtme)
+  * [Yaklaşım 6: Lambda İfadeleriyle Standart Fonksiyonel Arayüzleri Kullanma](#yaklaşım-6-lambda-ifadeleriyle-standart-fonksiyonel-arayüzleri-kullanma)
+  * [Yaklaşım 7: Uygulamanız Genelinde Lambda İfadelerini Kullanma](#yaklaşım-7-uygulamanız-genelinde-lambda-ifadelerini-kullanma)
+  * [Yaklaşım 8: Generics Yapısını Daha Kapsamlı Kullanma](#yaklaşım-8-generics-yapısını-daha-kapsamlı-kullanma)
+  * [Yaklaşım 9: Lambda İfadelerini Parametre Olarak Kabul Eden Toplu İşlemleri Kullanma](#yaklaşım-9-lambda-ifadelerini-parametre-olarak-kabul-eden-toplu-işlemleri-kullanma)
+* [GUI Uygulamalarında Lambda İfadeleri (Lambda Expressions in GUI Applications)](#gui-uygulamalarında-lambda-ifadeleri-lambda-expressions-in-gui-applications)
+* [Lambda İfadelerinin Sözdizimi (Syntax of Lambda Expressions)](#lambda-i̇fadelerinin-sözdizimi-syntax-of-lambda-expressions)
+* [Çevreleyen Kapsamın Yerel Değişkenlerine Erişme (Accessing Local Variables of the Enclosing Scope)](#çevreleyen-kapsamın-yerel-değişkenlerine-erişme-accessing-local-variables-of-the-enclosing-scope)
+* [Hedef Türleme (Target Typing)](#hedef-türleme-target-typing)
+  * [Hedef Türler ve Metot Argümanları (Target Types and Method Arguments)](#hedef-türler-ve-metot-argümanları-target-types-and-method-arguments)
+* [Serileştirme (Serialization)](#serileştirme-serialization)
 
 ## Lambda İfadeleri İçin İdeal Kullanım Durumu (Ideal Use Case for Lambda Expressions)
 
-Bir sosyal ağ uygulaması oluşturduğunuzu varsayalım. Bir yöneticinin belirli kriterleri karşılayan üyeler üzerinde, örneğin bir mesaj göndermek gibi herhangi bir tür eylemi gerçekleştirmesini sağlayan bir özellik oluşturmak istiyorsunuz. Aşağıdaki tablo bu kullanım durumunu ayrıntılı olarak açıklamaktadır:
+Bir sosyal ağ uygulaması oluşturduğunuzu varsayalım. Bir yöneticinin belirli kriterleri karşılayan sosyal ağ uygulaması üyeleri üzerinde, örneğin bir mesaj göndermek gibi herhangi bir tür eylemi gerçekleştirmesini sağlayan bir özellik oluşturmak istiyorsunuz. Aşağıdaki tablo bu kullanım durumunu ayrıntılı olarak açıklamaktadır:
 
 | Alan (Field) | Açıklama (Description) |
 | :--- | :--- |
@@ -33,8 +33,11 @@ Bir sosyal ağ uygulaması oluşturduğunuzu varsayalım. Bir yöneticinin belir
 | Birincil Aktör (Primary Actor) | Yönetici (Administrator) |
 | Ön Koşullar (Preconditions) | Yönetici sisteme giriş yapmıştır. |
 | Son Koşullar (Postconditions) | Eylem yalnızca belirtilen kriterlere uyan üyeler üzerinde gerçekleştirilir. |
+| Ana Başarı Senaryosu (Main Success Scenario) | 1. Yönetici, üzerinde belirli bir eylemin gerçekleştirileceği üyelerin kriterlerini belirtir.<br>2. Yönetici, seçilen bu üyeler üzerinde gerçekleştirilecek eylemi belirtir.<br>3. Yönetici **Submit (Gönder)** butonunu seçer.<br>4. Sistem, belirtilen kriterlerle eşleşen tüm üyeleri bulur.<br>5. Sistem, eşleşen tüm üyeler üzerinde belirtilen eylemi gerçekleştirir. |
+| Uzantılar (Extensions) | 1a. Yöneticinin, gerçekleştirilecek eylemi belirtmeden önce veya **Submit (Gönder)** butonunu seçmeden önce belirtilen kriterlerle eşleşen üyeleri önizleme seçeneği vardır. |
+| Gerçekleşme Sıklığı (Frequency of Occurrence) | Gün içinde birçok kez. |
 
-Sosyal ağ uygulamasının üyelerinin aşağıdaki `Person` sınıfı tarafından temsil edildiğini varsayalım:
+Bu sosyal ağ uygulamasının üyelerinin aşağıdaki `Person` sınıfı tarafından temsil edildiğini varsayalım:
 
 ```java
 public class Person {
@@ -60,11 +63,11 @@ public class Person {
 
 Sosyal ağ uygulamanızın üyelerinin bir `List<Person>` örneğinde saklandığını varsayalım.
 
-Bu bölüm, belirli kriterlerle eşleşen üyeleri arayan metotlarla başlayan saf bir yaklaşımla başlar. Kodu yerel ve anonim sınıflarla genelleştirir ve ardından bir lambda ifadesi kullanarak verimli ve özlü bir yaklaşımla tamamlar.
+Bu bölüm, bu kullanım durumuna yönelik naif (basit) bir yaklaşımla başlar. Yerel ve anonim sınıflarla bu yaklaşımı geliştirir ve ardından lambda ifadelerini kullanan verimli ve özlü bir yaklaşımla tamamlar. Bu bölümde açıklanan kod alıntılarını `RosterTest` örneğinde bulabilirsiniz.
 
 ### Yaklaşım 1: Tek Bir Özellikle Eşleşen Üyeleri Arayan Metotlar Oluşturma
 
-Basit bir yaklaşım birkaç metot oluşturmaktır; her metot yaş veya cinsiyet gibi tek bir özellikle eşleşen üyeleri arar. Aşağıdaki metot, belirtilen bir yaştan daha büyük olan üyeleri yazdırır:
+Basit bir yaklaşım, birkaç metot oluşturmaktır; her metot cinsiyet veya yaş gibi tek bir özellikle eşleşen üyeleri arar. Aşağıdaki metot, belirtilen yaştan daha büyük olan üyeleri yazdırır:
 
 ```java
 public static void printPersonsOlderThan(List<Person> roster, int age) {
@@ -76,11 +79,13 @@ public static void printPersonsOlderThan(List<Person> roster, int age) {
 }
 ```
 
-Bu yaklaşım uygulamanızı *kırılgan (brittle)* hale getirebilir; bu, bir güncellemenin (örneğin daha yeni veri türleri) uygulamanın çalışmamasına neden olma olasılığıdır. `Person` sınıfını değiştirir ve farklı üye değişkenleri içerecek şekilde güncellerseniz veya yaşı kaydetmek ve ölçmek için farklı bir veri türü ya da algoritma kullanırsa, birçok API'yi yeniden yazmanız gerekir. Ayrıca bu yaklaşım gereksiz yere kısıtlayıcıdır; örneğin belirli bir yaştan *küçük* olan üyeleri yazdırmak isterseniz ne olur?
+> **Not**: Bir `List`, sıralı bir koleksiyondur (ordered Collection). Bir **koleksiyon (collection)**, birden çok öğeyi tek bir birimde gruplayan bir nesnedir. Koleksiyonlar; toplu verileri depolamak, almak, işlemek ve iletmek için kullanılır. Koleksiyonlar hakkında daha fazla bilgi için [Collections](collections/index.md) patikasına bakın.
+
+Bu yaklaşım potansiyel olarak uygulamanızı **kırılgan (brittle)** hale getirebilir; bu, güncellemelerin (daha yeni veri türleri gibi) tanıtılması nedeniyle bir uygulamanın çalışmama olasılığıdır. Uygulamanızı yükselttiğinizi ve `Person` sınıfının yapısını farklı üye değişkenleri içerecek şekilde değiştirdiğinizi varsayalım; belki de sınıf yaşları farklı bir veri türü veya algoritma ile kaydedip ölçüyordur. Bu değişikliğe uyum sağlamak için API'nizin çoğunu yeniden yazmanız gerekir. Ek olarak, bu yaklaşım gereksiz yere kısıtlayıcıdır; örneğin, belirli bir yaştan daha genç üyeleri yazdırmak isterseniz ne olur?
 
 ### Yaklaşım 2: Daha Genelleştirilmiş Arama Metotları Oluşturma
 
-Aşağıdaki metot `printPersonsOlderThan` metodundan daha geneldir; belirtilen bir yaş aralığındaki üyeleri yazdırır:
+Aşağıdaki metot `printPersonsOlderThan` metodundan daha geneldir; belirtilen yaş aralığındaki üyeleri yazdırır:
 
 ```java
 public static void printPersonsWithinAgeRange(
@@ -93,9 +98,9 @@ public static void printPersonsWithinAgeRange(
 }
 ```
 
-Belirli bir cinsiyetteki üyeleri veya belirli bir cinsiyet ve yaş aralığının birleşimini yazdırmak isterseniz ne olur? `Person` sınıfını değiştirip medeni durum veya ikamet yeri gibi başka nitelikler eklerseniz ne olur? Bu metot `printPersonsOlderThan`'dan daha genel olsa da, her olası arama sorgusu için ayrı bir metot yazmaya çalışmak yine de kırılgan koda yol açabilir. Bunun yerine, arama kriterlerini belirten kodu farklı bir sınıfa ayırabilirsiniz.
+Belirli bir cinsiyetteki üyeleri veya belirli bir cinsiyet ile yaş aralığının bir kombinasyonunu yazdırmak isterseniz ne olur? `Person` sınıfını değiştirmeye ve ilişki durumu veya coğrafi konum gibi başka nitelikler eklemeye karar verirseniz ne olur? Bu metot `printPersonsOlderThan` metodundan daha genel olsa da, olası her arama sorgusu için ayrı bir metot oluşturmaya çalışmak yine de kırılgan koda yol açabilir. Bunun yerine, aramak istediğiniz kriterleri belirten kodu farklı bir sınıfa ayırabilirsiniz.
 
-### Yaklaşım 3: Arama Ölçütü Kodunu Bir Yerel Sınıfta Belirtme
+### Yaklaşım 3: Arama Kriteri Kodunu Bir Yerel Sınıfta Belirtme
 
 Aşağıdaki metot, belirttiğiniz arama kriterleriyle eşleşen üyeleri yazdırır:
 
@@ -110,7 +115,7 @@ public static void printPersons(
 }
 ```
 
-Bu metot, `tester.test` metodunu çağırarak `roster` Listesindeki her bir `Person` örneğinin `CheckPerson` parametresinde belirtilen arama kriterlerini karşılayıp karşılamadığını kontrol eder. `tester.test` metodu `true` değerini döndürürse, `Person` örneğinde `printPerson` metodu çağrılır.
+Bu metot, `tester.test` metodunu çağırarak `List` parametresi `roster`'da bulunan her bir `Person` örneğinin, `CheckPerson` parametresi `tester`'da belirtilen arama kriterlerini karşılayıp karşılamadığını kontrol eder. `tester.test` metodu bir `true` değeri döndürürse, `Person` örneği üzerinde `printPersons` metodu çağrılır.
 
 Arama kriterlerini belirtmek için `CheckPerson` arayüzünü uygularsınız:
 
@@ -120,14 +125,12 @@ interface CheckPerson {
 }
 ```
 
-Aşağıdaki sınıf, `test` metodunun bir uygulamasını belirterek `CheckPerson` arayüzünü uygular. Bu metot, Amerika Birleşik Devletleri'nde zorunlu askerlik hizmetine uygun üyeleri filtreler: `gender` alanı `Person.Sex.MALE` ise ve `getAge` değeri 18 ile 25 arasındaysa `true` değerini döndürür:
+Aşağıdaki sınıf, `test` metodu için bir uygulama belirterek `CheckPerson` arayüzünü uygular. Bu metot, Amerika Birleşik Devletleri'ndeki Askerlik Hizmeti (Selective Service) için uygun olan üyeleri filtreler: `Person` parametresi erkek ve 18 ile 25 yaşları arasında ise bir `true` değeri döndürür:
 
 ```java
 class CheckPersonEligibleForSelectiveService implements CheckPerson {
     public boolean test(Person p) {
-        return p.gender == Person.Sex.MALE &&
-            p.getAge() >= 18 &&
-            p.getAge() <= 25;
+        return p.gender == Person.Sex.MALE && p.getAge() >= 18 && p.getAge() <= 25;
     }
 }
 ```
@@ -135,22 +138,21 @@ class CheckPersonEligibleForSelectiveService implements CheckPerson {
 Bu sınıfı kullanmak için yeni bir örneğini oluşturur ve `printPersons` metodunu çağırırsınız:
 
 ```java
-printPersons(
-    roster, new CheckPersonEligibleForSelectiveService());
+printPersons(roster, new CheckPersonEligibleForSelectiveService());
 ```
 
-Bu yaklaşım daha az kırılgandır — `Person` yapısını değiştirirseniz metotları yeniden yazmanız gerekmez — ancak yine de ekstra kod gerektirir: uygulamanızda gerçekleştirmeyi planladığınız her arama için yeni bir arayüz ve yerel bir sınıf. `CheckPersonEligibleForSelectiveService` bir arayüz uyguladığı için, yerel bir sınıf yerine anonim bir sınıf kullanabilir ve her arama için yeni bir sınıf bildirme gereksinimini ortadan kaldırabilirsiniz.
+Bu yaklaşım daha az kırılgan olsa da —`Person` yapısını değiştirirseniz metotları yeniden yazmanız gerekmez— uygulamanızda gerçekleştirmeyi planladığınız her arama için yine de ek bir koda sahip olursunuz: yeni bir arayüz ve bir yerel sınıf (local class). `CheckPersonEligibleForSelectiveService` bir arayüzü uyguladığından, bir yerel sınıf yerine bir anonim sınıf (anonymous class) kullanabilir ve her arama için yeni bir sınıf bildirme ihtiyacını atlayabilirsiniz.
 
-### Yaklaşım 4: Arama Ölçütü Kodunu Bir Anonim Sınıfta Belirtme
+### Yaklaşım 4: Arama Kriteri Kodunu Bir Anonim Sınıfta Belirtme
 
-Aşağıdaki `printPersons` metodu çağrısının argümanlarından biri, Amerika Birleşik Devletleri'nde zorunlu askerlik hizmetine uygun üyeleri filtreleyen anonim bir sınıftır:
+Aşağıdaki `printPersons` metot çağrısının argümanlarından biri, Amerika Birleşik Devletleri'ndeki Seçici Hizmet için uygun olan üyeleri filtreleyen bir anonim sınıftır: erkek olan ve 18 ile 25 yaşları arasında olanlar:
 
 ```java
 printPersons(
     roster,
     new CheckPerson() {
         public boolean test(Person p) {
-            return p.gender == Person.Sex.MALE
+            return p.getGender() == Person.Sex.MALE
                 && p.getAge() >= 18
                 && p.getAge() <= 25;
         }
@@ -158,11 +160,11 @@ printPersons(
 );
 ```
 
-Bu yaklaşım gereken kod miktarını azaltır çünkü planladığınız her arama için yeni bir sınıf oluşturmanız gerekmez. Ancak `CheckPerson` arayüzünün yalnızca tek bir metot içerdiği düşünüldüğünde, anonim sınıfların sözdizimi hala hacimli kalmaktadır. Bu durumda, bir sonraki bölümde açıklandığı gibi anonim bir sınıf yerine bir lambda ifadesi kullanabilirsiniz.
+Bu yaklaşım gerekli kod miktarını azaltır çünkü gerçekleştirmek istediğiniz her arama için yeni bir sınıf oluşturmanız gerekmez. Ancak `CheckPerson` arayüzünün yalnızca tek bir metot içerdiği düşünüldüğünde, anonim sınıfların sözdizimi hantaldır. Bu durumda bir sonraki bölümde açıklandığı gibi, bir anonim sınıf yerine bir lambda ifadesi kullanabilirsiniz.
 
-### Yaklaşım 5: Arama Ölçütü Kodunu Bir Lambda İfadesi ile Belirtme
+### Yaklaşım 5: Arama Kriteri Kodunu Bir Lambda İfadesi ile Belirtme
 
-`CheckPerson` arayüzü bir *fonksiyonel arayüzdür (functional interface)*. Fonksiyonel arayüz, yalnızca tek bir [soyut metot (abstract method)](java/5-arayuzler-ve-kalitim/soyut-siniflar.md) içeren herhangi bir arayüzdür. (Bir fonksiyonel arayüz, bir veya daha fazla [varsayılan metot (default methods)](java/5-arayuzler-ve-kalitim/arayuzler.md) veya [statik metot (static methods)](java/5-arayuzler-ve-kalitim/arayuzler.md) içerebilir.) Bir fonksiyonel arayüz yalnızca bir soyut metot içerdiğinden, o metodu uygularken adını atlayabilirsiniz. Bunu yapmak için anonim bir sınıf ifadesi kullanmak yerine bir *lambda ifadesi* kullanırsınız:
+`CheckPerson` arayüzü bir **fonksiyonel arayüzdür (functional interface)**. Bir fonksiyonel arayüz, yalnızca tek bir [soyut metot (abstract method)](java/5-arayuzler-ve-kalitim/soyut-siniflar.md) içeren herhangi bir arayüzdür. (Bir fonksiyonel arayüz bir veya daha fazla [varsayılan metot (default method)](java/5-arayuzler-ve-kalitim/arayuzler.md) veya [statik metot (static method)](java/5-arayuzler-ve-kalitim/arayuzler.md) içerebilir.) Bir fonksiyonel arayüz yalnızca tek bir soyut metot içerdiğinden, o metodu uygularken adını atlayabilirsiniz. Bunu yapmak için bir anonim sınıf ifadesi kullanmak yerine, aşağıdaki metot çağrısında vurgulanan bir **lambda ifadesi (lambda expression)** kullanırsınız:
 
 ```java
 printPersons(
@@ -173,16 +175,9 @@ printPersons(
 );
 ```
 
-Parametre türünü de atlayabilirsiniz (derleyici bunu bağlamdan çıkarır):
+Lambda ifadelerinin nasıl tanımlanacağı hakkında bilgi için [Lambda İfadelerinin Sözdizimi](#lambda-i̇fadelerinin-sözdizimi-syntax-of-lambda-expressions) bölümüne bakın.
 
-```java
-printPersons(
-    roster,
-    p -> p.getGender() == Person.Sex.MALE
-        && p.getAge() >= 18
-        && p.getAge() <= 25
-);
-```
+`CheckPerson` arayüzü yerine standart bir fonksiyonel arayüz kullanabilirsiniz; bu, gereken kod miktarını daha da azaltır.
 
 ### Yaklaşım 6: Lambda İfadeleriyle Standart Fonksiyonel Arayüzleri Kullanma
 
@@ -194,7 +189,7 @@ interface CheckPerson {
 }
 ```
 
-Bu oldukça basit bir arayüzdür. Tek bir soyut metot içerdiği için fonksiyonel bir arayüzdür. Bu metot bir parametre alır ve bir boolean değer döndürür. Metot o kadar basittir ki uygulamanızda tanımlamaya değmeyebilir. Bu nedenle JDK, `java.util.function` paketinde bulabileceğiniz birkaç standart fonksiyonel arayüz tanımlar.
+Bu çok basit bir arayüzdür. Yalnızca tek bir soyut metot içerdiğinden bir fonksiyonel arayüzdür. Bu metot tek bir parametre alır ve bir `boolean` değeri döndürür. Metot o kadar basittir ki uygulamanızda bir tane tanımlamaya değmeyebilir. Sonuç olarak JDK, `java.util.function` paketinde bulabileceğiniz birkaç standart fonksiyonel arayüz tanımlar.
 
 Örneğin, `CheckPerson` yerine `Predicate<T>` arayüzünü kullanabilirsiniz. Bu arayüz `boolean test(T t)` metodunu içerir:
 
@@ -204,7 +199,15 @@ interface Predicate<T> {
 }
 ```
 
-`Predicate<T>` arayüzü genel bir arayüz (generic interface) örneğidir. Genel türler (generics), açılı parantezler (`<>`) içinde bir veya daha fazla tür parametresi belirtir. Bu arayüz yalnızca bir tür parametresi `T` içerir. Bir genel türü somut tür argümanlarıyla bildirdiğinizde veya somutlaştırdığınızda parametrize edilmiş bir türe sahip olursunuz. Örneğin `Predicate<Person>` parametrize edilmiş bir türdür:
+`Predicate<T>` arayüzü bir genel arayüz (generic interface) örneğidir. (Generics hakkında daha fazla bilgi için [Generics (Updated)](java/7-generics/index.md) dersine bakın.) Genel türler, açılı ayraçlar (`<>`) içinde bir veya daha fazla tür parametresi (type parameter) belirtir. Bu arayüz yalnızca tek bir tür parametresi olan `T`'yi içerir. Gerçek tür argümanları ile bir genel tür bildirdiğinizde veya başlattığınızda, parametreli bir türe (parameterized type) sahip olursunuz. Örneğin parametreli tür `Predicate<Person>` şöyledir:
+
+```java
+interface Predicate<Person> {
+    boolean test(Person t);
+}
+```
+
+Bu parametreli tür, `CheckPerson.boolean test(Person p)` ile aynı dönüş türüne ve parametrelere sahip bir metot içerir. Sonuç olarak aşağıdaki metodun gösterdiği gibi `CheckPerson` yerine `Predicate<T>` kullanabilirsiniz:
 
 ```java
 public static void printPersonsWithPredicate(
@@ -217,7 +220,7 @@ public static void printPersonsWithPredicate(
 }
 ```
 
-Sonuç olarak aşağıdaki metot çağrısı, Yaklaşım 3'te `printPersons` çağrısıyla aynıdır:
+Sonuç olarak aşağıdaki metot çağrısı, Seçici Hizmet için uygun olan üyeleri elde etmek üzere [Yaklaşım 3: Arama Kriteri Kodunu Bir Yerel Sınıfta Belirtme](#yaklaşım-3-arama-kriteri-kodunu-bir-yerel-sınıfta-belirtme) bölümünde `printPersons` metodunu çağırdığınız zamankiyle tamamen aynıdır:
 
 ```java
 printPersonsWithPredicate(
@@ -228,9 +231,11 @@ printPersonsWithPredicate(
 );
 ```
 
+Bu metotta lambda ifadesinin kullanılabileceği tek olası yer burası değildir. Aşağıdaki yaklaşım lambda ifadelerini kullanmanın diğer yollarını önerir.
+
 ### Yaklaşım 7: Uygulamanız Genelinde Lambda İfadelerini Kullanma
 
-`printPersonsWithPredicate` metodunu tekrar inceleyin:
+Lambda ifadelerini başka nerede kullanabileceğinizi görmek için `printPersonsWithPredicate` metodunu tekrar düşünün:
 
 ```java
 public static void printPersonsWithPredicate(
@@ -243,24 +248,24 @@ public static void printPersonsWithPredicate(
 }
 ```
 
-Bu metot, `tester` parametresinde belirtilen kriterleri karşılayıp karşılamadığını kontrol eder. Kriterleri karşılıyorsa `Person` örneğinde `printPerson` metodunu çağırır.
+Bu metot, `tester` parametresi olan `Predicate`'te belirtilen kriterleri karşılayıp karşılamadığını `roster` parametresi olan `List`'te bulunan her bir `Person` örneği için kontrol eder. `Person` örneği `tester` tarafından belirtilen kriterleri karşılıyorsa, `Person` örneği üzerinde `printPerson` metodu çağrılır.
 
-`printPerson` metodunu çağırmak yerine, kriterleri karşılayan `Person` örnekleri üzerinde gerçekleştirilecek farklı bir eylem belirtebilirsiniz. Bu eylemi bir lambda ifadesi ile belirtebilirsiniz. Bir argüman alan ve hiçbir şey döndürmeyen (void dönüş türü) bir eylem için bir fonksiyona ihtiyacınız vardır. Bunun için `java.util.function.Consumer<T>` fonksiyonel arayüzünü kullanabilirsiniz; bu arayüz `void accept(T t)` metodunu içerir. Aşağıdaki metot, `p.printPerson()` çağrısını `accept` metodunu çağıran bir `Consumer<Person>` örneğiyle değiştirir:
+`printPerson` metodunu çağırmak yerine, `tester` tarafından belirtilen kriterleri karşılayan bu `Person` örnekleri üzerinde gerçekleştirilecek farklı bir eylem belirtebilirsiniz. Bu eylemi bir lambda ifadesi ile belirtebilirsiniz. `printPerson`'a benzer, tek bir argüman (bir `Person` nesnesi) alan ve void döndüren bir lambda ifadesi istediğinizi varsayalım. Unutmayın, bir lambda ifadesi kullanmak için bir fonksiyonel arayüz uygulamanız gerekir. Bu durumda, `Person` türünde bir argüman alabilen ve void döndüren bir soyut metot içeren bir fonksiyonel arayüze ihtiyacınız vardır. `Consumer<T>` arayüzü bu özelliklere sahip olan `void accept(T t)` metodunu içerir. Aşağıdaki metot, `p.printPerson()` çağrısını `accept` metodunu çağıran bir `Consumer<Person>` örneği ile değiştirir:
 
 ```java
 public static void processPersons(
     List<Person> roster,
     Predicate<Person> tester,
     Consumer<Person> block) {
-    for (Person p : roster) {
-        if (tester.test(p)) {
-            block.accept(p);
+        for (Person p : roster) {
+            if (tester.test(p)) {
+                block.accept(p);
+            }
         }
-    }
 }
 ```
 
-Aşağıdaki metot çağrısı, zorunlu askerlik hizmetine uygun üyeleri yazdırır:
+Sonuç olarak aşağıdaki metot çağrısı, Seçici Hizmet için uygun olan üyeleri elde etmek üzere [Yaklaşım 3: Arama Kriteri Kodunu Bir Yerel Sınıfta Belirtme](#yaklaşım-3-arama-kriteri-kodunu-bir-yerel-sınıfta-belirtme) bölümünde `printPersons` çağırdığınız zamankiyle aynıdır. Üyeleri yazdırmak için kullanılan lambda ifadesi vurgulanmıştır:
 
 ```java
 processPersons(
@@ -272,7 +277,7 @@ processPersons(
 );
 ```
 
-Üyelerin profillerini yazdırmak yerine daha fazlasını yapmak isterseniz, örneğin üye profillerini doğrulamak veya iletişim bilgilerini almak gibi? Bu durumda bir değer döndüren bir fonksiyona ihtiyacınız vardır. `java.util.function.Function<T, R>` arayüzü `R apply(T t)` metodunu içerir. Aşağıdaki metot, `mapper` parametresi tarafından belirtilen verileri alır ve ardından `block` parametresi tarafından belirtilen eylemi gerçekleştirir:
+Üyelerinizin profillerini yazdırmaktan daha fazlasını yapmak isterseniz ne olur? Üyelerin profillerini doğrulamak veya iletişim bilgilerini almak istediğinizi varsayalım. Bu durumda, bir değer döndüren soyut bir metot içeren bir fonksiyonel arayüze ihtiyacınız vardır. `Function<T,R>` arayüzü `R apply(T t)` metodunu içerir. Aşağıdaki metot, `mapper` parametresi tarafından belirtilen verileri alır ve ardından `block` parametresi tarafından belirtilen bir eylemi bu veriler üzerinde gerçekleştirir:
 
 ```java
 public static void processPersonsWithFunction(
@@ -289,7 +294,7 @@ public static void processPersonsWithFunction(
 }
 ```
 
-Aşağıdaki çağrı, zorunlu askerlik hizmetine uygun her üyenin e-posta adresini alır ve yazdırır:
+Aşağıdaki metot, `roster`'da bulunan ve Seçici Hizmet için uygun olan her bir üyeden e-posta adresini alır ve ardından yazdırır:
 
 ```java
 processPersonsWithFunction(
@@ -302,9 +307,9 @@ processPersonsWithFunction(
 );
 ```
 
-### Yaklaşım 8: Generics (Genel Türler) Yapısını Daha Kapsamlı Kullanma
+### Yaklaşım 8: Generics Yapısını Daha Kapsamlı Kullanma
 
-`processPersonsWithFunction` metodunu tekrar inceleyin. Aşağıda, herhangi bir veri türündeki öğeleri içeren bir koleksiyonu kabul eden genel bir sürümü verilmiştir:
+`processPersonsWithFunction` metodunu tekrar düşünün. Aşağıdaki, herhangi bir veri türündeki öğeleri içeren bir koleksiyonu parametre olarak kabul eden genel (generic) bir sürümdür:
 
 ```java
 public static <X, Y> void processElements(
@@ -321,7 +326,7 @@ public static <X, Y> void processElements(
 }
 ```
 
-Zorunlu askerlik hizmetine uygun üyelerin e-posta adreslerini yazdırmak için `processElements` metodunu şu şekilde çağırabilirsiniz:
+Seçici Hizmet için uygun olan üyelerin e-posta adreslerini yazdırmak için `processElements` metodunu şu şekilde çağırın:
 
 ```java
 processElements(
@@ -334,9 +339,18 @@ processElements(
 );
 ```
 
+Bu metot çağrısı aşağıdaki eylemleri gerçekleştirir:
+
+1. `source` koleksiyonundan bir nesne kaynağı elde eder. Bu örnekte `roster` koleksiyonundan bir `Person` nesneleri kaynağı elde eder. `List` türünde bir koleksiyon olan `roster` koleksiyonunun aynı zamanda `Iterable` türünde bir nesne olduğuna dikkat edin.
+2. `tester` olan `Predicate` nesnesiyle eşleşen nesneleri filtreler. Bu örnekte `Predicate` nesnesi, hangi üyelerin Seçici Hizmet için uygun olacağını belirten bir lambda ifadesidir.
+3. Filtrelenen her bir nesneyi `mapper` olan `Function` nesnesi tarafından belirtildiği şekilde bir değere eşler. Bu örnekte `Function` nesnesi, bir üyenin e-posta adresini döndüren bir lambda ifadesidir.
+4. Eşlenen her bir nesne üzerinde `block` olan `Consumer` nesnesi tarafından belirtildiği şekilde bir eylem gerçekleştirir. Bu örnekte `Consumer` nesnesi, `Function` nesnesi tarafından döndürülen e-posta adresi olan bir dizeyi yazdıran bir lambda ifadesidir.
+
+Bu eylemlerin her birini bir toplu işlemle değiştirebilirsiniz.
+
 ### Yaklaşım 9: Lambda İfadelerini Parametre Olarak Kabul Eden Toplu İşlemleri Kullanma
 
-Aşağıdaki örnek, `roster` koleksiyonundaki zorunlu askerlik hizmetine uygun üyelerin e-posta adreslerini yazdırmak için toplu işlemleri (aggregate operations) kullanır:
+Aşağıdaki örnek, `roster` koleksiyonunda bulunan ve Seçici Hizmet için uygun olan üyelerin e-posta adreslerini yazdırmak için toplu işlemleri kullanır:
 
 ```java
 roster
@@ -349,65 +363,86 @@ roster
     .forEach(email -> System.out.println(email));
 ```
 
-Aşağıdaki tablo, `processElements` metodunun gerçekleştirdiği her bir eylemi karşılık gelen toplu işlemle eşleştirir:
+Aşağıdaki tablo, `processElements` metodunun gerçekleştirdiği işlemlerin her birini karşılık gelen toplu işlemle eşleştirir:
 
-| `processElements` Eylemi (`processElements` Action) | Toplu İşlem (Aggregate Operation) |
+| `processElements` Eylemi | Toplu İşlem (Aggregate Operation) |
 | :--- | :--- |
-| Bir nesne kaynağı elde etme (Obtain a source of objects) | `Stream<E> stream()` |
-| Bir `Predicate` nesnesiyle eşleşen nesneleri filtreleme (Filter objects that match a `Predicate` object) | `Stream<T> filter(Predicate<? super T> predicate)` |
-| Nesneleri başka bir değere eşleme (Map objects to another value) | `Stream<R> map(Function<? super T, ? extends R> mapper)` |
-| Bir `Consumer` nesnesi tarafından belirtilen bir eylemi gerçekleştirme (Perform an action specified by a `Consumer` object) | `void forEach(Consumer<? super T> action)` |
+| Bir nesne kaynağı elde etme | `Stream<E> stream()` |
+| Bir `Predicate` nesnesiyle eşleşen nesneleri filtreleme | `Stream<T> filter(Predicate<? super T> predicate)` |
+| Nesneleri bir `Function` nesnesi tarafından belirtildiği şekilde başka bir değere eşleme | `<R> Stream<R> map(Function<? super T,? extends R> mapper)` |
+| Bir `Consumer` nesnesi tarafından belirtildiği şekilde bir eylem gerçekleştirme | `void forEach(Consumer<? super T> action)` |
 
-`filter`, `map` ve `forEach` işlemleri *toplu işlemlerdir (aggregate operations)*. Toplu işlemler öğeleri doğrudan bir koleksiyondan değil, bir akıştan (stream) işler. Bir akış bir dizi öğedir. Bir koleksiyonun aksine, verileri depolayan bir veri yapısı değildir; bunun yerine bir kaynak (örneğin bir koleksiyon) üzerinden öğeleri bir işlem hattı (pipeline) boyunca taşır.
+`filter`, `map` ve `forEach` işlemleri **toplu işlemlerdir (aggregate operations)**. Toplu işlemler öğeleri doğrudan bir koleksiyondan değil, bir **akıştan (stream)** işler (bu örnekte çağrılan ilk metodun `stream` olmasının nedeni budur). Bir akış, bir öğeler dizisidir. Bir koleksiyonun aksine verileri depolayan bir veri yapısı değildir. Bunun yerine bir akış, bir koleksiyon gibi bir kaynaktan değerleri bir **işlem hattı (pipeline)** boyunca taşır. Bir işlem hattı bir akış işlemleri dizisidir; bu örnekte `filter`-`map`-`forEach`'tir. Ek olarak, toplu işlemler genellikle nasıl davranacaklarını özelleştirmenize olanak tanıyan lambda ifadelerini parametre olarak kabul eder.
+
+Toplu işlemlerin daha kapsamlı bir tartışması için [Toplu İşlemler (Aggregate Operations)](https://docs.oracle.com/javase/tutorial/collections/streams/index.html) dersine bakın.
 
 ## GUI Uygulamalarında Lambda İfadeleri (Lambda Expressions in GUI Applications)
 
-Grafik kullanıcı arayüzü (GUI) uygulamalarında olayları işlemek için genellikle anonim sınıflar kullanılır. Örneğin JavaFX'te bir düğmenin tıklanmasını işlemek için:
+Grafik kullanıcı arayüzü (GUI) uygulamasında klavye eylemleri, fare eylemleri ve kaydırma eylemleri gibi olayları işlemek için genellikle belirli bir arayüzü uygulamayı içeren olay işleyicileri (event handlers) oluşturursunuz. Çoğunlukla olay işleyici arayüzleri fonksiyonel arayüzlerdir; yalnızca tek bir metoda sahip olma eğilimindedirler.
+
+Önceki bölüm olan [Anonim Sınıflar](java/3-siniflar-ve-nesneler/anonim-siniflar.md) konusunda ele alınan `HelloWorld.java` JavaFX örneğinde, bu ifadedeki vurgulanan anonim sınıfı bir lambda ifadesi ile değiştirebilirsiniz:
 
 ```java
-btn.setOnAction(new EventHandler<ActionEvent>() {
-    @Override
-    public void handle(ActionEvent event) {
-        System.out.println("Hello World!");
-    }
-});
+        btn.setOnAction(new EventHandler<ActionEvent>() {
+
+            @Override
+            public void handle(ActionEvent event) {
+                System.out.println("Hello World!");
+            }
+        });
 ```
 
-`EventHandler<ActionEvent>` arayüzü yalnızca tek bir metot içerdiğinden, bir lambda ifadesi kullanabilirsiniz:
+`btn.setOnAction` metot çağrısı, `btn` nesnesi tarafından temsil edilen butonu seçtiğinizde ne olacağını belirtir. Bu metot `EventHandler<ActionEvent>` türünde bir nesne gerektirir. `EventHandler<ActionEvent>` arayüzü yalnızca tek bir metot içerir: `void handle(T event)`. Bu arayüz bir fonksiyonel arayüz olduğundan, onu değiştirmek için aşağıdaki vurgulanan lambda ifadesini kullanabilirsiniz:
 
 ```java
-btn.setOnAction(
-    event -> System.out.println("Hello World!")
-);
+        btn.setOnAction(
+          event -> System.out.println("Hello World!")
+        );
 ```
 
 ## Lambda İfadelerinin Sözdizimi (Syntax of Lambda Expressions)
 
 Bir lambda ifadesi şunlardan oluşur:
 
-* Parantez içine alınmış, virgülle ayrılmış biçimsel parametreler listesi. `CheckPerson.test` metodunda `Person p` parametresini temsil eden `(Person p)` gibi. Parametrelerin veri türünü atlayabilirsiniz. Ayrıca yalnızca bir parametre varsa parantezleri de atlayabilirsiniz; örneğin `p -> ...`.
-* Ok belirteci: `->`
-* Tek bir ifadeden veya bir ifade bloğundan oluşan bir gövde. Tek bir ifade belirtirseniz, Java çalışma zamanı ifadeyi değerlendirir ve değerini döndürür. Alternatif olarak bir `return` ifadesi kullanabilirsiniz:
+* Parantez içine alınmış, virgülle ayrılmış formal parametre listesi. `CheckPerson.test` metodu, `Person` sınıfının bir örneğini temsil eden tek bir `p` parametresi içerir.
 
-```java
-p -> p.getGender() == Person.Sex.MALE 
-    && p.getAge() >= 18 
-    && p.getAge() <= 25
-```
+  > **Not**: Bir lambda ifadesinde parametrelerin veri türünü atlayabilirsiniz. Ayrıca, yalnızca tek bir parametre varsa parantezleri de atlayabilirsiniz. Örneğin aşağıdaki lambda ifadesi de geçerlidir:
+  >
+  > ```java
+  > p -> p.getGender() == Person.Sex.MALE 
+  >     && p.getAge() >= 18
+  >     && p.getAge() <= 25
+  > ```
 
-veya:
+* Ok işleci, `->` (arrow token)
 
-```java
-p -> {
-    return p.getGender() == Person.Sex.MALE
-        && p.getAge() >= 18
-        && p.getAge() <= 25;
-}
-```
+* Tek bir ifadeden veya bir ifade bloğundan oluşan bir gövde (body). Bu örnek aşağıdaki ifadeyi kullanır:
 
-Bir `return` ifadesi tek başına bir ifade değildir; süslü parantezler `{}` içine alınmalıdır.
+  ```java
+  p.getGender() == Person.Sex.MALE 
+      && p.getAge() >= 18
+      && p.getAge() <= 25
+  ```
 
-Aşağıdaki `Calculator` örneği, birden fazla parametre alan lambda ifadelerini gösterir:
+  Tek bir ifade belirtirseniz Java çalışma zamanı ortamı ifadeyi değerlendirir ve ardından değerini döndürür. Alternatif olarak bir `return` ifadesi kullanabilirsiniz:
+
+  ```java
+  p -> {
+      return p.getGender() == Person.Sex.MALE
+          && p.getAge() >= 18
+          && p.getAge() <= 25;
+  }
+  ```
+
+  Bir return ifadesi bir ifade (expression) değil deyimdir (statement); bir lambda ifadesinde deyimleri süslü parantezler (`{}`) içine almanız gerekir. Ancak, void döndüren bir metot çağrısını süslü parantez içine almak zorunda değilsiniz. Örneğin aşağıdakiler geçerli bir lambda ifadesidir:
+
+  ```java
+  email -> System.out.println(email)
+  ```
+
+Bir lambda ifadesinin bir metot bildirimine çok benzediğine dikkat edin; lambda ifadelerini anonim metotlar (anonymous methods — adı olmayan metotlar) olarak düşünebilirsiniz.
+
+Aşağıdaki `Calculator` örneği, birden fazla formal parametre alan lambda ifadeleri örneğidir:
 
 ```java
 public class Calculator {
@@ -425,53 +460,54 @@ public class Calculator {
         Calculator myApp = new Calculator();
         IntegerMath addition = (a, b) -> a + b;
         IntegerMath subtraction = (a, b) -> a - b;
-        System.out.println("40 + 2 = " +
-            myApp.operateBinary(40, 2, addition));
-        System.out.println("20 - 10 = " +
-            myApp.operateBinary(20, 10, subtraction));    
+        System.out.println("40 + 2 = " + myApp.operateBinary(40, 2, addition));
+        System.out.println("20 - 10 = " + myApp.operateBinary(20, 10, subtraction));    
     }
 }
 ```
 
+`operateBinary` metodu iki tamsayı işlenen (operand) üzerinde matematiksel bir işlem gerçekleştirir. İşlemin kendisi `IntegerMath`'in bir örneği tarafından belirtilir. Örnek, lambda ifadeleri ile `addition` ve `subtraction` olmak üzere iki işlem tanımlar. Örnek aşağıdakileri yazdırır:
+
+```text
+40 + 2 = 42
+20 - 10 = 10
+```
+
 ## Çevreleyen Kapsamın Yerel Değişkenlerine Erişme (Accessing Local Variables of the Enclosing Scope)
 
-Yerel ve anonim sınıflar gibi, lambda ifadeleri de değişkenleri [yakalayabilir (capture)](java/3-siniflar-ve-nesneler/yerel-siniflar.md#cevreleyen-bir-sinifin-uyelerine-erisme-accessing-members-of-an-enclosing-class); çevreleyen kapsamın yerel değişkenlerine aynı erişime sahiptirler. Ancak yerel ve anonim sınıfların aksine, lambda ifadeleri herhangi bir gölgeleme (shadowing) sorununa yol açmaz. Lambda ifadeleri *sözcüksel olarak kapsamlandırılmıştır (lexically scoped)*. Bu, üst türlerinden herhangi bir adı miras almadıkları veya yeni bir kapsam düzeyi getirmedikleri anlamına gelir. Bir lambda ifadesindeki bildirimler, çevreleyen ortamda olduğu gibi yorumlanır.
+Yerel ve anonim sınıflar gibi, lambda ifadeleri de [değişkenleri yakalayabilir (capture variables)](java/3-siniflar-ve-nesneler/yerel-siniflar.md#çevreleyen-bir-sınıfın-üyelerine-erişme-accessing-members-of-an-enclosing-class); çevreleyen kapsamın yerel değişkenlerine aynı erişime sahiptirler. Ancak yerel ve anonim sınıfların aksine, lambda ifadelerinin herhangi bir gölgeleme sorunu yoktur (daha fazla bilgi için [Gölgeleme (Shadowing)](java/3-siniflar-ve-nesneler/yuvalanmis-siniflar.md#gölgeleme-shadowing) konusuna bakın). Lambda ifadeleri **sözcüksel kapsamlıdır (lexically scoped)**. Bu, bir üst türden herhangi bir ad miras almadıkları veya yeni bir kapsam düzeyi getirmedikleri anlamına gelir. Bir lambda ifadesindeki bildirimler, tıpkı çevreleyen ortamda oldukları gibi yorumlanır. Aşağıdaki `LambdaScopeTest` örneği bunu göstermektedir:
 
 ```java
 import java.util.function.Consumer;
-
+ 
 public class LambdaScopeTest {
-
     public int x = 0;
-
+ 
     class FirstLevel {
-
         public int x = 1;
-
+        
         void methodInFirstLevel(int x) {
-            
-            // Aşağıdaki ifade bir derleyici hatası üretir: 
-            // Lambda ifadesinin x parametresi, 
-            // çevreleyen kapsamda tanımlanan methodInFirstLevel 
-            // metodunun x parametresiyle aynı adı taşıyamaz.
-            // 
-            // Consumer<Integer> myConsumer = (x) -> 
-            //     System.out.println("x = " + x);
-
+            int z = 2;
+             
             Consumer<Integer> myConsumer = (y) -> 
             {
-                System.out.println("x = " + x); // methodInFirstLevel parametresine başvurur
+                // Aşağıdaki ifade, derleyicinin şu hatayı üretmesine neden olur:
+                // "Local variable z defined in an enclosing scope
+                // must be final or effectively final" 
+                //
+                // z = 99;
+                
+                System.out.println("x = " + x); 
                 System.out.println("y = " + y);
-                System.out.println("this.x = " + this.x); // FirstLevel.x alanına başvurur
-                System.out.println("LambdaScopeTest.this.x = " +
-                    LambdaScopeTest.this.x);
+                System.out.println("z = " + z);
+                System.out.println("this.x = " + this.x);
+                System.out.println("LambdaScopeTest.this.x = " + LambdaScopeTest.this.x);
             };
-
+ 
             myConsumer.accept(x);
-
         }
     }
-
+ 
     public static void main(String... args) {
         LambdaScopeTest st = new LambdaScopeTest();
         LambdaScopeTest.FirstLevel fl = st.new FirstLevel();
@@ -480,20 +516,40 @@ public class LambdaScopeTest {
 }
 ```
 
-Bu örnek şu çıktıyı üretir:
+Bu örnek aşağıdaki çıktıyı üretir:
 
 ```text
 x = 23
 y = 23
+z = 2
 this.x = 1
 LambdaScopeTest.this.x = 0
 ```
 
-Lambda ifadeleri, çevreleyen bloğun yalnızca `final` veya etkin olarak son (effectively final) olan yerel değişkenlerine ve parametrelerine erişebilir.
+`myConsumer` lambda ifadesinin bildiriminde `y` yerine `x` parametresini koyarsanız, derleyici bir hata üretir:
+
+```java
+Consumer<Integer> myConsumer = (x) -> {
+    // ...
+}
+```
+
+Derleyici, "***Lambda expression's parameter x cannot redeclare another local variable defined in an enclosing scope***" (Lambda ifadesinin parametresi x, çevreleyen bir kapsamda tanımlanmış başka bir yerel değişkeni yeniden bildiremez) hatasını üretir çünkü lambda ifadesi yeni bir kapsam düzeyi getirmez. Sonuç olarak, çevreleyen kapsamın alanlarına, metotlarına ve yerel değişkenlerine doğrudan erişebilirsiniz. Örneğin lambda ifadesi, `methodInFirstLevel` metodunun `x` parametresine doğrudan erişir. Çevreleyen sınıftaki değişkenlere erişmek için `this` anahtar kelimesini kullanın. Bu örnekte `this.x`, `FirstLevel.x` üye değişkenine başvurur.
+
+Bununla birlikte, yerel ve anonim sınıflar gibi bir lambda ifadesi de yalnızca çevreleyen bloğun `final` veya etkin olarak sabit (effectively final) olan yerel değişkenlerine ve parametrelerine erişebilir. Bu örnekte `z` değişkeni etkin olarak sabittir; değeri başlatıldıktan sonra asla değiştirilmez. Ancak `myConsumer` lambda ifadesine aşağıdaki atama ifadesini eklediğinizi varsayalım:
+
+```java
+Consumer<Integer> myConsumer = (y) -> {
+    z = 99;
+    // ...
+}
+```
+
+Bu atama ifadesi nedeniyle `z` değişkeni artık etkin olarak sabit değildir. Sonuç olarak Java derleyicisi, "***Local variable z defined in an enclosing scope must be final or effectively final***" (Çevreleyen bir kapsamda tanımlanan yerel değişken z, final veya etkin olarak sabit olmalıdır) mesajına benzer bir hata mesajı üretir.
 
 ## Hedef Türleme (Target Typing)
 
-Bir lambda ifadesinin türünü nasıl belirlersiniz? Örneğin aşağıdaki lambda ifadesinin türü nedir:
+Bir lambda ifadesinin türünü nasıl belirlersiniz? Erkek ve 18 ile 25 yaşları arasındaki üyeleri seçen lambda ifadesini hatırlayın:
 
 ```java
 p -> p.getGender() == Person.Sex.MALE
@@ -501,27 +557,27 @@ p -> p.getGender() == Person.Sex.MALE
     && p.getAge() <= 25
 ```
 
-Bu lambda ifadesi iki farklı arayüz için kullanılmıştır:
+Bu lambda ifadesi aşağıdaki iki metotta kullanılmıştır:
 
-1. `CheckPerson tester` parametresi için (`printPersons` metodunda)
-2. `Predicate<Person> tester` parametresi için (`printPersonsWithPredicate` metodunda)
+* [Yaklaşım 3: Arama Kriteri Kodunu Bir Yerel Sınıfta Belirtme](#yaklaşım-3-arama-kriteri-kodunu-bir-yerel-sınıfta-belirtme) bölümünde `public static void printPersons(List<Person> roster, CheckPerson tester)`
+* [Yaklaşım 6: Lambda İfadeleriyle Standart Fonksiyonel Arayüzleri Kullanma](#yaklaşım-6-lambda-ifadeleriyle-standart-fonksiyonel-arayüzleri-kullanma) bölümünde `public void printPersonsWithPredicate(List<Person> roster, Predicate<Person> tester)`
 
-Java derleyicisinin ihtiyaç duyduğu veri türüne *hedef tür (target type)* denir. Bir lambda ifadesi yalnızca Java derleyicisinin hedef türü belirleyebildiği bağlamlarda kullanılabilir:
+Java çalışma zamanı ortamı `printPersons` metodunu çağırdığında `CheckPerson` veri türünü bekler, bu nedenle lambda ifadesi bu türdendir. Ancak Java çalışma zamanı ortamı `printPersonsWithPredicate` metodunu çağırdığında `Predicate<Person>` veri türünü bekler, bu nedenle lambda ifadesi bu türdendir. Bu metotların beklediği veri türüne **hedef tür (target type)** denir. Bir lambda ifadesinin türünü belirlemek için Java derleyicisi, lambda ifadesinin bulunduğu bağlamın veya durumun hedef türünü kullanır. Bundan, yalnızca Java derleyicisinin bir hedef türü belirleyebildiği durumlarda lambda ifadelerini kullanabileceğiniz sonucu çıkar:
 
-* Değişken bildirimleri
-* Atamalar
-* Dönüş ifadeleri (Return statements)
-* Dizi başlatıcılar
-* Metot veya yapıcı argümanları
-* Lambda ifadesi gövdeleri
-* Koşul ifadeleri (`? :`)
-* Tür dönüştürme (Cast) ifadeleri
+* Değişken bildirimleri (Variable declarations)
+* Atamalar (Assignments)
+* Return ifadeleri (Return statements)
+* Dizi başlatıcıları (Array initializers)
+* Metot veya constructor argümanları (Method or constructor arguments)
+* Lambda ifadesi gövdeleri (Lambda expression bodies)
+* Koşullu ifadeler, `?:` (Conditional expressions)
+* Tür dönüştürme ifadeleri (Cast expressions)
 
 ### Hedef Türler ve Metot Argümanları (Target Types and Method Arguments)
 
-Metot argümanları için Java derleyicisi aşırı yükleme çözümlemesi (overload resolution) ve tür argümanı çıkarımı (type argument inference) kullanarak hedef türü belirler.
+Metot argümanları için Java derleyicisi hedef türü diğer iki dil özelliğiyle belirler: aşırı yükleme çözümlemesi (overload resolution) ve tür argümanı çıkarımı (type argument inference).
 
-Aşağıdaki iki fonksiyonel arayüzü düşünün:
+Aşağıdaki iki fonksiyonel arayüzü (`java.lang.Runnable` ve `java.util.concurrent.Callable<V>`) göz önünde bulundurun:
 
 ```java
 public interface Runnable {
@@ -533,7 +589,9 @@ public interface Callable<V> {
 }
 ```
 
-Aşağıdaki aşırı yüklenmiş metotları düşünün:
+`Runnable.run` metodu bir değer döndürmez, oysa `Callable<V>.call` döndürür.
+
+`invoke` metodunu aşağıdaki gibi aşırı yüklediğinizi (overload ettiğinizi) varsayalım (metotları aşırı yükleme hakkında daha fazla bilgi için [Metotları Tanımlama (Defining Methods)](java/3-siniflar-ve-nesneler/metotlar.md) bölümüne bakın):
 
 ```java
 void invoke(Runnable r) {
@@ -545,14 +603,14 @@ void invoke(Runnable r) {
 }
 ```
 
-Aşağıdaki ifadede hangi metot çağrılacaktır:
+Aşağıdaki ifadede hangi metot çağrılacaktır?
 
 ```java
 String s = invoke(() -> "done");
 ```
 
-`Callable<V>` bir değer döndürdüğü, ancak `Runnable` döndürmediği için `invoke(Callable<T>)` çağrılacaktır. Bu durumda lambda ifadesinin hedef türü `Callable<String>`'dir.
+`invoke(Callable<T>)` metodu çağrılacaktır çünkü bu metot bir değer döndürür; `invoke(Runnable)` metodu ise döndürmez. Bu durumda `() -> "done"` lambda ifadesinin türü `Callable<T>`'dir.
 
 ## Serileştirme (Serialization)
 
-Bir lambda ifadesini, hedef türü ve yakalanan argümanları serileştirilebilirse [serileştirebilirsiniz (serialize)](java/3-siniflar-ve-nesneler/yuvalanmis-siniflar.md#serilestirme-serialization). Ancak iç sınıflarda olduğu gibi, lambda ifadelerinin serileştirilmesi kesinlikle önerilmez.
+Hedef türü ve yakalanan argümanları (captured arguments) serileştirilebilirse, bir lambda ifadesini [serileştirebilirsiniz (serialize edebilirsiniz)](https://docs.oracle.com/javase/tutorial/jndi/objects/serial.html). Ancak [iç sınıflar](java/3-siniflar-ve-nesneler/yuvalanmis-siniflar.md#serileştirme-serialization) gibi lambda ifadelerinin de serileştirilmesi kesinlikle önerilmez.
