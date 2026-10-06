@@ -648,7 +648,7 @@ body.close .content {
   font-style: italic !important;
   font-weight: 700 !important;
   font-size: 1.05em !important;
-  color: #0066cc !important;
+  color: #1d1d1f !important;
   background: transparent !important;
   border: none !important;
   border-radius: 4px !important;
@@ -745,10 +745,16 @@ body.close .content {
   cursor: text !important;
 }
 
-/* Link içindeki inline kodların hover durumunda da şeffaflığı ve rengi sabit kalsın */
+/* Inline kodların hover durumunda da şeffaflığı ve rengi sabit kalsın */
 .markdown-section :not(pre)>code,
-.markdown-section a :not(pre)>code,
 .markdown-section :not(pre)>code:hover {
+  border: none !important;
+  color: #1d1d1f !important;
+  background: transparent !important;
+}
+
+/* Link içindeki inline kodlar link rengini korusun */
+.markdown-section a :not(pre)>code {
   border: none !important;
   color: #0066cc !important;
   background: transparent !important;
@@ -785,7 +791,8 @@ body.close .content {
 .markdown-section a :not(pre)>code.error-code,
 .markdown-section a:hover :not(pre)>code.error-code,
 .markdown-section :not(pre)>code.error-code:hover {
-  font-size: 0.88em !important; /* Kırmızı hata yazıları için kompakt ve zarif boyut */
+  font-size: 0.88em !important;
+  /* Kırmızı hata yazıları için kompakt ve zarif boyut */
   color: #d70015 !important;
   background: #fdf2f2 !important;
   border: 1px solid rgba(215, 0, 21, 0.22) !important;
@@ -826,7 +833,8 @@ body.close .content {
   color: #000000 !important;
   background: transparent !important;
   font-size: 0.95rem !important;
-  line-height: 1.1 !important; /* Satırlar arası boşluk 1.10 yapıldı */
+  line-height: 1.1 !important;
+  /* Satırlar arası boşluk 1.10 yapıldı */
   padding: 0 !important;
   margin: 0 !important;
   border: none !important;
